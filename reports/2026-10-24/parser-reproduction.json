@@ -1,0 +1,543 @@
+{
+  "date": "2026-10-24",
+  "scope": "Local current parser and dataset; not a browser UI test",
+  "results": [
+    {
+      "input": "I ate 2 eggs, 1 bowl of oatmeal, and an apple",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:apple",
+            "name": "Apple, raw",
+            "aliases": [
+              "an apple",
+              "apples",
+              "apple"
+            ],
+            "fiberG": 4.4,
+            "serving": "1 medium (182g)",
+            "calories": 95,
+            "glpScore": 4
+          },
+          "qty": 1,
+          "fiberG": 4.4,
+          "matchedAlias": "an apple",
+          "source": "database",
+          "confidence": "high"
+        },
+        {
+          "food": {
+            "id": "curated:oatmeal",
+            "name": "Oatmeal, cooked",
+            "aliases": [
+              "bowl of oatmeal",
+              "oatmeal",
+              "oat porridge",
+              "porridge"
+            ],
+            "fiberG": 4,
+            "serving": "1 cup cooked",
+            "calories": 166,
+            "glpScore": 3
+          },
+          "qty": 1,
+          "fiberG": 4,
+          "matchedAlias": "bowl of oatmeal",
+          "source": "database",
+          "confidence": "high"
+        },
+        {
+          "food": {
+            "id": "curated:egg",
+            "name": "Egg, whole, cooked",
+            "aliases": [
+              "eggs",
+              "egg"
+            ],
+            "fiberG": 0,
+            "serving": "1 large",
+            "calories": 78,
+            "glpScore": 1
+          },
+          "qty": 2,
+          "fiberG": 0,
+          "matchedAlias": "eggs",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 8.4,
+      "totalCalories": 417,
+      "avgGlpScore": 3.5,
+      "unmatchedHints": [],
+      "estimatedCount": 0
+    },
+    {
+      "input": "1 apple",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:apple",
+            "name": "Apple, raw",
+            "aliases": [
+              "an apple",
+              "apples",
+              "apple"
+            ],
+            "fiberG": 4.4,
+            "serving": "1 medium (182g)",
+            "calories": 95,
+            "glpScore": 4
+          },
+          "qty": 1,
+          "fiberG": 4.4,
+          "matchedAlias": "apple",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 4.4,
+      "totalCalories": 95,
+      "avgGlpScore": 4,
+      "unmatchedHints": [],
+      "estimatedCount": 0
+    },
+    {
+      "input": "2 apples",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:apple",
+            "name": "Apple, raw",
+            "aliases": [
+              "an apple",
+              "apples",
+              "apple"
+            ],
+            "fiberG": 4.4,
+            "serving": "1 medium (182g)",
+            "calories": 95,
+            "glpScore": 4
+          },
+          "qty": 2,
+          "fiberG": 8.8,
+          "matchedAlias": "apples",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 8.8,
+      "totalCalories": 190,
+      "avgGlpScore": 4,
+      "unmatchedHints": [],
+      "estimatedCount": 0
+    },
+    {
+      "input": "half an apple",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:apple",
+            "name": "Apple, raw",
+            "aliases": [
+              "an apple",
+              "apples",
+              "apple"
+            ],
+            "fiberG": 4.4,
+            "serving": "1 medium (182g)",
+            "calories": 95,
+            "glpScore": 4
+          },
+          "qty": 0.5,
+          "fiberG": 2.2,
+          "matchedAlias": "an apple",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 2.2,
+      "totalCalories": 48,
+      "avgGlpScore": 4,
+      "unmatchedHints": [
+        "half"
+      ],
+      "estimatedCount": 0
+    },
+    {
+      "input": "1/2 apple",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:apple",
+            "name": "Apple, raw",
+            "aliases": [
+              "an apple",
+              "apples",
+              "apple"
+            ],
+            "fiberG": 4.4,
+            "serving": "1 medium (182g)",
+            "calories": 95,
+            "glpScore": 4
+          },
+          "qty": 2,
+          "fiberG": 8.8,
+          "matchedAlias": "apple",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 8.8,
+      "totalCalories": 190,
+      "avgGlpScore": 4,
+      "unmatchedHints": [],
+      "estimatedCount": 0
+    },
+    {
+      "input": "100g apple",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:apple",
+            "name": "Apple, raw",
+            "aliases": [
+              "an apple",
+              "apples",
+              "apple"
+            ],
+            "fiberG": 4.4,
+            "serving": "1 medium (182g)",
+            "calories": 95,
+            "glpScore": 4
+          },
+          "qty": 1,
+          "fiberG": 4.4,
+          "matchedAlias": "apple",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 4.4,
+      "totalCalories": 95,
+      "avgGlpScore": 4,
+      "unmatchedHints": [
+        "100g"
+      ],
+      "estimatedCount": 0
+    },
+    {
+      "input": "200g apple",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:apple",
+            "name": "Apple, raw",
+            "aliases": [
+              "an apple",
+              "apples",
+              "apple"
+            ],
+            "fiberG": 4.4,
+            "serving": "1 medium (182g)",
+            "calories": 95,
+            "glpScore": 4
+          },
+          "qty": 1,
+          "fiberG": 4.4,
+          "matchedAlias": "apple",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 4.4,
+      "totalCalories": 95,
+      "avgGlpScore": 4,
+      "unmatchedHints": [
+        "200g"
+      ],
+      "estimatedCount": 0
+    },
+    {
+      "input": "1 tbsp chia seeds",
+      "matches": [
+        {
+          "food": {
+            "id": "170554",
+            "name": "Seeds, chia seeds, dried",
+            "aliases": [
+              "seeds chia seeds dried",
+              "chia seeds seeds",
+              "chia seeds seed",
+              "chia seeds"
+            ],
+            "fiberG": 9.8,
+            "serving": "1 oz",
+            "calories": 138,
+            "glpScore": 10
+          },
+          "qty": 1,
+          "fiberG": 9.8,
+          "matchedAlias": "chia seeds",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 9.8,
+      "totalCalories": 138,
+      "avgGlpScore": 10,
+      "unmatchedHints": [
+        "tbsp"
+      ],
+      "estimatedCount": 0
+    },
+    {
+      "input": "2 tbsp chia seeds",
+      "matches": [
+        {
+          "food": {
+            "id": "170554",
+            "name": "Seeds, chia seeds, dried",
+            "aliases": [
+              "seeds chia seeds dried",
+              "chia seeds seeds",
+              "chia seeds seed",
+              "chia seeds"
+            ],
+            "fiberG": 9.8,
+            "serving": "1 oz",
+            "calories": 138,
+            "glpScore": 10
+          },
+          "qty": 1,
+          "fiberG": 9.8,
+          "matchedAlias": "chia seeds",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 9.8,
+      "totalCalories": 138,
+      "avgGlpScore": 10,
+      "unmatchedHints": [
+        "tbsp"
+      ],
+      "estimatedCount": 0
+    },
+    {
+      "input": "1 cup cooked lentils",
+      "matches": [
+        {
+          "food": {
+            "id": "172421",
+            "name": "Lentils, mature seeds, cooked, boiled, without salt",
+            "aliases": [
+              "lentils mature seeds cooked boiled without salt",
+              "mature seeds lentils",
+              "mature seeds lentil",
+              "lentils"
+            ],
+            "fiberG": 15.6,
+            "serving": "1 cup",
+            "calories": 230,
+            "glpScore": 7
+          },
+          "qty": 1,
+          "fiberG": 15.6,
+          "matchedAlias": "lentils",
+          "source": "database",
+          "confidence": "high"
+        },
+        {
+          "food": {
+            "id": "168386",
+            "name": "Artichokes, (globe or french), cooked, boiled, drained, without salt",
+            "aliases": [
+              "artichokes cooked boiled drained without salt",
+              "cooked artichokes",
+              "cooked artichoke",
+              "artichokes",
+              "cooked"
+            ],
+            "fiberG": 4.8,
+            "serving": "1 cup hearts",
+            "calories": 45,
+            "glpScore": 6
+          },
+          "qty": 1,
+          "fiberG": 4.8,
+          "matchedAlias": "cooked",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 20.4,
+      "totalCalories": 275,
+      "avgGlpScore": 6.8,
+      "unmatchedHints": [],
+      "estimatedCount": 0
+    },
+    {
+      "input": "2 cups cooked lentils",
+      "matches": [
+        {
+          "food": {
+            "id": "172421",
+            "name": "Lentils, mature seeds, cooked, boiled, without salt",
+            "aliases": [
+              "lentils mature seeds cooked boiled without salt",
+              "mature seeds lentils",
+              "mature seeds lentil",
+              "lentils"
+            ],
+            "fiberG": 15.6,
+            "serving": "1 cup",
+            "calories": 230,
+            "glpScore": 7
+          },
+          "qty": 1,
+          "fiberG": 15.6,
+          "matchedAlias": "lentils",
+          "source": "database",
+          "confidence": "high"
+        },
+        {
+          "food": {
+            "id": "168386",
+            "name": "Artichokes, (globe or french), cooked, boiled, drained, without salt",
+            "aliases": [
+              "artichokes cooked boiled drained without salt",
+              "cooked artichokes",
+              "cooked artichoke",
+              "artichokes",
+              "cooked"
+            ],
+            "fiberG": 4.8,
+            "serving": "1 cup hearts",
+            "calories": 45,
+            "glpScore": 6
+          },
+          "qty": 1,
+          "fiberG": 4.8,
+          "matchedAlias": "cooked",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 20.4,
+      "totalCalories": 275,
+      "avgGlpScore": 6.8,
+      "unmatchedHints": [
+        "cups"
+      ],
+      "estimatedCount": 0
+    },
+    {
+      "input": "salad without avocado",
+      "matches": [
+        {
+          "food": {
+            "id": "curated:avocado",
+            "name": "Avocado, raw",
+            "aliases": [
+              "an avocado",
+              "avocados",
+              "avocado",
+              "avos"
+            ],
+            "fiberG": 10.1,
+            "serving": "1 medium (150g)",
+            "calories": 240,
+            "glpScore": 6
+          },
+          "qty": 1,
+          "fiberG": 10.1,
+          "matchedAlias": "avocado",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 10.1,
+      "totalCalories": 240,
+      "avgGlpScore": 6,
+      "unmatchedHints": [
+        "salad"
+      ],
+      "estimatedCount": 0
+    },
+    {
+      "input": "1 bowl of oatmeal with chia seeds and blueberries",
+      "matches": [
+        {
+          "food": {
+            "id": "170554",
+            "name": "Seeds, chia seeds, dried",
+            "aliases": [
+              "seeds chia seeds dried",
+              "chia seeds seeds",
+              "chia seeds seed",
+              "chia seeds"
+            ],
+            "fiberG": 9.8,
+            "serving": "1 oz",
+            "calories": 138,
+            "glpScore": 10
+          },
+          "qty": 1,
+          "fiberG": 9.8,
+          "matchedAlias": "chia seeds",
+          "source": "database",
+          "confidence": "high"
+        },
+        {
+          "food": {
+            "id": "curated:oatmeal",
+            "name": "Oatmeal, cooked",
+            "aliases": [
+              "bowl of oatmeal",
+              "oatmeal",
+              "oat porridge",
+              "porridge"
+            ],
+            "fiberG": 4,
+            "serving": "1 cup cooked",
+            "calories": 166,
+            "glpScore": 3
+          },
+          "qty": 1,
+          "fiberG": 4,
+          "matchedAlias": "bowl of oatmeal",
+          "source": "database",
+          "confidence": "high"
+        },
+        {
+          "food": {
+            "id": "168158",
+            "name": "Blueberries, dried, sweetened",
+            "aliases": [
+              "blueberries dried sweetened",
+              "sweetened blueberry",
+              "dried blueberries",
+              "dried blueberry",
+              "blueberries"
+            ],
+            "fiberG": 3,
+            "serving": "1 cup",
+            "calories": 127,
+            "glpScore": 7
+          },
+          "qty": 1,
+          "fiberG": 3,
+          "matchedAlias": "blueberries",
+          "source": "database",
+          "confidence": "high"
+        }
+      ],
+      "totalFiberG": 16.8,
+      "totalCalories": 431,
+      "avgGlpScore": 7.8,
+      "unmatchedHints": [],
+      "estimatedCount": 0
+    }
+  ]
+}

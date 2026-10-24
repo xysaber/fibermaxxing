@@ -6,17 +6,32 @@ export function buildShareText(opts: {
   pct: number
   gap: number
   hasEstimates: boolean
+  dateLabel: string
+  topFoods: { name: string; fiberG: number }[]
 }): string {
   const status = opts.gap <= 0 ? 'Goal reached' : `${opts.gap}g still to go`
-  const est = opts.hasEstimates ? '\n(Includes estimated food items)' : ''
-  return [
-    'Fibermaxxing check-in',
-    `${opts.totalFiberG}g fiber · ${Math.round(opts.pct)}% of ${opts.target}g target · ${status}`,
-    est.trim(),
-    'Free fibermaxxing calculator → https://www.getfibermaxxing.com',
+  const lines = [
+    'Fibermax',
+    opts.dateLabel,
+    'Daily fiber report',
+    '',
+    `${opts.totalFiberG}g / ${opts.target}g target`,
+    `${Math.round(opts.pct)}% of goal · ${status}`,
   ]
-    .filter(Boolean)
-    .join('\n')
+
+  if (opts.topFoods.length > 0) {
+    lines.push('', 'Top foods today')
+    for (const f of opts.topFoods) {
+      lines.push(`· ${f.name} — ${f.fiberG}g`)
+    }
+  }
+
+  if (opts.hasEstimates) {
+    lines.push('', 'Includes estimated foods')
+  }
+
+  lines.push('', 'getfibermaxxing.com', 'Free fibermaxxing calculator')
+  return lines.join('\n')
 }
 
 /** Design size; pixelRatio 3 → ~1620×2880 export for sharp Stories/IG posts */

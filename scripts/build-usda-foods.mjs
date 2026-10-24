@@ -227,11 +227,20 @@ function aliasesFromDescription(description) {
   const head = parts[0]
   aliases.add(head)
 
+  const BLOCKED = new Set([
+    'raw', 'cooked', 'boiled', 'dried', 'frozen', 'canned', 'salt', 'unsalted',
+    'sweetened', 'unsweetened', 'dehydrated', 'sulfured', 'mature', 'seeds', 'seed',
+    'with skin', 'without skin', 'with salt', 'without salt', 'drained', 'heated',
+    'unheated', 'microwave', 'prepared', 'recipe', 'flesh', 'skin', 'hearts',
+  ])
+
   if (parts.length >= 2) {
     const second = parts[1]
-    aliases.add(second)
-    aliases.add(`${second} ${head}`)
-    aliases.add(`${second} ${singularize(head)}`)
+    if (!BLOCKED.has(second)) {
+      aliases.add(second)
+      aliases.add(`${second} ${head}`)
+      aliases.add(`${second} ${singularize(head)}`)
+    }
 
     // "Beans, black, mature seeds…" → black beans
     if (CATEGORY_HEADS.has(head) || head.endsWith('s')) {
@@ -247,7 +256,7 @@ function aliasesFromDescription(description) {
 
   if (parts.length >= 3) {
     const third = parts[2]
-    if (third.length >= 4 && !/^(raw|cooked|boiled|dried|frozen|canned|salt|without|with)$/.test(third)) {
+    if (third.length >= 4 && !BLOCKED.has(third) && !/^(raw|cooked|boiled|dried|frozen|canned|salt|without|with)$/.test(third)) {
       aliases.add(third)
       aliases.add(`${third} ${singularize(head)}`)
     }
@@ -256,7 +265,7 @@ function aliasesFromDescription(description) {
   // Prefer shorter usable forms: drop ultra-long full strings from matching set later
   return [...aliases]
     .map((a) => a.replace(/[^a-z0-9%\s./-]/g, ' ').replace(/\s+/g, ' ').trim())
-    .filter((a) => a.length >= 3 && a.length <= 48)
+    .filter((a) => a.length >= 3 && a.length <= 48 && !BLOCKED.has(a))
 }
 
 function pickPortion(portions) {

@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-24",
+  "scope": "Raw initial HTTP responses; JavaScript not rendered",
+  "responses": [
+    {
+      "label": "apex_home",
+      "url": "https://getfibermaxxing.com/",
+      "status_lines": [
+        "HTTP/2 200 "
+      ],
+      "bytes": 1918,
+      "sha256": "e46ee09a8f797cfb902356e9b781e8ac6141c92d9f44d1612d417a801260876e",
+      "title": [
+        "Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing"
+      ],
+      "canonical": [
+        "https://www.getfibermaxxing.com/"
+      ],
+      "h1_count": 0,
+      "sitemap_urls": [],
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg?v=2\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\" />\n    <title>Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing</title>\n    <meta\n      name=\"description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta\n      name=\"keywords\"\n      content=\"fibermaxxing calculator, fibermaxxing, daily fiber tracker, how much fiber should I eat, high fiber foods, USDA fiber, adequate intake\"\n    />\n    <meta name=\"robots\" content=\"index, follow\" />\n    <link rel=\"canonical\" href=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:type\" content=\"website\" />\n    <meta property=\"og:url\" content=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      property=\"og:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta property=\"og:site_name\" content=\"GetFibermaxxing\" />\n    <meta name=\"twitter:card\" content=\"summary_large_image\" />\n    <meta name=\"twitter:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      name=\"twitter:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/index-D-zIUERS.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-Rps0Nc4o.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "label": "www_home",
+      "url": "https://www.getfibermaxxing.com/",
+      "status_lines": [
+        "HTTP/2 200 "
+      ],
+      "bytes": 1918,
+      "sha256": "e46ee09a8f797cfb902356e9b781e8ac6141c92d9f44d1612d417a801260876e",
+      "title": [
+        "Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing"
+      ],
+      "canonical": [
+        "https://www.getfibermaxxing.com/"
+      ],
+      "h1_count": 0,
+      "sitemap_urls": [],
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg?v=2\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\" />\n    <title>Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing</title>\n    <meta\n      name=\"description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta\n      name=\"keywords\"\n      content=\"fibermaxxing calculator, fibermaxxing, daily fiber tracker, how much fiber should I eat, high fiber foods, USDA fiber, adequate intake\"\n    />\n    <meta name=\"robots\" content=\"index, follow\" />\n    <link rel=\"canonical\" href=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:type\" content=\"website\" />\n    <meta property=\"og:url\" content=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      property=\"og:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta property=\"og:site_name\" content=\"GetFibermaxxing\" />\n    <meta name=\"twitter:card\" content=\"summary_large_image\" />\n    <meta name=\"twitter:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      name=\"twitter:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/index-D-zIUERS.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-Rps0Nc4o.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "label": "oatmeal",
+      "url": "https://www.getfibermaxxing.com/oatmeal",
+      "status_lines": [
+        "HTTP/2 200 "
+      ],
+      "bytes": 1918,
+      "sha256": "e46ee09a8f797cfb902356e9b781e8ac6141c92d9f44d1612d417a801260876e",
+      "title": [
+        "Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing"
+      ],
+      "canonical": [
+        "https://www.getfibermaxxing.com/"
+      ],
+      "h1_count": 0,
+      "sitemap_urls": [],
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg?v=2\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\" />\n    <title>Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing</title>\n    <meta\n      name=\"description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta\n      name=\"keywords\"\n      content=\"fibermaxxing calculator, fibermaxxing, daily fiber tracker, how much fiber should I eat, high fiber foods, USDA fiber, adequate intake\"\n    />\n    <meta name=\"robots\" content=\"index, follow\" />\n    <link rel=\"canonical\" href=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:type\" content=\"website\" />\n    <meta property=\"og:url\" content=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      property=\"og:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta property=\"og:site_name\" content=\"GetFibermaxxing\" />\n    <meta name=\"twitter:card\" content=\"summary_large_image\" />\n    <meta name=\"twitter:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      name=\"twitter:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/index-D-zIUERS.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-Rps0Nc4o.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "label": "sitemap",
+      "url": "https://getfibermaxxing.com/sitemap.xml",
+      "status_lines": [
+        "HTTP/2 200 "
+      ],
+      "bytes": 240,
+      "sha256": "173b00fded91cd5c14910047969843e6d827332fc545b9c7d674573546bb5554",
+      "title": [],
+      "canonical": [],
+      "h1_count": 0,
+      "sitemap_urls": [
+        "https://www.getfibermaxxing.com/"
+      ],
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://www.getfibermaxxing.com/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n</urlset>\n"
+    },
+    {
+      "label": "robots",
+      "url": "https://getfibermaxxing.com/robots.txt",
+      "status_lines": [
+        "HTTP/2 200 "
+      ],
+      "bytes": 77,
+      "sha256": "b3d4e10b3d44b0cbee4ab16c946f06fec37e99b5753a97fb692765a0920e7b3b",
+      "title": [],
+      "canonical": [],
+      "h1_count": 0,
+      "sitemap_urls": [],
+      "body": "User-agent: *\nAllow: /\n\nSitemap: https://www.getfibermaxxing.com/sitemap.xml\n"
+    },
+    {
+      "label": "nonexistent",
+      "url": "https://getfibermaxxing.com/audit-nonexistent-20261024",
+      "status_lines": [
+        "HTTP/2 200 "
+      ],
+      "bytes": 1918,
+      "sha256": "e46ee09a8f797cfb902356e9b781e8ac6141c92d9f44d1612d417a801260876e",
+      "title": [
+        "Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing"
+      ],
+      "canonical": [
+        "https://www.getfibermaxxing.com/"
+      ],
+      "h1_count": 0,
+      "sitemap_urls": [],
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg?v=2\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\" />\n    <title>Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing</title>\n    <meta\n      name=\"description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta\n      name=\"keywords\"\n      content=\"fibermaxxing calculator, fibermaxxing, daily fiber tracker, how much fiber should I eat, high fiber foods, USDA fiber, adequate intake\"\n    />\n    <meta name=\"robots\" content=\"index, follow\" />\n    <link rel=\"canonical\" href=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:type\" content=\"website\" />\n    <meta property=\"og:url\" content=\"https://www.getfibermaxxing.com/\" />\n    <meta property=\"og:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      property=\"og:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <meta property=\"og:site_name\" content=\"GetFibermaxxing\" />\n    <meta name=\"twitter:card\" content=\"summary_large_image\" />\n    <meta name=\"twitter:title\" content=\"Fibermaxxing Calculator &amp; Daily Fiber Tracker | GetFibermaxxing\" />\n    <meta\n      name=\"twitter:description\"\n      content=\"Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/index-D-zIUERS.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-Rps0Nc4o.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    }
+  ]
+}
