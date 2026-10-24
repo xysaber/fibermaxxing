@@ -102,21 +102,26 @@ function staticArticle(page) {
         `<details><summary>${escapeHtml(f.q)}</summary><p>${escapeHtml(f.a)}</p></details>`,
     )
     .join('\n')
+  // noscript: visible only when JS is off — avoids FOUC for normal visitors.
+  // Head still has unique title/description/canonical/FAQ JSON-LD for crawlers.
   return `
-<section id="prerender-seo" style="max-width:46rem;margin:1.5rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;color:#1a2238">
+<noscript id="prerender-seo">
+<section style="max-width:46rem;margin:1.5rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;color:#1a2238">
   <p><a href="/">Fibermax</a> · fiber intake estimator</p>
   <h1>${escapeHtml(page.h1)}</h1>
   ${paras}
   ${facts ? `<ul>${facts}</ul>` : ''}
-  <p><a href="#root">Open the interactive calculator</a> (JavaScript required for editing portions).</p>
+  <p>JavaScript is required for the interactive calculator.</p>
   <h2>FAQ</h2>
   ${faqs}
-</section>`
+</section>
+</noscript>`
 }
 
 function homeArticle() {
   return `
-<section id="prerender-seo" style="max-width:46rem;margin:1.5rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;color:#1a2238">
+<noscript id="prerender-seo">
+<section style="max-width:46rem;margin:1.5rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;color:#1a2238">
   <h1>How much fiber did you actually eat today?</h1>
   <p>Free fibermaxxing calculator: log what you ate, estimate daily fiber from USDA-based data, and compare it to U.S. Adequate Intake targets — no signup.</p>
   <ul>
@@ -124,8 +129,9 @@ function homeArticle() {
     <li>Daily targets from U.S. Adequate Intake (by sex &amp; age)</li>
     <li>Edit matched portions after you calculate</li>
   </ul>
-  <p><a href="#root">Use the calculator</a> · <a href="/how-much-fiber-per-day">How much fiber per day</a> · <a href="/oatmeal">Oatmeal fiber</a></p>
-</section>`
+  <p><a href="/how-much-fiber-per-day">How much fiber per day</a> · <a href="/oatmeal">Oatmeal fiber</a></p>
+</section>
+</noscript>`
 }
 
 function writeHtml(dir, html) {
@@ -176,10 +182,12 @@ for (const page of pages) {
     noindex: true,
   }).replace(
     '<div id="root"></div>',
-    `<section id="prerender-seo" style="max-width:40rem;margin:2rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif">
+    `<noscript id="prerender-seo">
+<section style="max-width:40rem;margin:2rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif">
   <h1>Page not found</h1>
   <p><a href="/">Back to the fiber calculator</a></p>
 </section>
+</noscript>
 <div id="root"></div>`,
   )
   writeFileSync(join(dist, '404.html'), html)
