@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# USDA raw downloads (regenerate with npm run data:usda)
+scripts/tmp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

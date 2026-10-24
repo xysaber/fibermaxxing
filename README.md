@@ -14,7 +14,7 @@ Open the local URL Vite prints (usually `http://localhost:5173`).
 ## What’s in the MVP
 
 - Natural-language meal input (`I ate 2 eggs, oatmeal, an apple`)
-- Client-side food parser (zero API cost)
+- Client-side food parser over a USDA SR Legacy English index (~4k foods)
 - Fiber goal (RDA vs Fibermaxxing mode) + progress ring
 - Gut Score / GLP-1 proxy
 - Copy-to-clipboard social report + share card
@@ -22,11 +22,18 @@ Open the local URL Vite prints (usually `http://localhost:5173`).
 
 Full product plan: [PRODUCT.md](./PRODUCT.md)
 
-## Deploy
+## Food data (L1)
+
+English food index is built from **USDA SR Legacy** (`src/data/usda-foods.json`) plus curated staples (psyllium, oatmeal, sourdough, …).
 
 ```bash
-npm run build
+# downloads USDA CSV into scripts/tmp/ (gitignored), then regenerates usda-foods.json
+npm run data:usda
 ```
+
+Other languages will use a separate translation/alias map later. Unknown phrases fall back to category estimates in `src/lib/estimateFiber.ts`.
+
+## Deploy
 
 Live: [https://www.getfibermaxxing.com](https://www.getfibermaxxing.com)
 

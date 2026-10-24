@@ -105,7 +105,7 @@ Affiliate 埋点原则：只在**用户看到缺口之后**出现，文案绑定
 | 层 | MVP | 后续 |
 |----|-----|------|
 | 前端 | Vite + React（本仓库） | 可迁 Next.js 做 pSEO SSR |
-| 解析 | 本地食物库 + 规则 NLP | 可选 Claude/GPT 兜底 |
+| 解析 | USDA SR Legacy 精简包（英文 L1）+ 分类估算兜底 | 翻译/别名层；OFF API；LLM 抽结构 |
 | 部署 | Vercel / Cloudflare Pages | 同 |
 | 成本 | ≈ $0（无 API） | NL 增强时控 Token |
 
