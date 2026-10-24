@@ -113,9 +113,9 @@ Affiliate 埋点原则：只在**用户看到缺口之后**出现，文案绑定
 
 ## 9. 未来 48 小时行动清单
 
-- [ ] 注册变体域名（`.app` / `.co` 优先）
-- [ ] `npm run build` → 部署到 Vercel，绑域名
-- [ ] Google Search Console：提交 sitemap + 首页 URL
+- [x] 注册变体域名：`getfibermaxxing.com`（Cloudflare）
+- [x] 部署到 Cloudflare Pages，绑 `www` + 裸域
+- [ ] Google Search Console：提交 sitemap + 首页 URL（`https://www.getfibermaxxing.com/sitemap.xml`）
 - [ ] X / Reddit `#fibermaxxing` `#biohacking` 发工具链接拿首批行为数据
 - [ ] 挂 Amazon Associates 链接替换占位 CTA
 - [ ] 起草 20 条 pSEO 长尾页大纲（Week 1 批量上）

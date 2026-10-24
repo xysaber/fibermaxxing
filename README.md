@@ -28,4 +28,10 @@ Full product plan: [PRODUCT.md](./PRODUCT.md)
 npm run build
 ```
 
-Deploy `dist/` to Vercel / Cloudflare Pages, then bind a variant domain (`fibermaxxing.app`, etc.).
+Live: [https://www.getfibermaxxing.com](https://www.getfibermaxxing.com)
+
+```bash
+npm run build
+```
+
+Cloudflare Pages auto-deploys from `main` (`dist/` output).
