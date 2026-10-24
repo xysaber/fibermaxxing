@@ -1,2 +1,2 @@
-# Overwritten on build by scripts/prerender.mjs — unknown paths return 404.html
-/*    /404.html   404
+# No catch-all SPA rewrite. Published guides are static folders; 404.html handles unknowns.
+# (Cloudflare _redirects does not allow status 404 — use dist/404.html instead.)

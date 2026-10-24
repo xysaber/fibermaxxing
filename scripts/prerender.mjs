@@ -186,13 +186,12 @@ for (const page of pages) {
   console.log('prerender /404.html')
 }
 
-// Cloudflare Pages redirects: static published folders win; unknown → real 404
-const redirects = [
-  '# Published SEO pages are static folders; everything else returns 404 HTML.',
-  '/*    /404.html   404',
-  '',
-].join('\n')
-writeFileSync(join(dist, '_redirects'), redirects)
+// Cloudflare Workers/Pages _redirects only allow 200/301/302/303/307/308 — not 404.
+// Missing paths are handled by dist/404.html (platform default). Do not add SPA /* → index.
+writeFileSync(
+  join(dist, '_redirects'),
+  '# No catch-all SPA rewrite. Published guides are static folders; 404.html handles unknowns.\n',
+)
 
 const urls = [
   `  <url>\n    <loc>${siteUrl}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>`,
