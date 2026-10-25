@@ -195,13 +195,11 @@ for (const page of pages) {
   console.log('prerender /404.html')
 }
 
-// Cloudflare Pages _redirects: 200/301/302/303/307/308 only — not 404.
-// Missing paths must use dist/404.html (platform default). Never add /* → /index.html 200.
-// Apex → www: host rules help on Pages; also set a CF Redirect Rule (see deploy notes).
-const redirects = `# Fibermaxxing redirects — no SPA catch-all (unknowns → 404.html)
-https://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
-http://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
-http://www.getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
+// Workers static assets _redirects: relative URLs only (absolute hosts → API error 100324).
+// Never add /* → /index.html 200. Unknown paths use 404.html via wrangler not_found_handling.
+// Apex → www belongs in a Cloudflare Redirect Rule, not this file.
+const redirects = `# Workers _redirects — relative URLs only; no SPA catch-all.
+# Apex → www: Cloudflare Redirect Rule on the zone (absolute hosts invalid here).
 `
 writeFileSync(join(dist, '_redirects'), redirects)
 writeFileSync(join(root, 'public/_redirects'), redirects)

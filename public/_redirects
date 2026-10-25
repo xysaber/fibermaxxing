@@ -1,4 +1,3 @@
-# Fibermaxxing redirects — no SPA catch-all (unknowns → 404.html)
-https://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
-http://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
-http://www.getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
+# Workers static assets: only relative URLs allowed in _redirects.
+# Do not add SPA /* → /index.html 200 — unknown paths use 404.html via wrangler.toml.
+# Apex → www: configure a Cloudflare Redirect Rule on the zone (absolute hosts are invalid here).
