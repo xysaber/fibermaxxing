@@ -38,10 +38,19 @@ export function buildShareText(opts: {
 const REPORT_W = 540
 const REPORT_H = 960
 
+function nextFrame() {
+  return new Promise<void>((resolve) => {
+    requestAnimationFrame(() => resolve())
+  })
+}
+
 /**
- * Capture the hidden portrait card without flashing a clone on screen.
- * html-to-image applies `style` to its internal render clone only — the live
- * node can stay opacity:0. Avoid left:-9999px (often yields a blank PNG).
+ * Capture the hidden portrait card.
+ *
+ * The live node stays `opacity: 0` in CSS so it never flashes. Before capture we
+ * briefly force a real paint (opacity 1, still behind the page) — otherwise some
+ * browsers keep a stale compositor snapshot of the opacity:0 layer after portion
+ * edits, and the PNG lags behind the on-screen score card.
  */
 export async function downloadReportPng(node: HTMLElement, filename = 'fibermax-daily-report.png') {
   if (document.fonts?.ready) {
@@ -51,27 +60,45 @@ export async function downloadReportPng(node: HTMLElement, filename = 'fibermax-
   const portrait = node.querySelector('.report-card-portrait') as HTMLElement | null
   const target = portrait ?? node
 
-  const dataUrl = await toPng(target, {
-    cacheBust: true,
-    pixelRatio: 3,
-    backgroundColor: '#eef0f5',
-    width: REPORT_W,
-    height: REPORT_H,
-    style: {
-      opacity: '1',
-      visibility: 'visible',
-      transform: 'none',
-      position: 'relative',
-      left: '0',
-      top: '0',
-      margin: '0',
-      width: `${REPORT_W}px`,
-      height: `${REPORT_H}px`,
-    },
-  })
+  const prevOpacity = node.style.opacity
+  const prevVisibility = node.style.visibility
+  const prevZ = node.style.zIndex
 
-  const link = document.createElement('a')
-  link.download = filename
-  link.href = dataUrl
-  link.click()
+  node.style.opacity = '1'
+  node.style.visibility = 'visible'
+  node.style.zIndex = '-1'
+  // Force layout/paint with current DOM text (post portion edits).
+  void node.offsetHeight
+  await nextFrame()
+  await nextFrame()
+
+  try {
+    const dataUrl = await toPng(target, {
+      cacheBust: true,
+      pixelRatio: 3,
+      backgroundColor: '#f3f5f9',
+      width: REPORT_W,
+      height: REPORT_H,
+      style: {
+        opacity: '1',
+        visibility: 'visible',
+        transform: 'none',
+        position: 'relative',
+        left: '0',
+        top: '0',
+        margin: '0',
+        width: `${REPORT_W}px`,
+        height: `${REPORT_H}px`,
+      },
+    })
+
+    const link = document.createElement('a')
+    link.download = filename
+    link.href = dataUrl
+    link.click()
+  } finally {
+    node.style.opacity = prevOpacity
+    node.style.visibility = prevVisibility
+    node.style.zIndex = prevZ
+  }
 }

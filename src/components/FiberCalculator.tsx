@@ -493,68 +493,44 @@ export function FiberCalculator({
 
             <div className="report-card-capture" ref={reportCardRef} id="share-card" aria-hidden>
               <div className="report-card-portrait">
-                <header className="rcp-masthead">
-                  <div className="rcp-brand-lockup">
-                    <svg className="rcp-mark" viewBox="0 0 32 32" aria-hidden>
-                      <rect width="32" height="32" rx="8" fill="#1a2240" />
-                      <circle
-                        cx="16"
-                        cy="16"
-                        r="8.5"
-                        fill="none"
-                        stroke="#4a5570"
-                        strokeWidth="2.75"
-                      />
-                      <path
-                        d="M16 7.5a8.5 8.5 0 0 1 7.36 12.75"
-                        fill="none"
-                        stroke="#2f5bff"
-                        strokeWidth="2.75"
-                        strokeLinecap="round"
-                      />
-                      <circle cx="16" cy="7.5" r="2.4" fill="#5b8cff" />
-                    </svg>
-                    <div className="rcp-brand">
-                      Fiber<span>max</span>
-                    </div>
+                <div className="rcp-top">
+                  <div className="rcp-brand">
+                    Fiber<span>max</span>
                   </div>
                   <div className="rcp-date">{reportDate}</div>
-                </header>
-                <div className="rcp-body">
-                  <p className="rcp-kicker">Daily fiber report</p>
-                  <div className="rcp-hero">
-                    <div className="rcp-ring-wrap">
-                      <ProgressRing pct={pct} tone="light" />
-                    </div>
-                    <p className="rcp-total">
-                      {result.totalFiberG}
-                      <small>g</small>
-                      <span className="rcp-of">/ {target}g target</span>
-                    </p>
-                    <p className="rcp-status">
-                      {gap <= 0 ? 'Goal reached' : `${gap}g still to go`}
-                    </p>
+                </div>
+                <p className="rcp-kicker">Your fiber estimate</p>
+                <div className="rcp-ring-wrap">
+                  <ProgressRing pct={pct} tone="light" />
+                </div>
+                <p className="rcp-total">
+                  {result.totalFiberG}
+                  <small>g</small>
+                  <span className="rcp-of">/ {target}g target</span>
+                </p>
+                <p className="rcp-status">
+                  {gap <= 0 ? 'Goal reached' : `${gap}g still to go`}
+                </p>
+                {topFoods.length > 0 && (
+                  <div className="rcp-foods-block">
+                    <p className="rcp-foods-label">Top fiber sources</p>
+                    <ul className="rcp-foods">
+                      {topFoods.map((m) => (
+                        <li key={`rcp-${m.food.id}`}>
+                          <span>{m.food.name}</span>
+                          <span>{m.fiberG}g</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  {topFoods.length > 0 && (
-                    <div className="rcp-foods-block">
-                      <p className="rcp-foods-label">Top foods today</p>
-                      <ul className="rcp-foods">
-                        {topFoods.map((m) => (
-                          <li key={`rcp-${m.food.id}`}>
-                            <span>{m.food.name}</span>
-                            <span>{m.fiberG}g</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {result.estimatedCount > 0 && (
-                    <p className="rcp-est">Includes estimated foods</p>
-                  )}
-                  <div className="rcp-footer">
-                    <p className="rcp-url">getfibermaxxing.com</p>
-                    <p className="rcp-tag">Free fibermaxxing calculator</p>
-                  </div>
+                )}
+                <p className="rcp-est">Estimated values · Based on the foods entered</p>
+                {result.estimatedCount > 0 && (
+                  <p className="rcp-est rcp-est-extra">Includes rough category estimates</p>
+                )}
+                <div className="rcp-footer">
+                  <p className="rcp-url">getfibermaxxing.com</p>
+                  <p className="rcp-tag">Free fibermaxxing calculator</p>
                 </div>
               </div>
             </div>

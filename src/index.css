@@ -870,170 +870,140 @@ a {
 .report-card-portrait {
   width: 540px;
   height: 960px;
-  padding: 0;
+  padding: 44px 40px 36px;
   box-sizing: border-box;
-  background: #eef0f5;
-  color: var(--ink);
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(47, 91, 255, 0.08), transparent 55%),
+    linear-gradient(180deg, #f7f8fc 0%, #f3f5f9 48%, #eef1f6 100%);
+  color: #1a2238;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   font-family: var(--font-body);
-  overflow: hidden;
+  border: 1px solid rgba(26, 34, 56, 0.08);
 }
 
-.rcp-masthead {
+/* Export must show final ring state, not a mid-transition frame */
+.report-card-portrait .ring-wrap svg circle:last-of-type {
+  transition: none;
+}
+
+.rcp-top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 36px 40px 28px;
-  background: var(--panel);
-  color: #eef1f8;
-}
-
-.rcp-brand-lockup {
-  display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 12px;
-}
-
-.rcp-mark {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .rcp-brand {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   letter-spacing: -0.03em;
-  line-height: 1;
-  color: #fff;
+  color: #1a2238;
 }
 
 .rcp-brand span {
-  color: var(--accent-data);
-  font-weight: 800;
+  color: #2f5bff;
 }
 
 .rcp-date {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: rgba(238, 241, 248, 0.55);
-  letter-spacing: var(--tracking-mono);
+  font-size: 0.8rem;
+  color: #8b93a7;
+  letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
 }
 
-.rcp-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 36px 40px 32px;
-  min-height: 0;
-}
-
 .rcp-kicker {
-  margin: 0;
+  margin: 6px 0 0;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: var(--tracking-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-faint);
-  text-align: center;
-}
-
-.rcp-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 28px 0 8px;
+  color: #8b93a7;
 }
 
 .rcp-ring-wrap {
   display: flex;
   justify-content: center;
-  margin: 0 0 20px;
+  margin: 28px 0 22px;
 }
 
 .rcp-ring-wrap .ring-wrap {
-  width: 200px;
-  height: 200px;
+  width: 236px;
+  height: 236px;
 }
 
 .rcp-ring-wrap .ring-label .pct {
-  font-size: 2.1rem;
+  font-size: 2.35rem;
   font-weight: 600;
-  letter-spacing: var(--tracking-mono);
+  letter-spacing: -0.03em;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
 .rcp-ring-wrap .ring-label .sub {
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  margin-top: 0.4rem;
 }
 
 .ring-wrap-light .ring-label .pct {
-  color: var(--ink);
+  color: #1a2238;
 }
 
 .ring-wrap-light .ring-label .sub {
-  color: var(--ink-soft);
+  color: #5c6578;
 }
 
 .rcp-total {
   margin: 0;
+  text-align: center;
   font-family: var(--font-mono);
-  font-size: 3.4rem;
+  font-size: 2.85rem;
   font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  letter-spacing: -0.04em;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
-  color: var(--ink);
+  color: #1a2238;
 }
 
 .rcp-total small {
-  font-size: 0.38em;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: var(--ink-soft);
-  margin-left: 0.1em;
+  color: #5c6578;
+  margin-left: 2px;
 }
 
 .rcp-of {
   display: block;
-  margin-top: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+  margin-top: 8px;
+  font-size: 0.98rem;
   font-weight: 500;
-  letter-spacing: var(--tracking-mono);
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-soft);
+  letter-spacing: 0;
+  color: #5c6578;
 }
 
 .rcp-status {
-  margin: 14px 0 0;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: var(--tracking-tight);
-  color: var(--ink);
+  color: #2f5bff;
 }
 
 .rcp-foods-block {
-  margin-top: 36px;
+  margin-top: 28px;
 }
 
 .rcp-foods-label {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: var(--tracking-label);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: #8b93a7;
 }
 
 .rcp-foods {
@@ -1042,58 +1012,60 @@ a {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  border-top: 1px solid var(--line);
+  gap: 8px;
 }
 
 .rcp-foods li {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--ink);
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(26, 34, 56, 0.1);
+  font-size: 1rem;
+  color: #1a2238;
 }
 
 .rcp-foods li span:last-child {
   font-family: var(--font-mono);
-  font-size: var(--num-sm);
   font-weight: 600;
-  letter-spacing: var(--tracking-mono);
   font-variant-numeric: tabular-nums;
-  color: var(--accent);
+  color: #2f5bff;
   flex-shrink: 0;
 }
 
 .rcp-est {
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   text-align: center;
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: 0.78rem;
+  color: #8b93a7;
+}
+
+.rcp-est-extra {
+  margin-top: 4px;
 }
 
 .rcp-footer {
   margin-top: auto;
-  padding-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(26, 34, 56, 0.1);
   text-align: center;
 }
 
 .rcp-url {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
-  letter-spacing: var(--tracking-mono);
-  color: var(--ink);
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  color: #1a2238;
   text-transform: lowercase;
 }
 
 .rcp-tag {
   margin: 6px 0 0;
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: 0.78rem;
+  color: #8b93a7;
 }
 
 /* Score card glow: data accent only */
