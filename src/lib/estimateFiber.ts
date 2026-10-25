@@ -21,6 +21,7 @@ export type FiberCategory =
   | 'mixed_dish'
   | 'protein_zero'
   | 'dairy_zero'
+  | 'beverage_zero'
   | 'unknown_plant'
 
 export type FiberEstimate = {
@@ -54,6 +55,7 @@ export const CATEGORY_DEFAULTS: Record<
   mixed_dish: { fiberG: 5, calories: 450, glpScore: 4, serving: '~1 meal portion (est.)' },
   protein_zero: { fiberG: 0, calories: 180, glpScore: 1, serving: '~1 serving (est.)' },
   dairy_zero: { fiberG: 0, calories: 120, glpScore: 1, serving: '~1 cup (est.)' },
+  beverage_zero: { fiberG: 0, calories: 5, glpScore: 1, serving: '~1 cup (est.)' },
   unknown_plant: { fiberG: 2, calories: 60, glpScore: 3, serving: '~1 serving (est.)' },
 }
 
@@ -67,9 +69,12 @@ const CATEGORY_KEYWORDS: { category: FiberCategory; keywords: string[] }[] = [
     keywords: [
       'hotpot', 'hot pot', 'hot-pot', '火锅', 'steamboat',
       'stir fry', 'stir-fry', '炒菜', 'curry', '咖喱', 'soup', '汤',
-      'salad bowl', 'burrito', 'taco', 'pizza', '披萨', 'ramen', '拉面',
+      'salad bowl', 'salad', 'burrito', 'taco', 'pizza', '披萨', 'ramen', '拉面',
       'pho', 'dumpling', '饺子', '包子', 'bibimbap', 'poké', 'poke bowl',
       'bowl', '盖饭', '麻辣烫', '冒菜', '串串',
+      // Recipes — must beat dairy/tea single-token matches (e.g. milk tea ≠ dairy cup)
+      'milk tea', 'milktea', 'milk-tea', 'bubble tea', 'boba', 'smoothie', 'pudding',
+      'sandwich', 'burger', 'wrap', '汉堡', '沙拉', '三明治',
     ],
   },
   {
@@ -151,13 +156,22 @@ const CATEGORY_KEYWORDS: { category: FiberCategory; keywords: string[] }[] = [
   {
     category: 'protein_zero',
     keywords: [
-      'chicken', 'beef', 'pork', 'lamb', 'fish', 'salmon', 'shrimp', 'egg', 'eggs', 'bacon', 'steak',
+      'chicken', 'beef', 'pork', 'lamb', 'fish', 'salmon', 'shrimp', 'tuna', 'egg', 'eggs', 'bacon', 'steak',
       '鸡', '牛', '猪', '羊', '鱼', '虾', '蛋', '肉', '排骨', '五花肉', '牛肉', '猪肉', '鸡肉',
     ],
   },
   {
     category: 'dairy_zero',
     keywords: ['milk', 'yogurt', 'cheese', 'butter', 'cream', '奶', '牛奶', '酸奶', '奶酪', '芝士'],
+  },
+  {
+    category: 'beverage_zero',
+    keywords: [
+      'water', 'sparkling water', 'soda water', 'tea', 'green tea', 'black tea', 'herbal tea',
+      'coffee', 'espresso', 'americano', 'black coffee', 'latte', 'cappuccino', 'soda', 'cola', 'diet coke', 'coke',
+      'broth', 'bone broth', 'stock', 'vinegar', 'soy sauce',
+      '水', '茶', '绿茶', '红茶', '咖啡', '美式', '拿铁', '气泡水', '苏打水',
+    ],
   },
 ]
 

@@ -1,13 +1,12 @@
 /**
- * Lightweight parser regression (run: node --experimental-strip-types
- * is unavailable for path aliases; use npx tsx scripts/parser-regression.mjs
- * after converting — this file imports via dynamic tsx register).
+ * Parser regression — totals + semantic identity (PRD §7).
  *
  * Usage: npx tsx scripts/parser-regression.mjs
  */
 import { parseMeal } from '../src/lib/parseMeal.ts'
 
 const cases = [
+  // --- existing fiber totals ---
   { input: '1 medium orange', expectTotal: 3.1, nameIncludes: /^Oranges, raw, all/, forbidNames: /flour|sherbet/i, count: 1 },
   { input: '2 medium oranges', expectTotal: 6.3, count: 1 },
   { input: '130g orange', expectTotal: 3.1, count: 1 },
@@ -32,16 +31,179 @@ const cases = [
   { input: '2 tbsp chia seeds', minTotal: 6, maxTotal: 8 },
   { input: '1 cup cooked lentils', expectTotal: 15.6, forbidNames: /artichoke/i },
   { input: '2 cups cooked lentils', expectTotal: 31.3, forbidNames: /artichoke/i },
-  { input: 'salad without avocado', expectTotal: 0, forbidNames: /avocado/i },
+  { input: 'salad without avocado', minTotal: 4, maxTotal: 6, minCount: 1, forbidNames: /avocado/i, source: 'estimate' },
   { input: 'blueberries', nameIncludes: /Blueberries, raw/i },
+
+  // --- PRD §7 semantic ---
+  {
+    name: 'chicken ≠ meatless/fried',
+    input: 'chicken',
+    count: 1,
+    foodId: '172395',
+    forbidNames: /meatless|fried|breaded/i,
+    forbidIds: ['169886', '167719', '171053'],
+    tag: 'assumed',
+    assumed: true,
+  },
+  {
+    name: 'grilled chicken ≠ meatless/fried',
+    input: 'grilled chicken',
+    count: 1,
+    foodId: '172395',
+    forbidNames: /meatless|fried|breaded/i,
+    forbidIds: ['169886', '167719', '171053'],
+  },
+  {
+    name: 'chicken grilled word order',
+    input: 'chicken grilled',
+    count: 1,
+    foodId: '172395',
+    forbidNames: /meatless|fried/i,
+  },
+  {
+    name: '2 cups cooked lentils identity',
+    input: '2 cups cooked lentils',
+    count: 1,
+    foodId: '172421',
+    forbidNames: /artichoke/i,
+    tag: 'database',
+    assumed: false,
+  },
+  {
+    name: 'tomatos spelling → tomato',
+    input: 'tomatos',
+    count: 1,
+    foodId: '170457',
+  },
+  {
+    name: 'tomato singular',
+    input: 'tomato',
+    count: 1,
+    foodId: '170457',
+  },
+  {
+    name: '2 tomatoes count binding',
+    input: '2 tomatoes',
+    count: 1,
+    foodId: '170457',
+    grams: 246,
+    assumed: false,
+  },
+  {
+    name: 'milk tea recipe needs confirm',
+    input: 'milk tea',
+    count: 1,
+    tag: 'needs_confirm',
+    needsConfirm: true,
+    source: 'estimate',
+    forbidNames: /Yogurt|Milk,|Cheese/i,
+  },
+  {
+    name: 'milktea sticky spelling',
+    input: 'milktea',
+    count: 1,
+    tag: 'needs_confirm',
+    needsConfirm: true,
+    source: 'estimate',
+  },
+  {
+    name: 'portion binds per mention',
+    input: '1 apple, 2 tomatoes',
+    count: 2,
+    foodIds: ['curated:apple', '170457'],
+  },
+  {
+    name: 'ambiguous unknown → no fake precise db',
+    input: 'qwertyzz',
+    count: 0,
+    unmatchedMin: 1,
+  },
+  {
+    name: 'plain milk → whole fluid milk',
+    input: 'milk',
+    count: 1,
+    foodId: '171265',
+    forbidNames: /buttermilk|chocolate|dried/i,
+    tag: 'assumed',
+  },
+  {
+    name: '1 cup milk portion',
+    input: '1 cup milk',
+    count: 1,
+    foodId: '171265',
+    grams: 244,
+    assumed: false,
+  },
+  // Multi-hit must not discard — pick everyday default, never empty
+  {
+    name: 'rice multi-hit keeps a row',
+    input: 'rice',
+    minCount: 1,
+    forbidNames: /flour|bran|pudding|cracker|glutinous|wild/i,
+    nameIncludes: /Rice, white/i,
+  },
+  {
+    name: 'bread multi-hit keeps a row',
+    input: 'bread',
+    minCount: 1,
+    forbidNames: /pudding|crumb|stuffing|sticks/i,
+  },
+  {
+    name: 'potato multi-hit keeps a row',
+    input: 'potato',
+    minCount: 1,
+    forbidNames: /flour|chips|snack|hash brown/i,
+    nameIncludes: /flesh and skin|boiled|baked/i,
+  },
+  {
+    name: 'tofu multi-hit keeps a row',
+    input: 'tofu',
+    minCount: 1,
+  },
+  {
+    name: 'beef multi-hit prefers ground not pastrami',
+    input: 'beef',
+    minCount: 1,
+    nameIncludes: /ground/i,
+    forbidNames: /pastrami|cured|bologna/i,
+  },
+  {
+    name: 'tea is consumable zero-fiber estimate',
+    input: 'tea',
+    minCount: 1,
+    source: 'estimate',
+    expectTotal: 0,
+  },
+  {
+    name: 'coffee is consumable zero-fiber estimate',
+    input: 'coffee',
+    minCount: 1,
+    source: 'estimate',
+    expectTotal: 0,
+  },
+  {
+    name: 'water is consumable zero-fiber estimate',
+    input: 'water',
+    minCount: 1,
+    source: 'estimate',
+    expectTotal: 0,
+  },
+  {
+    name: 'gibberish emptyKind not_food',
+    input: 'qwertyzz',
+    count: 0,
+    emptyKind: 'not_food',
+  },
 ]
 
 let failed = 0
 for (const c of cases) {
   const r = parseMeal(c.input)
   const names = r.matches.map((m) => m.food.name).join(' | ')
+  const ids = r.matches.map((m) => m.food.id)
   const problems = []
   if (c.count != null && r.matches.length !== c.count) problems.push(`count ${r.matches.length} != ${c.count}`)
+  if (c.minCount != null && r.matches.length < c.minCount) problems.push(`count ${r.matches.length} < ${c.minCount}`)
   if (c.grams != null && r.matches[0]?.grams !== c.grams) problems.push(`grams ${r.matches[0]?.grams} != ${c.grams}`)
   if (c.expectTotal != null && Math.abs(r.totalFiberG - c.expectTotal) > 0.15) {
     problems.push(`total ${r.totalFiberG} != ${c.expectTotal}`)
@@ -54,11 +216,41 @@ for (const c of cases) {
   if (c.nameIncludes && !r.matches.some((m) => c.nameIncludes.test(m.food.name))) {
     problems.push(`expected name ${c.nameIncludes} in ${names}`)
   }
+  if (c.foodId && r.matches[0]?.food.id !== c.foodId) {
+    problems.push(`foodId ${r.matches[0]?.food.id} != ${c.foodId}`)
+  }
+  if (c.foodIds) {
+    const got = new Set(ids)
+    for (const id of c.foodIds) {
+      if (!got.has(id)) problems.push(`missing foodId ${id} in [${ids.join(',')}]`)
+    }
+  }
+  if (c.forbidIds && r.matches.some((m) => c.forbidIds.includes(m.food.id))) {
+    problems.push(`forbidden id in ${ids.join(',')}`)
+  }
+  if (c.tag != null && r.matches[0]?.tag !== c.tag) {
+    problems.push(`tag ${r.matches[0]?.tag} != ${c.tag}`)
+  }
+  if (c.assumed != null && r.matches[0]?.assumed !== c.assumed) {
+    problems.push(`assumed ${r.matches[0]?.assumed} != ${c.assumed}`)
+  }
+  if (c.needsConfirm != null && r.matches[0]?.needsConfirm !== c.needsConfirm) {
+    problems.push(`needsConfirm ${r.matches[0]?.needsConfirm} != ${c.needsConfirm}`)
+  }
+  if (c.source != null && r.matches[0]?.source !== c.source) {
+    problems.push(`source ${r.matches[0]?.source} != ${c.source}`)
+  }
+  if (c.unmatchedMin != null && r.unmatchedHints.length < c.unmatchedMin) {
+    problems.push(`unmatchedHints ${r.unmatchedHints.length} < ${c.unmatchedMin}`)
+  }
+  if (c.emptyKind != null && r.emptyKind !== c.emptyKind) {
+    problems.push(`emptyKind ${r.emptyKind} != ${c.emptyKind}`)
+  }
   if (problems.length) {
     failed++
-    console.error('FAIL', c.input, problems.join('; '), 'got', r.totalFiberG, names)
+    console.error('FAIL', c.name || c.input, problems.join('; '), 'got', r.totalFiberG, names, ids.join(','))
   } else {
-    console.log('ok', c.input, '=>', r.totalFiberG + 'g')
+    console.log('ok', c.name || c.input, '=>', r.totalFiberG + 'g', r.matches[0]?.tag ?? '')
   }
 }
 

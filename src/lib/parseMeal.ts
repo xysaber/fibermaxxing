@@ -1,5 +1,35 @@
-import { FOODS, type FoodItem } from '../data/foods'
-import { estimateFiber, extractUnmatchedPhrases } from './estimateFiber'
+import type { FoodItem } from '../data/foods'
+import { isRecognizedConsumable, recognizeConsumable } from './consumableLexicon'
+import { CATEGORY_DEFAULTS, estimateFiber, type FiberCategory, type FiberEstimate } from './estimateFiber'
+import { pickNutrientCandidate, resolveMeal, type MatchDisplayTag } from './resolveMeal'
+
+function estimateFromCategory(phrase: string, category: FiberCategory): FiberEstimate {
+  const defaults = CATEGORY_DEFAULTS[category]
+  return {
+    label: phrase.trim() || category,
+    category,
+    fiberG: defaults.fiberG,
+    calories: defaults.calories,
+    glpScore: defaults.glpScore,
+    serving: defaults.serving,
+    confidence: 'low',
+  }
+}
+
+/**
+ * Estimate path: keyword classifier → consumable lexicon → recipe mixed-dish fallback.
+ * Never treat a known consumable like gibberish.
+ */
+function estimateForMention(phrase: string, kind: string | undefined): FiberEstimate | null {
+  const est = estimateFiber(phrase)
+  if (est) return est
+  const recognized = recognizeConsumable(phrase)
+  if (recognized?.status === 'estimable') return estimateFromCategory(phrase, recognized.category)
+  if (kind === 'recipe') return estimateFromCategory(phrase.trim() || 'recipe', 'mixed_dish')
+  return null
+}
+
+export type { MatchDisplayTag }
 
 export type MatchedFood = {
   food: FoodItem
@@ -14,7 +44,15 @@ export type MatchedFood = {
   /** Curated DB hit vs category-based estimate for unknown foods */
   source: 'database' | 'estimate'
   confidence: 'high' | 'medium' | 'low'
+  /** Product display tag (PRD §5). UI may still map to Database/Estimated until badges ship. */
+  tag: MatchDisplayTag
+  assumed: boolean
+  needsConfirm: boolean
+  notes: string[]
 }
+
+/** Why calculate returned no match lines (for empty-state copy). */
+export type EmptyMealKind = 'not_food' | 'consumable_untracked'
 
 export type ParseResult = {
   matches: MatchedFood[]
@@ -23,7 +61,16 @@ export type ParseResult = {
   avgGlpScore: number
   /** Phrases we saw but could not estimate */
   unmatchedHints: string[]
+  /**
+   * Consumable phrases recognized but still not turned into a nutrient line
+   * (e.g. obscure drink). Distinct from gibberish “not food”.
+   */
+  recognizedUntracked: string[]
+  /** Set when matches is empty — drives empty-state messaging. */
+  emptyKind: EmptyMealKind | null
   estimatedCount: number
+  assumedCount: number
+  needsConfirmCount: number
   warnings: string[]
 }
 
@@ -46,17 +93,6 @@ const QTY_WORDS: Record<string, number> = {
 }
 
 const CJK_RE = /[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff]/
-const WORD_CHAR_RE = /\p{L}|\p{N}/u
-
-/** Sort aliases longest-first so "chia seeds" / "奇亚籽" beat shorter stems. */
-const ALIAS_INDEX = FOODS.flatMap((food) =>
-  food.aliases.map((alias) => ({
-    alias: alias.toLowerCase(),
-    food,
-    isCjk: CJK_RE.test(alias),
-  })),
-).sort((a, b) => b.alias.length - a.alias.length)
-
 /** Keep letters in any language (Latin, CJK, etc.), digits, and light separators. */
 export function normalizeMealText(input: string): string {
   return input
@@ -70,10 +106,6 @@ export function normalizeMealText(input: string): string {
     .replace(/[^\p{L}\p{N}\s./-]/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim()
-}
-
-function isWordChar(ch: string | undefined): boolean {
-  return !!ch && WORD_CHAR_RE.test(ch)
 }
 
 function parseNumberToken(raw: string): number | null {
@@ -201,11 +233,14 @@ export function lineFromFood(
   matchedAlias: string,
   source: MatchedFood['source'],
   confidence: MatchedFood['confidence'],
+  meta: Partial<Pick<MatchedFood, 'tag' | 'assumed' | 'needsConfirm' | 'notes'>> = {},
 ): MatchedFood {
   const { grams, label } = unitToGrams(qtyHit.unit, qtyHit.amount, food)
   const fiberG = Math.round(((food.fiber100g * grams) / 100) * 10) / 10
   const calories = Math.round((food.calories100g * grams) / 100)
   const qty = food.servingG > 0 ? Math.round((grams / food.servingG) * 100) / 100 : qtyHit.amount
+  const tag: MatchDisplayTag =
+    meta.tag ?? (source === 'estimate' ? 'estimated' : 'database')
   return {
     food,
     qty,
@@ -216,6 +251,28 @@ export function lineFromFood(
     unitLabel: label,
     source,
     confidence,
+    tag,
+    assumed: meta.assumed ?? false,
+    needsConfirm: meta.needsConfirm ?? false,
+    notes: meta.notes ?? [],
+  }
+}
+
+function foodFromEstimate(phrase: string, est: NonNullable<ReturnType<typeof estimateFiber>>): FoodItem {
+  const servingG = 100
+  const fiber100g = est.fiberG
+  const calories100g = est.calories
+  return {
+    id: `estimate:${est.category}:${phrase.toLowerCase().replace(/\s+/g, '_')}`,
+    name: `${est.label} (estimated)`,
+    aliases: [phrase],
+    fiberG: est.fiberG,
+    serving: est.serving,
+    servingG,
+    fiber100g,
+    calories: est.calories,
+    calories100g,
+    glpScore: est.glpScore,
   }
 }
 
@@ -242,12 +299,18 @@ export function updateMatchServings(match: MatchedFood, servings: number): Match
     match.matchedAlias,
     match.source,
     match.confidence,
+    {
+      tag: match.tag,
+      assumed: match.assumed,
+      needsConfirm: match.needsConfirm,
+      notes: match.notes,
+    },
   )
 }
 
 export function summarizeMatches(matches: MatchedFood[]): Pick<
   ParseResult,
-  'totalFiberG' | 'totalCalories' | 'avgGlpScore' | 'estimatedCount'
+  'totalFiberG' | 'totalCalories' | 'avgGlpScore' | 'estimatedCount' | 'assumedCount' | 'needsConfirmCount'
 > {
   const totalFiberG = Math.round(matches.reduce((s, m) => s + m.fiberG, 0) * 10) / 10
   const totalCalories = Math.round(matches.reduce((s, m) => s + m.calories, 0))
@@ -259,133 +322,130 @@ export function summarizeMatches(matches: MatchedFood[]): Pick<
     totalFiberG,
     totalCalories,
     avgGlpScore: Math.round(weightedGlp * 10) / 10,
-    estimatedCount: matches.filter((m) => m.source === 'estimate').length,
+    estimatedCount: matches.filter((m) => m.source === 'estimate' || m.tag === 'estimated').length,
+    assumedCount: matches.filter((m) => m.assumed || m.tag === 'assumed').length,
+    needsConfirmCount: matches.filter((m) => m.needsConfirm || m.tag === 'needs_confirm').length,
   }
 }
 
-function syntheticFood(est: NonNullable<ReturnType<typeof estimateFiber>>): FoodItem {
-  const servingG = 100
-  return {
-    id: `est:${est.category}:${est.label.toLowerCase()}`,
-    name: est.label,
-    aliases: [est.label],
-    fiberG: est.fiberG,
-    serving: est.serving,
-    servingG,
-    fiber100g: est.fiberG,
-    calories: est.calories,
-    calories100g: est.calories,
-    glpScore: est.glpScore,
-  }
-}
-
-function hasNegationBefore(text: string, idx: number): boolean {
-  const window = text.slice(Math.max(0, idx - 24), idx)
-  return /\b(without|no|hold the|hold|minus|w\/o)\s+$/i.test(window) || /不含|不要|别放\s*$/.test(window)
-}
-
-/**
- * 1) Match curated DB (high confidence)
- * 2) For leftover phrases → category estimate (medium/low confidence)
- */
+/** Resolve local food mentions; preserve the existing public result contract. */
 export function parseMeal(input: string): ParseResult {
-  const text = normalizeMealText(input)
-  const warnings: string[] = []
-  if (!text) {
-    return {
-      matches: [],
-      totalFiberG: 0,
-      totalCalories: 0,
-      avgGlpScore: 0,
-      unmatchedHints: [],
-      estimatedCount: 0,
-      warnings,
-    }
-  }
-
-  if (/\bwithout\b|\bw\/o\b|不含|不要|别放/.test(text)) {
-    warnings.push('Negation words (e.g. “without avocado”) are only partially supported — check matched foods.')
-  }
-
-  const used = new Array(text.length).fill(false)
-  const matches: MatchedFood[] = []
-
-  for (const { alias, food, isCjk } of ALIAS_INDEX) {
-    let from = 0
-    while (from < text.length) {
-      const idx = text.indexOf(alias, from)
-      if (idx === -1) break
-      const end = idx + alias.length
-      const overlap = used.slice(idx, end).some(Boolean)
-
-      const boundaryOk = isCjk
-        ? true
-        : (idx === 0 || !isWordChar(text[idx - 1])) &&
-          (end >= text.length || !isWordChar(text[end]))
-
-      if (!overlap && boundaryOk) {
-        if (hasNegationBefore(text, idx)) {
-          // Skip negated mentions; still mark span used so estimates don't revive them
-          for (let i = idx; i < end; i++) used[i] = true
-        } else {
-          for (let i = idx; i < end; i++) used[i] = true
-          // Also consume unit/qty tokens just before so leftover phrases stay clean
-          const before = text.slice(0, idx)
-          let qtyHit = extractQty(before)
-          if (qtyHit.raw && used.slice(idx - qtyHit.raw.length, idx).some(Boolean)) {
-            qtyHit = { amount: 1, unit: 'serving', raw: '' }
-          }
-          if (qtyHit.raw) {
-            const rawIdx = before.toLowerCase().lastIndexOf(qtyHit.raw.toLowerCase().trim())
-            if (rawIdx >= 0) {
-              for (let i = rawIdx; i < idx; i++) {
-                if (text[i] && text[i] !== ' ') used[i] = true
-              }
-            }
-          }
-          matches.push(lineFromFood(food, qtyHit, alias, 'database', 'high'))
-        }
-      }
-      from = end
-    }
+  const { resolved, issues } = resolveMeal(input)
+  const byId = new Map<string, MatchedFood>()
+  for (const item of resolved) {
+    const match = lineFromFood(
+      item.food,
+      { amount: item.amount, unit: item.unit, raw: '' },
+      item.original,
+      'database',
+      item.assumed ? 'medium' : 'high',
+      {
+        tag: item.tag,
+        assumed: item.assumed,
+        needsConfirm: item.needsConfirm,
+        notes: item.notes,
+      },
+    )
+    const previous = byId.get(match.food.id)
+    if (previous) {
+      const combined = updateMatchGrams(previous, previous.grams + match.grams)
+      combined.confidence = previous.confidence === 'high' && match.confidence === 'high' ? 'high' : 'medium'
+      combined.assumed = previous.assumed || match.assumed
+      combined.needsConfirm = previous.needsConfirm || match.needsConfirm
+      combined.tag =
+        previous.tag === 'needs_confirm' || match.tag === 'needs_confirm'
+          ? 'needs_confirm'
+          : previous.assumed || match.assumed
+            ? 'assumed'
+            : previous.tag
+      combined.notes = [...previous.notes, ...match.notes]
+      combined.unitLabel = `${trimNum(combined.grams)}g combined`
+      byId.set(match.food.id, combined)
+    } else byId.set(match.food.id, match)
   }
 
   const unmatchedHints: string[] = []
-  const phrases = extractUnmatchedPhrases(text, used)
-  for (const phrase of phrases) {
-    // Skip pure unit/qty leftovers
-    if (/^(\d+\s*\/\s*\d+|\d+(?:\.\d+)?)(\s*(g|oz|cup|tbsp|tsp)s?)?$/i.test(phrase.trim())) continue
-    if (/^(cooked|raw|boiled|dried|frozen|canned)$/i.test(phrase.trim())) continue
-
-    const est = estimateFiber(phrase)
-    if (!est) {
-      unmatchedHints.push(phrase)
+  for (const issue of issues) {
+    // Safety net: never discard a mention that still has nutrient-row candidates
+    // or a category estimate (PRD — prefer confirm over empty results).
+    if (issue.kind === 'negation' || issue.kind === 'portion') {
+      unmatchedHints.push(issue.text)
       continue
     }
-    const food = syntheticFood(est)
-    matches.push(lineFromFood(food, { amount: 1, unit: 'serving', raw: '' }, phrase, 'estimate', est.confidence))
+    const phrase = issue.text
+    const normalized = phrase.toLowerCase().replace(/milktea|milk-tea/g, 'milk tea')
+
+    if (issue.candidates.length > 0) {
+      const picked = pickNutrientCandidate(normalized, issue.candidates)
+      if (picked) {
+        const match = lineFromFood(
+          picked.food,
+          { amount: 1, unit: 'serving', raw: '' },
+          phrase,
+          'database',
+          'medium',
+          {
+            tag: 'needs_confirm',
+            assumed: true,
+            needsConfirm: true,
+            notes: [issue.reason],
+          },
+        )
+        if (!byId.has(match.food.id)) byId.set(match.food.id, match)
+        continue
+      }
+    }
+
+    const est =
+      issue.kind === 'recipe' || issue.kind === 'ambiguous' || issue.kind === 'spelling'
+        ? estimateForMention(normalized, issue.kind)
+        : null
+    if (est) {
+      const food = foodFromEstimate(phrase, est)
+      const match = lineFromFood(
+        food,
+        { amount: 1, unit: 'serving', raw: '' },
+        phrase,
+        'estimate',
+        'low',
+        {
+          tag: issue.kind === 'recipe' ? 'needs_confirm' : 'estimated',
+          assumed: true,
+          needsConfirm: true,
+          notes: [issue.reason],
+        },
+      )
+      if (!byId.has(match.food.id)) byId.set(match.food.id, match)
+      continue
+    }
+    unmatchedHints.push(issue.text)
   }
 
-  const byId = new Map<string, MatchedFood>()
-  for (const m of matches) {
-    const prev = byId.get(m.food.id)
-    if (prev) {
-      const grams = prev.grams + m.grams
-      const merged = updateMatchGrams(prev, grams)
-      merged.matchedAlias = prev.matchedAlias
-      merged.unitLabel = `${trimNum(grams)}g combined`
-      byId.set(m.food.id, merged)
-    } else {
-      byId.set(m.food.id, { ...m })
-    }
+  const matches = [...byId.values()].sort((a, b) => b.fiberG - a.fiberG)
+  const warnings: string[] = []
+  if (/\bwithout\b|\bw\/o\b|不含|不要|别放/.test(normalizeMealText(input))) {
+    warnings.push('Negation words (e.g. “without avocado”) are only partially supported — check matched foods.')
   }
-  const merged = [...byId.values()].sort((a, b) => b.fiberG - a.fiberG)
-  const summary = summarizeMatches(merged)
+
+  // Leftover hints that are still edible/drinkable (lexicon), not gibberish.
+  const recognizedUntracked = unmatchedHints.filter((hint) => {
+    const normalized = hint.toLowerCase().replace(/milktea|milk-tea/g, 'milk tea').trim()
+    return isRecognizedConsumable(normalized) || Boolean(estimateFiber(normalized))
+  })
+  const emptyKind: EmptyMealKind | null =
+    matches.length > 0
+      ? null
+      : recognizedUntracked.length > 0 ||
+          unmatchedHints.some((h) => isRecognizedConsumable(h) || Boolean(estimateFiber(h)))
+        ? 'consumable_untracked'
+        : 'not_food'
 
   return {
-    matches: merged,
-    ...summary,
+    matches,
+    ...summarizeMatches(matches),
     unmatchedHints,
+    recognizedUntracked,
+    emptyKind,
     warnings,
   }
 }

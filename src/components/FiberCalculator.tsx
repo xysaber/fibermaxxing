@@ -76,7 +76,7 @@ export function FiberCalculator({
   const [mode, setMode] = useState<GoalMode>(initialMode)
   const [meal, setMeal] = useState(initialMeal)
   const [result, setResult] = useState<ParseResult | null>(null)
-  const [noFoodsError, setNoFoodsError] = useState(false)
+  const [mealError, setMealError] = useState<'not_food' | 'consumable_untracked' | null>(null)
   const [copied, setCopied] = useState(false)
   const [downloading, setDownloading] = useState(false)
   const [activeExample, setActiveExample] = useState<string | null>(null)
@@ -120,7 +120,7 @@ export function FiberCalculator({
     if (!text) {
       track('calculate_result', { ...eventParams, status: 'empty' })
       setResult(null)
-      setNoFoodsError(false)
+      setMealError(null)
       return
     }
     let parsed: ParseResult
@@ -129,7 +129,7 @@ export function FiberCalculator({
     } catch {
       track('calculate_result', { ...eventParams, status: 'error' })
       setResult(null)
-      setNoFoodsError(true)
+      setMealError('not_food')
       return
     }
     track('calculate_result', {
@@ -143,11 +143,11 @@ export function FiberCalculator({
     setCopied(false)
 
     if (parsed.matches.length === 0) {
-      setNoFoodsError(true)
+      setMealError(parsed.emptyKind ?? 'not_food')
       return
     }
 
-    setNoFoodsError(false)
+    setMealError(null)
     track(isExample ? 'run_example' : 'calculate_own', {
       foods: parsed.matches.length,
       fiber: parsed.totalFiberG,
@@ -260,23 +260,29 @@ export function FiberCalculator({
           <label htmlFor="meal">What did you eat today?</label>
           <textarea
             id="meal"
-            className={`meal-box${noFoodsError ? ' meal-box-error' : ''}`}
+            className={`meal-box${mealError ? ' meal-box-error' : ''}`}
             value={meal}
             onChange={(e) => {
               setMeal(e.target.value)
               setActiveExample(null)
-              if (noFoodsError) setNoFoodsError(false)
+              if (mealError) setMealError(null)
             }}
             placeholder="e.g. I ate oatmeal, an apple, and chia seeds"
             rows={3}
             enterKeyHint="done"
-            aria-invalid={noFoodsError}
-            aria-describedby={noFoodsError ? 'meal-error' : undefined}
+            aria-invalid={Boolean(mealError)}
+            aria-describedby={mealError ? 'meal-error' : undefined}
           />
-          {noFoodsError && (
+          {mealError === 'not_food' && (
             <p id="meal-error" className="field-error" role="alert">
               No foods detected. Try naming specific foods (e.g. oatmeal, apple, chia seeds) and
               calculate again.
+            </p>
+          )}
+          {mealError === 'consumable_untracked' && (
+            <p id="meal-error" className="field-error" role="alert">
+              We recognized something you can drink or eat, but can’t estimate fiber for it yet. Try
+              adding fiber-containing foods (e.g. oatmeal, beans, fruit).
             </p>
           )}
         </div>
