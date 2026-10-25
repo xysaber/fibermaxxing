@@ -1638,12 +1638,62 @@ a {
   margin-bottom: var(--space-4);
 }
 
+/* SEO direct answer (P0) — first-viewport climax under H1 */
+.seo-answer {
+  margin: 0 0 var(--space-4);
+  max-width: 22rem;
+}
+
+.seo-answer-value {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(2.75rem, 7vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.seo-answer-value small {
+  font-size: 0.42em;
+  font-weight: 500;
+  margin-left: 0.08em;
+  color: var(--ink-soft);
+}
+
+.seo-answer-detail {
+  margin: 0.55rem 0 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: var(--leading-snug);
+  color: var(--ink);
+}
+
+.seo-answer-note {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mono);
+  color: var(--ink-faint);
+}
+
+.hero.seo-split .seo-answer + .lede {
+  margin-top: 0;
+}
+
 @media (max-width: 860px) {
   .hero.seo-split {
     grid-template-columns: 1fr;
   }
 
   .hero.seo-split .lede {
+    max-width: none;
+  }
+
+  .seo-answer {
     max-width: none;
   }
 }
@@ -1849,6 +1899,66 @@ a {
 
 .suggestions-in-score .suggestions-copy span {
   color: rgba(244, 246, 251, 0.72);
+}
+
+/* Long-form SEO guide body (under facts band) */
+.seo-article {
+  margin: 0 0 var(--space-section);
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.seo-article-inner {
+  max-width: 42rem; /* ~67ch readable measure */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+}
+
+.seo-article-unit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.seo-article-block {
+  margin: 0;
+}
+
+.seo-article-block h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-3);
+  color: var(--ink);
+  scroll-margin-top: 1.25rem;
+}
+
+.seo-article-block p {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink-soft);
+  letter-spacing: -0.01em;
+  max-width: 68ch;
+}
+
+.seo-article-block p:last-child {
+  margin-bottom: 0;
+}
+
+.seo-article-cta {
+  margin: 0;
+}
+
+/* Desktop bands: calculator already beside copy — hide redundant jump */
+@media (min-width: 861px) {
+  .hero.seo-split .hero-calc-link {
+    display: none;
+  }
 }
 
 /* Shared guide cards (homepage guides + SEO related) */
@@ -2304,4 +2414,85 @@ a {
   .aff-item:hover {
     transform: none;
   }
+}
+
+/* Pilot: a quiet reading companion for the daily fiber guide. */
+.seo-article-with-contents {
+  display: grid;
+  grid-template-columns: minmax(0, 42rem) minmax(0, 1fr);
+  column-gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.seo-article-sidebar {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 2rem;
+}
+
+.seo-article-with-contents .seo-article-inner {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.seo-contents-label {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.seo-contents ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid var(--line, rgba(26, 34, 56, 0.14));
+}
+
+.seo-contents li a {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0 0.75rem 1rem;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  transition: color 160ms, border-color 160ms;
+}
+
+.seo-contents li a:hover,
+.seo-contents li a[aria-current='location'] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.seo-contents-number {
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  padding-top: 0.2em;
+}
+
+.seo-contents-action {
+  margin-top: var(--space-5);
+  padding-left: 1rem;
+}
+
+.seo-contents-action p {
+  margin: 0 0 var(--space-2);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.seo-article-with-contents h2 { scroll-margin-top: 2rem; }
+
+@media (max-width: 1000px) {
+  .seo-article-with-contents { display: flex; flex-direction: column; gap: var(--space-5); }
+  .seo-article-sidebar { position: static; width: 100%; }
+  .seo-contents-action { display: none; }
 }

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, type MouseEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { DocumentMeta } from '../components/DocumentMeta'
 import { FaqBlock } from '../components/FaqBlock'
@@ -6,6 +6,8 @@ import { FiberCalculator } from '../components/FiberCalculator'
 import { GuideCards } from '../components/GuideCards'
 import { InfoBand } from '../components/InfoBand'
 import { MethodStrip } from '../components/MethodStrip'
+import { SeoAnswer } from '../components/SeoAnswer'
+import { SeoArticle } from '../components/SeoArticle'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 import { getSeoPage, SEO_PAGE_MAP } from '../content/seoPages'
@@ -16,6 +18,14 @@ function shortBlurb(text: string, max = 96) {
   const t = text.trim()
   if (t.length <= max) return t
   return `${t.slice(0, max - 1).trimEnd()}…`
+}
+
+function focusCalculator(e: MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault()
+  const panel = document.getElementById('calculator')
+  const meal = document.getElementById('meal') as HTMLTextAreaElement | null
+  panel?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  window.setTimeout(() => meal?.focus({ preventScroll: true }), 280)
 }
 
 export function SeoLandingPage() {
@@ -73,13 +83,19 @@ export function SeoLandingPage() {
 
           {useBands ? (
             <>
+              {page.answer ? <SeoAnswer answer={page.answer} /> : null}
               {heroIntro ? <p className="lede">{heroIntro}</p> : null}
-              <a className="hero-method-link" href="#calculator">
-                Jump to calculator
+              <a
+                className="hero-method-link hero-calc-link"
+                href="#calculator"
+                onClick={focusCalculator}
+              >
+                {page.calculatorCta ?? 'Calculate this bowl'}
               </a>
             </>
           ) : (
             <>
+              {page.answer ? <SeoAnswer answer={page.answer} /> : null}
               {page.intro.map((para) => (
                 <p key={para.slice(0, 48)} className="lede">
                   {para}
@@ -88,8 +104,12 @@ export function SeoLandingPage() {
               {facts.length > 0 ? (
                 <InfoBand tiles={facts} ariaLabel="Key figures" />
               ) : null}
-              <a className="hero-method-link" href="#calculator">
-                Jump to calculator
+              <a
+                className="hero-method-link"
+                href="#calculator"
+                onClick={focusCalculator}
+              >
+                {page.calculatorCta ?? 'Calculate this bowl'}
               </a>
             </>
           )}
@@ -111,6 +131,17 @@ export function SeoLandingPage() {
           ariaLabel="Key figures"
           notes={moreIntros}
           tiles={facts}
+        />
+      ) : null}
+
+      {page.sections && page.sections.length > 0 ? (
+        <SeoArticle
+          sections={page.sections}
+          showContents
+          ctaAfter={2}
+          ctaHref="#calculator"
+          ctaLabel={page.articleCta ?? 'Estimate your bowl in the calculator'}
+          onCtaClick={focusCalculator}
         />
       ) : null}
 

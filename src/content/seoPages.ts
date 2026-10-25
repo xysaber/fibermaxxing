@@ -9,23 +9,42 @@ export type SeoFact = {
   note?: string
 }
 
+/** First-viewport direct answer (P0) — big number under the H1 */
+export type SeoAnswer = {
+  value: string
+  unit?: string
+  detail: string
+  note?: string
+}
+
+export type SeoSection = {
+  heading: string
+  paragraphs: string[]
+}
+
 export type SeoPage = {
   slug: string
   title: string
   description: string
   h1: string
   intro: string[]
+  /** Hero answer climax for question-led SEO pages */
+  answer?: SeoAnswer
   /**
-   * Direct-answer facts.
+   * Hard metrics only (not tips/source prose).
    * - default layout: list in the left hero column
    * - bands layout: full-width metric strip under the hero
    */
   facts?: SeoFact[]
+  /** Optional long-form sections under the facts band (H2 + paragraphs). */
+  sections?: SeoSection[]
   /**
    * Hero composition. Default is `bands` (short left copy + calculator, facts below).
    * Set `default` only to keep the old left-column stack.
    */
   layout?: 'default' | 'bands'
+  calculatorCta?: string
+  articleCta?: string
   defaultSex: Sex
   defaultAge: AgeGroup
   defaultMode: GoalMode

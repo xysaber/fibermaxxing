@@ -96,6 +96,14 @@ function staticArticle(page) {
         }</li>`,
     )
     .join('\n')
+  const sections = (page.sections || [])
+    .map(
+      (s) =>
+        `<h2>${escapeHtml(s.heading)}</h2>\n${(s.paragraphs || [])
+          .map((p) => `<p>${escapeHtml(p)}</p>`)
+          .join('\n')}`,
+    )
+    .join('\n')
   const faqs = (page.faqs || [])
     .map(
       (f) =>
@@ -107,10 +115,11 @@ function staticArticle(page) {
   return `
 <noscript id="prerender-seo">
 <section style="max-width:46rem;margin:1.5rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;color:#1a2238">
-  <p><a href="/">Fibermax</a> · fiber intake estimator</p>
+  <p><a href="/">Fibermax</a> · fiber calculator</p>
   <h1>${escapeHtml(page.h1)}</h1>
   ${paras}
   ${facts ? `<ul>${facts}</ul>` : ''}
+  ${sections}
   <p>JavaScript is required for the interactive calculator.</p>
   <h2>FAQ</h2>
   ${faqs}
