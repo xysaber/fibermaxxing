@@ -327,7 +327,7 @@ export function FiberCalculator({
             onClick={() => {
               setMeal('')
               setResult(null)
-              setNoFoodsError(false)
+              setMealError(null)
               setActiveExample(null)
             }}
           >
