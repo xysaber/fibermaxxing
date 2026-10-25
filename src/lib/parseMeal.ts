@@ -110,10 +110,10 @@ type QtyHit = {
  * Supports: 1/2, 2, 100g, 1 tbsp, 2 cups, half, a/an.
  */
 export function extractQty(before: string): QtyHit {
-  const tail = before.trim().slice(-40)
+  const tail = before.trim().slice(-100)
 
   // Optional prep words between unit and food: "2 cups cooked lentils"
-  const prep = '(?:\\s+(?:cooked|raw|boiled|dried|fresh|frozen|ripe|unsweetened|sweetened))*'
+  const prep = '(?:\\s+(?:cooked|raw|boiled|dried|fresh|frozen|ripe|unsweetened|sweetened|plain|nonfat|lowfat|medium|small|large|whole|milk|slices?|bowls?|of))*'
 
   // weight / volume with optional unit
   const withUnit = tail.match(
@@ -181,7 +181,7 @@ function unitToGrams(unit: QtyHit['unit'], amount: number, food: FoodItem): { gr
   }
   if (unit === 'cup') {
     // Prefer the food's own cup serving weight when the label looks like a cup
-    const cupG = /\bcup\b/i.test(food.serving) ? food.servingG : food.servingG > 0 ? food.servingG : 240
+    const cupG = /^Oranges, raw, all commercial varieties$/.test(food.name) ? 180 : /\bcup\b/i.test(food.serving) ? food.servingG : food.servingG > 0 ? food.servingG : 240
     return { grams: amount * cupG, label: `${trimNum(amount)} cup${amount === 1 ? '' : 's'}` }
   }
   // servings
@@ -331,7 +331,10 @@ export function parseMeal(input: string): ParseResult {
           for (let i = idx; i < end; i++) used[i] = true
           // Also consume unit/qty tokens just before so leftover phrases stay clean
           const before = text.slice(0, idx)
-          const qtyHit = extractQty(before)
+          let qtyHit = extractQty(before)
+          if (qtyHit.raw && used.slice(idx - qtyHit.raw.length, idx).some(Boolean)) {
+            qtyHit = { amount: 1, unit: 'serving', raw: '' }
+          }
           if (qtyHit.raw) {
             const rawIdx = before.toLowerCase().lastIndexOf(qtyHit.raw.toLowerCase().trim())
             if (rawIdx >= 0) {

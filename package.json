@@ -9,7 +9,9 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "data:usda": "node scripts/build-usda-foods.mjs",
-    "test:parser": "tsx scripts/parser-regression.mjs"
+    "test:parser": "node --import tsx scripts/parser-regression.mjs",
+    "test:seo": "node scripts/verify-seo.mjs",
+    "test:analytics": "node scripts/analytics-regression.mjs"
   },
   "dependencies": {
     "html-to-image": "^1.11.13",

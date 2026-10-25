@@ -7,7 +7,7 @@ import { InfoBand } from '../components/InfoBand'
 import { MethodStrip } from '../components/MethodStrip'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
-import { track } from '../lib/analytics'
+import { trackPageView } from '../lib/analytics'
 
 const HOME_FAQS = [
   {
@@ -48,7 +48,7 @@ const HOME_TRUST_TILES = [
 
 export function HomePage() {
   useEffect(() => {
-    track('page_view', { path: '/' })
+    trackPageView('/')
   }, [])
 
   return (

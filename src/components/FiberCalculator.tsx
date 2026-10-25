@@ -111,12 +111,34 @@ export function FiberCalculator({
 
   function runCalc(rawText: string, source: 'own' | 'example' = 'own') {
     const text = rawText.trim()
+    const isExample = source === 'example' || (activeExample !== null && text === activeExample.trim())
+    const eventParams = {
+      source: isExample ? 'example' : 'own',
+      input_origin: isExample ? 'example' : initialMeal && text === initialMeal.trim() ? 'prefill' : 'typed',
+    }
+    track('calculate_attempt', eventParams)
     if (!text) {
+      track('calculate_result', { ...eventParams, status: 'empty' })
       setResult(null)
       setNoFoodsError(false)
       return
     }
-    const parsed = parseMeal(text)
+    let parsed: ParseResult
+    try {
+      parsed = parseMeal(text)
+    } catch {
+      track('calculate_result', { ...eventParams, status: 'error' })
+      setResult(null)
+      setNoFoodsError(true)
+      return
+    }
+    track('calculate_result', {
+      ...eventParams,
+      status: parsed.matches.length === 0 ? 'no_match' : parsed.unmatchedHints.length > 0 ? 'partial' : 'success',
+      foods: parsed.matches.length,
+      unmatched_count: parsed.unmatchedHints.length,
+      estimated_count: parsed.estimatedCount,
+    })
     setResult(parsed)
     setCopied(false)
 
@@ -126,7 +148,7 @@ export function FiberCalculator({
     }
 
     setNoFoodsError(false)
-    track(source === 'example' ? 'run_example' : 'calculate_own', {
+    track(isExample ? 'run_example' : 'calculate_own', {
       foods: parsed.matches.length,
       fiber: parsed.totalFiberG,
     })

@@ -95,7 +95,12 @@ function toFoodItem(row: UsdaFood): FoodItem {
   return {
     id: String(row.id),
     name: row.name,
-    aliases: cleanAliases(row.aliases),
+    aliases: cleanAliases(row.aliases).filter((alias) => {
+      // Generated aliases must name a food, not a detached USDA qualifier.
+      if (alias.includes(' ') || String(row.id).startsWith('curated:')) return true
+      const head = row.name.split(',')[0]!.toLowerCase().split(/[\s-]+/)
+      return head.some((word) => word.replace(/s$/, '') === alias.replace(/s$/, ''))
+    }),
     fiberG,
     serving: row.serving?.label || `${g}g`,
     servingG: g,
@@ -108,6 +113,15 @@ function toFoodItem(row: UsdaFood): FoodItem {
 
 /** Prefer everyday fresh/default forms for ambiguous short aliases. */
 const PREFER_ALIAS_TO_NAME: Record<string, RegExp> = {
+  orange: /^Oranges, raw, all commercial varieties$/i,
+  oranges: /^Oranges, raw, all commercial varieties$/i,
+  'greek yogurt': /^Yogurt, Greek, plain, nonfat/i,
+  'plain nonfat greek yogurt': /^Yogurt, Greek, plain, nonfat/i,
+  'nonfat greek yogurt': /^Yogurt, Greek, plain, nonfat/i,
+  'plain greek yogurt': /^Yogurt, Greek, plain, nonfat/i,
+  'plain lowfat greek yogurt': /^Yogurt, Greek, plain, lowfat$/i,
+  'lowfat greek yogurt': /^Yogurt, Greek, plain, lowfat$/i,
+  'whole milk greek yogurt': /^Yogurt, Greek, plain, whole milk$/i,
   blueberries: /^Blueberries, raw$/i,
   blueberry: /^Blueberries, raw$/i,
   raspberries: /^Raspberries, raw$/i,
@@ -116,6 +130,13 @@ const PREFER_ALIAS_TO_NAME: Record<string, RegExp> = {
 
 function applyPreferredAliases(foods: FoodItem[]): FoodItem[] {
   const byName = foods
+  const orange = foods.find((f) => /^Oranges, raw, all commercial varieties$/.test(f.name))
+  if (orange) {
+    orange.servingG = 131
+    orange.serving = '1 medium orange'
+    orange.fiberG = Math.round(orange.fiber100g * 1.31 * 10) / 10
+    orange.calories = Math.round(orange.calories100g * 1.31)
+  }
   for (const [alias, nameRe] of Object.entries(PREFER_ALIAS_TO_NAME)) {
     const preferred = byName.find((f) => nameRe.test(f.name))
     if (!preferred) continue

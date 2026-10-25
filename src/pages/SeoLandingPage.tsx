@@ -11,7 +11,7 @@ import { SeoArticle } from '../components/SeoArticle'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 import { getSeoPage, SEO_PAGE_MAP } from '../content/seoPages'
-import { track } from '../lib/analytics'
+import { trackPageView } from '../lib/analytics'
 import { NotFoundPage } from './NotFoundPage'
 
 function shortBlurb(text: string, max = 96) {
@@ -33,7 +33,7 @@ export function SeoLandingPage() {
   const page = slug ? getSeoPage(slug) : undefined
 
   useEffect(() => {
-    if (page) track('page_view', { path: `/${page.slug}` })
+    if (page) trackPageView(`/${page.slug}`)
   }, [page])
 
   if (!page) {
