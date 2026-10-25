@@ -10,6 +10,7 @@ export function NotFoundPage() {
         title="Page not found | GetFibermaxxing"
         description="That page does not exist. Try the fibermaxxing calculator or a fiber guide."
         path="/404"
+        noindex
       />
       <SiteHeader />
       <section className="seo-landing-hero">

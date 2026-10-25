@@ -1,0 +1,11 @@
+# Cloudflare Workers (static assets only).
+# Soft-404 fix: do NOT use single-page-application — that serves index.html with 200.
+name = "fibermaxxing"
+compatibility_date = "2025-10-24"
+
+[assets]
+directory = "./dist"
+# Serve nearest 404.html with HTTP 404 when no asset matches.
+not_found_handling = "404-page"
+# Flat dist/<slug>.html → /<slug> without forcing a trailing-slash redirect.
+html_handling = "drop-trailing-slash"

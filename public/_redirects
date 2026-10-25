@@ -1,2 +1,4 @@
-# No catch-all SPA rewrite. Published guides are static folders; 404.html handles unknowns.
-# (Cloudflare _redirects does not allow status 404 — use dist/404.html instead.)
+# Fibermaxxing redirects — no SPA catch-all (unknowns → 404.html)
+https://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
+http://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
+http://www.getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301

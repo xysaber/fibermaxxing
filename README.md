@@ -41,4 +41,6 @@ Live: [https://www.getfibermaxxing.com](https://www.getfibermaxxing.com)
 npm run build
 ```
 
-Cloudflare Pages auto-deploys from `main` (`dist/` output).
+Cloudflare **Workers** (static assets) auto-deploys from `main` using `wrangler.toml`.
+`assets.not_found_handling = "404-page"` so unknown paths return `404.html` with status 404
+(not SPA `index.html` + 200).

@@ -14,6 +14,7 @@ type Props = {
   description?: string
   path?: string
   faqs?: FaqItem[]
+  noindex?: boolean
 }
 
 function setMeta(attr: 'name' | 'property', key: string, content: string) {
@@ -52,6 +53,7 @@ export function DocumentMeta({
   description = DEFAULT_DESCRIPTION,
   path = '/',
   faqs,
+  noindex = false,
 }: Props) {
   useEffect(() => {
     const url = absoluteUrl(path)
@@ -59,6 +61,7 @@ export function DocumentMeta({
 
     document.title = title
     setMeta('name', 'description', description)
+    setMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow')
     setCanonical(url)
     setMeta('property', 'og:type', 'website')
     setMeta('property', 'og:url', url)
@@ -91,7 +94,7 @@ export function DocumentMeta({
     } else {
       document.getElementById('ld-faq')?.remove()
     }
-  }, [title, description, path, faqs])
+  }, [title, description, path, faqs, noindex])
 
   return null
 }

@@ -1,8 +1,8 @@
 /**
- * Post-build: write dist/<slug>/index.html with route-specific meta + static SEO
- * copy for published pages only. Also writes 404.html and sitemap.
+ * Post-build: write dist/<slug>.html with route-specific meta + static SEO
+ * copy for published pages only. Also writes 404.html, _redirects, and sitemap.
  */
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -134,9 +134,10 @@ function homeArticle() {
 </noscript>`
 }
 
-function writeHtml(dir, html) {
-  mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, 'index.html'), html)
+function writePageHtml(slug, html) {
+  // Flat dist/<slug>.html so Cloudflare Pretty URLs serve /<slug> without
+  // 307 → /<slug>/ (which fought canonicals that omit the trailing slash).
+  writeFileSync(join(dist, `${slug}.html`), html)
 }
 
 // Homepage
@@ -168,8 +169,8 @@ for (const page of pages) {
     path: `/${page.slug}`,
     faqs: page.faqs,
   }).replace('<div id="root"></div>', `${staticArticle(page)}\n    <div id="root"></div>`)
-  writeHtml(join(dist, page.slug), html)
-  console.log('prerender', `/${page.slug}/`)
+  writePageHtml(page.slug, html)
+  console.log('prerender', `/${page.slug}`)
 }
 
 // 404 page for Cloudflare
@@ -194,12 +195,16 @@ for (const page of pages) {
   console.log('prerender /404.html')
 }
 
-// Cloudflare Workers/Pages _redirects only allow 200/301/302/303/307/308 — not 404.
-// Missing paths are handled by dist/404.html (platform default). Do not add SPA /* → index.
-writeFileSync(
-  join(dist, '_redirects'),
-  '# No catch-all SPA rewrite. Published guides are static folders; 404.html handles unknowns.\n',
-)
+// Cloudflare Pages _redirects: 200/301/302/303/307/308 only — not 404.
+// Missing paths must use dist/404.html (platform default). Never add /* → /index.html 200.
+// Apex → www: host rules help on Pages; also set a CF Redirect Rule (see deploy notes).
+const redirects = `# Fibermaxxing redirects — no SPA catch-all (unknowns → 404.html)
+https://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
+http://getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
+http://www.getfibermaxxing.com/* https://www.getfibermaxxing.com/:splat 301
+`
+writeFileSync(join(dist, '_redirects'), redirects)
+writeFileSync(join(root, 'public/_redirects'), redirects)
 
 const urls = [
   `  <url>\n    <loc>${siteUrl}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>`,

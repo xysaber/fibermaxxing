@@ -133,37 +133,41 @@
     "slug": "high-fiber-breakfast",
     "publish": true,
     "title": "High Fiber Breakfast Ideas (with Portions) + Calculator",
-    "description": "Three high-fiber breakfast combinations with approximate fiber totals, plus a free calculator to log your own morning meal.",
+    "description": "Three high-fiber breakfasts with item portions and approximate fiber totals (~9g, ~12g, ~10g), plus a free calculator for your own meal.",
     "h1": "High fiber breakfast ideas",
     "intro": [
-      "A fiber-forward breakfast can remove a large share of the day’s gap early. Below are three combinations you can paste into the calculator — then swap items to match what you actually eat.",
-      "Totals are approximate USDA-based estimates for the named foods and will change when you edit portions."
+      "A fiber-forward breakfast can remove a large share of the day’s gap early. Below are three combinations with reference portions and approximate fiber totals from this site’s USDA-based data.",
+      "Paste the oat-bowl example into the calculator (or type your own meal), then edit servings or grams. Totals change when portions change."
     ],
     "facts": [
       {
-        "label": "Oat bowl",
-        "value": "Oatmeal + chia + blueberries",
-        "note": "Paste the example meal below to estimate"
+        "label": "Oat bowl · ~9g fiber",
+        "value": "1 cup cooked oatmeal + 1 tbsp chia seeds + ½ cup blueberries",
+        "note": "~4g + ~3.4g + ~1.8g"
       },
       {
-        "label": "Chia pudding",
-        "value": "Chia + raspberries + Greek yogurt",
-        "note": "Protein + fiber pairing"
+        "label": "Chia pudding · ~12g fiber",
+        "value": "2 tbsp chia seeds + ½ cup raspberries + 170g Greek yogurt",
+        "note": "~6.9g + ~4g + ~1.4g"
       },
       {
-        "label": "Savory option",
-        "value": "Eggs + avocado toast + orange",
-        "note": "Lower than bean-heavy lunches; still a solid start"
+        "label": "Savory plate · ~10g fiber",
+        "value": "½ avocado + 1 slice whole-wheat bread + 1 medium orange",
+        "note": "~5g + ~1.9g + ~3g (hand-referenced USDA lines; eggs add protein, not fiber)"
       }
     ],
     "defaultSex": "female",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Breakfast: 1 bowl of oatmeal with chia seeds and blueberries",
+    "defaultMeal": "1 cup oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
     "faqs": [
       {
         "q": "What is a high-fiber breakfast?",
-        "a": "Examples include oatmeal with fruit and seeds, chia pudding, or whole-grain toast with avocado — portions decide the gram total."
+        "a": "Examples include oatmeal with fruit and seeds, chia pudding, or whole-wheat toast with avocado and fruit — portions decide the gram total."
+      },
+      {
+        "q": "How are the ~9g / ~12g / ~10g totals calculated?",
+        "a": "They sum this site’s USDA-based reference servings for the named portions (for example, 1 cup cooked oatmeal ≈ 4g). Brands and prep vary — recalculate after you edit grams."
       },
       {
         "q": "How many grams should breakfast provide?",
