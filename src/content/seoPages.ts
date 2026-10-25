@@ -15,12 +15,23 @@ export type SeoPage = {
   description: string
   h1: string
   intro: string[]
-  /** Direct-answer facts shown above the calculator */
+  /**
+   * Direct-answer facts.
+   * - default layout: list in the left hero column
+   * - bands layout: full-width metric strip under the hero
+   */
   facts?: SeoFact[]
+  /**
+   * Hero composition. Default is `bands` (short left copy + calculator, facts below).
+   * Set `default` only to keep the old left-column stack.
+   */
+  layout?: 'default' | 'bands'
   defaultSex: Sex
   defaultAge: AgeGroup
   defaultMode: GoalMode
   defaultMeal: string
+  /** Theme-specific meal examples for the calculator (shown collapsed by default) */
+  examples?: string[]
   faqs: SeoFaq[]
   related: string[]
   /** Only published pages are routed + sitemap’d */

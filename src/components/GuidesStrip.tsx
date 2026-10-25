@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+import { GuideCards } from './GuideCards'
 
-const GUIDES = [
+export const HOME_GUIDES = [
   {
     to: '/how-much-fiber-per-day',
     title: 'How much fiber per day?',
@@ -25,21 +25,11 @@ const GUIDES = [
 
 export function GuidesStrip() {
   return (
-    <section className="guides-strip" id="guides" aria-labelledby="guides-heading">
-      <div className="guides-strip-head">
-        <h2 id="guides-heading">Fiber guides</h2>
-        <p>Short answers first — then the same calculator with a relevant example meal.</p>
-      </div>
-      <ul className="guides-grid">
-        {GUIDES.map((g) => (
-          <li key={g.to}>
-            <Link to={g.to}>
-              <strong>{g.title}</strong>
-              <span>{g.blurb}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <GuideCards
+      id="guides"
+      title="Fiber guides"
+      subtitle="Short answers first — then the same calculator with a relevant example meal."
+      items={[...HOME_GUIDES]}
+    />
   )
 }

@@ -122,8 +122,8 @@ function homeArticle() {
   return `
 <noscript id="prerender-seo">
 <section style="max-width:46rem;margin:1.5rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;color:#1a2238">
-  <h1>How much fiber did you actually eat today?</h1>
-  <p>Free fibermaxxing calculator: log what you ate, estimate daily fiber from USDA-based data, and compare it to U.S. Adequate Intake targets — no signup.</p>
+  <h1>How much fiber have you <em>actually</em> eaten today?</h1>
+  <p>Free fibermaxxing calculator: paste what you ate, get USDA-based fiber totals, edit portions, and compare to U.S. Adequate Intake targets — no signup.</p>
   <ul>
     <li>USDA-based fiber estimates for real foods</li>
     <li>Daily targets from U.S. Adequate Intake (by sex &amp; age)</li>

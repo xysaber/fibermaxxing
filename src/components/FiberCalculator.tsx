@@ -44,7 +44,6 @@ function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'li
           strokeLinecap="round"
           strokeDasharray={c}
           strokeDashoffset={offset}
-          style={{ transition: 'stroke-dashoffset 0.8s ease' }}
         />
       </svg>
       <div className="ring-label">
@@ -81,7 +80,7 @@ export function FiberCalculator({
   const [copied, setCopied] = useState(false)
   const [downloading, setDownloading] = useState(false)
   const [activeExample, setActiveExample] = useState<string | null>(null)
-  const [showExamples, setShowExamples] = useState(Boolean(initialMeal))
+  const [showExamples, setShowExamples] = useState(false)
   const resultsRef = useRef<HTMLElement>(null)
   const reportCardRef = useRef<HTMLDivElement>(null)
   const [reportDate] = useState(() =>
@@ -192,8 +191,24 @@ export function FiberCalculator({
 
   return (
     <>
-      <form className="panel" onSubmit={onSubmit} id="calculator">
+      <form className="panel panel-calc" onSubmit={onSubmit} id="calculator">
         <p className="panel-label">{panelLabel}</p>
+
+        <div className="target-banner" aria-live="polite">
+          <div className="target-banner-main">
+            <span className="target-banner-label">Your daily target</span>
+            <span className="target-banner-value">
+              {target}
+              <small>g</small>
+            </span>
+          </div>
+          <p className="target-banner-note">
+            {mode === 'standard'
+              ? `U.S. Adequate Intake reference · ~${standardAi}g for this profile`
+              : `Fibermaxxing stretch · ${standardAi}g × 1.5 (max 50g)`}
+          </p>
+        </div>
+
         <div className="row row-profile">
           <div className="field">
             <label htmlFor="sex">Sex</label>
@@ -219,22 +234,7 @@ export function FiberCalculator({
           </div>
         </div>
 
-        <div className="target-banner" aria-live="polite">
-          <div className="target-banner-main">
-            <span className="target-banner-label">Your daily target</span>
-            <span className="target-banner-value">
-              {target}
-              <small>g</small>
-            </span>
-          </div>
-          <p className="target-banner-note">
-            {mode === 'standard'
-              ? 'Based on commonly cited U.S. Adequate Intake levels (~14g fiber per 1,000 kcal).'
-              : `Stretch goal: ${standardAi}g Adequate Intake × 1.5 (capped at 50g). Not an official recommendation — increase gradually.`}
-          </p>
-        </div>
-
-        <div className="field">
+        <div className="field field-meal">
           <label htmlFor="meal">What did you eat today?</label>
           <textarea
             id="meal"
@@ -246,7 +246,7 @@ export function FiberCalculator({
               if (noFoodsError) setNoFoodsError(false)
             }}
             placeholder="e.g. I ate oatmeal, an apple, and chia seeds"
-            rows={4}
+            rows={3}
             enterKeyHint="done"
             aria-invalid={noFoodsError}
             aria-describedby={noFoodsError ? 'meal-error' : undefined}
@@ -290,12 +290,12 @@ export function FiberCalculator({
         </div>
 
         <div className="actions">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary btn-calc">
             Calculate fiber
           </button>
           <button
             type="button"
-            className="btn btn-ghost"
+            className="btn btn-text"
             onClick={() => {
               setMeal('')
               setResult(null)
@@ -311,35 +311,37 @@ export function FiberCalculator({
       {hasMatches && result && (
         <section className="results" aria-live="polite" ref={resultsRef}>
           <div className="score-card">
-            <div className="score-head">
-              <div>
-                <h2>
+            <p className="score-kicker">Today’s fiber score</p>
+            <div className="score-hero">
+              <div className="score-hero-copy">
+                <p className="score-total">
+                  {result.totalFiberG}
+                  <small>g</small>
+                </p>
+                <p className="score-of">
+                  of {target}g {mode === 'maxxing' ? 'fibermaxxing' : 'daily'} target
+                </p>
+                <h2 className="score-status">
                   {pct >= 100
                     ? mode === 'maxxing'
                       ? 'Fibermaxxing goal reached'
                       : 'Daily fiber goal reached'
                     : gap > 0
-                      ? `${gap}g fiber still to go`
+                      ? `${gap}g still to go`
                       : 'On track for today'}
                 </h2>
-                <p>
+                <p className="score-meta">
                   {result.matches.length} food{result.matches.length === 1 ? '' : 's'}
                   {result.estimatedCount > 0
                     ? ` · ${result.estimatedCount} estimated`
                     : ' matched'}{' '}
-                  · {result.totalCalories} kcal logged · target {target}g
+                  · {result.totalCalories} kcal
                 </p>
               </div>
               <ProgressRing pct={pct} />
             </div>
-            <div className="metrics metrics-3">
-              <div className="metric">
-                <div className="k">Fiber today</div>
-                <div className="v">
-                  {result.totalFiberG}
-                  <small>g</small>
-                </div>
-              </div>
+
+            <div className="metrics metrics-2">
               <div className="metric">
                 <div className="k">Daily target</div>
                 <div className="v">
@@ -347,7 +349,7 @@ export function FiberCalculator({
                   <small>g</small>
                 </div>
               </div>
-              <div className="metric">
+              <div className="metric metric-accent">
                 <div className="k">{gap <= 0 ? 'Over goal' : 'Still to go'}</div>
                 <div className="v">
                   {gap <= 0
@@ -357,6 +359,7 @@ export function FiberCalculator({
                 </div>
               </div>
             </div>
+
             <p className="score-estimate-note">
               Totals are estimates from reference servings — edit portions on the right if needed.
               {result.estimatedCount > 0 ? ' Includes category-based estimates.' : ''}
@@ -364,29 +367,28 @@ export function FiberCalculator({
             {result.warnings.length > 0 && (
               <p className="score-estimate-note">{result.warnings[0]}</p>
             )}
-            <div className="score-fill">
-              {suggestions && (
-                <div className={`suggestions suggestions-${suggestions.tone} suggestions-in-score`}>
-                  <h3>{suggestions.headline}</h3>
-                  <p className="suggestions-detail">{suggestions.detail}</p>
-                  {suggestions.items.length > 0 && (
-                    <ul className="suggestions-list">
-                      {suggestions.items.map((item) => (
-                        <li key={item.id}>
-                          <div className="suggestions-copy">
-                            <strong>{item.name}</strong>
-                            <span>
-                              {item.serving} · ~{item.fiberG}g fiber (optional add-on — not added to
-                              your log)
-                            </span>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              )}
-            </div>
+
+            {suggestions && (
+              <div className={`suggestions suggestions-${suggestions.tone} suggestions-in-score`}>
+                <h3>{suggestions.headline}</h3>
+                <p className="suggestions-detail">{suggestions.detail}</p>
+                {suggestions.items.length > 0 && (
+                  <ul className="suggestions-list">
+                    {suggestions.items.map((item) => (
+                      <li key={item.id}>
+                        <div className="suggestions-copy">
+                          <strong>{item.name}</strong>
+                          <span>
+                            {item.serving} · ~{item.fiberG}g fiber (optional add-on — not added to
+                            your log)
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="detail-panel">
@@ -468,59 +470,91 @@ export function FiberCalculator({
               </p>
             )}
 
-            <div className="share-row">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={onDownload}
-                disabled={downloading}
-              >
-                {downloading ? 'Preparing…' : 'Download PNG'}
-              </button>
-              <button type="button" className="btn btn-ghost" onClick={copyShare}>
-                {copied ? 'Copied' : 'Copy text report'}
-              </button>
+            <div className="share-block">
+              <p className="share-label">Share results</p>
+              <div className="share-row">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={onDownload}
+                  disabled={downloading}
+                >
+                  {downloading ? 'Preparing…' : 'Download PNG'}
+                </button>
+                <button
+                  type="button"
+                  className={`btn btn-ghost${copied ? ' is-copied' : ''}`}
+                  onClick={copyShare}
+                >
+                  {copied ? 'Copied' : 'Copy text report'}
+                </button>
+              </div>
             </div>
 
             <div className="report-card-capture" ref={reportCardRef} id="share-card" aria-hidden>
               <div className="report-card-portrait">
-                <div className="rcp-top">
-                  <div className="rcp-brand">
-                    Fiber<span>max</span>
+                <header className="rcp-masthead">
+                  <div className="rcp-brand-lockup">
+                    <svg className="rcp-mark" viewBox="0 0 32 32" aria-hidden>
+                      <rect width="32" height="32" rx="8" fill="#1a2240" />
+                      <circle
+                        cx="16"
+                        cy="16"
+                        r="8.5"
+                        fill="none"
+                        stroke="#4a5570"
+                        strokeWidth="2.75"
+                      />
+                      <path
+                        d="M16 7.5a8.5 8.5 0 0 1 7.36 12.75"
+                        fill="none"
+                        stroke="#2f5bff"
+                        strokeWidth="2.75"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="16" cy="7.5" r="2.4" fill="#5b8cff" />
+                    </svg>
+                    <div className="rcp-brand">
+                      Fiber<span>max</span>
+                    </div>
                   </div>
                   <div className="rcp-date">{reportDate}</div>
-                </div>
-                <p className="rcp-kicker">Daily fiber report</p>
-                <div className="rcp-ring-wrap">
-                  <ProgressRing pct={pct} tone="light" />
-                </div>
-                <p className="rcp-total">
-                  {result.totalFiberG}
-                  <small>g</small>
-                  <span className="rcp-of">/ {target}g target</span>
-                </p>
-                <p className="rcp-status">
-                  {gap <= 0 ? 'Goal reached' : `${gap}g still to go`}
-                </p>
-                {topFoods.length > 0 && (
-                  <div className="rcp-foods-block">
-                    <p className="rcp-foods-label">Top foods today</p>
-                    <ul className="rcp-foods">
-                      {topFoods.map((m) => (
-                        <li key={`rcp-${m.food.id}`}>
-                          <span>{m.food.name}</span>
-                          <span>{m.fiberG}g</span>
-                        </li>
-                      ))}
-                    </ul>
+                </header>
+                <div className="rcp-body">
+                  <p className="rcp-kicker">Daily fiber report</p>
+                  <div className="rcp-hero">
+                    <div className="rcp-ring-wrap">
+                      <ProgressRing pct={pct} tone="light" />
+                    </div>
+                    <p className="rcp-total">
+                      {result.totalFiberG}
+                      <small>g</small>
+                      <span className="rcp-of">/ {target}g target</span>
+                    </p>
+                    <p className="rcp-status">
+                      {gap <= 0 ? 'Goal reached' : `${gap}g still to go`}
+                    </p>
                   </div>
-                )}
-                {result.estimatedCount > 0 && (
-                  <p className="rcp-est">Includes estimated foods</p>
-                )}
-                <div className="rcp-footer">
-                  <p className="rcp-url">getfibermaxxing.com</p>
-                  <p className="rcp-tag">Free fibermaxxing calculator</p>
+                  {topFoods.length > 0 && (
+                    <div className="rcp-foods-block">
+                      <p className="rcp-foods-label">Top foods today</p>
+                      <ul className="rcp-foods">
+                        {topFoods.map((m) => (
+                          <li key={`rcp-${m.food.id}`}>
+                            <span>{m.food.name}</span>
+                            <span>{m.fiberG}g</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {result.estimatedCount > 0 && (
+                    <p className="rcp-est">Includes estimated foods</p>
+                  )}
+                  <div className="rcp-footer">
+                    <p className="rcp-url">getfibermaxxing.com</p>
+                    <p className="rcp-tag">Free fibermaxxing calculator</p>
+                  </div>
                 </div>
               </div>
             </div>

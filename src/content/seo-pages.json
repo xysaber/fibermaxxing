@@ -2,6 +2,7 @@
   {
     "slug": "how-much-fiber-per-day",
     "publish": true,
+    "layout": "bands",
     "title": "How Much Fiber Per Day? Daily Targets + Calculator",
     "description": "How much fiber should you eat per day? See commonly cited U.S. Adequate Intake levels by sex and age, then estimate today’s intake with a free calculator.",
     "h1": "How much fiber should you eat per day?",
@@ -19,6 +20,12 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "I ate 2 eggs, 1 bowl of oatmeal, and an apple",
+    "examples": [
+      "Breakfast oatmeal with berries; lunch lentil salad; an apple",
+      "Eggs, avocado toast, black beans, broccoli, and brown rice",
+      "Greek yogurt with chia and raspberries; chickpea bowl for dinner",
+      "Large salad with hummus and a pear; leftover brown rice and beans"
+    ],
     "faqs": [
       {
         "q": "What is the recommended fiber intake per day?",
@@ -38,6 +45,7 @@
   {
     "slug": "oatmeal",
     "publish": true,
+    "layout": "bands",
     "title": "Oatmeal Fiber Content (Cooked Cup) + Calculator",
     "description": "How much fiber is in oatmeal? About 4g per 1 cup cooked oatmeal in our USDA-based reference serving. Estimate a full day with the free calculator.",
     "h1": "How much fiber is in oatmeal?",
@@ -66,6 +74,12 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "1 bowl of oatmeal with chia seeds and blueberries",
+    "examples": [
+      "1 cup cooked oatmeal with blueberries",
+      "Oatmeal bowl with chia seeds, banana, and almond butter",
+      "Overnight oats with raspberries and flaxseeds",
+      "Steel-cut oatmeal, pear, and a spoon of peanut butter"
+    ],
     "faqs": [
       {
         "q": "How much fiber is in a cup of oatmeal?",
@@ -85,6 +99,7 @@
   {
     "slug": "chia-seeds",
     "publish": true,
+    "layout": "bands",
     "title": "Chia Seeds Fiber (per Tbsp) + Daily Calculator",
     "description": "Chia seeds have about 3.4g fiber per tablespoon (~10g) using USDA chia fiber density on this site. Estimate your full day with the free calculator.",
     "h1": "How much fiber is in chia seeds?",
@@ -113,6 +128,12 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Chia pudding with raspberries and Greek yogurt",
+    "examples": [
+      "Chia pudding with raspberries and Greek yogurt",
+      "Smoothie with 1 tbsp chia seeds, spinach, and banana",
+      "Oatmeal topped with 2 tbsp chia seeds",
+      "1 tbsp chia seeds in water, salad, and an apple"
+    ],
     "faqs": [
       {
         "q": "How much fiber is in a tablespoon of chia?",
@@ -132,6 +153,7 @@
   {
     "slug": "high-fiber-breakfast",
     "publish": true,
+    "layout": "bands",
     "title": "High Fiber Breakfast Ideas (with Portions) + Calculator",
     "description": "Three high-fiber breakfasts with item portions and approximate fiber totals (~9g, ~12g, ~10g), plus a free calculator for your own meal.",
     "h1": "High fiber breakfast ideas",
@@ -160,6 +182,12 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "1 cup oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
+    "examples": [
+      "1 cup oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
+      "2 tbsp chia seeds, 1/2 cup raspberries, Greek yogurt",
+      "Half avocado, whole-wheat toast, and an orange",
+      "Bran cereal with berries and a banana"
+    ],
     "faqs": [
       {
         "q": "What is a high-fiber breakfast?",
@@ -183,6 +211,7 @@
   {
     "slug": "for-women",
     "publish": false,
+    "layout": "bands",
     "title": "Fibermaxxing Calculator for Women | Daily Fiber Goal",
     "description": "Estimate daily fiber for women with U.S. Adequate Intake targets.",
     "h1": "Fibermaxxing calculator for women",
@@ -191,12 +220,19 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Greek yogurt, raspberries, chia seeds, and a whole-wheat toast",
+    "examples": [
+      "Greek yogurt, raspberries, chia seeds, and whole-wheat toast",
+      "Oatmeal with blueberries and flaxseeds",
+      "Lentil salad, avocado, and an apple",
+      "Chickpea bowl with broccoli and brown rice"
+    ],
     "faqs": [],
     "related": ["how-much-fiber-per-day"]
   },
   {
     "slug": "for-men",
     "publish": false,
+    "layout": "bands",
     "title": "Fibermaxxing Calculator for Men",
     "description": "Draft",
     "h1": "Fibermaxxing calculator for men",
@@ -205,12 +241,19 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Oatmeal with chia, black beans, brown rice, broccoli, and an apple",
+    "examples": [
+      "Oatmeal with chia, black beans, brown rice, broccoli, and an apple",
+      "Eggs, avocado toast, lentil soup, and a pear",
+      "Chicken, quinoa, black beans, and a large salad",
+      "Overnight oats, banana, almonds, and chickpea pasta"
+    ],
     "faqs": [],
     "related": ["how-much-fiber-per-day"]
   },
   {
     "slug": "for-50-plus",
     "publish": false,
+    "layout": "bands",
     "title": "Fiber Calculator for Ages 50+",
     "description": "Draft",
     "h1": "Fibermaxxing calculator for ages 50+",
@@ -219,12 +262,19 @@
     "defaultAge": "51+",
     "defaultMode": "standard",
     "defaultMeal": "Oatmeal, pear, lentil soup, and a side salad",
+    "examples": [
+      "Oatmeal, pear, lentil soup, and a side salad",
+      "Bran cereal with berries and a banana",
+      "Baked potato with beans and steamed broccoli",
+      "Whole-wheat toast, avocado, and an orange"
+    ],
     "faqs": [],
     "related": ["how-much-fiber-per-day"]
   },
   {
     "slug": "psyllium",
     "publish": false,
+    "layout": "bands",
     "title": "Psyllium Husk Fiber Calculator",
     "description": "Draft",
     "h1": "Psyllium husk fiber calculator",
@@ -233,12 +283,19 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Psyllium husk in water, salad, hummus, and a pear",
+    "examples": [
+      "Psyllium husk in water, salad, hummus, and a pear",
+      "1 tsp psyllium in water with oatmeal and blueberries",
+      "Psyllium drink, lentil soup, and brown rice",
+      "Salad with chickpeas; psyllium in water before bed"
+    ],
     "faqs": [],
     "related": ["chia-seeds"]
   },
   {
     "slug": "beans",
     "publish": false,
+    "layout": "bands",
     "title": "Beans Fiber Calculator",
     "description": "Draft",
     "h1": "Beans and lentils fiber calculator",
@@ -247,12 +304,19 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Lentils, broccoli, brown rice, and avocado for dinner",
+    "examples": [
+      "Lentils, broccoli, brown rice, and avocado for dinner",
+      "Black bean burrito bowl with salsa and corn",
+      "Chickpea salad with cucumber, tomato, and whole-wheat pita",
+      "Kidney bean chili with a side salad"
+    ],
     "faqs": [],
     "related": ["high-fiber-breakfast"]
   },
   {
     "slug": "avocado",
     "publish": false,
+    "layout": "bands",
     "title": "Avocado Fiber Calculator",
     "description": "Draft",
     "h1": "Avocado fiber calculator",
@@ -261,12 +325,19 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Avocado toast on whole wheat, egg, and an orange",
+    "examples": [
+      "Avocado toast on whole wheat, egg, and an orange",
+      "Half avocado with black beans and brown rice",
+      "Avocado, tomato salad, and whole-wheat wrap",
+      "Guacamole with vegetables and a pear"
+    ],
     "faqs": [],
     "related": ["high-fiber-breakfast"]
   },
   {
     "slug": "chia-vs-psyllium",
     "publish": false,
+    "layout": "bands",
     "title": "Chia vs Psyllium",
     "description": "Draft",
     "h1": "Chia seeds vs psyllium husk",
@@ -275,12 +346,19 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Chia pudding for breakfast; salad and lentils for dinner",
+    "examples": [
+      "Chia pudding for breakfast; salad and lentils for dinner",
+      "1 tbsp chia in oatmeal; psyllium in water later",
+      "Chia smoothie; large salad with hummus",
+      "Psyllium drink, brown rice, beans, and a pear"
+    ],
     "faqs": [],
     "related": ["chia-seeds"]
   },
   {
     "slug": "high-fiber-foods",
     "publish": false,
+    "layout": "bands",
     "title": "High Fiber Foods",
     "description": "Draft — ranked table not ready",
     "h1": "High fiber foods for fibermaxxing",
@@ -289,6 +367,12 @@
     "defaultAge": "19-50",
     "defaultMode": "standard",
     "defaultMeal": "Oatmeal, apple, black beans, brown rice, broccoli, chia seeds",
+    "examples": [
+      "Oatmeal, apple, black beans, brown rice, broccoli, chia seeds",
+      "Lentils, avocado, whole-wheat bread, and raspberries",
+      "Chickpeas, quinoa, kale salad, and a pear",
+      "Bran cereal, banana, almonds, and vegetable soup"
+    ],
     "faqs": [],
     "related": ["oatmeal", "chia-seeds"]
   }

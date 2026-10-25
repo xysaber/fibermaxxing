@@ -5,7 +5,10 @@ const USDA_FDC_URL = 'https://fdc.nal.usda.gov/'
 export function MethodStrip() {
   return (
     <section className="method-strip" id="method">
-      <h2>How we calculate</h2>
+      <div className="method-strip-head">
+        <h2>How it works</h2>
+        <p>Targets and food values — what this calculator uses, and what it doesn’t claim.</p>
+      </div>
       <div className="method-grid">
         <div className="method-col">
           <h3>Daily fiber target</h3>

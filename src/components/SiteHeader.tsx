@@ -8,9 +8,32 @@ const GUIDE_PATHS = new Set([
   '/high-fiber-breakfast',
 ])
 
+function PrimaryNav({ guidesActive }: { guidesActive: boolean }) {
+  const { pathname } = useLocation()
+
+  return (
+    <>
+      <NavLink to="/" end className={({ isActive }) => (isActive ? 'is-active' : undefined)}>
+        Calculator
+      </NavLink>
+      {pathname === '/' ? (
+        <a href="#guides" className={guidesActive ? 'is-active' : undefined}>
+          Guides
+        </a>
+      ) : (
+        <Link to="/#guides" className={guidesActive ? 'is-active' : undefined}>
+          Guides
+        </Link>
+      )}
+      <a href="#method">How it works</a>
+    </>
+  )
+}
+
 export function SiteHeader() {
   const { pathname } = useLocation()
   const guidesActive = GUIDE_PATHS.has(pathname)
+  const pill = `${FOOD_COUNT.toLocaleString()} foods · USDA-based · Instant`
 
   return (
     <header className="topbar">
@@ -35,25 +58,31 @@ export function SiteHeader() {
         </span>
       </Link>
 
-      <nav className="site-nav" aria-label="Primary">
-        <NavLink to="/" end className={({ isActive }) => (isActive ? 'is-active' : undefined)}>
-          Calculator
-        </NavLink>
-        {pathname === '/' ? (
-          <a href="#guides" className={guidesActive ? 'is-active' : undefined}>
-            Guides
-          </a>
-        ) : (
-          <Link to="/#guides" className={guidesActive ? 'is-active' : undefined}>
-            Guides
-          </Link>
-        )}
-        <a href="#method">Method</a>
+      <nav className="site-nav site-nav-desktop" aria-label="Primary">
+        <PrimaryNav guidesActive={guidesActive} />
       </nav>
 
-      <span className="pill-meta">
-        {FOOD_COUNT.toLocaleString()} foods · USDA-based · Instant
-      </span>
+      <span className="pill-meta pill-meta-desktop">{pill}</span>
+
+      <details
+        className="topbar-menu"
+        onClick={(e) => {
+          if ((e.target as HTMLElement).closest('a')) {
+            ;(e.currentTarget as HTMLDetailsElement).open = false
+          }
+        }}
+      >
+        <summary className="topbar-menu-btn" aria-label="Open menu">
+          <span className="topbar-menu-label">Menu</span>
+          <span className="topbar-menu-icon" aria-hidden />
+        </summary>
+        <div className="topbar-menu-panel">
+          <nav className="site-nav site-nav-mobile" aria-label="Primary">
+            <PrimaryNav guidesActive={guidesActive} />
+          </nav>
+          <span className="pill-meta">{pill}</span>
+        </div>
+      </details>
     </header>
   )
 }

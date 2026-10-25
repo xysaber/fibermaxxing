@@ -3,6 +3,7 @@ import { DocumentMeta } from '../components/DocumentMeta'
 import { FaqBlock } from '../components/FaqBlock'
 import { FiberCalculator } from '../components/FiberCalculator'
 import { GuidesStrip } from '../components/GuidesStrip'
+import { InfoBand } from '../components/InfoBand'
 import { MethodStrip } from '../components/MethodStrip'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
@@ -19,11 +20,29 @@ const HOME_FAQS = [
   },
   {
     q: 'Where do fiber values come from?',
-    a: 'Primarily USDA FoodData Central reference data, with typical servings. See How we calculate for details on targets, estimates, and limits.',
+    a: 'Primarily USDA FoodData Central reference data, with typical servings. See How it works for details on targets, estimates, and limits.',
   },
   {
     q: 'Is this fibermaxxing calculator medical advice?',
     a: 'No. Fiber totals are approximate estimates for education and self-tracking only. If you have a digestive condition or take medication, check with a qualified clinician before making large diet changes.',
+  },
+]
+
+const HOME_TRUST_TILES = [
+  {
+    label: 'Data',
+    value: 'USDA-based estimates',
+    note: 'Reference servings you can edit',
+  },
+  {
+    label: 'Targets',
+    value: 'Adequate Intake goals',
+    note: 'By sex and age, plus optional stretch',
+  },
+  {
+    label: 'Control',
+    value: 'Confirm every match',
+    note: 'Adjust servings or grams before you trust the total',
   },
 ]
 
@@ -40,24 +59,25 @@ export function HomePage() {
       <section className="hero">
         <div className="hero-copy">
           <h1>
-            How much fiber did you <em>actually</em> eat today?
+            How much fiber have you <em>actually</em> eaten today?
           </h1>
           <p className="lede">
-            Free fiber intake estimator: paste what you ate, get USDA-based fiber totals, edit
+            Free fibermaxxing calculator: paste what you ate, get USDA-based fiber totals, edit
             portions, and compare to U.S. Adequate Intake targets — no signup.
           </p>
-          <ul className="hero-points">
-            <li>USDA-based fiber estimates for real foods</li>
-            <li>Daily targets from U.S. Adequate Intake (by sex &amp; age)</li>
-            <li>Confirm and edit matched portions before you trust the total</li>
-          </ul>
           <a className="hero-method-link" href="#method">
-            How we calculate
+            How it works
           </a>
         </div>
 
         <FiberCalculator />
       </section>
+
+      <InfoBand
+        id="trust"
+        ariaLabel="Why this calculator"
+        tiles={HOME_TRUST_TILES}
+      />
 
       <GuidesStrip />
       <MethodStrip />
