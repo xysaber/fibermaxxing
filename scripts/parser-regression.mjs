@@ -194,6 +194,76 @@ const cases = [
     count: 0,
     emptyKind: 'not_food',
   },
+  {
+    name: 'example bowl of oatmeal',
+    input: 'I ate 2 eggs, 1 bowl of oatmeal, and an apple',
+    count: 3,
+    forbidNames: /artichoke/i,
+  },
+  {
+    name: '1 bowl oatmeal alone',
+    input: '1 bowl of oatmeal',
+    count: 1,
+    foodId: 'curated:oatmeal',
+    grams: 234,
+    tag: 'needs_confirm',
+  },
+  // Identity kept when unit is fuzzy
+  {
+    name: '200ml milk keeps identity',
+    input: '200ml milk',
+    count: 1,
+    foodId: '171265',
+    tag: 'needs_confirm',
+  },
+  {
+    name: '1 slice apple keeps identity',
+    input: '1 slice apple',
+    count: 1,
+    nameIncludes: /Apple/i,
+    tag: 'needs_confirm',
+  },
+  {
+    name: '2 cups chicken keeps identity',
+    input: '2 cups chicken',
+    count: 1,
+    foodId: '172395',
+    grams: 280,
+    forbidNames: /meatless/i,
+  },
+  // No tbsp density: keep identity with 1× default serving (never amount×cup)
+  {
+    name: '1 tbsp orange keeps 1 default serving not inventing density',
+    input: '1 tbsp orange',
+    count: 1,
+    nameIncludes: /Orange/i,
+    tag: 'needs_confirm',
+  },
+  {
+    name: '2 tbsp hummus without tbsp density is not 2 cups',
+    input: '2 tbsp hummus',
+    count: 1,
+    maxGrams: 50,
+    note: 'Must not treat 2 tbsp as 2× cup-sized default',
+  },
+  {
+    name: '100g small apple keeps explicit grams',
+    input: '100g small apple',
+    count: 1,
+    grams: 100,
+    nameIncludes: /Apple/i,
+  },
+  {
+    name: '0 tbsp apple is zero nutrients',
+    input: '0 tbsp apple',
+    expectTotal: 0,
+  },
+  {
+    name: '10 almonds is not 10 cups',
+    input: '10 almonds',
+    count: 1,
+    maxGrams: 40,
+  },
 ]
 
 let failed = 0
@@ -205,6 +275,9 @@ for (const c of cases) {
   if (c.count != null && r.matches.length !== c.count) problems.push(`count ${r.matches.length} != ${c.count}`)
   if (c.minCount != null && r.matches.length < c.minCount) problems.push(`count ${r.matches.length} < ${c.minCount}`)
   if (c.grams != null && r.matches[0]?.grams !== c.grams) problems.push(`grams ${r.matches[0]?.grams} != ${c.grams}`)
+  if (c.maxGrams != null && r.matches[0] && r.matches[0].grams > c.maxGrams) {
+    problems.push(`grams ${r.matches[0].grams} > max ${c.maxGrams}`)
+  }
   if (c.expectTotal != null && Math.abs(r.totalFiberG - c.expectTotal) > 0.15) {
     problems.push(`total ${r.totalFiberG} != ${c.expectTotal}`)
   }

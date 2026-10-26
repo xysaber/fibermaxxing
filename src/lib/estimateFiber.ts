@@ -69,12 +69,15 @@ const CATEGORY_KEYWORDS: { category: FiberCategory; keywords: string[] }[] = [
     keywords: [
       'hotpot', 'hot pot', 'hot-pot', '火锅', 'steamboat',
       'stir fry', 'stir-fry', '炒菜', 'curry', '咖喱', 'soup', '汤',
-      'salad bowl', 'salad', 'burrito', 'taco', 'pizza', '披萨', 'ramen', '拉面',
+      // Compounds before short tokens (chicken salad ≠ pure chicken)
+      'chicken salad', 'egg salad', 'tuna salad', 'salad bowl', 'salad',
+      'burrito', 'taco', 'pizza', '披萨', 'ramen', '拉面',
       'pho', 'dumpling', '饺子', '包子', 'bibimbap', 'poké', 'poke bowl',
       'bowl', '盖饭', '麻辣烫', '冒菜', '串串',
       // Recipes — must beat dairy/tea single-token matches (e.g. milk tea ≠ dairy cup)
       'milk tea', 'milktea', 'milk-tea', 'bubble tea', 'boba', 'smoothie', 'pudding',
-      'sandwich', 'burger', 'wrap', '汉堡', '沙拉', '三明治',
+      'peanut butter and jelly sandwich', 'pb&j sandwich', 'sandwich', 'burger', 'wrap',
+      '汉堡', '沙拉', '三明治',
     ],
   },
   {
@@ -134,7 +137,8 @@ const CATEGORY_KEYWORDS: { category: FiberCategory; keywords: string[] }[] = [
   {
     category: 'vegetable',
     keywords: [
-      'vegetable', 'veggie', 'tomato', 'cucumber', 'pepper', 'onion', 'garlic', 'zucchini', 'eggplant',
+      // Avoid matching inside “vegetable oil”
+      'veggie', 'tomato', 'cucumber', 'pepper', 'onion', 'garlic', 'zucchini', 'eggplant',
       '菜', '蔬菜', '番茄', '西红柿', '黄瓜', '青椒', '洋葱', '茄子', '冬瓜', '南瓜', '丝瓜', '芹菜', '萝卜',
     ],
   },
@@ -162,11 +166,15 @@ const CATEGORY_KEYWORDS: { category: FiberCategory; keywords: string[] }[] = [
   },
   {
     category: 'dairy_zero',
-    keywords: ['milk', 'yogurt', 'cheese', 'butter', 'cream', '奶', '牛奶', '酸奶', '奶酪', '芝士'],
+    keywords: [
+      'almond milk', 'oat milk', 'soy milk', 'milk', 'yogurt', 'cheese', 'butter', 'cream',
+      '奶', '牛奶', '酸奶', '奶酪', '芝士',
+    ],
   },
   {
     category: 'beverage_zero',
     keywords: [
+      'vegetable oil', 'olive oil', 'canola oil', 'cooking oil',
       'water', 'sparkling water', 'soda water', 'tea', 'green tea', 'black tea', 'herbal tea',
       'coffee', 'espresso', 'americano', 'black coffee', 'latte', 'cappuccino', 'soda', 'cola', 'diet coke', 'coke',
       'broth', 'bone broth', 'stock', 'vinegar', 'soy sauce',
@@ -222,20 +230,10 @@ export function estimateFiber(phrase: string): FiberEstimate | null {
   const label = phrase.trim()
   if (!label || label.length < 2) return null
 
-  let category = classifyPhrase(label)
-  let confidence: FiberEstimate['confidence'] = 'medium'
-
-  if (!category) {
-    // Meal-context CJK leftover with no keyword → conservative plant estimate
-    if ([...label].some(isCjkChar) && label.length >= 2 && label.length <= 8) {
-      category = 'unknown_plant'
-      confidence = 'low'
-    } else {
-      return null
-    }
-  }
-
-  if (category === 'unknown_plant') confidence = 'low'
+  const category = classifyPhrase(label)
+  if (!category) return null
+  // unknown_plant retained in types for lexicon/legacy; never invent from bare CJK leftovers.
+  let confidence: FiberEstimate['confidence'] = category === 'unknown_plant' ? 'low' : 'medium'
 
   const defaults = CATEGORY_DEFAULTS[category]
   return {

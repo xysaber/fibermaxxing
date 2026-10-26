@@ -1,7 +1,7 @@
 import type { FoodItem } from '../data/foods'
 import { isRecognizedConsumable, recognizeConsumable } from './consumableLexicon'
 import { CATEGORY_DEFAULTS, estimateFiber, type FiberCategory, type FiberEstimate } from './estimateFiber'
-import { pickNutrientCandidate, resolveMeal, type MatchDisplayTag } from './resolveMeal'
+import { pickNutrientCandidate, resolveMeal, type MatchDisplayTag, type MentionQty } from './resolveMeal'
 
 function estimateFromCategory(phrase: string, category: FiberCategory): FiberEstimate {
   const defaults = CATEGORY_DEFAULTS[category]
@@ -17,15 +17,19 @@ function estimateFromCategory(phrase: string, category: FiberCategory): FiberEst
 }
 
 /**
- * Estimate path: keyword classifier → consumable lexicon → recipe mixed-dish fallback.
- * Never treat a known consumable like gibberish.
+ * Estimate path: recipe/classifier first (whole-phrase), then lexicon (short known drinks).
+ * Lexicon is substring-based — must not beat “chicken salad” / “PB&J sandwich”.
  */
 function estimateForMention(phrase: string, kind: string | undefined): FiberEstimate | null {
+  if (kind === 'recipe') {
+    const est = estimateFiber(phrase)
+    if (est) return est
+    return estimateFromCategory(phrase.trim() || 'recipe', 'mixed_dish')
+  }
   const est = estimateFiber(phrase)
   if (est) return est
   const recognized = recognizeConsumable(phrase)
   if (recognized?.status === 'estimable') return estimateFromCategory(phrase, recognized.category)
-  if (kind === 'recipe') return estimateFromCategory(phrase.trim() || 'recipe', 'mixed_dish')
   return null
 }
 
@@ -72,6 +76,8 @@ export type ParseResult = {
   assumedCount: number
   needsConfirmCount: number
   warnings: string[]
+  /** Analytics reliability bucket — never send meal text. */
+  reliability: 'reliable' | 'assumed' | 'estimated' | 'partial' | 'empty'
 }
 
 const QTY_WORDS: Record<string, number> = {
@@ -82,6 +88,11 @@ const QTY_WORDS: Record<string, number> = {
   three: 3,
   four: 4,
   five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  ten: 10,
   half: 0.5,
   一: 1,
   二: 2,
@@ -193,8 +204,39 @@ export function extractQty(before: string): QtyHit {
   return { amount: 1, unit: 'serving', raw: '' }
 }
 
-/** Approx grams for culinary units when the food has no better cup/tbsp serving. */
+/** Map a FoodIssue qty (or text) into a QtyHit without inventing density. */
+function qtyHitFromMention(qty: MentionQty | undefined, phrase: string): QtyHit {
+  if (qty) {
+    const u = (qty.unit || 'serving').toLowerCase()
+    if (u === 'g' || u.startsWith('gram') || u === 'kg') {
+      const grams = qty.grams ?? (u === 'kg' ? qty.amount * 1000 : qty.amount)
+      return { amount: grams, unit: 'g', raw: '' }
+    }
+    if (u === 'oz' || u.startsWith('ounce')) return { amount: qty.amount, unit: 'oz', raw: '' }
+    if (u.startsWith('tbsp') || u.startsWith('table')) return { amount: qty.amount, unit: 'tbsp', raw: '' }
+    if (u.startsWith('tsp') || u.startsWith('tea')) return { amount: qty.amount, unit: 'tsp', raw: '' }
+    if (u.startsWith('cup')) return { amount: qty.amount, unit: 'cup', raw: '' }
+    return { amount: qty.amount, unit: 'serving', raw: '' }
+  }
+  // Prefix qty on the issue text itself (e.g. "100g pizza", "3 milk tea")
+  const head = phrase.trim()
+  const prefix = head.match(
+    /^(\d+(?:\.\d+)?|\d+\s*\/\s*\d+|half|one|two|three|four|five|six|seven|eight|nine|ten|a|an)\s*(g|grams?|oz|tbsp|tsp|cups?)?\s+/i,
+  )
+  if (prefix) {
+    return extractQty(prefix[0]!)
+  }
+  return extractQty(phrase)
+}
+
+/**
+ * Approx grams for culinary units when the food has no better cup/tbsp serving.
+ * Estimate foods: category defaults are per-serving; explicit grams scale from a 100 g reference.
+ */
 function unitToGrams(unit: QtyHit['unit'], amount: number, food: FoodItem): { grams: number; label: string } {
+  if (amount === 0) {
+    return { grams: 0, label: '0' }
+  }
   if (unit === 'g') {
     return { grams: amount, label: `${trimNum(amount)}g` }
   }
@@ -203,20 +245,27 @@ function unitToGrams(unit: QtyHit['unit'], amount: number, food: FoodItem): { gr
     return { grams, label: `${trimNum(amount)} oz` }
   }
   if (unit === 'tbsp') {
-    // Seeds/supplements are dense; veggies lighter — use fiber density as a hint
+    // Prefer food serving when it is already a tbsp; else light density heuristic for estimates only.
+    if (/\btbsp\b/i.test(food.serving)) {
+      const each = food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1)
+      return { grams: amount * each, label: `${trimNum(amount)} tbsp` }
+    }
     const gramsEach = food.fiber100g >= 20 ? 10 : food.fiber100g >= 8 ? 12 : 15
     return { grams: amount * gramsEach, label: `${trimNum(amount)} tbsp` }
   }
   if (unit === 'tsp') {
+    if (/\btsp\b/i.test(food.serving)) {
+      const each = food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1)
+      return { grams: amount * each, label: `${trimNum(amount)} tsp` }
+    }
     const gramsEach = food.fiber100g >= 20 ? 3 : 5
     return { grams: amount * gramsEach, label: `${trimNum(amount)} tsp` }
   }
   if (unit === 'cup') {
-    // Prefer the food's own cup serving weight when the label looks like a cup
-    const cupG = /^Oranges, raw, all commercial varieties$/.test(food.name) ? 180 : /\bcup\b/i.test(food.serving) ? food.servingG : food.servingG > 0 ? food.servingG : 240
+    const cupG = /\bcup\b/i.test(food.serving) ? food.servingG : food.servingG > 0 ? food.servingG : 240
     return { grams: amount * cupG, label: `${trimNum(amount)} cup${amount === 1 ? '' : 's'}` }
   }
-  // servings
+  // servings — for estimates, servingG is the modeled portion (often 100 g stand-in)
   return {
     grams: amount * (food.servingG || 100),
     label: amount === 1 ? food.serving : `${trimNum(amount)} × ${food.serving}`,
@@ -225,6 +274,18 @@ function unitToGrams(unit: QtyHit['unit'], amount: number, food: FoodItem): { gr
 
 function trimNum(n: number): string {
   return String(Math.round(n * 100) / 100)
+}
+
+function confidenceFor(meta: {
+  source: MatchedFood['source']
+  assumed: boolean
+  needsConfirm: boolean
+  estimateConfidence?: 'medium' | 'low'
+}): MatchedFood['confidence'] {
+  // Never mark high when identity/portion still needs confirmation.
+  if (meta.needsConfirm || meta.assumed) return meta.source === 'estimate' ? 'low' : 'medium'
+  if (meta.source === 'estimate') return meta.estimateConfidence ?? 'low'
+  return 'high'
 }
 
 export function lineFromFood(
@@ -239,8 +300,16 @@ export function lineFromFood(
   const fiberG = Math.round(((food.fiber100g * grams) / 100) * 10) / 10
   const calories = Math.round((food.calories100g * grams) / 100)
   const qty = food.servingG > 0 ? Math.round((grams / food.servingG) * 100) / 100 : qtyHit.amount
+  const assumed = meta.assumed ?? false
+  const needsConfirm = meta.needsConfirm ?? false
   const tag: MatchDisplayTag =
     meta.tag ?? (source === 'estimate' ? 'estimated' : 'database')
+  const resolvedConfidence = confidenceFor({
+    source,
+    assumed,
+    needsConfirm,
+    estimateConfidence: confidence === 'low' || confidence === 'medium' ? confidence : undefined,
+  })
   return {
     food,
     qty,
@@ -250,16 +319,21 @@ export function lineFromFood(
     matchedAlias,
     unitLabel: label,
     source,
-    confidence,
+    confidence: resolvedConfidence,
     tag,
-    assumed: meta.assumed ?? false,
-    needsConfirm: meta.needsConfirm ?? false,
+    assumed,
+    needsConfirm,
     notes: meta.notes ?? [],
   }
 }
 
+/**
+ * Category defaults are per-serving. Model 1 serving ≈ servingG grams so that
+ * explicit gram weights scale correctly without forging fiber100g from per-serving fiber.
+ */
 function foodFromEstimate(phrase: string, est: NonNullable<ReturnType<typeof estimateFiber>>): FoodItem {
   const servingG = 100
+  // Treat category fiber/kcal as the nutrients in one modeled serving (~100 g).
   const fiber100g = est.fiberG
   const calories100g = est.calories
   return {
@@ -328,6 +402,43 @@ export function summarizeMatches(matches: MatchedFood[]): Pick<
   }
 }
 
+function reliabilityOf(
+  matches: MatchedFood[],
+  unmatchedHints: string[],
+): ParseResult['reliability'] {
+  if (matches.length === 0) return 'empty'
+  if (unmatchedHints.length > 0) return 'partial'
+  if (matches.some((m) => m.source === 'estimate' || m.tag === 'estimated')) return 'estimated'
+  if (matches.some((m) => m.assumed || m.needsConfirm || m.tag === 'assumed' || m.tag === 'needs_confirm')) {
+    return 'assumed'
+  }
+  return 'reliable'
+}
+
+function mergeOrAppend(byId: Map<string, MatchedFood>, match: MatchedFood) {
+  const previous = byId.get(match.food.id)
+  if (!previous) {
+    byId.set(match.food.id, match)
+    return
+  }
+  // Always accumulate grams for repeated mentions — never drop a second intake.
+  const combined = updateMatchGrams(previous, previous.grams + match.grams)
+  combined.confidence =
+    previous.confidence === 'high' && match.confidence === 'high' ? 'high' : 'medium'
+  if (combined.needsConfirm || combined.assumed) combined.confidence = 'medium'
+  combined.assumed = previous.assumed || match.assumed
+  combined.needsConfirm = previous.needsConfirm || match.needsConfirm
+  combined.tag =
+    previous.tag === 'needs_confirm' || match.tag === 'needs_confirm'
+      ? 'needs_confirm'
+      : previous.assumed || match.assumed
+        ? 'assumed'
+        : previous.tag
+  combined.notes = [...previous.notes, ...match.notes]
+  combined.unitLabel = `${trimNum(combined.grams)}g combined`
+  byId.set(match.food.id, combined)
+}
+
 /** Resolve local food mentions; preserve the existing public result contract. */
 export function parseMeal(input: string): ParseResult {
   const { resolved, issues } = resolveMeal(input)
@@ -338,7 +449,7 @@ export function parseMeal(input: string): ParseResult {
       { amount: item.amount, unit: item.unit, raw: '' },
       item.original,
       'database',
-      item.assumed ? 'medium' : 'high',
+      item.assumed || item.needsConfirm ? 'medium' : 'high',
       {
         tag: item.tag,
         assumed: item.assumed,
@@ -346,41 +457,26 @@ export function parseMeal(input: string): ParseResult {
         notes: item.notes,
       },
     )
-    const previous = byId.get(match.food.id)
-    if (previous) {
-      const combined = updateMatchGrams(previous, previous.grams + match.grams)
-      combined.confidence = previous.confidence === 'high' && match.confidence === 'high' ? 'high' : 'medium'
-      combined.assumed = previous.assumed || match.assumed
-      combined.needsConfirm = previous.needsConfirm || match.needsConfirm
-      combined.tag =
-        previous.tag === 'needs_confirm' || match.tag === 'needs_confirm'
-          ? 'needs_confirm'
-          : previous.assumed || match.assumed
-            ? 'assumed'
-            : previous.tag
-      combined.notes = [...previous.notes, ...match.notes]
-      combined.unitLabel = `${trimNum(combined.grams)}g combined`
-      byId.set(match.food.id, combined)
-    } else byId.set(match.food.id, match)
+    mergeOrAppend(byId, match)
   }
 
   const unmatchedHints: string[] = []
   for (const issue of issues) {
-    // Safety net: never discard a mention that still has nutrient-row candidates
-    // or a category estimate (PRD — prefer confirm over empty results).
-    if (issue.kind === 'negation' || issue.kind === 'portion') {
+    if (issue.kind === 'negation') {
       unmatchedHints.push(issue.text)
       continue
     }
     const phrase = issue.text
     const normalized = phrase.toLowerCase().replace(/milktea|milk-tea/g, 'milk tea')
+    const qtyHit = qtyHitFromMention(issue.qty, phrase)
 
+    // Portion/ambiguous/spelling with candidates → keep the food; preserve mention qty.
     if (issue.candidates.length > 0) {
       const picked = pickNutrientCandidate(normalized, issue.candidates)
       if (picked) {
         const match = lineFromFood(
           picked.food,
-          { amount: 1, unit: 'serving', raw: '' },
+          qtyHit,
           phrase,
           'database',
           'medium',
@@ -391,9 +487,13 @@ export function parseMeal(input: string): ParseResult {
             notes: [issue.reason],
           },
         )
-        if (!byId.has(match.food.id)) byId.set(match.food.id, match)
+        mergeOrAppend(byId, match)
         continue
       }
+    }
+    if (issue.kind === 'portion') {
+      unmatchedHints.push(issue.text)
+      continue
     }
 
     const est =
@@ -402,12 +502,13 @@ export function parseMeal(input: string): ParseResult {
         : null
     if (est) {
       const food = foodFromEstimate(phrase, est)
+      // For estimates: serving qty scales nutrients; gram qty uses declared weight.
       const match = lineFromFood(
         food,
-        { amount: 1, unit: 'serving', raw: '' },
+        qtyHit,
         phrase,
         'estimate',
-        'low',
+        est.confidence,
         {
           tag: issue.kind === 'recipe' ? 'needs_confirm' : 'estimated',
           assumed: true,
@@ -415,7 +516,7 @@ export function parseMeal(input: string): ParseResult {
           notes: [issue.reason],
         },
       )
-      if (!byId.has(match.food.id)) byId.set(match.food.id, match)
+      mergeOrAppend(byId, match)
       continue
     }
     unmatchedHints.push(issue.text)
@@ -425,6 +526,9 @@ export function parseMeal(input: string): ParseResult {
   const warnings: string[] = []
   if (/\bwithout\b|\bw\/o\b|不含|不要|别放/.test(normalizeMealText(input))) {
     warnings.push('Negation words (e.g. “without avocado”) are only partially supported — check matched foods.')
+  }
+  if (matches.some((m) => m.assumed || m.needsConfirm)) {
+    warnings.push('Some portions are assumed or need confirmation — totals may be approximate.')
   }
 
   // Leftover hints that are still edible/drinkable (lexicon), not gibberish.
@@ -440,6 +544,8 @@ export function parseMeal(input: string): ParseResult {
         ? 'consumable_untracked'
         : 'not_food'
 
+  const reliability = reliabilityOf(matches, unmatchedHints)
+
   return {
     matches,
     ...summarizeMatches(matches),
@@ -447,6 +553,7 @@ export function parseMeal(input: string): ParseResult {
     recognizedUntracked,
     emptyKind,
     warnings,
+    reliability,
   }
 }
 

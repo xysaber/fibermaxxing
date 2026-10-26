@@ -20,7 +20,7 @@ export function buildShareText(opts: {
   ]
 
   if (opts.topFoods.length > 0) {
-    lines.push('', 'Top foods today')
+    lines.push('', 'Matched foods')
     for (const f of opts.topFoods) {
       lines.push(`· ${f.name} — ${f.fiberG}g`)
     }
@@ -34,9 +34,9 @@ export function buildShareText(opts: {
   return lines.join('\n')
 }
 
-/** Design size; pixelRatio 3 → ~1620×2880 export for sharp Stories/IG posts */
+/** Design width; height is at least Stories baseline, then grows with content. */
 const REPORT_W = 540
-const REPORT_H = 960
+const REPORT_H_MIN = 960
 
 function nextFrame() {
   return new Promise<void>((resolve) => {
@@ -50,6 +50,8 @@ function nextFrame() {
  * The live node stays at full opacity but `left: -10000px` (see CSS) so portion
  * edits always paint, without ever flashing into the viewport. Do not toggle
  * opacity/visibility on the live node during capture.
+ *
+ * Height: measure laid-out scrollHeight so long matched-food lists are not clipped.
  */
 export async function downloadReportPng(node: HTMLElement, filename = 'fibermax-daily-report.png') {
   if (document.fonts?.ready) {
@@ -59,17 +61,22 @@ export async function downloadReportPng(node: HTMLElement, filename = 'fibermax-
   const portrait = node.querySelector('.report-card-portrait') as HTMLElement | null
   const target = portrait ?? node
 
-  // Ensure latest DOM text is laid out before html-to-image clones the node.
+  // Let CSS height:auto size to content, then measure for html-to-image.
+  target.style.height = 'auto'
   void node.offsetHeight
+  void target.offsetHeight
   await nextFrame()
   await nextFrame()
+
+  const measured = Math.ceil(Math.max(target.scrollHeight, target.offsetHeight))
+  const height = Math.max(REPORT_H_MIN, measured)
 
   const dataUrl = await toPng(target, {
     cacheBust: true,
     pixelRatio: 3,
     backgroundColor: '#f3f5f9',
     width: REPORT_W,
-    height: REPORT_H,
+    height,
     style: {
       opacity: '1',
       visibility: 'visible',
@@ -79,7 +86,8 @@ export async function downloadReportPng(node: HTMLElement, filename = 'fibermax-
       top: '0',
       margin: '0',
       width: `${REPORT_W}px`,
-      height: `${REPORT_H}px`,
+      height: `${height}px`,
+      overflow: 'visible',
     },
   })
 

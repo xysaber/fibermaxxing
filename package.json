@@ -9,7 +9,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "data:usda": "node scripts/build-usda-foods.mjs",
-    "test:parser": "node --import tsx scripts/parser-regression.mjs && node --import tsx scripts/semantic-regression.mjs",
+    "test:parser": "node --import tsx scripts/parser-regression.mjs && node --import tsx scripts/semantic-regression.mjs && node --import tsx reports/2026-10-26/matching-audit.mjs",
+    "test:audit": "node --import tsx reports/2026-10-26/matching-audit.mjs",
     "test:seo": "node scripts/verify-seo.mjs",
     "test:analytics": "node scripts/analytics-regression.mjs"
   },

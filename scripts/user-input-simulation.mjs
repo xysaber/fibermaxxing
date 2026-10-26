@@ -163,7 +163,17 @@ function classifyActual(r) {
     return r.emptyKind === 'consumable_untracked' ? 'food_gap' : 'not_food'
   }
   if (r.matches.every((m) => m.source === 'estimate')) return 'estimate'
-  if (r.matches.some((m) => m.source === 'database')) return 'precise'
+  // precise ≠ merely “has a database row”: require at least one non-estimate line
+  // whose grams are finite and identity is not a specialty dump (name length sanity).
+  const preciseHit = r.matches.find(
+    (m) =>
+      m.source === 'database' &&
+      Number.isFinite(m.grams) &&
+      m.grams >= 0 &&
+      m.grams < 5000 &&
+      !/meatless|kimchi|breaded tenders/i.test(m.food.name),
+  )
+  if (preciseHit) return 'precise'
   return 'estimate'
 }
 

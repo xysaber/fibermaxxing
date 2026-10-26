@@ -869,12 +869,15 @@ a {
   visibility: visible;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
+  /* Must not clip — PNG height grows with matched-food list */
+  overflow: visible;
 }
 
 .report-card-portrait {
   width: 540px;
-  height: 960px;
+  /* Stories baseline; grow when the food list needs more room */
+  min-height: 960px;
+  height: auto;
   padding: 44px 40px 36px;
   box-sizing: border-box;
   background:
@@ -886,6 +889,7 @@ a {
   align-items: stretch;
   font-family: var(--font-body);
   border: 1px solid rgba(26, 34, 56, 0.08);
+  overflow: visible;
 }
 
 /* Export must show final ring state, not a mid-transition frame */
@@ -999,7 +1003,8 @@ a {
 }
 
 .rcp-foods-block {
-  margin-top: 28px;
+  margin-top: 24px;
+  min-height: 0;
 }
 
 .rcp-foods-label {
@@ -1018,6 +1023,30 @@ a {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.rcp-foods-block[data-dense='true'] .rcp-foods {
+  gap: 6px;
+}
+
+.rcp-foods-block[data-dense='true'] .rcp-foods li {
+  padding: 10px 14px;
+  font-size: 0.92rem;
+}
+
+.rcp-foods-block[data-count='7'] .rcp-foods,
+.rcp-foods-block[data-count='8'] .rcp-foods,
+.rcp-foods-block[data-count='9'] .rcp-foods,
+.rcp-foods-block[data-count='10'] .rcp-foods {
+  gap: 5px;
+}
+
+.rcp-foods-block[data-count='7'] .rcp-foods li,
+.rcp-foods-block[data-count='8'] .rcp-foods li,
+.rcp-foods-block[data-count='9'] .rcp-foods li,
+.rcp-foods-block[data-count='10'] .rcp-foods li {
+  padding: 8px 12px;
+  font-size: 0.88rem;
 }
 
 .rcp-foods li {
@@ -1375,11 +1404,15 @@ a {
 
 .detail-panel h3 {
   font-family: var(--font-display);
-  margin: 0 0 var(--space-3);
+  margin: 0 0 var(--space-2);
   font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
+}
+
+.detail-panel .estimate-note {
+  margin-bottom: var(--space-4);
 }
 
 .estimate-note,
@@ -1818,59 +1851,145 @@ a {
   border: 0;
 }
 
-.food-list-editable li {
-  grid-template-columns: 1fr;
+/*
+  Matched-food row — fixed 3-col grid so Weight/Fiber columns
+  line up across cards regardless of serving-label length.
+*/
+.food-list.food-list-editable > li {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  grid-template-columns: none;
+  grid-template-areas: none;
+}
+
+.food-row-head {
+  display: flex;
+  align-items: flex-start;
   gap: var(--space-2);
+  min-width: 0;
+  width: 100%;
 }
 
-@media (min-width: 720px) {
-  .food-list-editable li {
-    grid-template-columns: minmax(0, 1.4fr) auto auto auto auto;
-    align-items: center;
-  }
+.food-row-head .food-name {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-.qty-edit {
-  display: inline-flex;
+.food-row-data {
+  --food-field-gap: 0.3rem;
+  --food-input-h: 2.25rem;
+  display: grid;
+  /* Servings + Weight cluster left; spacer; Fiber right */
+  grid-template-columns: 11.5rem 5.5rem minmax(0, 1fr) 4rem;
+  column-gap: 0.65rem;
+  align-items: start;
+  width: 100%;
+}
+
+.food-row-data > .fib-result {
+  grid-column: 4;
+}
+
+.qty-edit,
+.fib-result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--food-field-gap);
+  min-width: 0;
+}
+
+.qty-edit-label,
+.fib-result-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1.2;
+  height: 1.2em;
+}
+
+.qty-edit-controls {
+  display: flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: var(--text-xs);
-  color: var(--ink-soft);
+  min-width: 0;
+  width: 100%;
+  height: var(--food-input-h);
 }
 
 .qty-edit input {
-  width: 4.2rem;
-  padding: 0.35rem 0.4rem;
-  border: 1px solid var(--line-strong);
+  width: 4.25rem;
+  height: var(--food-input-h);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 0 0.45rem;
+  border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   font-variant-numeric: tabular-nums;
   background: var(--elevated);
+  color: var(--ink-soft);
+}
+
+.food-row-data > .qty-edit:nth-child(2) input {
+  width: 100%;
+  max-width: 4.25rem;
+}
+
+.qty-edit input:focus {
+  outline: none;
+  border-color: var(--accent);
   color: var(--ink);
+  box-shadow: 0 0 0 3px var(--glow);
 }
 
 .qty-unit {
-  max-width: 9rem;
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.btn-remove {
-  border: none;
-  background: transparent;
   color: var(--ink-faint);
-  font: inherit;
   font-size: var(--text-xs);
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.25rem 0.35rem;
-  justify-self: start;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
-.btn-remove:hover {
-  color: var(--clay);
+.food-row-data > .qty-edit:nth-child(2) .qty-unit {
+  flex: 0 0 auto;
+}
+
+.fib-result .fib {
+  display: inline-flex;
+  align-items: center;
+  height: var(--food-input-h);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: var(--tracking-mono);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .food-row-data {
+    grid-template-columns: minmax(0, 1fr) 5.25rem;
+    column-gap: 0.65rem;
+    row-gap: var(--space-2);
+  }
+
+  .food-row-data > .fib-result {
+    grid-column: 1 / -1;
+  }
 }
 
 .suggestions-in-score {
@@ -2118,22 +2237,22 @@ a {
 }
 
 @media (max-width: 520px) {
-  .food-list li {
+  .food-list:not(.food-list-editable) li {
     grid-template-columns: 1fr auto;
     grid-template-areas:
       'name fib'
       'qty fib';
   }
 
-  .food-list .food-name {
+  .food-list:not(.food-list-editable) .food-name {
     grid-area: name;
   }
 
-  .food-list .qty {
+  .food-list:not(.food-list-editable) .qty {
     grid-area: qty;
   }
 
-  .food-list .fib {
+  .food-list:not(.food-list-editable) .fib {
     grid-area: fib;
     align-self: center;
   }
@@ -2154,6 +2273,10 @@ a {
   letter-spacing: var(--tracking-mono);
   color: var(--accent);
   font-variant-numeric: tabular-nums;
+}
+
+.food-list.food-list-editable .fib-result .fib {
+  font-size: var(--text-lg);
 }
 
 .empty-match {

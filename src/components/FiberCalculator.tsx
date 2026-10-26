@@ -104,9 +104,9 @@ export function FiberCalculator({
     return buildSuggestions(gap, eaten, result.estimatedCount)
   }, [hasMatches, result, gap])
 
-  const topFoods = useMemo(() => {
+  const shareFoods = useMemo(() => {
     if (!hasMatches || !result) return []
-    return [...result.matches].sort((a, b) => b.fiberG - a.fiberG).slice(0, 2)
+    return result.matches.map((m) => ({ name: m.food.name, fiberG: m.fiberG }))
   }, [hasMatches, result])
 
   function runCalc(rawText: string, source: 'own' | 'example' = 'own') {
@@ -134,10 +134,13 @@ export function FiberCalculator({
     }
     track('calculate_result', {
       ...eventParams,
-      status: parsed.matches.length === 0 ? 'no_match' : parsed.unmatchedHints.length > 0 ? 'partial' : 'success',
+      // reliability: reliable | assumed | estimated | partial | empty — never meal text
+      status: parsed.reliability === 'empty' ? 'no_match' : parsed.reliability,
       foods: parsed.matches.length,
       unmatched_count: parsed.unmatchedHints.length,
       estimated_count: parsed.estimatedCount,
+      assumed_count: parsed.assumedCount,
+      needs_confirm_count: parsed.needsConfirmCount,
     })
     setResult(parsed)
     setCopied(false)
@@ -182,7 +185,7 @@ export function FiberCalculator({
           gap,
           hasEstimates: result.estimatedCount > 0,
           dateLabel: reportDate,
-          topFoods: topFoods.map((m) => ({ name: m.food.name, fiberG: m.fiberG })),
+          topFoods: shareFoods,
         })
       : ''
 
@@ -422,72 +425,76 @@ export function FiberCalculator({
           <div className="detail-panel">
             <h3>Matched foods</h3>
             <p className="estimate-note">
-              We estimated these portions from your text. Adjust servings or grams, or remove a line —
-              totals update immediately.
+              Adjust servings or weight — fiber updates live.
             </p>
             <ul className="food-list food-list-editable">
               {result.matches.map((m, idx) => (
                 <li key={`${m.food.id}-${m.matchedAlias}-${idx}`}>
-                  <span className="food-name">
-                    {m.food.name}
-                    {m.source === 'estimate' ? (
-                      <span
-                        className="src-badge src-estimate"
-                        title="Category-based estimate — not a verified USDA line item"
-                      >
-                        Estimated
+                  <div className="food-row-head">
+                    <span className="food-name">
+                      {m.food.name}
+                      {m.source === 'estimate' ? (
+                        <span
+                          className="src-badge src-estimate"
+                          title="Category-based estimate — not a verified USDA line item"
+                        >
+                          Estimated
+                        </span>
+                      ) : (
+                        <span className="src-badge src-db" title="Matched in food database">
+                          Database
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                  <div className="food-row-data">
+                    <label className="qty-edit">
+                      <span className="qty-edit-label">Servings</span>
+                      <span className="qty-edit-controls">
+                        <input
+                          type="number"
+                          min={0}
+                          step={0.25}
+                          value={m.qty}
+                          aria-label={`Servings of ${m.food.serving}`}
+                          onChange={(e) => {
+                            const v = parseFloat(e.target.value)
+                            if (!Number.isFinite(v)) return
+                            const next = result.matches.map((row, i) =>
+                              i === idx ? updateMatchServings(row, v) : row,
+                            )
+                            patchResult(next)
+                          }}
+                        />
+                        <span className="qty-unit">× {m.food.serving}</span>
                       </span>
-                    ) : (
-                      <span className="src-badge src-db" title="Matched in food database">
-                        Database
+                    </label>
+                    <label className="qty-edit">
+                      <span className="qty-edit-label">Weight</span>
+                      <span className="qty-edit-controls">
+                        <input
+                          type="number"
+                          min={0}
+                          step={1}
+                          value={m.grams}
+                          aria-label="Weight in grams"
+                          onChange={(e) => {
+                            const v = parseFloat(e.target.value)
+                            if (!Number.isFinite(v)) return
+                            const next = result.matches.map((row, i) =>
+                              i === idx ? updateMatchGrams(row, v) : row,
+                            )
+                            patchResult(next)
+                          }}
+                        />
+                        <span className="qty-unit">g</span>
                       </span>
-                    )}
-                  </span>
-                  <label className="qty-edit">
-                    <span className="sr-only">Servings of {m.food.serving}</span>
-                    <input
-                      type="number"
-                      min={0}
-                      step={0.25}
-                      value={m.qty}
-                      onChange={(e) => {
-                        const v = parseFloat(e.target.value)
-                        if (!Number.isFinite(v)) return
-                        const next = result.matches.map((row, i) =>
-                          i === idx ? updateMatchServings(row, v) : row,
-                        )
-                        patchResult(next)
-                      }}
-                    />
-                    <span className="qty-unit">× {m.food.serving}</span>
-                  </label>
-                  <label className="qty-edit">
-                    <span className="sr-only">Grams</span>
-                    <input
-                      type="number"
-                      min={0}
-                      step={1}
-                      value={m.grams}
-                      onChange={(e) => {
-                        const v = parseFloat(e.target.value)
-                        if (!Number.isFinite(v)) return
-                        const next = result.matches.map((row, i) =>
-                          i === idx ? updateMatchGrams(row, v) : row,
-                        )
-                        patchResult(next)
-                      }}
-                    />
-                    <span className="qty-unit">g</span>
-                  </label>
-                  <span className="fib">{m.fiberG}g</span>
-                  <button
-                    type="button"
-                    className="btn-remove"
-                    aria-label={`Remove ${m.food.name}`}
-                    onClick={() => patchResult(result.matches.filter((_, i) => i !== idx))}
-                  >
-                    Remove
-                  </button>
+                    </label>
+                    <div className="fib-result">
+                      <span className="fib-result-label">Fiber</span>
+                      <span className="fib">{m.fiberG}g</span>
+                    </div>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -539,14 +546,18 @@ export function FiberCalculator({
                 <p className="rcp-status">
                   {gap <= 0 ? 'Goal reached' : `${gap}g still to go`}
                 </p>
-                {topFoods.length > 0 && (
-                  <div className="rcp-foods-block">
-                    <p className="rcp-foods-label">Top fiber sources</p>
+                {shareFoods.length > 0 && (
+                  <div
+                    className="rcp-foods-block"
+                    data-count={shareFoods.length}
+                    data-dense={shareFoods.length >= 4 ? 'true' : undefined}
+                  >
+                    <p className="rcp-foods-label">Matched foods</p>
                     <ul className="rcp-foods">
-                      {topFoods.map((m) => (
-                        <li key={`rcp-${m.food.id}`}>
-                          <span>{m.food.name}</span>
-                          <span>{m.fiberG}g</span>
+                      {shareFoods.map((f, i) => (
+                        <li key={`${f.name}-${i}`}>
+                          <span>{f.name}</span>
+                          <span>{f.fiberG}g</span>
                         </li>
                       ))}
                     </ul>

@@ -2,6 +2,13 @@ import { FOODS, type FoodItem } from '../data/foods'
 
 export type PortionUnit = 'serving' | 'g' | 'oz' | 'tbsp' | 'tsp' | 'cup'
 export type MatchDisplayTag = 'database' | 'assumed' | 'needs_confirm' | 'estimated'
+export type PortionDimension = 'mass' | 'volume' | 'count' | 'serving'
+
+export type MentionQty = {
+  amount: number
+  unit: PortionUnit | string
+  grams?: number
+}
 
 export type FoodIssue = {
   id: string
@@ -10,6 +17,8 @@ export type FoodIssue = {
   candidates: FoodItem[]
   /** Recipe / ambiguous / spelling — UI may treat as needs_confirm */
   kind?: 'recipe' | 'ambiguous' | 'spelling' | 'portion' | 'negation'
+  /** Parsed quantity for this mention — estimate/candidate paths must not invent 1 serving */
+  qty?: MentionQty
 }
 export type ResolvedFood = {
   food: FoodItem
@@ -43,21 +52,28 @@ const CONCEPTS: Concept[] = [
   { names: ['chickpea', 'garbanzo bean', 'cooked chickpea'], id: '173757', cup: 164 },
   { names: ['quinoa', 'cooked quinoa'], id: '168917', cup: 185 },
   { names: ['pear', 'raw pear'], id: '169118', count: 178, cup: 140 },
-  { names: ['almond'], id: '170567' },
+  { names: ['almond'], id: '170567', count: 1.2, cup: 95 },
   { names: ['flaxseed', 'flax seed', 'ground flaxseed'], id: '169414', tbsp: 10, tsp: 3.3 },
   { names: ['spinach', 'raw spinach'], id: '168462', cup: 30 },
   { names: ['carrot', 'raw carrot'], id: '170393', count: 61, cup: 110 },
+  { names: ['boiled carrot', 'cooked carrot', 'carrot boiled'], id: '170394', cup: 78 },
   { names: ['peanut butter', 'smooth peanut butter'], id: '172470', tbsp: 16, tsp: 5.3, cup: 258 },
   { names: ['almond butter'], id: '168588', tbsp: 16, tsp: 5.3, cup: 250 },
   { names: ['banana', 'raw banana'], id: '173944', count: 118, cup: 150 },
   { names: ['chia', 'chia seed'], id: '170554', tbsp: 10, tsp: 3 },
   { names: ['lentil', 'cooked lentil'], id: '172421', cup: 198 },
+  { names: ['raw lentil', 'lentil raw', 'dry lentil', 'uncooked lentil'], id: '172420', cup: 192 },
   { names: ['whole wheat bread', 'whole wheat toast'], id: '172689' },
-  { names: ['blueberry'], id: '171711', cup: 148 },
+  { names: ['blueberry', 'raw blueberry'], id: '171711', cup: 148 },
+  { names: ['frozen blueberry', 'blueberry frozen'], id: '173950', cup: 155 },
   { names: ['raspberry'], id: '167755', cup: 123 },
-  { names: ['strawberry'], id: '167762', cup: 144 },
+  { names: ['strawberry'], id: '167762', count: 12, cup: 144 },
   { names: ['brown rice', 'cooked brown rice'], id: '169704', cup: 202 },
   { names: ['broccoli', 'cooked broccoli'], id: '169967', cup: 78 },
+  { names: ['raw broccoli', 'broccoli raw'], id: '170379', cup: 91 },
+  { names: ['cabbage', 'cooked cabbage', 'boiled cabbage'], id: '168514', cup: 75 },
+  { names: ['raw cabbage'], id: '169335', cup: 35 },
+  { names: ['hummus'], id: '174289', cup: 246, tbsp: 15.375, tsp: 5.125 },
   { names: ['plain nonfat greek yogurt', 'nonfat greek yogurt', 'yogurt greek plain nonfat'], id: '170894' },
   { names: ['plain lowfat greek yogurt', 'lowfat greek yogurt', 'yogurt greek plain lowfat'], id: '170903' },
   { names: ['whole milk greek yogurt', 'yogurt greek plain whole milk'], id: '171304' },
@@ -68,6 +84,7 @@ const CONCEPTS: Concept[] = [
   { names: ['skim milk', 'nonfat milk', 'fat free milk', 'fatfree milk'], id: '169868', cup: 247 },
   // Meat chicken only — never meatless/fried unless the user said so.
   { names: ['chicken', 'grilled chicken', 'roasted chicken', 'baked chicken', 'chicken grilled', 'chicken roasted'], id: '172395', cup: 140 },
+  { names: ['chicken breast', 'grilled chicken breast', 'chicken breast grilled', 'roasted chicken breast'], id: '171140' },
   { names: ['fried chicken', 'chicken fried'], id: '171053', cup: 140 },
 ]
 
@@ -98,7 +115,7 @@ const RECIPE = /\b(milk tea|bubble tea|boba|smoothie|pudding|salad|soup|pizza|sa
 // Plain heat methods may use a genuinely generic cooked reference, but never
 // erase ingredient changes (breaded, meatless) or substitute raw/specific forms.
 const HEAT_METHOD = /\b(?:grilled|roasted|baked|boiled|steamed|poached)\b/
-const IDENTITY_PREPARATION = /\b(?:hard boiled|soft boiled|grilled|roasted|baked|boiled|steamed|poached|cooked|raw)\b/g
+const IDENTITY_PREPARATION = /\b(?:hard boiled|soft boiled|grilled|roasted|baked|boiled|steamed|poached|cooked|raw|frozen)\b/g
 const SPECIFIC_METHOD = /\b(?:grilled|roasted|baked|boiled|steamed|poached|fried|scrambled|braised|breaded)\b/
 function genericCooked(food: FoodItem): boolean {
   const name = normalizeFoodPhrase(food.name)
@@ -114,6 +131,9 @@ const EVIDENCE_REQUIRED = [
   /\bcanned\b/,
   /\bsmoked\b/,
   /\bflavored\b/,
+  /\b(kimchi|pickled|fermented)\b/,
+  /\b(roll|deli|tenders?)\b/,
+  /\bfrozen\b/,
 ]
 function compatible(text: string, food: FoodItem, opts: { curated?: boolean } = {}): boolean {
   const name = normalizeFoodPhrase(food.name)
@@ -125,15 +145,19 @@ function compatible(text: string, food: FoodItem, opts: { curated?: boolean } = 
     }
     if (attr.test(text) && !attr.test(name)) return false
   }
+  // Bidirectional raw ↔ cooked: never mix when the user was explicit.
+  if (/\braw\b/.test(text) && /\b(cooked|boiled|steamed|fried|roasted|baked)\b/.test(name) && !/\braw\b/.test(name)) {
+    return false
+  }
   if (/\braw\b/.test(name) && !/\braw\b/.test(text) && (/\bcooked\b/.test(text) || HEAT_METHOD.test(text) || /\bfried\b/.test(text))) {
     return false
   }
   if ((/\bcooked\b/.test(text) || HEAT_METHOD.test(text)) && /\b(raw|uncooked|dry)\b/.test(name)) return false
   // Heat methods are a family: grilled may use roasted/generic cooked; never fried.
   if (HEAT_METHOD.test(text)) {
-    if (/\bfried\b|\bbreaded\b|\bmeatless\b/.test(name)) return false
-    if (genericCooked(food) || HEAT_METHOD.test(name)) {
-      /* ok — curated cooked/roasted default for grilled etc. */
+    if (/\bfried\b|\bbreaded\b|\bmeatless\b|\broll\b|\bdeli\b/.test(name)) return false
+    if (genericCooked(food) || HEAT_METHOD.test(name) || /\bcooked\b/.test(name)) {
+      /* ok */
     } else if (!/\bcooked\b/.test(name)) {
       return false
     }
@@ -145,7 +169,7 @@ function compatible(text: string, food: FoodItem, opts: { curated?: boolean } = 
 
 /** Product forms that usually are NOT what a bare everyday word means. */
 const SPECIALTY_FORM =
-  /\b(chocolate|buttermilk|canned|evaporated|condensed|dried|dehydrated|dry|frozen|sweetened|flavored|imitation|filled|malted|goat|sheep|buffalo|human|low sodium|calcium fortified|meatless|breaded|fried|smoked|salted|pickled|fermented|powder|instant|eggnog|shake|dessert|pudding|soup|gravy|sauce|substitute|nondairy|sticks?|cured|pastrami|bologna|glutinous|wild|hash brown|scalloped|mashed|ready to eat|restaurant|fast food|uncle bens|parboiled|separable fat|breakfast strips|nuggets?|patty|patties|crumb|stuffing|flour|bran|germ|peel)\b/
+  /\b(chocolate|buttermilk|canned|evaporated|condensed|dried|dehydrated|dry|frozen|sweetened|flavored|imitation|filled|malted|goat|sheep|buffalo|human|low sodium|calcium fortified|meatless|breaded|fried|smoked|salted|pickled|fermented|kimchi|powder|instant|eggnog|shake|dessert|pudding|soup|gravy|sauce|substitute|nondairy|sticks?|cured|pastrami|bologna|glutinous|wild|hash brown|scalloped|mashed|ready to eat|restaurant|fast food|uncle bens|parboiled|separable fat|breakfast strips|nuggets?|patty|patties|crumb|stuffing|flour|bran|germ|peel|roll|deli)\b/
 /** Preparation / grade words allowed on a default everyday row. */
 const PREP_OK = new Set([
   'raw', 'cooked', 'boiled', 'baked', 'fluid', 'plain', 'fresh', 'mature', 'seed', 'seeds',
@@ -153,7 +177,8 @@ const PREP_OK = new Set([
   'all', 'flesh', 'skin', 'and', 'or', 'with', 'without', 'salt', 'added', 'vitamin', 'vitamins',
   'a', 'd', 'includes', 'foods', 'for', 'usda', 'food', 'distribution', 'program', 'the', 'of',
   'from', 'home', 'prepared', 'long', 'grain', 'medium', 'short', 'grain', 'milkfat', 'fat',
-  'content', 'unspecified', 'ground', 'retail', 'cuts', 'edible', 'portion',
+  'content', 'unspecified', 'ground', 'retail', 'cuts', 'edible', 'portion', 'broiler', 'fryers',
+  'breast', 'skinless', 'boneless', 'meat', 'only', 'roasting',
 ])
 /** Common default varieties when the query is only the commodity head. */
 const COMMON_VARIETY: Record<string, RegExp> = {
@@ -198,7 +223,7 @@ export function rankNutrientCandidates(
       const extraParts = Math.max(0, parts.length - 1)
       score -= Math.max(0, extraParts - 2) * 6
 
-      if (SPECIALTY_FORM.test(name)) score -= 45
+      if (SPECIALTY_FORM.test(name) && !SPECIALTY_FORM.test(q)) score -= 45
 
       // Unexplained contentful tokens beyond the query.
       let unexplained = 0
@@ -237,8 +262,18 @@ export function pickNutrientCandidate(
   const ranked = rankNutrientCandidates(query, foods)
   const best = ranked[0]
   if (!best) return null
+  // Reject specialty garbage when score is deeply negative and a clearer row exists — or alone.
+  if (best.score < -20 && foods.length === 1) return null
   const second = ranked[1]
   const clear = !second || best.score - second.score >= SCORE_GAP
+  // Auto-adopt only when score is not a specialty dump.
+  if (best.score < 0 && !clear) {
+    return {
+      food: best.food,
+      needsConfirm: true,
+      candidates: ranked.slice(0, 6).map(r => r.food),
+    }
+  }
   return {
     food: best.food,
     needsConfirm: foods.length > 1 || !clear,
@@ -253,35 +288,159 @@ function number(raw: string): number {
   const value = fraction.length === 2 ? Number(fraction[0]) / Number(fraction[1]) : Number(last)
   return value + (parts.length ? Number(parts[0]) : 0)
 }
-const NUMBER = '(?:\\d+\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d+(?:\\.\\d+)?|half an?\\b|half\\b|one\\b|two\\b|three\\b|four\\b|five\\b|an?\\b)'
+const NUMBER = '(?:\\d+\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d+(?:\\.\\d+)?|half an?\\b|half\\b|one\\b|two\\b|three\\b|four\\b|five\\b|six\\b|seven\\b|eight\\b|nine\\b|ten\\b|an?\\b)'
 const QUANTITY = new RegExp(`^(${NUMBER})\\s*(?:(kg|grams?|g|ounces?|oz|tablespoons?|tbsp|teaspoons?|tsp|cups?|slices?|bowls?|servings?|ml|liters?|l)(?![a-z]))?(?=\\s|$|[a-z])\\s*(?:of\\s+)?`, 'i')
-const WORD_NUMBERS: Record<string, number> = { half: .5, one: 1, two: 2, three: 3, four: 4, five: 5, a: 1, an: 1, 'half a': .5, 'half an': .5 }
+const WORD_NUMBERS: Record<string, number> = {
+  half: .5, one: 1, two: 2, three: 3, four: 4, five: 5,
+  six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
+  a: 1, an: 1, 'half a': .5, 'half an': .5,
+}
+
+/** Protect multi-word foods / sandwiches before clause splitting. */
+const COMPOUND_PHRASES = [
+  'peanut butter and jelly sandwich',
+  'peanut butter jelly sandwich',
+  'pb and j sandwich',
+  'pb&j sandwich',
+  'peanut butter',
+  'almond butter',
+  'almond milk',
+  'vegetable oil',
+  'chicken salad',
+  'egg salad',
+  'tuna salad',
+  'milk tea',
+  'bubble tea',
+  'green tea',
+  'greek yogurt',
+  'peanut butter sandwich',
+]
+
+function protectCompounds(text: string): { text: string; map: Map<string, string> } {
+  const map = new Map<string, string>()
+  let out = text
+  let i = 0
+  for (const phrase of COMPOUND_PHRASES) {
+    const re = new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+    out = out.replace(re, (match) => {
+      const key = `__cmp${i++}__`
+      map.set(key, match)
+      return key
+    })
+  }
+  return { text: out, map }
+}
+
+function restoreCompounds(text: string, map: Map<string, string>): string {
+  let out = text
+  for (const [key, value] of map) out = out.replaceAll(key, value)
+  return out
+}
+
+/**
+ * Split meal text into food mentions. Protects compounds, decimals, and binds
+ * “without X” only to the immediate object (not later “and …” foods).
+ */
+function splitMentions(text: string): { clause: string; negated: boolean }[] {
+  const { text: protectedText, map } = protectCompounds(text)
+  // Split on list separators; do not treat decimal points as boundaries.
+  const parts: string[] = []
+  const seps: string[] = []
+  const splitRe = /[,;\n+，；、]|(?<!\d)\.(?!\d)|\b(?:and|with|plus|topped with|alongside|without|no|hold the|minus)\b/gi
+  let last = 0
+  for (const m of protectedText.matchAll(splitRe)) {
+    parts.push(protectedText.slice(last, m.index))
+    seps.push(m[0]!)
+    last = (m.index ?? 0) + m[0]!.length
+  }
+  parts.push(protectedText.slice(last))
+
+  const mentions: { clause: string; negated: boolean }[] = []
+  let negateNext = false
+  for (let i = 0; i < parts.length; i++) {
+    const raw = restoreCompounds(parts[i]!.trim(), map)
+    if (i > 0) {
+      const sep = seps[i - 1]!.toLowerCase().trim()
+      // “without skin” / “no sauce” only excludes the immediate next token.
+      if (/^without$|^no$|^hold the$|^minus$/.test(sep)) negateNext = true
+      else negateNext = false
+    }
+    if (!raw) {
+      negateNext = false
+      continue
+    }
+    mentions.push({ clause: raw, negated: negateNext })
+    negateNext = false
+  }
+  return mentions
+}
+
+function pieceWeightG(food: FoodItem, concept?: (typeof concepts)[number]): number | undefined {
+  if (concept?.count != null) return concept.count
+  if (/^1 (medium|large|small|egg)\b/i.test(food.serving)) return food.servingG
+  if (/^1 slice\b/i.test(food.serving)) return food.servingG
+  return undefined
+}
+
+function servingIsCupSized(food: FoodItem): boolean {
+  return /\bcup\b/i.test(food.serving)
+}
 
 /** Local food mentions: separators survive until quantity and negation binding. */
 export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: FoodIssue[] } {
   const resolved: ResolvedFood[] = []
   const issues: FoodIssue[] = []
-  const text = input.toLowerCase().replace(/½/g, '1/2').replace(/¼/g, '1/4').replace(/¾/g, '3/4')
+  // Keep newlines as list separators; only collapse horizontal whitespace.
+  let text = input.toLowerCase().replace(/½/g, '1/2').replace(/¼/g, '1/4').replace(/¾/g, '3/4')
     .replace(/\b(?:i (?:ate|had|eat|drank|drink|had drunk)|for (?:breakfast|lunch|dinner)|breakfast:|lunch:|dinner:)\s*/g, '')
-  const clauses = text.split(/[,;\n，；、]|\b(?:and|with|plus|topped with|alongside|without|no|hold the|minus)\b/g)
-  const delimiters = [...text.matchAll(/[,;\n，；、]|\b(?:and|with|plus|topped with|alongside|without|no|hold the|minus)\b/g)]
-  let negated = false
-  clauses.forEach((raw, i) => {
-    if (i > 0) {
-      const separator = delimiters[i - 1]?.[0] ?? ''
-      if (/without|^no$|hold the|minus/.test(separator)) negated = true
-      else if (!/^and$/.test(separator)) negated = false
+    .replace(/\b(?:today|yesterday|tonight|this morning|this evening|now)\b/g, ' ')
+    .replace(/[^\S\n]+/g, ' ')
+    .replace(/ *\n */g, '\n')
+    .trim()
+
+  // Whole-clause negation: “I did not eat an apple”
+  if (/\b(?:did not|didn't|didnt|do not|don't|dont)\s+(?:eat|have|drink|ate)\b/.test(input.toLowerCase())) {
+    const rest = text
+      .replace(/\b(?:did not|didn't|didnt|do not|don't|dont)\s+(?:eat|have|drink|ate)\s*/g, '')
+      .trim()
+    if (rest) {
+      issues.push({
+        id: 'mention-neg',
+        text: rest,
+        reason: 'Negated — this food was not eaten.',
+        candidates: [],
+        kind: 'negation',
+      })
     }
-    const original = raw.trim()
+    return { resolved, issues }
+  }
+
+  const mentions = splitMentions(text)
+  mentions.forEach((mention, i) => {
+    const original = mention.clause.trim()
     if (!original) return
-    if (negated) {
-      if (i > 0 && delimiters[i - 1]?.[0] === 'and') {
-        issues.push({ id: `mention-${i}`, text: original, reason: 'The scope of “without/no” is unclear. Confirm whether this item was eaten.', candidates: [], kind: 'negation' })
+    if (mention.negated) {
+      // Modifier-only exclusions (skin, salt) — skip quietly unless it looks like a food.
+      if (/\b(skin|salt|sugar|sauce|dressing|cheese|oil|butter)\b/i.test(original) && original.split(/\s+/).length <= 2) {
+        return
       }
+      issues.push({
+        id: `mention-${i}`,
+        text: original,
+        reason: 'Excluded by “without/no”.',
+        candidates: [],
+        kind: 'negation',
+      })
       return
     }
-    const issue = (reason: string, candidates: FoodItem[] = [], kind: FoodIssue['kind'] = 'ambiguous') =>
-      issues.push({ id: `mention-${i}`, text: original, reason, candidates: candidates.slice(0, 6), kind })
+
+    const pushIssue = (
+      reason: string,
+      candidates: FoodItem[] = [],
+      kind: FoodIssue['kind'] = 'ambiguous',
+      qty?: MentionQty,
+    ) => issues.push({ id: `mention-${i}`, text: original, reason, candidates: candidates.slice(0, 6), kind, qty })
+
     let phrase = original.replace(/^[.\s]+|[.\s]+$/g, '')
     let q = phrase.match(QUANTITY)
     // Postfix weights are accepted without borrowing numbers from other mentions.
@@ -289,28 +448,41 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
       const suffix = phrase.match(/\s+(\d+(?:\.\d+)?\s*(?:g|grams?|oz|kg))$/)
       if (suffix) { phrase = `${suffix[1]} ${phrase.slice(0, suffix.index)}`; q = phrase.match(QUANTITY) }
     }
-    const amount = q ? WORD_NUMBERS[q[1]!] ?? number(q[1]!) : 1
+    const amount = q ? WORD_NUMBERS[q[1]!.toLowerCase()] ?? number(q[1]!) : 1
     const rawUnit = q?.[2]?.toLowerCase() ?? ''
     if (q) phrase = phrase.slice(q[0].length).trim()
-    if (!Number.isFinite(amount) || amount < 0 || amount > 10000) { issue('Enter a valid portion; this amount was not counted.', [], 'portion'); return }
+    if (!Number.isFinite(amount) || amount < 0 || amount > 10000) {
+      pushIssue('Enter a valid portion; this amount was not counted.', [], 'portion')
+      return
+    }
+    const qtySnapshot: MentionQty = { amount, unit: rawUnit || 'serving' }
     const normalized = normalizeFoodPhrase(phrase)
     if (!normalized || /^(plain|nonfat|medium|small|large|grilled|raw|cooked)( (plain|nonfat|medium|small|large))*$/.test(normalized)) {
-      if (normalized) issue('Name the food, not only its size or preparation.', [], 'ambiguous')
+      if (normalized) pushIssue('Name the food, not only its size or preparation.', [], 'ambiguous', qtySnapshot)
       return
     }
     if (RECIPE.test(normalized)) {
-      issue('Recipe and portion vary. Confirm volume/ingredients, or enter items separately.', [], 'recipe')
+      pushIssue('Recipe and portion vary. Confirm volume/ingredients, or enter items separately.', [], 'recipe', qtySnapshot)
       return
     }
     // A controlled concept must explain the whole food phrase. No substring wins.
-    const stripped = normalized.replace(/\b(?:medium|fresh|ripe|a|an|of|bowl|slice)\b/g, '').replace(/\s+/g, ' ').trim()
+    const stripped = normalized
+      .replace(/\b(?:medium|fresh|ripe|a|an|of|bowl|slice|small|large)\b/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
     const tokens = (value: string) => value.split(' ').sort().join(' ')
     const identity = stripped.replace(IDENTITY_PREPARATION, '').replace(/\s+/g, ' ').trim()
     const exactConcept = concepts.find(c => c.names.some(name => tokens(name) === tokens(normalized) || tokens(name) === tokens(stripped)))
-    const concept = exactConcept ?? concepts.find(c => c.names.some(name => tokens(name) === tokens(identity)) && compatible(normalized, c.food, { curated: true }))
+    const concept = exactConcept
+      ?? concepts.find(c => c.names.some(name => tokens(name) === tokens(identity)) && compatible(normalized, c.food, { curated: true }))
     let corrected = false
-    // Unique one-character spelling suggestions are proposed, never auto-counted.
-    if (!concept && stripped.length >= 5 && !stripped.includes(' ')) {
+    let food: FoodItem | undefined = concept?.food
+    let activeConcept = concept
+    let pickNeedsConfirm = false
+    let altCandidates: FoodItem[] = []
+    let spellingConfirm = false
+    // Unique one-character spelling suggestions: auto-adopt with confirm (preserve qty).
+    if (!food && stripped.length >= 5 && !stripped.includes(' ')) {
       const edits = (a: string, b: string) => {
         if (Math.abs(a.length - b.length) > 1) return false
         for (let j = 0; j < Math.max(a.length, b.length); j++) {
@@ -320,11 +492,16 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
         return true
       }
       const suggestions = concepts.filter(c => c.names.some(n => edits(stripped, n)))
-      if (suggestions.length) { issue('Possible spelling match. Confirm the food and weight before adding.', suggestions.map(c => c.food), 'spelling'); return }
+      if (suggestions.length === 1) {
+        food = suggestions[0]!.food
+        activeConcept = suggestions[0]
+        pickNeedsConfirm = true
+        spellingConfirm = true
+      } else if (suggestions.length > 1) {
+        pushIssue('Possible spelling match. Confirm the food and weight before adding.', suggestions.map(c => c.food), 'spelling', qtySnapshot)
+        return
+      }
     }
-    let food: FoodItem | undefined = concept?.food
-    let pickNeedsConfirm = false
-    let altCandidates: FoodItem[] = []
     // Bare “greek yogurt” has several fat levels — pick a default, mark confirm.
     if (!food && /^(plain )?greek yogurt$/.test(normalized)) {
       const yogurtPick = pickNutrientCandidate(
@@ -338,7 +515,7 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
       }
     }
     if (!food) {
-      const headBare = stripped.replace(/\b(?:grilled|roasted|fried|breaded|raw|cooked|dried|meatless|vegan|small|large)\b/g, '').replace(/\s+/g, ' ').trim()
+      const headBare = stripped.replace(/\b(?:grilled|roasted|fried|breaded|raw|cooked|dried|meatless|vegan|small|large|frozen|boiled)\b/g, '').replace(/\s+/g, ' ').trim()
       const pool = headIndex
         .filter(c => c.head === normalized || c.head === stripped || c.head === headBare || normalizeFoodPhrase(c.food.name) === normalized)
         .filter(c => compatible(normalized, c.food))
@@ -348,7 +525,12 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
       const candidates = pool.filter(f => (seen.has(f.id) ? false : (seen.add(f.id), true)))
       const picked = pickNutrientCandidate(normalized, candidates)
       if (!picked) {
-        issue('No reliable match. Search for the exact food, or rewrite this item.', [], 'ambiguous')
+        pushIssue('No reliable match. Search for the exact food, or rewrite this item.', [], 'ambiguous', qtySnapshot)
+        return
+      }
+      // Soft gate: do not auto-adopt when best score is a specialty dump with weak margin.
+      if (picked.needsConfirm && rankNutrientCandidates(normalized, candidates)[0]!.score < -10) {
+        pushIssue('Several forms match; confirm the exact product.', picked.candidates, 'ambiguous', qtySnapshot)
         return
       }
       food = picked.food
@@ -356,7 +538,10 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
       altCandidates = picked.candidates
     } else {
       // Defaults are explicitly curated; explicit modifiers must still agree.
-      if (!compatible(normalized, food, { curated: true })) { issue('This preparation does not match the reference food. Choose the exact form.', [food], 'ambiguous'); return }
+      if (!compatible(normalized, food, { curated: true })) {
+        pushIssue('This preparation does not match the reference food. Choose the exact form.', [food], 'ambiguous', qtySnapshot)
+        return
+      }
     }
     const notes: string[] = []
     if (FORMS[phrase] || normalized !== phrase.replace(/-/g, ' ')) corrected = true
@@ -364,41 +549,160 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
     if (pickNeedsConfirm) {
       notes.push('Several forms match this name; using the closest everyday reference. Confirm the product if needed.')
     }
+    if (spellingConfirm) {
+      notes.push(`Possible spelling match for “${phrase}”. Confirm before relying on this total.`)
+    }
+
+    // ——— Portion dimension model ———
     let unit: PortionUnit = 'serving'
     let portion = amount
-    if (/^(g|gram|kg)/.test(rawUnit)) { unit = 'g'; if (rawUnit === 'kg') portion *= 1000 }
-    else if (/^(oz|ounce)/.test(rawUnit)) unit = 'oz'
-    else if (/^(ml|l|liter)/.test(rawUnit)) { issue('Volume needs a product-specific weight. Enter grams or choose the exact product.', [food], 'portion'); return }
-    else if (/^(cup|tbsp|tablespoon|tsp|teaspoon)/.test(rawUnit)) {
+    let portionAssumed = false
+    let locked: PortionDimension | null = null
+
+    /** Identity kept with 1× default serving — never reuse amount as cup-sized servings. */
+    const assumeDefaultServings = (why: string, servings = 1) => {
+      unit = 'serving'
+      portion = amount === 0 ? 0 : Math.max(0, servings)
+      portionAssumed = true
+      pickNeedsConfirm = true
+      locked = 'serving'
+      if (amount === 0) {
+        notes.push(`${why} Zero portion — no nutrients counted.`)
+      } else {
+        notes.push(
+          `${why} Using ${portion} × default serving (≈ ${Math.round(food!.servingG * portion * 10) / 10} g). Confirm edible weight.`,
+        )
+      }
+    }
+
+    if (/^(g|gram|kg)/.test(rawUnit)) {
+      unit = 'g'
+      portion = rawUnit === 'kg' ? amount * 1000 : amount
+      locked = 'mass'
+      qtySnapshot.grams = portion
+    } else if (/^(oz|ounce)/.test(rawUnit)) {
+      unit = 'oz'
+      portion = amount
+      locked = 'mass'
+      qtySnapshot.grams = amount * 28.35
+    } else if (/^(ml|l|liter)/.test(rawUnit)) {
+      const ml = /^l(?:iter)?s?$/.test(rawUnit) ? amount * 1000 : amount
+      const cupG =
+        activeConcept?.cup ??
+        (/\bcup\b/i.test(food.serving) ? food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1) : undefined)
+      if (cupG) {
+        portion = (ml / 240) * cupG
+        unit = 'g'
+        portionAssumed = true
+        pickNeedsConfirm = true
+        locked = 'mass'
+        notes.push(`Volume ${ml} ml ≈ ${Math.round(portion * 10) / 10} g via cup density. Confirm edible weight.`)
+      } else {
+        assumeDefaultServings(`Could not convert ${rawUnit} for this food.`, 1)
+      }
+    } else if (/^(cup|tbsp|tablespoon|tsp|teaspoon)/.test(rawUnit)) {
       const household = rawUnit.startsWith('cup') ? 'cup' : /^(tbsp|table)/.test(rawUnit) ? 'tbsp' : 'tsp'
-      const ref = concept?.[household] ?? (new RegExp(`\\b${household}\\b`).test(food.serving) ? food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1) : undefined)
-      if (!ref) { issue('No reliable weight for that household unit. Confirm grams.', [food], 'portion'); return }
-      portion *= ref; unit = 'g'
-      notes.push(`Household portion: ${amount} ${rawUnit} ≈ ${Math.round(portion * 10) / 10} g.`)
+      const ref =
+        activeConcept?.[household] ??
+        (new RegExp(`\\b${household}\\b`).test(food.serving)
+          ? food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1)
+          : undefined)
+      if (ref) {
+        portion = amount * ref
+        unit = 'g'
+        locked = 'mass'
+        notes.push(`Household portion: ${amount} ${rawUnit} ≈ ${Math.round(portion * 10) / 10} g.`)
+      } else if (amount === 0) {
+        assumeDefaultServings(`No reliable ${household} weight for this food.`, 0)
+      } else {
+        // Do NOT treat tbsp count as N × cup-sized default servings.
+        assumeDefaultServings(`No reliable ${household} weight for this food.`, 1)
+      }
+    } else if (/^slice/.test(rawUnit)) {
+      if (/\bslice\b/i.test(food.serving)) {
+        unit = 'serving'
+        portion = amount
+        locked = 'count'
+      } else {
+        assumeDefaultServings('Slice weight varies for this food.', amount === 0 ? 0 : 1)
+      }
+    } else if (/^bowl/.test(rawUnit)) {
+      const cupRef =
+        activeConcept?.cup ??
+        (/\bcup\b/i.test(food.serving) ? food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1) : undefined)
+      if (cupRef) {
+        portion = amount * cupRef
+        unit = 'g'
+        portionAssumed = true
+        pickNeedsConfirm = true
+        locked = 'mass'
+        notes.push(`Bowl size varies; counted as ~${amount} cup${amount === 1 ? '' : 's'} (≈ ${Math.round(portion * 10) / 10} g). Confirm edible weight.`)
+      } else {
+        assumeDefaultServings('Bowl size varies for this food.', amount === 0 ? 0 : 1)
+      }
+    } else if (/^serving/.test(rawUnit)) {
+      unit = 'serving'
+      portion = amount
+      locked = 'serving'
+    } else if (!rawUnit) {
+      // Bare count: only multiply reviewed piece weight — never treat cup rows as “N nuts”.
+      const piece = pieceWeightG(food, activeConcept)
+      if (piece != null && (q || activeConcept?.count != null || /^1 (medium|large|small|egg)\b/i.test(food.serving))) {
+        portion = amount * piece
+        unit = 'g'
+        locked = 'count'
+        if (activeConcept?.count != null && q) {
+          notes.push(`Counted as ${amount} × ~${piece} g piece.`)
+        }
+      } else if (
+        servingIsCupSized(food) &&
+        !activeConcept?.count &&
+        q &&
+        amount !== 1 &&
+        !activeConcept?.cup
+      ) {
+        // Numbered count against a cup-only USDA row with no concept cup/piece → do not do N×cup.
+        assumeDefaultServings('A bare count does not specify this food’s piece weight.', amount === 0 ? 0 : 1)
+      } else if (
+        /^1 (medium|large|slice|egg|cup|tbsp|tsp|oz)\b/i.test(food.serving) ||
+        Boolean(activeConcept?.cup || activeConcept?.tbsp || activeConcept?.tsp)
+      ) {
+        // Everyday cup/piece defaults (milk, chicken, hummus): N × serving is intentional.
+        unit = 'serving'
+        portion = amount
+        locked = 'count'
+      } else if (q) {
+        assumeDefaultServings('A bare count does not specify this food’s portion.', amount === 0 ? 0 : 1)
+      }
     }
-    if (/^slice/.test(rawUnit) && !/\bslice\b/.test(food.serving)) {
-      issue('Slice weights vary for this food. Confirm grams.', [food], 'portion'); return
+
+    // Size adjectives only choose a size row / default — never override locked mass.
+    if (
+      locked !== 'mass' &&
+      !portionAssumed &&
+      /\b(small|large)\b/.test(normalized) &&
+      !new RegExp(`\\b${normalized.includes('small') ? 'small' : 'large'}\\b`).test(food.serving)
+    ) {
+      assumeDefaultServings('This size has no reviewed weight.', amount === 0 ? 0 : unit === 'serving' ? portion : 1)
     }
-    if (/^bowl/.test(rawUnit)) {
-      issue('Bowl sizes vary. Confirm the edible weight in grams.', [food], 'portion'); return
+
+    // Zero is zero — no Math.max floor.
+    if (amount === 0) {
+      portion = 0
     }
-    // “1 milk” / “2 eggs” / “1 bread” → N × default serving when that serving is a
-    // known household/piece unit (cup, slice, egg, …) or the concept defines one.
+
     const defaultServingCountable =
       /^1 (medium|large|slice|egg|cup|tbsp|tsp|oz)\b/i.test(food.serving) ||
-      Boolean(concept?.count || concept?.cup || concept?.tbsp || concept?.tsp)
-    if (q && !rawUnit && !defaultServingCountable && !/\bmedium\b/.test(food.serving)) {
-      issue('A count does not specify this food’s portion. Confirm grams.', [food], 'portion'); return
-    }
-    if (/\b(small|large)\b/.test(normalized) && !new RegExp(`\\b${normalized.includes('small') ? 'small' : 'large'}\\b`).test(food.serving)) {
-      issue('This size has no reviewed weight. Confirm grams.', [food], 'portion'); return
-    }
-    // Assumed when no qty, or default serving with no reviewed piece/household weight.
-    const assumed = !q || (unit === 'serving' && !defaultServingCountable)
+      Boolean(activeConcept?.count || activeConcept?.cup || activeConcept?.tbsp || activeConcept?.tsp) ||
+      locked === 'count' ||
+      locked === 'mass'
+
+    const assumed = portionAssumed || !q || (unit === 'serving' && !defaultServingCountable)
     const needsConfirm = assumed || pickNeedsConfirm
     const tag: MatchDisplayTag = pickNeedsConfirm ? 'needs_confirm' : assumed ? 'assumed' : 'database'
-    if (assumed) notes.push(`Reference portion assumed: ${Math.round(food.servingG * (unit === 'serving' ? amount : 1) * 10) / 10} g. Check the edible weight.`)
-    else if (q && !rawUnit && /\bcup\b/i.test(food.serving)) {
+    if (assumed && !portionAssumed && amount !== 0) {
+      notes.push(`Reference portion assumed: ${Math.round(food.servingG * (unit === 'serving' ? portion : 1) * 10) / 10} g. Check the edible weight.`)
+    } else if (q && !rawUnit && /\bcup\b/i.test(food.serving) && !portionAssumed && locked === 'count') {
       notes.push(`Counted as ${amount} × default cup serving (${food.servingG} g).`)
     }
     resolved.push({
