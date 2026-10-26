@@ -854,16 +854,21 @@ a {
   align-self: stretch;
 }
 
-/* opacity:0 keeps it invisible; toPng() forces opacity:1 on its internal render clone only */
+/*
+ * Park the export card off-screen at full opacity so the compositor always
+ * has a fresh paint (portion edits stay current). Never toggle it into the
+ * viewport — that flashed a white report footer over the live UI.
+ */
 .report-card-capture {
   position: fixed;
-  left: 0;
+  left: -10000px;
   top: 0;
   width: 540px;
   margin: 0;
-  opacity: 0;
+  opacity: 1;
+  visibility: visible;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
 }
 
