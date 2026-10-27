@@ -15,6 +15,9 @@ dist-ssr
 # USDA raw downloads (regenerate with npm run data:usda)
 scripts/tmp/
 
+# Local meal I/O logs (npm run meal-log:dev)
+data/meal-logs/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

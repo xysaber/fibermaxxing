@@ -37,7 +37,7 @@ export function MethodStrip() {
         </div>
       </div>
       <p className="method-limit">
-        Fibermax is for education and self-tracking only — not medical advice. Talk to a clinician
+        GetFibermaxxing is for education and self-tracking only — not medical advice. Talk to a clinician
         before major diet changes.
       </p>
     </section>

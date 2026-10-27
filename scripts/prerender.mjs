@@ -130,6 +130,31 @@ for (const page of pages) {
   console.log('prerender', `/${page.slug}`)
 }
 
+const legalPages = [
+  {
+    slug: 'privacy',
+    title: 'Privacy Policy | GetFibermaxxing',
+    description:
+      'How GetFibermaxxing collects and uses information for the free fibermaxxing calculator, including meal logs and analytics.',
+  },
+  {
+    slug: 'terms',
+    title: 'Terms of Service | GetFibermaxxing',
+    description:
+      'Terms of Service for the GetFibermaxxing fiber intake estimator and fibermaxxing calculator.',
+  },
+]
+for (const page of legalPages) {
+  const html = injectHead(shell, {
+    title: page.title,
+    description: page.description,
+    path: `/${page.slug}`,
+    faqs: [],
+  }).replace('<div id="root"></div>', `<div id="root">${renderPage(`/${page.slug}`)}</div>`)
+  writePageHtml(page.slug, html)
+  console.log('prerender', `/${page.slug}`)
+}
+
 // 404 page for Cloudflare
 {
   const html = injectHead(shell, {
@@ -157,8 +182,12 @@ const urls = [
     (p) =>
       `  <url>\n    <loc>${siteUrl}/${p.slug}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`,
   ),
+  ...legalPages.map(
+    (p) =>
+      `  <url>\n    <loc>${siteUrl}/${p.slug}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>`,
+  ),
 ]
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`
 writeFileSync(join(dist, 'sitemap.xml'), sitemap)
 writeFileSync(join(root, 'public/sitemap.xml'), sitemap)
-console.log('wrote sitemap.xml (%d urls)', pages.length + 1)
+console.log('wrote sitemap.xml (%d urls)', pages.length + 1 + legalPages.length)

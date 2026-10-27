@@ -75,7 +75,7 @@ export function SeoLandingPage() {
       <section className={useBands ? 'hero seo-split' : 'hero'}>
         <div className="hero-copy seo-landing-copy">
           <p className="seo-kicker">
-            <Link to="/">Fibermax</Link>
+            <Link to="/">GetFibermaxxing</Link>
             <span aria-hidden> / </span>
             <span>{page.slug.replace(/-/g, ' ')}</span>
           </p>

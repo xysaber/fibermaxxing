@@ -52,9 +52,9 @@ export function SiteHeader() {
         </svg>
         <span className="brand-lockup">
           <span className="brand-mark">
-            Fiber<span className="brand-max">max</span>
+            GetFiber<span className="brand-max">maxxing</span>
           </span>
-          <span className="brand-tag">Daily fibermaxxing calculator</span>
+          <span className="brand-tag">Daily fiber calculator</span>
         </span>
       </Link>
 

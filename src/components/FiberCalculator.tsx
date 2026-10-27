@@ -13,6 +13,7 @@ import {
   type ParseResult,
   type Sex,
 } from '../lib/parseMeal'
+import { buildMealLogPayload, postMealLog } from '../lib/mealLog'
 import { buildShareText, downloadReportPng } from '../lib/shareReport'
 
 const DEFAULT_EXAMPLES = [
@@ -112,7 +113,10 @@ export function FiberCalculator({
   function runCalc(rawText: string, source: 'own' | 'example' = 'own') {
     const text = rawText.trim()
     const isExample = source === 'example' || (activeExample !== null && text === activeExample.trim())
-    const eventParams = {
+    const eventParams: {
+      source: 'own' | 'example'
+      input_origin: 'typed' | 'example' | 'prefill'
+    } = {
       source: isExample ? 'example' : 'own',
       input_origin: isExample ? 'example' : initialMeal && text === initialMeal.trim() ? 'prefill' : 'typed',
     }
@@ -132,6 +136,15 @@ export function FiberCalculator({
       setMealError('not_food')
       return
     }
+    // Structured I/O log (separate from GA — may include input_text). Fire-and-forget.
+    postMealLog(
+      buildMealLogPayload({
+        inputText: text,
+        parsed,
+        source: eventParams.source,
+        inputOrigin: eventParams.input_origin,
+      }),
+    )
     track('calculate_result', {
       ...eventParams,
       // reliability: reliable | assumed | estimated | partial | empty — never meal text
@@ -530,7 +543,7 @@ export function FiberCalculator({
               <div className="report-card-portrait">
                 <div className="rcp-top">
                   <div className="rcp-brand">
-                    Fiber<span>max</span>
+                    GetFiber<span>maxxing</span>
                   </div>
                   <div className="rcp-date">{reportDate}</div>
                 </div>

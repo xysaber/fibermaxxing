@@ -6,10 +6,15 @@
 
 ```bash
 npm install
-npm run dev
+npm run meal-log:dev   # terminal 1 — local I/O log API (JSONL under data/meal-logs/)
+npm run dev            # terminal 2 — Vite (proxies /api → :8788)
 ```
 
 Open the local URL Vite prints (usually `http://localhost:5173`).
+
+With `VITE_MEAL_LOG_ENABLED=true` (set in `.env.development`), each Calculate posts **input text + structured result** to `/api/meal-logs`. Production builds leave this off until the flag is set at build time and R2 is bound in `wrangler.toml`. Smoke: `npm run test:meal-log`.
+
+**操作手册（本地验收 / 上线准备 / 生产回测）：** [docs/meal-io-logging.md](./docs/meal-io-logging.md)
 
 ## What’s in the MVP
 

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "meal-log:dev": "node scripts/meal-log-local-server.mjs",
     "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
@@ -12,7 +13,8 @@
     "test:parser": "node --import tsx scripts/parser-regression.mjs && node --import tsx scripts/semantic-regression.mjs && node --import tsx reports/2026-10-26/matching-audit.mjs",
     "test:audit": "node --import tsx reports/2026-10-26/matching-audit.mjs",
     "test:seo": "node scripts/verify-seo.mjs",
-    "test:analytics": "node scripts/analytics-regression.mjs"
+    "test:analytics": "node scripts/analytics-regression.mjs",
+    "test:meal-log": "node scripts/meal-log-smoke.mjs && node --import tsx scripts/meal-log-dedupe-smoke.mjs"
   },
   "dependencies": {
     "html-to-image": "^1.11.13",

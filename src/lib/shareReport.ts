@@ -11,7 +11,7 @@ export function buildShareText(opts: {
 }): string {
   const status = opts.gap <= 0 ? 'Goal reached' : `${opts.gap}g still to go`
   const lines = [
-    'Fibermax',
+    'GetFibermaxxing',
     opts.dateLabel,
     'Daily fiber report',
     '',
