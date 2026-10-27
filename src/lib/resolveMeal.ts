@@ -60,7 +60,7 @@ const CONCEPTS: Concept[] = [
   { names: ['peanut butter', 'smooth peanut butter'], id: '172470', tbsp: 16, tsp: 5.3, cup: 258 },
   { names: ['almond butter'], id: '168588', tbsp: 16, tsp: 5.3, cup: 250 },
   { names: ['banana', 'raw banana'], id: '173944', count: 118, cup: 150 },
-  { names: ['chia', 'chia seed'], id: '170554', tbsp: 10, tsp: 3 },
+  { names: ['chia', 'chia seed'], id: '170554', tbsp: 12, tsp: 4 },
   { names: ['lentil', 'cooked lentil'], id: '172421', cup: 198 },
   { names: ['raw lentil', 'lentil raw', 'dry lentil', 'uncooked lentil'], id: '172420', cup: 192 },
   { names: ['whole wheat bread', 'whole wheat toast'], id: '172689' },

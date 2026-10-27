@@ -216,12 +216,12 @@
     "publish": true,
     "layout": "bands",
     "title": "Chia Seeds Fiber (per Tbsp) + Daily Calculator",
-    "description": "Chia seeds have about 3.4g fiber per tablespoon (~10g) using USDA chia fiber density on this site. Estimate your full day with the free calculator.",
+    "description": "Chia seeds have about 4.1g fiber per tablespoon (~12g) using USDA chia fiber density on this site. Estimate your full day with the free calculator.",
     "h1": "How much fiber is in chia seeds?",
     "answer": {
-      "value": "~3.4",
+      "value": "~4.1",
       "unit": "g",
-      "detail": "fiber per 1 tablespoon dried chia (≈10 g)",
+      "detail": "fiber per 1 tablespoon dried chia (≈12 g)",
       "note": "Scaled from USDA chia fiber density on this site"
     },
     "intro": [
@@ -231,8 +231,8 @@
     ],
     "facts": [
       {
-        "label": "1 tbsp (≈10g)",
-        "value": "~3.4g",
+        "label": "1 tbsp (≈12g)",
+        "value": "~4.1g",
         "note": "USDA Seeds, chia seeds, dried"
       },
       {
@@ -254,7 +254,7 @@
     "faqs": [
       {
         "q": "How much fiber is in a tablespoon of chia?",
-        "a": "About 3.4g on this site when we treat 1 tbsp as ~10g of dried chia seeds. Edit grams after matching if your scale reading differs."
+        "a": "About 4.1g on this site when we treat 1 tbsp as ~12g of dried chia seeds. Edit grams after matching if your scale reading differs."
       },
       {
         "q": "Chia vs psyllium?",
@@ -270,7 +270,7 @@
       },
       {
         "q": "How much fiber is in two tablespoons?",
-        "a": "About 6.9 g if the two tablespoons weigh 20 g in total. Use your package serving weight or a scale if your scoop differs."
+        "a": "About 8.3 g if the two tablespoons weigh 24 g in total. Use your package serving weight or a scale if your scoop differs."
       }
     ],
     "related": [
@@ -282,8 +282,8 @@
       {
         "heading": "How much fiber is in a tablespoon of chia seeds?",
         "paragraphs": [
-          "The dried chia entry in this site’s USDA-based dataset contains about 34.4 g of fiber per 100 g. Using a 10 g tablespoon, that works out to approximately 3.4 g of fiber; two such tablespoons provide about 6.9 g.",
-          "A tablespoon is a volume measure, so the weight depends on the scoop. A package may use a different gram amount for its serving. If your tablespoon weighs 12 g, for example, the same reference density gives about 4.1 g of fiber.",
+          "The dried chia entry in this site’s USDA-based dataset contains about 34.4 g of fiber per 100 g. Using a 12 g tablespoon, that works out to approximately 4.1 g of fiber; two such tablespoons provide about 8.3 g.",
+          "A tablespoon is a volume measure, so the weight depends on the scoop. If your tablespoon weighs closer to 10 g, the same density gives about 3.4 g of fiber. Enter grams when you know the weight.",
           "For a repeatable estimate, weigh the seeds and enter grams. The 1 oz reference is 28.35 g of seeds and provides about 9.8 g of fiber; it is not the same portion as one tablespoon."
         ]
       },
@@ -299,14 +299,14 @@
         "heading": "Ways to add chia to breakfast",
         "paragraphs": [
           "Start with a measured amount mixed into oatmeal, yogurt, or a smoothie. Name the seeds separately from the base and fruit so the calculator can estimate each ingredient.",
-          "Try 1 cup cooked oatmeal, 10 g chia seeds, and 1/2 cup blueberries. Using this site’s reference portions, the combination supplies roughly 9 g of fiber; your oat portion and berry weight can change the result.",
+          "Try 1 cup cooked oatmeal, 1 tbsp chia seeds, and 1/2 cup blueberries. Using this site’s reference portions, the combination supplies roughly 10 g of fiber; your oat portion and berry weight can change the result.",
           "For a pudding-style breakfast, try 20 g chia seeds with 1/2 cup raspberries and plain nonfat Greek yogurt. The seeds and berries supply roughly 11 g of fiber together. Adjust the liquid and preparation to your recipe."
         ]
       },
       {
         "heading": "Chia as part of your daily fiber intake",
         "paragraphs": [
-          "One 10 g tablespoon contributes about 14% of a 25 g reference day. It can be a useful addition, but beans, whole grains, vegetables, and fruit offer other ways to build the rest of the total.",
+          "One 12 g tablespoon contributes about 16% of a 25 g reference day. It can be a useful addition, but beans, whole grains, vegetables, and fruit offer other ways to build the rest of the total.",
           "Increase portions gradually and include fluids. Adding several large servings of seeds at once can be uncomfortable, especially when your usual fiber intake is low.",
           "Chia and psyllium are different foods with different serving sizes. Do not replace one scoop with another by volume or assume the same fiber total; use the specific product label for a supplement."
         ]
@@ -320,7 +320,7 @@
     "publish": true,
     "layout": "bands",
     "title": "High Fiber Breakfast Ideas (with Portions) + Calculator",
-    "description": "Three high-fiber breakfast ideas with measured portions: an oat bowl (~9 g), chia pudding (~11 g), and avocado toast with fruit (~10 g). Estimate your own meal.",
+    "description": "Three high-fiber breakfast ideas with measured portions: an oat bowl (~10 g), chia pudding (~11 g), and avocado toast with fruit (~10 g). Estimate your own meal.",
     "h1": "High fiber breakfast ideas",
     "intro": [
       "Build breakfast around a whole grain, seeds, or fruit, then measure the portions you actually use. These three combinations offer a practical starting point for the calculator.",
@@ -330,8 +330,8 @@
     "facts": [
       {
         "label": "Oat bowl",
-        "value": "~9g",
-        "note": "1 cup cooked oatmeal + 10 g chia + ½ cup blueberries"
+        "value": "~10g",
+        "note": "1 cup cooked oatmeal + 1 tbsp chia (≈12 g) + ½ cup blueberries"
       },
       {
         "label": "Chia pudding",
@@ -347,9 +347,9 @@
     "defaultSex": "female",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "1 cup cooked oatmeal, 10g chia seeds, 1/2 cup blueberries",
+    "defaultMeal": "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
     "examples": [
-      "1 cup cooked oatmeal, 10g chia seeds, 1/2 cup blueberries",
+      "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
       "20g chia seeds, 1/2 cup raspberries, 170g yogurt greek plain nonfat",
       "75g avocado, 1 slice whole-wheat bread, 130g raw orange",
       "1 cup cooked oatmeal, 1 medium pear"
@@ -361,7 +361,7 @@
       },
       {
         "q": "How are the example totals calculated?",
-        "a": "They add rounded reference amounts for the listed portions: about 9 g for the oat bowl, 11 g for chia and raspberries, and 10 g for the savory plate. Plain nonfat Greek yogurt and eggs add no fiber in these examples."
+        "a": "They add rounded reference amounts for the listed portions: about 10 g for the oat bowl, 11 g for chia and raspberries, and 10 g for the savory plate. Plain nonfat Greek yogurt and eggs add no fiber in these examples."
       },
       {
         "q": "How many grams should breakfast provide?",
@@ -382,16 +382,16 @@
       "how-much-fiber-per-day"
     ],
     "answer": {
-      "value": "~9–11",
+      "value": "~10–11",
       "unit": "g",
       "detail": "fiber in the three breakfast combinations below",
       "note": "Illustrative meals, not an official breakfast target"
     },
     "sections": [
       {
-        "heading": "Oatmeal, chia, and blueberries: about 9 g",
+        "heading": "Oatmeal, chia, and blueberries: about 10 g",
         "paragraphs": [
-          "Combine 1 cup cooked oatmeal, 10 g chia seeds, and 1/2 cup blueberries. The reference contributions are about 4 g from the oatmeal, 3.4 g from chia, and 1.8 g from blueberries, or roughly 9 g altogether.",
+          "Combine 1 cup cooked oatmeal, 1 tbsp chia seeds (≈12 g), and 1/2 cup blueberries. The reference contributions are about 4 g from the oatmeal, 4.1 g from chia, and 1.8 g from blueberries, or roughly 10 g altogether.",
           "Measure oatmeal after cooking for this example. A cup of dry oats contains a different amount of grain, so entering a dry cup against a cooked entry will give a misleading estimate.",
           "Swap the fruit to match your kitchen, but recalculate rather than carrying over the same total. A banana, pear, or serving of raspberries has its own portion weight and fiber density."
         ]
@@ -416,7 +416,7 @@
         "heading": "Make a breakfast that fits your day",
         "paragraphs": [
           "Choose one starting combination and adjust a single ingredient at a time. A smaller portion of chia, a different fruit, or an extra slice of bread changes the total without requiring a completely new breakfast.",
-          "Include the rest of your meals when comparing with a daily goal. For example, a 9 g breakfast is about 36% of a 25 g reference day, leaving approximately 16 g to obtain across lunch, dinner, and snacks.",
+          "Include the rest of your meals when comparing with a daily goal. For example, a 10 g breakfast is about 40% of a 25 g reference day, leaving approximately 15 g to obtain across lunch, dinner, and snacks.",
           "If these examples contain much more fiber than your usual breakfast, start with smaller portions and increase gradually. A consistent routine with enough fluids is more useful than forcing a large serving in one meal."
         ]
       }

@@ -250,7 +250,8 @@ function unitToGrams(unit: QtyHit['unit'], amount: number, food: FoodItem): { gr
       const each = food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1)
       return { grams: amount * each, label: `${trimNum(amount)} tbsp` }
     }
-    const gramsEach = food.fiber100g >= 20 ? 10 : food.fiber100g >= 8 ? 12 : 15
+    // Dense seeds default ~12 g/tbsp (chia concept also sets 12 g explicitly in resolveMeal).
+    const gramsEach = food.fiber100g >= 8 ? 12 : 15
     return { grams: amount * gramsEach, label: `${trimNum(amount)} tbsp` }
   }
   if (unit === 'tsp') {
@@ -258,7 +259,7 @@ function unitToGrams(unit: QtyHit['unit'], amount: number, food: FoodItem): { gr
       const each = food.servingG / (Number(food.serving.match(/^[\d.]+/)?.[0]) || 1)
       return { grams: amount * each, label: `${trimNum(amount)} tsp` }
     }
-    const gramsEach = food.fiber100g >= 20 ? 3 : 5
+    const gramsEach = food.fiber100g >= 20 ? 4 : 5
     return { grams: amount * gramsEach, label: `${trimNum(amount)} tsp` }
   }
   if (unit === 'cup') {

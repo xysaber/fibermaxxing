@@ -14,7 +14,7 @@ export const HOME_GUIDES = [
   {
     to: '/chia-seeds',
     title: 'Chia seeds fiber',
-    blurb: '~3.4g per tablespoon, scaled from USDA chia density.',
+    blurb: '~4.1g per tablespoon (≈12 g), scaled from USDA chia density.',
   },
   {
     to: '/high-fiber-breakfast',
