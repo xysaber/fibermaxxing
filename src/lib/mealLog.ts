@@ -5,7 +5,7 @@ const CLIENT_KEY = 'fibermax_client_id'
 const TEST_FLAG_KEY = 'fibermax_is_test'
 
 export type MealLogSource = 'own' | 'example'
-export type MealLogInputOrigin = 'typed' | 'example' | 'prefill'
+export type MealLogInputOrigin = 'typed' | 'example' | 'prefill' | 'starter'
 
 export type MealLogMatch = {
   food_id: string

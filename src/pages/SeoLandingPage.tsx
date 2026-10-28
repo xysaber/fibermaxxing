@@ -1,5 +1,5 @@
 import { useEffect, type MouseEvent } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { DocumentMeta } from '../components/DocumentMeta'
 import { FaqBlock } from '../components/FaqBlock'
 import { FiberCalculator } from '../components/FiberCalculator'
@@ -44,10 +44,9 @@ export function SeoLandingPage() {
     .map((s) => SEO_PAGE_MAP[s])
     .filter((p): p is NonNullable<typeof p> => Boolean(p?.publish))
 
-  // Bands is the SEO default; set layout: "default" to keep the old stacked-left copy.
   const useBands = page.layout !== 'default'
-  const [heroIntro, ...moreIntros] = page.intro
   const facts = page.facts ?? []
+  const heroLede = page.intro?.[0]?.trim() || null
 
   const relatedCards = [
     ...related.map((r) => ({
@@ -74,48 +73,23 @@ export function SeoLandingPage() {
 
       <section className={useBands ? 'hero seo-split' : 'hero'}>
         <div className="hero-copy seo-landing-copy">
-          <p className="seo-kicker">
-            <Link to="/">GetFibermaxxing</Link>
-            <span aria-hidden> / </span>
-            <span>{page.slug.replace(/-/g, ' ')}</span>
-          </p>
           <h1>{page.h1}</h1>
 
-          {useBands ? (
-            <>
-              {page.answer ? <SeoAnswer answer={page.answer} /> : null}
-              {heroIntro ? <p className="lede">{heroIntro}</p> : null}
-              <a
-                className="hero-method-link hero-calc-link"
-                href="#calculator"
-                onClick={focusCalculator}
-              >
-                {page.calculatorCta ?? 'Calculate this bowl'}
-              </a>
-            </>
-          ) : (
-            <>
-              {page.answer ? <SeoAnswer answer={page.answer} /> : null}
-              {page.intro.map((para) => (
-                <p key={para.slice(0, 48)} className="lede">
-                  {para}
-                </p>
-              ))}
-              {facts.length > 0 ? (
-                <InfoBand tiles={facts} ariaLabel="Key figures" />
-              ) : null}
-              <a
-                className="hero-method-link"
-                href="#calculator"
-                onClick={focusCalculator}
-              >
-                {page.calculatorCta ?? 'Calculate this bowl'}
-              </a>
-            </>
-          )}
+          {page.answer ? <SeoAnswer answer={page.answer} showNote={false} /> : null}
+
+          {heroLede ? <p className="lede">{heroLede}</p> : null}
+
+          <a
+            className={useBands ? 'hero-method-link hero-calc-link' : 'hero-method-link'}
+            href="#calculator"
+            onClick={focusCalculator}
+          >
+            {page.calculatorCta ?? 'Estimate this meal'}
+          </a>
         </div>
 
         <FiberCalculator
+          key={page.slug}
           initialSex={page.defaultSex}
           initialAge={page.defaultAge}
           initialMode={page.defaultMode}
@@ -125,13 +99,8 @@ export function SeoLandingPage() {
         />
       </section>
 
-      {useBands && (moreIntros.length > 0 || facts.length > 0) ? (
-        <InfoBand
-          id="seo-facts"
-          ariaLabel="Key figures"
-          notes={moreIntros}
-          tiles={facts}
-        />
+      {facts.length > 0 ? (
+        <InfoBand id="seo-facts" ariaLabel="Key figures" tiles={facts} />
       ) : null}
 
       {page.sections && page.sections.length > 0 ? (

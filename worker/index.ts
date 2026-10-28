@@ -7,6 +7,8 @@ export interface Env {
   MEAL_LOGS?: R2Bucket
   /** "on" | "off" — default on when unset */
   MEAL_LOG_INGEST?: string
+  /** If set, enables GET /api/meal-logs/list with header X-Meal-Log-Admin */
+  MEAL_LOG_ADMIN_KEY?: string
 }
 
 const MAX_BODY = 64 * 1024
@@ -15,7 +17,7 @@ const MAX_HINTS = 40
 const MAX_MATCHES = 40
 const MAX_RATE_PER_MIN = 60
 const ALLOWED_SOURCES = new Set(['own', 'example'])
-const ALLOWED_ORIGINS = new Set(['typed', 'example', 'prefill'])
+const ALLOWED_ORIGINS = new Set(['typed', 'example', 'prefill', 'starter'])
 const EVENT_ID_RE = /^[a-zA-Z0-9_-]{8,80}$/
 const CLIENT_ID_RE = /^[a-zA-Z0-9_-]{8,80}$/
 
@@ -99,7 +101,7 @@ function sanitize(raw: unknown): { ok: true; value: StoredLog } | { ok: false; e
     return { ok: false, error: 'source must be own|example' }
   }
   if (typeof b.input_origin !== 'string' || !ALLOWED_ORIGINS.has(b.input_origin)) {
-    return { ok: false, error: 'input_origin must be typed|example|prefill' }
+    return { ok: false, error: 'input_origin must be typed|example|prefill|starter' }
   }
   if (typeof b.input_text !== 'string') return { ok: false, error: 'input_text required' }
   if (typeof b.reliability !== 'string' || b.reliability.length > 32) {
@@ -219,6 +221,29 @@ async function handleMealLog(request: Request, env: Env): Promise<Response> {
   })
 }
 
+async function handleMealLogList(request: Request, env: Env): Promise<Response> {
+  const admin = (env.MEAL_LOG_ADMIN_KEY || '').trim()
+  if (!admin || request.headers.get('x-meal-log-admin') !== admin) {
+    return new Response('Not Found', { status: 404 })
+  }
+  if (!env.MEAL_LOGS) {
+    return Response.json({ ok: false, error: 'meal logs storage not configured' }, { status: 503 })
+  }
+  const url = new URL(request.url)
+  const prefix = url.searchParams.get('prefix') || 'meal-logs/'
+  if (!prefix.startsWith('meal-logs/') || prefix.includes('..')) {
+    return Response.json({ ok: false, error: 'prefix must start with meal-logs/' }, { status: 400 })
+  }
+  const keys: string[] = []
+  let cursor: string | undefined
+  do {
+    const page = await env.MEAL_LOGS.list({ prefix, cursor, limit: 1000 })
+    for (const obj of page.objects) keys.push(obj.key)
+    cursor = page.truncated ? page.cursor : undefined
+  } while (cursor)
+  return Response.json({ ok: true, prefix, count: keys.length, keys })
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url)
@@ -229,6 +254,9 @@ export default {
         ingest_enabled: ingestEnabled(env),
         note: 'r2_bound does not prove writes succeed — verify with a real POST + object get',
       })
+    }
+    if (url.pathname === '/api/meal-logs/list' && request.method === 'GET') {
+      return handleMealLogList(request, env)
     }
     if (url.pathname === '/api/meal-logs' && request.method === 'POST') {
       return handleMealLog(request, env)

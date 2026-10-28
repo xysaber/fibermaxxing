@@ -7,9 +7,7 @@
     "description": "How much fiber should you eat per day? See commonly cited U.S. Adequate Intake levels by sex and age, then estimate today’s intake with a free calculator.",
     "h1": "How much fiber should you eat per day?",
     "intro": [
-      "Start with the reference for your age and sex, then estimate the meals you actually ate. The calculator adds up fiber from food and shows how that total compares with your daily target.",
-      "U.S. Adequate Intake values are population references based on about 14 g of fiber per 1,000 calories. They are not a personal prescription or a requirement to reach the same number at every meal.",
-      "Fibermaxxing mode is this site’s optional stretch target: Standard × 1.5, capped at 50 g. It is not an official dietary recommendation."
+      "Start with the reference for your age and sex, then estimate the meals you actually ate. The calculator adds up fiber from food and shows how that total compares with your daily target."
     ],
     "facts": [
       {
@@ -38,10 +36,10 @@
     "defaultMode": "standard",
     "defaultMeal": "I ate 2 eggs, 1 bowl of oatmeal, and an apple",
     "examples": [
-      "Breakfast oatmeal with berries; lunch lentil salad; an apple",
-      "Eggs, avocado toast, black beans, broccoli, and brown rice",
-      "Greek yogurt with chia and raspberries; chickpea bowl for dinner",
-      "Large salad with hummus and a pear; leftover brown rice and beans"
+      "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
+      "2 eggs, 1 bowl of oatmeal, and an apple",
+      "1 cup cooked lentils, broccoli, and brown rice",
+      "20g chia seeds, 1/2 cup raspberries, 170g yogurt greek plain nonfat"
     ],
     "faqs": [
       {
@@ -66,9 +64,10 @@
       }
     ],
     "related": [
+      "what-is-fibermaxxing",
+      "fibermaxxing-foods",
       "oatmeal",
-      "chia-seeds",
-      "high-fiber-breakfast"
+      "chia-seeds"
     ],
     "answer": {
       "value": "25–38",
@@ -82,7 +81,9 @@
         "paragraphs": [
           "For adults ages 19–50, this calculator uses U.S. Adequate Intake references of 25 g per day for women and 38 g for men. At ages 51 and over, the references are 21 g and 30 g respectively. Choose your age group and sex in the calculator to update the comparison.",
           "These values describe typical population needs. Energy intake, life stage, and individual circumstances can change the appropriate goal. Pregnancy and breastfeeding have separate reference values that this calculator does not model.",
-          "A nutrition label’s Daily Value is a different reference from an age-and-sex Adequate Intake. When comparing products, use grams of dietary fiber per serving and the actual amount eaten."
+          "A nutrition label’s Daily Value is a different reference from an age-and-sex Adequate Intake. When comparing products, use grams of dietary fiber per serving and the actual amount eaten.",
+          "U.S. Adequate Intake values are population references based on about 14 g of fiber per 1,000 calories. They are not a personal prescription or a requirement to reach the same number at every meal.",
+          "Fibermaxxing mode is this site’s optional stretch target: Standard × 1.5, capped at 50 g. It is not an official dietary recommendation."
         ]
       },
       {
@@ -111,7 +112,7 @@
       }
     ],
     "calculatorCta": "Estimate your daily intake",
-    "articleCta": "Compare your day in the calculator"
+    "articleCta": "Estimate your day in the calculator"
   },
   {
     "slug": "oatmeal",
@@ -127,9 +128,7 @@
       "note": "USDA-based reference on this site"
     },
     "intro": [
-      "Dry vs cooked weight and toppings can move the number. Estimate your bowl — or a full day — in the calculator, then edit servings or grams to match what you ate.",
-      "Dry oats are denser per cup — weigh in grams, or log a prepared bowl as cooked oatmeal.",
-      "Easy boost: chia, flax, berries, or pear often add more fiber than the oats alone."
+      "Dry vs cooked weight and toppings can move the number. Estimate your bowl — or a full day — in the calculator, then edit servings or grams to match what you ate."
     ],
     "facts": [
       {
@@ -147,9 +146,11 @@
       {
         "heading": "How much fiber is in a cup of oatmeal?",
         "paragraphs": [
-          "People usually mean a prepared cup when they ask how much fiber is in oatmeal. On Fibermax, cooked oatmeal is referenced at about 4 g of fiber per 1 cup (234 g). That is a typical USDA-style cooked serving, not a brand promise — water ratio, oat type, and package labels can shift the number.",
+          "People usually mean a prepared cup when they ask how much fiber is in oatmeal. On GetFibermaxxing, cooked oatmeal is referenced at about 4 g of fiber per 1 cup (234 g). That is a typical USDA-style cooked serving, not a brand promise — water ratio, oat type, and package labels can shift the number.",
           "If you only know a dry scoop, do not assume one dry cup equals one cooked cup. Dry oats pack more grain into the same volume. Prefer a kitchen scale: enter the dry weight in grams, or cook the oats and log cooked oatmeal with the bowl size you ate.",
-          "Instant packets vary widely. Some are plain oats; others add sugar or dried fruit. When the label lists fiber per packet, use that weight in the calculator after matching the closest oat entry, then edit grams."
+          "Instant packets vary widely. Some are plain oats; others add sugar or dried fruit. When the label lists fiber per packet, use that weight in the calculator after matching the closest oat entry, then edit grams.",
+          "Dry oats are denser per cup — weigh in grams, or log a prepared bowl as cooked oatmeal.",
+          "Easy boost: chia, flax, berries, or pear often add more fiber than the oats alone."
         ]
       },
       {
@@ -182,10 +183,10 @@
     "defaultMode": "standard",
     "defaultMeal": "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
     "examples": [
-      "1 cup cooked oatmeal with blueberries",
-      "Oatmeal bowl with chia seeds, banana, and almond butter",
-      "Overnight oats with raspberries and flaxseeds",
-      "Steel-cut oatmeal, pear, and a spoon of peanut butter"
+      "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
+      "1 cup cooked oatmeal, 1/2 cup blueberries",
+      "1 cup cooked oatmeal, 1 banana, 1 tbsp peanut butter",
+      "1 cup cooked oatmeal, 1 medium pear, 1 tbsp chia seeds"
     ],
     "faqs": [
       {
@@ -208,8 +209,11 @@
     "related": [
       "chia-seeds",
       "high-fiber-breakfast",
+      "fibermaxxing-foods",
       "how-much-fiber-per-day"
-    ]
+    ],
+    "calculatorCta": "Estimate this bowl",
+    "articleCta": "Estimate your bowl in the calculator"
   },
   {
     "slug": "chia-seeds",
@@ -225,9 +229,7 @@
       "note": "Scaled from USDA chia fiber density on this site"
     },
     "intro": [
-      "A tablespoon goes a long way. Log chia pudding, smoothies, or sprinkled seeds with the rest of your meals, then adjust grams if your scoop differs.",
-      "Increase gradually and drink water — chia is dense fiber, not a one-day catch-up plan.",
-      "Weigh the dry seeds before soaking for the clearest estimate. Water changes the pudding’s weight and volume, but does not add fiber."
+      "A tablespoon goes a long way. Log chia pudding, smoothies, or sprinkled seeds with the rest of your meals, then adjust grams if your scoop differs."
     ],
     "facts": [
       {
@@ -246,10 +248,10 @@
     "defaultMode": "standard",
     "defaultMeal": "20g chia seeds, 1/2 cup raspberries, 170g yogurt greek plain nonfat",
     "examples": [
-      "Chia pudding with raspberries and Greek yogurt",
-      "Smoothie with 1 tbsp chia seeds, spinach, and banana",
-      "Oatmeal topped with 2 tbsp chia seeds",
-      "1 tbsp chia seeds in water, salad, and an apple"
+      "20g chia seeds, 1/2 cup raspberries, 170g yogurt greek plain nonfat",
+      "1 tbsp chia seeds, 1 banana, 1 cup spinach",
+      "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
+      "1 tbsp chia seeds, 1 apple, 1 cup broccoli"
     ],
     "faqs": [
       {
@@ -275,7 +277,8 @@
     ],
     "related": [
       "oatmeal",
-      "high-fiber-breakfast",
+      "fibermaxxing-smoothie",
+      "fibermaxxing-foods",
       "how-much-fiber-per-day"
     ],
     "sections": [
@@ -284,7 +287,9 @@
         "paragraphs": [
           "The dried chia entry in this site’s USDA-based dataset contains about 34.4 g of fiber per 100 g. Using a 12 g tablespoon, that works out to approximately 4.1 g of fiber; two such tablespoons provide about 8.3 g.",
           "A tablespoon is a volume measure, so the weight depends on the scoop. If your tablespoon weighs closer to 10 g, the same density gives about 3.4 g of fiber. Enter grams when you know the weight.",
-          "For a repeatable estimate, weigh the seeds and enter grams. The 1 oz reference is 28.35 g of seeds and provides about 9.8 g of fiber; it is not the same portion as one tablespoon."
+          "For a repeatable estimate, weigh the seeds and enter grams. The 1 oz reference is 28.35 g of seeds and provides about 9.8 g of fiber; it is not the same portion as one tablespoon.",
+          "Increase gradually and drink water — chia is dense fiber, not a one-day catch-up plan.",
+          "Weigh the dry seeds before soaking for the clearest estimate. Water changes the pudding’s weight and volume, but does not add fiber."
         ]
       },
       {
@@ -312,7 +317,7 @@
         ]
       }
     ],
-    "calculatorCta": "Calculate this meal",
+    "calculatorCta": "Estimate this meal",
     "articleCta": "Estimate your chia meal in the calculator"
   },
   {
@@ -323,9 +328,7 @@
     "description": "Three high-fiber breakfast ideas with measured portions: an oat bowl (~10 g), chia pudding (~11 g), and avocado toast with fruit (~10 g). Estimate your own meal.",
     "h1": "High fiber breakfast ideas",
     "intro": [
-      "Build breakfast around a whole grain, seeds, or fruit, then measure the portions you actually use. These three combinations offer a practical starting point for the calculator.",
-      "There is no official breakfast fiber quota. Compare your meal with your daily reference, and choose a portion that fits your appetite and usual intake.",
-      "Example totals are rounded estimates. Brands, fruit size, and cooked weights can change the result; check the matched ingredients after calculating."
+      "Build breakfast around a whole grain, seeds, or fruit, then measure the portions you actually use. These three combinations offer a practical starting point for the calculator."
     ],
     "facts": [
       {
@@ -347,12 +350,12 @@
     "defaultSex": "female",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
+    "defaultMeal": "75g avocado, 1 slice whole-wheat bread, 1 medium orange",
     "examples": [
       "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
       "20g chia seeds, 1/2 cup raspberries, 170g yogurt greek plain nonfat",
-      "75g avocado, 1 slice whole-wheat bread, 130g raw orange",
-      "1 cup cooked oatmeal, 1 medium pear"
+      "75g avocado, 1 slice whole-wheat bread, 1 medium orange",
+      "2 slices whole-wheat toast, 1/2 avocado, 1 cup raspberries"
     ],
     "faqs": [
       {
@@ -377,9 +380,10 @@
       }
     ],
     "related": [
-      "oatmeal",
-      "chia-seeds",
-      "how-much-fiber-per-day"
+      "fibermaxxing-smoothie",
+      "fibermaxxing-foods",
+      "what-is-fibermaxxing",
+      "oatmeal"
     ],
     "answer": {
       "value": "~10–11",
@@ -393,7 +397,10 @@
         "paragraphs": [
           "Combine 1 cup cooked oatmeal, 1 tbsp chia seeds (≈12 g), and 1/2 cup blueberries. The reference contributions are about 4 g from the oatmeal, 4.1 g from chia, and 1.8 g from blueberries, or roughly 10 g altogether.",
           "Measure oatmeal after cooking for this example. A cup of dry oats contains a different amount of grain, so entering a dry cup against a cooked entry will give a misleading estimate.",
-          "Swap the fruit to match your kitchen, but recalculate rather than carrying over the same total. A banana, pear, or serving of raspberries has its own portion weight and fiber density."
+          "Swap the fruit to match your kitchen, but recalculate rather than carrying over the same total. A banana, pear, or serving of raspberries has its own portion weight and fiber density.",
+          "There is no official breakfast fiber quota. Compare your meal with your daily reference, and choose a portion that fits your appetite and usual intake.",
+          "Example totals are rounded estimates. Brands, fruit size, and cooked weights can change the result; check the matched ingredients after calculating.",
+          "Looking for a blended drink instead? See the fibermaxxing smoothie guide for bean-and-berry recipes you can paste into the same calculator."
         ]
       },
       {
@@ -421,8 +428,214 @@
         ]
       }
     ],
-    "calculatorCta": "Calculate this breakfast",
+    "calculatorCta": "Estimate this breakfast",
     "articleCta": "Estimate your breakfast in the calculator"
+  },
+  {
+    "slug": "what-is-fibermaxxing",
+    "publish": true,
+    "layout": "bands",
+    "title": "What Is Fibermaxxing? Meaning, Daily Target + Calculator",
+    "description": "Fibermaxxing means deliberately eating enough fiber to hit (or slightly stretch) your daily target. See the simple definition, safe how-to, and estimate today's intake free—no signup.",
+    "h1": "What is fibermaxxing?",
+    "answer": {
+      "value": "Eat enough fiber",
+      "unit": "",
+      "detail": "Hit your daily target on purpose—usually ~25 g (women 19–50) or ~38 g (men 19–50) on this site",
+      "note": "A TikTok-era name for a simple habit, not a medical diagnosis"
+    },
+    "intro": [
+      "Social-media shorthand for building meals around fiber-rich plants so you actually reach the daily amount most adults miss—not a medical diet."
+    ],
+    "facts": [
+      {
+        "label": "Women 19–50",
+        "value": "~25g/day",
+        "note": "Standard target on this site"
+      },
+      {
+        "label": "Men 19–50",
+        "value": "~38g/day",
+        "note": "Standard target on this site"
+      },
+      {
+        "label": "Fibermaxxing mode",
+        "value": "×1.5",
+        "note": "Optional stretch, max 50 g — not a prescription"
+      }
+    ],
+    "defaultSex": "female",
+    "defaultAge": "19-50",
+    "defaultMode": "standard",
+    "defaultMeal": "1 cup cooked lentils, broccoli, and brown rice",
+    "examples": [
+      "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries",
+      "1 cup cooked lentils, broccoli, and brown rice",
+      "1/2 cup black beans, 1 cup raspberries, 1 tbsp chia seeds, 1 banana",
+      "75g avocado, 1 slice whole-wheat bread, 1 medium orange"
+    ],
+    "faqs": [
+      {
+        "q": "What does fibermaxxing mean?",
+        "a": "It means intentionally eating more fiber—usually enough to meet or slightly exceed common daily targets—mainly from plants. It is a trend name, not a clinical protocol."
+      },
+      {
+        "q": "How much fiber should I eat if I am fibermaxxing?",
+        "a": "Start with the Standard targets on this site: about 25 g/day for women 19–50 and 38 g for men 19–50. Optional Fibermaxxing mode multiplies that by 1.5 (capped at 50 g). Raise intake over weeks, not in one day."
+      },
+      {
+        "q": "How do I start fibermaxxing?",
+        "a": "Add fiber to meals you already eat: beans in a bowl, berries on oats, chia in a smoothie, whole-grain bread. Estimate a real day in the calculator, then close the gap with one food at a time."
+      },
+      {
+        "q": "Is fibermaxxing safe?",
+        "a": "For many people, moving toward the recommended intake with food and enough fluid is reasonable. Jumping up too fast can cause gas or bloating. If you have IBS, diverticulitis, bowel obstruction risk, or a prescribed low-fiber diet, ask a clinician first. This site is not medical advice."
+      },
+      {
+        "q": "Do I need fiber gummies or supplements?",
+        "a": "Whole foods also bring other nutrients. Supplements can add grams but are optional. Use the calculator on labeled servings if you include them."
+      }
+    ],
+    "related": [
+      "how-much-fiber-per-day",
+      "fibermaxxing-foods",
+      "fibermaxxing-smoothie",
+      "high-fiber-breakfast"
+    ],
+    "sections": [
+      {
+        "heading": "A plain-language definition",
+        "paragraphs": [
+          "Fibermaxxing means deliberately eating enough dietary fiber to hit your daily target—often from beans, lentils, oats, fruit, vegetables, nuts, and seeds—rather than leaving intake to chance.",
+          "Most adults fall short of common U.S. references. The trend popular on TikTok is mainly a reminder to close that gap with plants, not a license to ignore tolerance or medical advice.",
+          "It is not an official medical diet. On this site, Standard mode uses commonly cited U.S. Adequate Intake references; Fibermaxxing mode is an optional stretch (Standard × 1.5, capped at 50 g).",
+          "Increase gradually and drink water. Paste what you ate into the calculator to see today's total and the gap—free, no signup."
+        ]
+      },
+      {
+        "heading": "How much fiber per day?",
+        "paragraphs": [
+          "On this site, Standard mode uses about 25 g/day for women ages 19–50 and 38 g for men ages 19–50 (lower after 50). See the full age table on the daily target guide.",
+          "Fibermaxxing mode here is Standard × 1.5, capped at 50 g. That stretch is optional product behavior, not an official guideline."
+        ]
+      },
+      {
+        "heading": "How to start without overdoing it",
+        "paragraphs": [
+          "Add one high-fiber item per meal for a week, drink water, and watch comfort. Examples: chia in yogurt, lentils at lunch, berries at breakfast.",
+          "Paste a full day into the calculator to see grams vs target. Then use the foods or smoothie guides for concrete portions you can edit."
+        ]
+      },
+      {
+        "heading": "What this calculator is for",
+        "paragraphs": [
+          "GetFibermaxxing estimates fiber from a meal description using USDA-based data. No account is required.",
+          "Use it to check whether yesterday's \"high-fiber\" day actually hit the number—and how many grams you still need."
+        ]
+      }
+    ],
+    "calculatorCta": "Estimate today's fiber",
+    "articleCta": "Estimate your meals in the calculator"
+  },
+  {
+    "slug": "fibermaxxing-smoothie",
+    "publish": true,
+    "layout": "bands",
+    "title": "Fibermaxxing Smoothie Ideas (with Grams) + Calculator",
+    "description": "Fibermaxxing smoothie ideas with portions and fiber grams—including bean-and-berry blends. Paste a recipe into the free calculator; no signup.",
+    "h1": "Fibermaxxing smoothie ideas",
+    "answer": {
+      "value": "~12–20",
+      "unit": "g",
+      "detail": "ballpark fiber in the example blends below (edit portions in the calculator)",
+      "note": "Not an official meal target—illustrative recipes only"
+    },
+    "intro": [
+      "A fibermaxxing smoothie works when you measure fiber-dense add-ins—fruit, seeds, and sometimes beans—not only liquid and protein powder."
+    ],
+    "facts": [
+      {
+        "label": "Berry–chia cup",
+        "value": "~12g+",
+        "note": "Raspberries + chia + banana ballpark"
+      },
+      {
+        "label": "Bean–berry blend",
+        "value": "~15g+",
+        "note": "Black beans + fruit + chia — edit to taste"
+      },
+      {
+        "label": "Chia, 1 tbsp",
+        "value": "~4.1g",
+        "note": "~12 g dried seeds on this site"
+      }
+    ],
+    "defaultSex": "female",
+    "defaultAge": "19-50",
+    "defaultMode": "standard",
+    "defaultMeal": "1/2 cup black beans, 1 cup raspberries, 1 tbsp chia seeds, 1 banana, 170g yogurt greek plain nonfat",
+    "examples": [
+      "1/2 cup black beans, 1 cup raspberries, 1 tbsp chia seeds, 1 banana, 170g yogurt greek plain nonfat",
+      "1 cup raspberries, 1 tbsp chia seeds, 1 banana, 1 cup spinach",
+      "1/2 cup cooked lentils, 1/2 cup blueberries, 1 tbsp ground flaxseed, 1 banana",
+      "1 cup raspberries, 2 tbsp chia seeds, 1 banana"
+    ],
+    "faqs": [
+      {
+        "q": "Can you put beans in a fibermaxxing smoothie?",
+        "a": "Yes—many people blend a small amount of black beans or white beans with fruit. Start with 1/4–1/2 cup, blend until smooth, and estimate fiber in the calculator."
+      },
+      {
+        "q": "How much fiber is in a chia smoothie?",
+        "a": "It depends on the spoonful. On this site, 1 tbsp dried chia (~12 g) is about 4.1 g of fiber; fruit and beans add more. Always total the full recipe."
+      },
+      {
+        "q": "Will a smoothie alone hit 25 g?",
+        "a": "Sometimes, if legumes and seeds are generous—but many blends land lower. Calculate the recipe, then plan the rest of the day."
+      },
+      {
+        "q": "Any tolerance tips?",
+        "a": "Increase bean and seed amounts slowly and drink water. Stop and seek clinical advice if you have a condition that requires limiting fiber."
+      },
+      {
+        "q": "Smoothie vs breakfast bowl?",
+        "a": "Use this page for blended drinks. For oatmeal bowls and toast plates, open the high-fiber breakfast guide."
+      }
+    ],
+    "related": [
+      "what-is-fibermaxxing",
+      "fibermaxxing-foods",
+      "high-fiber-breakfast",
+      "chia-seeds",
+      "how-much-fiber-per-day"
+    ],
+    "sections": [
+      {
+        "heading": "Berry and chia smoothie (simple)",
+        "paragraphs": [
+          "Try 1 cup raspberries, 1 tablespoon chia seeds, and 1 banana, with liquid you like. Chia alone contributes about 4.1 g here; berries add a large share—run the calculator for the combined total.",
+          "Soak chia a few minutes if you prefer a thicker texture; fiber still follows the dry seed weight.",
+          "The examples below are starting points. Paste them into the calculator, then change grams to match your blender.",
+          "For non-drink breakfasts, use the high-fiber breakfast guide instead."
+        ]
+      },
+      {
+        "heading": "Bean and berry blend (higher fiber)",
+        "paragraphs": [
+          "A searched idea is beans in a smoothie. Example starter: 1/2 cup black beans, 1 cup raspberries, 1 tbsp chia, 1 banana, and plain nonfat Greek yogurt. Clear or edit the calculator matches after blending.",
+          "Beans change flavor and texture—use ripe fruit and cold liquid. If the taste is new, begin with 1/4 cup beans."
+        ]
+      },
+      {
+        "heading": "Log the blend, then finish the day",
+        "paragraphs": [
+          "Paste the full ingredient list after you blend so portions match what went in the jar.",
+          "Compare with your daily target. Short days can add lunch legumes or a guided breakfast from the related pages."
+        ]
+      }
+    ],
+    "calculatorCta": "Estimate this smoothie",
+    "articleCta": "Estimate your blend"
   },
   {
     "slug": "for-women",
@@ -437,12 +650,12 @@
     "defaultSex": "female",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Greek yogurt, raspberries, chia seeds, and a whole-wheat toast",
+    "defaultMeal": "170g yogurt greek plain nonfat, 1/2 cup raspberries, 1 tbsp chia seeds, 1 slice whole-wheat bread",
     "examples": [
-      "Greek yogurt, raspberries, chia seeds, and whole-wheat toast",
-      "Oatmeal with blueberries and flaxseeds",
-      "Lentil salad, avocado, and an apple",
-      "Chickpea bowl with broccoli and brown rice"
+      "170g yogurt greek plain nonfat, 1/2 cup raspberries, 1 tbsp chia seeds",
+      "1 cup cooked oatmeal, 1/2 cup blueberries, 1 tbsp chia seeds",
+      "1 cup cooked lentils, 75g avocado, 1 apple",
+      "1 cup chickpeas, 1 cup broccoli, 1 cup brown rice"
     ],
     "faqs": [],
     "related": [
@@ -462,12 +675,12 @@
     "defaultSex": "male",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Oatmeal with chia, black beans, brown rice, broccoli, and an apple",
+    "defaultMeal": "1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup black beans, 1 cup broccoli, 1 apple",
     "examples": [
-      "Oatmeal with chia, black beans, brown rice, broccoli, and an apple",
-      "Eggs, avocado toast, lentil soup, and a pear",
-      "Chicken, quinoa, black beans, and a large salad",
-      "Overnight oats, banana, almonds, and chickpea pasta"
+      "1 cup cooked oatmeal, 1 tbsp chia seeds, 1 apple",
+      "2 eggs, 75g avocado, 1 slice whole-wheat bread, 1 pear",
+      "1 cup cooked lentils, 1 cup brown rice, 1 cup broccoli",
+      "1 cup cooked oatmeal, 1 banana, 1/2 cup black beans"
     ],
     "faqs": [],
     "related": [
@@ -487,12 +700,12 @@
     "defaultSex": "female",
     "defaultAge": "51+",
     "defaultMode": "standard",
-    "defaultMeal": "Oatmeal, pear, lentil soup, and a side salad",
+    "defaultMeal": "1 cup cooked oatmeal, 1 medium pear, 1 cup cooked lentils, 1 cup broccoli",
     "examples": [
-      "Oatmeal, pear, lentil soup, and a side salad",
-      "Bran cereal with berries and a banana",
-      "Baked potato with beans and steamed broccoli",
-      "Whole-wheat toast, avocado, and an orange"
+      "1 cup cooked oatmeal, 1 medium pear, 1 cup cooked lentils",
+      "1 cup blueberries, 1 banana, 1 cup cooked oatmeal",
+      "1 cup black beans, 1 baked potato, 1 cup broccoli",
+      "1 slice whole-wheat bread, 75g avocado, 1 medium orange"
     ],
     "faqs": [],
     "related": [
@@ -512,12 +725,12 @@
     "defaultSex": "male",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Psyllium husk in water, salad, hummus, and a pear",
+    "defaultMeal": "1 tsp psyllium husk, 1 cup salad, 2 tbsp hummus, 1 pear",
     "examples": [
-      "Psyllium husk in water, salad, hummus, and a pear",
-      "1 tsp psyllium in water with oatmeal and blueberries",
-      "Psyllium drink, lentil soup, and brown rice",
-      "Salad with chickpeas; psyllium in water before bed"
+      "1 tsp psyllium husk, 1 cup broccoli, 2 tbsp hummus, 1 pear",
+      "1 tsp psyllium husk, 1 cup cooked oatmeal, 1/2 cup blueberries",
+      "1 tsp psyllium husk, 1 cup cooked lentils, 1 cup brown rice",
+      "1 cup chickpeas, 1 cup salad, 1 tsp psyllium husk"
     ],
     "faqs": [],
     "related": [
@@ -537,12 +750,12 @@
     "defaultSex": "male",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Lentils, broccoli, brown rice, and avocado for dinner",
+    "defaultMeal": "1 cup cooked lentils, broccoli, brown rice, and avocado",
     "examples": [
-      "Lentils, broccoli, brown rice, and avocado for dinner",
-      "Black bean burrito bowl with salsa and corn",
-      "Chickpea salad with cucumber, tomato, and whole-wheat pita",
-      "Kidney bean chili with a side salad"
+      "1 cup cooked lentils, 1 cup broccoli, 1 cup brown rice",
+      "1 cup black beans, 1/2 cup corn, 75g avocado",
+      "1 cup chickpeas, 1 cucumber, 1 tomato, 1 whole-wheat pita",
+      "1 cup kidney beans, 1 cup broccoli, 1 apple"
     ],
     "faqs": [],
     "related": [
@@ -562,12 +775,12 @@
     "defaultSex": "female",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Avocado toast on whole wheat, egg, and an orange",
+    "defaultMeal": "75g avocado, 1 slice whole-wheat bread, 1 egg, 1 medium orange",
     "examples": [
-      "Avocado toast on whole wheat, egg, and an orange",
-      "Half avocado with black beans and brown rice",
-      "Avocado, tomato salad, and whole-wheat wrap",
-      "Guacamole with vegetables and a pear"
+      "75g avocado, 1 slice whole-wheat bread, 1 medium orange",
+      "75g avocado, 1/2 cup black beans, 1 cup brown rice",
+      "75g avocado, 1 tomato, 1 whole-wheat wrap",
+      "75g avocado, 1 cup broccoli, 1 pear"
     ],
     "faqs": [],
     "related": [
@@ -587,12 +800,12 @@
     "defaultSex": "female",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Chia pudding for breakfast; salad and lentils for dinner",
+    "defaultMeal": "20g chia seeds, 1/2 cup raspberries, 170g yogurt greek plain nonfat",
     "examples": [
-      "Chia pudding for breakfast; salad and lentils for dinner",
-      "1 tbsp chia in oatmeal; psyllium in water later",
-      "Chia smoothie; large salad with hummus",
-      "Psyllium drink, brown rice, beans, and a pear"
+      "20g chia seeds, 1/2 cup raspberries, 1 cup cooked lentils",
+      "1 cup cooked oatmeal, 1 tbsp chia seeds, 1 tsp psyllium husk",
+      "1 tbsp chia seeds, 1 banana, 1 cup spinach, 2 tbsp hummus",
+      "1 tsp psyllium husk, 1 cup brown rice, 1/2 cup black beans, 1 pear"
     ],
     "faqs": [],
     "related": [
@@ -600,29 +813,114 @@
     ]
   },
   {
-    "slug": "high-fiber-foods",
-    "publish": false,
+    "slug": "fibermaxxing-foods",
+    "publish": true,
     "layout": "bands",
-    "title": "High Fiber Foods",
-    "description": "Draft — ranked table not ready",
-    "h1": "High fiber foods for fibermaxxing",
+    "title": "Fibermaxxing Foods List (with Portions) + Calculator",
+    "description": "High-fiber foods for fibermaxxing with reference portions and grams on this site—beans, oats, chia, berries, and more. Paste a mixed meal into the free calculator.",
+    "h1": "Fibermaxxing foods",
+    "answer": {
+      "value": "~15",
+      "unit": "g",
+      "detail": "fiber in a cup of cooked lentils or black beans — top everyday picks below",
+      "note": "Figures below use this site's USDA-based references"
+    },
     "intro": [
-      "Draft page — not in production sitemap yet."
+      "Reference portions for legumes, grains, seeds, fruit, and vegetables. Paste a mix into the calculator—a sample meal is prefilled—then edit amounts to match your plate."
+    ],
+    "facts": [
+      {
+        "label": "Lentils, 1 cup cooked",
+        "value": "~15.6g",
+        "note": "USDA-based on this site"
+      },
+      {
+        "label": "Black beans, 1 cup cooked",
+        "value": "~15g",
+        "note": "USDA-based on this site"
+      },
+      {
+        "label": "Chia, 1 tbsp (~12g)",
+        "value": "~4.1g",
+        "note": "Dried chia density on this site"
+      },
+      {
+        "label": "Oatmeal, 1 cup cooked",
+        "value": "~4g",
+        "note": "234 g cooked reference"
+      },
+      {
+        "label": "Raspberries, 1 cup",
+        "value": "~8g",
+        "note": "USDA-based on this site"
+      }
     ],
     "defaultSex": "female",
     "defaultAge": "19-50",
     "defaultMode": "standard",
-    "defaultMeal": "Oatmeal, apple, black beans, brown rice, broccoli, chia seeds",
+    "defaultMeal": "1 cup cooked black beans, 1 cup cooked brown rice, 1 cup broccoli, 1 apple",
     "examples": [
-      "Oatmeal, apple, black beans, brown rice, broccoli, chia seeds",
-      "Lentils, avocado, whole-wheat bread, and raspberries",
-      "Chickpeas, quinoa, kale salad, and a pear",
-      "Bran cereal, banana, almonds, and vegetable soup"
+      "1 cup cooked black beans, 1 cup cooked brown rice, 1 cup broccoli, 1 apple",
+      "1 cup cooked lentils, 75g avocado, 1 slice whole-wheat bread",
+      "1 cup cooked oatmeal, 1/2 cup raspberries, 1 tbsp chia seeds",
+      "1 cup chickpeas, 1 cup quinoa, 1 medium pear"
     ],
-    "faqs": [],
+    "faqs": [
+      {
+        "q": "What foods are best for fibermaxxing?",
+        "a": "Cooked beans and lentils, chia or ground flax, berries, pears/apples with skin, oats, broccoli, and whole-grain bread are reliable starting points. Rank by the portion you will actually eat."
+      },
+      {
+        "q": "Is meat high in fiber?",
+        "a": "No. Fiber comes from plants. Build the gram total from legumes, grains, produce, nuts, and seeds."
+      },
+      {
+        "q": "How do I use this list in the calculator?",
+        "a": "Paste several foods with portions into one meal (the sample above is a start), press Estimate, then edit matches. For a deeper look at one staple, open the oatmeal or chia guide."
+      },
+      {
+        "q": "Can supplements replace this list?",
+        "a": "Powders and gummies can add grams but skip many nutrients in whole foods. If you use them, still estimate the rest of the day."
+      },
+      {
+        "q": "Where are smoothies and breakfast ideas?",
+        "a": "See the fibermaxxing smoothie guide for blended recipes and the high-fiber breakfast guide for bowls and toast."
+      }
+    ],
     "related": [
+      "what-is-fibermaxxing",
+      "fibermaxxing-smoothie",
+      "high-fiber-breakfast",
       "oatmeal",
-      "chia-seeds"
-    ]
+      "chia-seeds",
+      "how-much-fiber-per-day"
+    ],
+    "sections": [
+      {
+        "heading": "Legumes (usually the biggest jumps)",
+        "paragraphs": [
+          "A cup of cooked lentils is about 15.6 g of fiber on this site; a cup of cooked black beans is about 15 g. They are often the fastest way to move a short day toward the target.",
+          "Rinse canned beans if you use them, and increase portions gradually if legumes are new for you.",
+          "Treat the figures as a shopping checklist. Build a real plate, then paste the named foods and amounts into the calculator instead of guessing.",
+          "For a drinkable combo, see the smoothie guide. For morning bowls and toast, see high-fiber breakfast."
+        ]
+      },
+      {
+        "heading": "Seeds, oats, and fruit",
+        "paragraphs": [
+          "One tablespoon of dried chia (~12 g) is about 4.1 g of fiber here; one cup of cooked oatmeal is about 4 g; one cup of raspberries is about 8 g.",
+          "Stack small adds—chia on oats, berries on yogurt—then recalculate rather than assuming a \"healthy\" bowl is automatically high-fiber."
+        ]
+      },
+      {
+        "heading": "How to estimate from this list",
+        "paragraphs": [
+          "The calculator totals one meal at a time. Pick two or three items you ate, type them with portions in a single box, and compare the result with your daily target.",
+          "Need more detail on a staple serving? Use the oatmeal or chia guides. This list is for building combinations with clear reference grams."
+        ]
+      }
+    ],
+    "calculatorCta": "Estimate a sample meal",
+    "articleCta": "Estimate your mixed meal"
   }
 ]

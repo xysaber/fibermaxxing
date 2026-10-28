@@ -2,7 +2,10 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { FOOD_COUNT } from '../data/foods'
 
 const GUIDE_PATHS = new Set([
+  '/what-is-fibermaxxing',
   '/how-much-fiber-per-day',
+  '/fibermaxxing-foods',
+  '/fibermaxxing-smoothie',
   '/oatmeal',
   '/chia-seeds',
   '/high-fiber-breakfast',

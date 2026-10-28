@@ -1,7 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { DocumentMeta } from '../components/DocumentMeta'
 import { FaqBlock } from '../components/FaqBlock'
-import { FiberCalculator } from '../components/FiberCalculator'
+import {
+  FiberCalculator,
+  type FiberCalculatorHandle,
+} from '../components/FiberCalculator'
 import { GuidesStrip } from '../components/GuidesStrip'
 import { InfoBand } from '../components/InfoBand'
 import { MethodStrip } from '../components/MethodStrip'
@@ -12,7 +15,7 @@ import { trackPageView } from '../lib/analytics'
 const HOME_FAQS = [
   {
     q: 'What is fibermaxxing?',
-    a: 'Fibermaxxing means intentionally increasing daily dietary fiber — often toward stretch targets above standard adequate intake — to support digestive wellness and fullness. This calculator helps you estimate intake against a clear daily gram goal.',
+    a: 'Fibermaxxing means deliberately eating enough fiber to hit your daily target—mainly from plants such as beans, oats, fruit, vegetables, nuts, and seeds. On this site, start with Standard U.S. Adequate Intake references (~25 g/day for women 19–50, ~38 g for men 19–50). Optional Fibermaxxing mode is Standard × 1.5 (capped at 50 g) and is not an official guideline. Open the What is fibermaxxing? guide for the full plain-language answer.',
   },
   {
     q: 'How much fiber should I eat per day?',
@@ -47,6 +50,8 @@ const HOME_TRUST_TILES = [
 ]
 
 export function HomePage() {
+  const calcRef = useRef<FiberCalculatorHandle>(null)
+
   useEffect(() => {
     trackPageView('/')
   }, [])
@@ -62,15 +67,27 @@ export function HomePage() {
             How much fiber have you <em>actually</em> eaten today?
           </h1>
           <p className="lede">
-            Free fibermaxxing calculator: paste what you ate, get USDA-based fiber totals, edit
-            portions, and compare to U.S. Adequate Intake targets — no signup.
+            Paste a meal or tap a quick start, then hit Calculate — see fiber grams vs your daily
+            target. No signup.
           </p>
-          <a className="hero-method-link" href="#method">
-            How it works
-          </a>
+          <div className="hero-cta-row">
+            <a
+              className="btn btn-primary hero-cta"
+              href="#calculator"
+              onClick={(e) => {
+                e.preventDefault()
+                calcRef.current?.adoptCurrentDemo()
+              }}
+            >
+              Try the calculator
+            </a>
+            <a className="btn btn-ghost hero-cta" href="#method">
+              How it works
+            </a>
+          </div>
         </div>
 
-        <FiberCalculator />
+        <FiberCalculator ref={calcRef} />
       </section>
 
       <InfoBand

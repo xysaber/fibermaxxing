@@ -2,9 +2,24 @@ import { GuideCards } from './GuideCards'
 
 export const HOME_GUIDES = [
   {
+    to: '/what-is-fibermaxxing',
+    title: 'What is fibermaxxing?',
+    blurb: 'Plain-language meaning, daily targets, and a free estimate—no signup.',
+  },
+  {
     to: '/how-much-fiber-per-day',
     title: 'How much fiber per day?',
     blurb: 'Adequate Intake targets by sex and age, then estimate today’s intake.',
+  },
+  {
+    to: '/fibermaxxing-foods',
+    title: 'Fibermaxxing foods',
+    blurb: 'Beans, oats, chia, berries—with portions you can paste into the calculator.',
+  },
+  {
+    to: '/fibermaxxing-smoothie',
+    title: 'Fibermaxxing smoothie',
+    blurb: 'Berry–chia and bean–berry blends with grams you can edit.',
   },
   {
     to: '/oatmeal',
@@ -19,7 +34,7 @@ export const HOME_GUIDES = [
   {
     to: '/high-fiber-breakfast',
     title: 'High-fiber breakfast',
-    blurb: 'Pasteable morning combos with portions you can edit.',
+    blurb: 'Bowls and toast plates—see the smoothie guide for blended drinks.',
   },
 ] as const
 

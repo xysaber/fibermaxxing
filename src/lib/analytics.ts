@@ -1,4 +1,15 @@
-type EventName = 'page_view' | 'calculate_attempt' | 'calculate_result' | 'run_example' | 'calculate_own' | 'edit_portion' | 'share_png' | 'share_copy'
+type EventName =
+  | 'page_view'
+  | 'calculate_attempt'
+  | 'calculate_result'
+  | 'run_example'
+  | 'run_starter'
+  | 'select_starter'
+  | 'try_calculator_cta'
+  | 'calculate_own'
+  | 'edit_portion'
+  | 'share_png'
+  | 'share_copy'
 
 type GtagFn = (...args: unknown[]) => void
 

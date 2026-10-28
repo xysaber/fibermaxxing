@@ -16,7 +16,7 @@ const PORT = Number(process.env.MEAL_LOG_PORT || 8788)
 const MAX_BODY = 64 * 1024
 const INPUT_CAP = 2000
 const ALLOWED_SOURCES = new Set(['own', 'example'])
-const ALLOWED_ORIGINS = new Set(['typed', 'example', 'prefill'])
+const ALLOWED_ORIGINS = new Set(['typed', 'example', 'prefill', 'starter'])
 const EVENT_ID_RE = /^[a-zA-Z0-9_-]{8,80}$/
 const CLIENT_ID_RE = /^[a-zA-Z0-9_-]{8,80}$/
 const INGEST = (process.env.MEAL_LOG_INGEST || 'on').toLowerCase()
@@ -57,7 +57,7 @@ function sanitize(raw) {
   if (typeof raw.ts !== 'string' || !raw.ts) return { error: 'ts required' }
   if (typeof raw.page_path !== 'string') return { error: 'page_path required' }
   if (!ALLOWED_SOURCES.has(raw.source)) return { error: 'source must be own|example' }
-  if (!ALLOWED_ORIGINS.has(raw.input_origin)) return { error: 'input_origin must be typed|example|prefill' }
+  if (!ALLOWED_ORIGINS.has(raw.input_origin)) return { error: 'input_origin must be typed|example|prefill|starter' }
   if (typeof raw.input_text !== 'string') return { error: 'input_text required' }
   if (typeof raw.reliability !== 'string') return { error: 'reliability required' }
   if (raw.empty_kind != null && typeof raw.empty_kind !== 'string') return { error: 'empty_kind invalid' }

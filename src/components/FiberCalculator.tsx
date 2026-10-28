@@ -1,4 +1,13 @@
-import { useMemo, useRef, useState, type FormEvent } from 'react'
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from 'react'
 import { buildSuggestions } from '../data/suggestions'
 import { track } from '../lib/analytics'
 import {
@@ -10,18 +19,44 @@ import {
   updateMatchServings,
   type AgeGroup,
   type GoalMode,
+  type MatchedFood,
   type ParseResult,
   type Sex,
 } from '../lib/parseMeal'
-import { buildMealLogPayload, postMealLog } from '../lib/mealLog'
+import {
+  buildMealLogPayload,
+  postMealLog,
+  type MealLogInputOrigin,
+} from '../lib/mealLog'
 import { buildShareText, downloadReportPng } from '../lib/shareReport'
 
+const STARTERS = [
+  {
+    id: 'starter_oat_bowl',
+    label: 'Oat breakfast',
+    meal: '1 cup cooked oatmeal, 1 tbsp chia seeds, 1/2 cup blueberries',
+  },
+  {
+    id: 'starter_simple_day',
+    label: 'Simple day',
+    meal: '2 eggs, 1 bowl of oatmeal, and an apple',
+  },
+  {
+    id: 'starter_lentil_dinner',
+    label: 'Lentil dinner',
+    meal: '1 cup cooked lentils, broccoli, and brown rice',
+  },
+] as const
+
 const DEFAULT_EXAMPLES = [
-  'I ate 2 eggs, 1 bowl of oatmeal, and an apple',
-  'Breakfast: chia pudding, raspberries, Greek yogurt',
+  '20g chia seeds, 1/2 cup raspberries, 170g yogurt greek plain nonfat',
+  '2 slices whole-wheat toast, 1/2 avocado, 1 cup raspberries',
+  '1 cup cooked oatmeal with 1 medium pear',
   'Lentils, broccoli, brown rice, and avocado for dinner',
   'Psyllium husk in water, salad, hummus, and a pear',
 ]
+
+const STARTER_DEMO_MEALS = STARTERS.map((s) => s.meal)
 
 function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'light' }) {
   const r = 46
@@ -55,6 +90,144 @@ function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'li
   )
 }
 
+/** Empty-state typewriter over the three Quick start meals (visual only). */
+function useStarterTypewriter(enabled: boolean) {
+  const [text, setText] = useState('')
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    if (!enabled) {
+      setText('')
+      setIndex(0)
+      return
+    }
+
+    let cancelled = false
+    let timer: ReturnType<typeof setTimeout> | undefined
+    let i = 0
+    let pos = 0
+    let phase: 'type' | 'hold' | 'delete' = 'type'
+    setIndex(0)
+
+    const tick = () => {
+      if (cancelled) return
+      const full = STARTER_DEMO_MEALS[i] ?? ''
+      if (phase === 'type') {
+        pos += 1
+        setText(full.slice(0, pos))
+        if (pos >= full.length) {
+          phase = 'hold'
+          timer = setTimeout(tick, 1600)
+          return
+        }
+        timer = setTimeout(tick, 28 + (pos % 5 === 0 ? 18 : 0))
+        return
+      }
+      if (phase === 'hold') {
+        phase = 'delete'
+        timer = setTimeout(tick, 36)
+        return
+      }
+      pos -= 1
+      setText(full.slice(0, Math.max(0, pos)))
+      if (pos <= 0) {
+        i = (i + 1) % STARTER_DEMO_MEALS.length
+        setIndex(i)
+        phase = 'type'
+        timer = setTimeout(tick, 320)
+        return
+      }
+      timer = setTimeout(tick, 16)
+    }
+
+    timer = setTimeout(tick, 400)
+    return () => {
+      cancelled = true
+      if (timer) clearTimeout(timer)
+    }
+  }, [enabled])
+
+  return { text, index }
+}
+
+function trustBadge(m: MatchedFood): ReactNode {
+  if (m.needsConfirm || m.tag === 'needs_confirm') {
+    return (
+      <span className="src-badge src-confirm" title="Closest match may be wrong">
+        Check match
+      </span>
+    )
+  }
+  if (m.assumed || m.tag === 'assumed') {
+    return (
+      <span className="src-badge src-assumed" title="Default serving used">
+        Assumed portion
+      </span>
+    )
+  }
+  if (m.source === 'estimate') {
+    return (
+      <span
+        className="src-badge src-estimate"
+        title="Category-based estimate — not a verified USDA line item"
+      >
+        Estimated
+      </span>
+    )
+  }
+  return (
+    <span className="src-badge src-db" title="Matched in food database">
+      Database
+    </span>
+  )
+}
+
+function rowTrustHint(m: MatchedFood): string | null {
+  if (m.needsConfirm || m.tag === 'needs_confirm') {
+    return 'Closest match may be wrong — adjust servings or weight so the total isn’t misleading.'
+  }
+  if (m.assumed || m.tag === 'assumed') {
+    return 'We used a default serving — adjust weight if needed.'
+  }
+  return null
+}
+
+function scoreEstimateNote(result: ParseResult): { text: string; attention: boolean } {
+  if (result.needsConfirmCount > 0) {
+    return {
+      text: 'Some items need a closer look — totals may be off until you adjust those portions.',
+      attention: true,
+    }
+  }
+  if (result.assumedCount > 0) {
+    return {
+      text: 'Some portions used default servings — edit weight if yours differ.',
+      attention: true,
+    }
+  }
+  if (result.estimatedCount > 0) {
+    return {
+      text: 'Totals are estimates from reference servings — edit portions on the right if needed. Includes category-based estimates.',
+      attention: false,
+    }
+  }
+  return {
+    text: 'Totals are estimates from reference servings — edit portions on the right if needed.',
+    attention: false,
+  }
+}
+
+function scoreMetaLine(result: ParseResult): string {
+  const n = result.matches.length
+  const parts = [`${n} food${n === 1 ? '' : 's'}`]
+  if (result.needsConfirmCount > 0) parts.push(`${result.needsConfirmCount} to check`)
+  else if (result.assumedCount > 0) parts.push(`${result.assumedCount} assumed`)
+  else if (result.estimatedCount > 0) parts.push(`${result.estimatedCount} estimated`)
+  else parts[0] = `${parts[0]} matched`
+  parts.push(`~${result.totalCalories} kcal`)
+  return parts.join(' · ')
+}
+
 export type FiberCalculatorProps = {
   initialSex?: Sex
   initialAge?: AgeGroup
@@ -64,26 +237,38 @@ export type FiberCalculatorProps = {
   panelLabel?: string
 }
 
-export function FiberCalculator({
-  initialSex = 'female',
-  initialAge = '19-50',
-  initialMode = 'standard',
-  initialMeal = '',
-  examples = DEFAULT_EXAMPLES,
-  panelLabel = 'Fiber intake estimator',
-}: FiberCalculatorProps) {
+/** Hero CTA can adopt the current typewriter Quick start (full meal, not partial text). */
+export type FiberCalculatorHandle = {
+  adoptCurrentDemo: () => void
+}
+
+export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculatorProps>(
+  function FiberCalculator(
+    {
+      initialSex = 'female',
+      initialAge = '19-50',
+      initialMode = 'standard',
+      initialMeal = '',
+      examples = DEFAULT_EXAMPLES,
+      panelLabel = 'Fiber intake estimator',
+    },
+    ref,
+  ) {
   const [sex, setSex] = useState<Sex>(initialSex)
   const [age, setAge] = useState<AgeGroup>(initialAge)
   const [mode, setMode] = useState<GoalMode>(initialMode)
   const [meal, setMeal] = useState(initialMeal)
+  const [mealFocused, setMealFocused] = useState(false)
   const [result, setResult] = useState<ParseResult | null>(null)
   const [mealError, setMealError] = useState<'not_food' | 'consumable_untracked' | null>(null)
   const [copied, setCopied] = useState(false)
   const [downloading, setDownloading] = useState(false)
+  const [activeStarterId, setActiveStarterId] = useState<string | null>(null)
   const [activeExample, setActiveExample] = useState<string | null>(null)
   const [showExamples, setShowExamples] = useState(false)
   const resultsRef = useRef<HTMLElement>(null)
   const reportCardRef = useRef<HTMLDivElement>(null)
+  const mealInputRef = useRef<HTMLTextAreaElement>(null)
   const [reportDate] = useState(() =>
     new Date().toLocaleDateString('en-US', {
       month: 'short',
@@ -92,12 +277,16 @@ export function FiberCalculator({
     }),
   )
 
+  const showTypewriter = !meal.trim() && !mealFocused
+  const { text: demoText, index: demoIndex } = useStarterTypewriter(showTypewriter)
+
   const standardAi = useMemo(() => standardFiberAi(sex, age), [sex, age])
   const target = useMemo(() => fiberTarget(sex, age, mode), [sex, age, mode])
 
   const hasMatches = !!result && result.matches.length > 0
   const pct = hasMatches ? Math.min(150, (result.totalFiberG / target) * 100) : 0
   const gap = hasMatches ? Math.max(0, Math.round((target - result.totalFiberG) * 10) / 10) : 0
+  const calcReady = Boolean(meal.trim()) && !hasMatches
 
   const suggestions = useMemo(() => {
     if (!hasMatches || !result) return null
@@ -110,16 +299,20 @@ export function FiberCalculator({
     return result.matches.map((m) => ({ name: m.food.name, fiberG: m.fiberG }))
   }, [hasMatches, result])
 
-  function runCalc(rawText: string, source: 'own' | 'example' = 'own') {
+  function resolveInputOrigin(text: string): MealLogInputOrigin {
+    const starter = STARTERS.find((s) => s.id === activeStarterId)
+    if (starter && text === starter.meal.trim()) return 'starter'
+    if (activeExample !== null && text === activeExample.trim()) return 'example'
+    if (initialMeal && text === initialMeal.trim()) return 'prefill'
+    return 'typed'
+  }
+
+  function runCalc(rawText: string) {
     const text = rawText.trim()
-    const isExample = source === 'example' || (activeExample !== null && text === activeExample.trim())
-    const eventParams: {
-      source: 'own' | 'example'
-      input_origin: 'typed' | 'example' | 'prefill'
-    } = {
-      source: isExample ? 'example' : 'own',
-      input_origin: isExample ? 'example' : initialMeal && text === initialMeal.trim() ? 'prefill' : 'typed',
-    }
+    const inputOrigin = resolveInputOrigin(text)
+    const source: 'own' | 'example' = inputOrigin === 'example' ? 'example' : 'own'
+    const eventParams = { source, input_origin: inputOrigin }
+
     track('calculate_attempt', eventParams)
     if (!text) {
       track('calculate_result', { ...eventParams, status: 'empty' })
@@ -141,8 +334,8 @@ export function FiberCalculator({
       buildMealLogPayload({
         inputText: text,
         parsed,
-        source: eventParams.source,
-        inputOrigin: eventParams.input_origin,
+        source,
+        inputOrigin,
       }),
     )
     track('calculate_result', {
@@ -164,14 +357,53 @@ export function FiberCalculator({
     }
 
     setMealError(null)
-    track(isExample ? 'run_example' : 'calculate_own', {
-      foods: parsed.matches.length,
-      fiber: parsed.totalFiberG,
-    })
+    if (inputOrigin === 'example') {
+      track('run_example', { foods: parsed.matches.length, fiber: parsed.totalFiberG })
+    } else if (inputOrigin === 'starter') {
+      track('run_starter', {
+        foods: parsed.matches.length,
+        fiber: parsed.totalFiberG,
+        starter_id: activeStarterId ?? '',
+      })
+    } else if (inputOrigin === 'typed') {
+      track('calculate_own', { foods: parsed.matches.length, fiber: parsed.totalFiberG })
+    }
     requestAnimationFrame(() => {
       resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     })
   }
+
+  function pickStarter(id: (typeof STARTERS)[number]['id'], mealText: string) {
+    setActiveStarterId(id)
+    setActiveExample(null)
+    setMeal(mealText)
+    setResult(null)
+    setMealError(null)
+    track('select_starter', { starter_id: id })
+  }
+
+  function pickExample(ex: string) {
+    setMeal(ex)
+    setActiveExample(ex)
+    setActiveStarterId(null)
+    setResult(null)
+    setMealError(null)
+  }
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      adoptCurrentDemo() {
+        document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        // Don't overwrite an in-progress meal or existing result.
+        if (meal.trim() || result) return
+        const starter = STARTERS[demoIndex] ?? STARTERS[0]
+        pickStarter(starter.id, starter.meal)
+        track('try_calculator_cta', { starter_id: starter.id })
+      },
+    }),
+    [demoIndex, meal, result],
+  )
 
   function patchResult(nextMatches: ParseResult['matches']) {
     if (!result) return
@@ -186,7 +418,16 @@ export function FiberCalculator({
 
   function onSubmit(e: FormEvent) {
     e.preventDefault()
-    runCalc(meal, 'own')
+    if (!meal.trim()) return
+    runCalc(meal)
+  }
+
+  function onClear() {
+    setMeal('')
+    setResult(null)
+    setMealError(null)
+    setActiveExample(null)
+    setActiveStarterId(null)
   }
 
   const shareText =
@@ -226,6 +467,8 @@ export function FiberCalculator({
       setDownloading(false)
     }
   }
+
+  const estimateNote = hasMatches && result ? scoreEstimateNote(result) : null
 
   return (
     <>
@@ -274,21 +517,35 @@ export function FiberCalculator({
 
         <div className="field field-meal">
           <label htmlFor="meal">What did you eat today?</label>
-          <textarea
-            id="meal"
-            className={`meal-box${mealError ? ' meal-box-error' : ''}`}
-            value={meal}
-            onChange={(e) => {
-              setMeal(e.target.value)
-              setActiveExample(null)
-              if (mealError) setMealError(null)
-            }}
-            placeholder="e.g. I ate oatmeal, an apple, and chia seeds"
-            rows={3}
-            enterKeyHint="done"
-            aria-invalid={Boolean(mealError)}
-            aria-describedby={mealError ? 'meal-error' : undefined}
-          />
+          <div className={`meal-box-wrap${showTypewriter ? ' meal-box-wrap--demo' : ''}`}>
+            <textarea
+              ref={mealInputRef}
+              id="meal"
+              className={`meal-box${mealError ? ' meal-box-error' : ''}${
+                meal.trim() ? ' meal-box--active' : ''
+              }${showTypewriter ? ' meal-box--demo-host' : ''}`}
+              value={meal}
+              onChange={(e) => {
+                setMeal(e.target.value)
+                setActiveExample(null)
+                setActiveStarterId(null)
+                if (mealError) setMealError(null)
+              }}
+              onFocus={() => setMealFocused(true)}
+              onBlur={() => setMealFocused(false)}
+              placeholder={showTypewriter ? '' : 'e.g. oatmeal, apple, chia seeds'}
+              rows={3}
+              enterKeyHint="done"
+              aria-invalid={Boolean(mealError)}
+              aria-describedby={mealError ? 'meal-error' : undefined}
+            />
+            {showTypewriter && (
+              <div className="meal-box-demo" aria-hidden="true">
+                <span className="meal-box-demo-text">{demoText}</span>
+                <span className="meal-box-demo-caret" />
+              </div>
+            )}
+          </div>
           {mealError === 'not_food' && (
             <p id="meal-error" className="field-error" role="alert">
               No foods detected. Try naming specific foods (e.g. oatmeal, apple, chia seeds) and
@@ -303,6 +560,24 @@ export function FiberCalculator({
           )}
         </div>
 
+        <div className="starter-block" aria-label="Meal starters">
+          <p className="starter-label">Quick start</p>
+          <div className="starter-chips">
+            {STARTERS.map((s, i) => (
+              <button
+                key={s.id}
+                type="button"
+                className={`starter-chip${
+                  activeStarterId === s.id || (showTypewriter && demoIndex === i) ? ' is-active' : ''
+                }`}
+                onClick={() => pickStarter(s.id, s.meal)}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="examples">
           <button
             type="button"
@@ -311,7 +586,7 @@ export function FiberCalculator({
             aria-controls="examples-list"
             onClick={() => setShowExamples((v) => !v)}
           >
-            {showExamples ? 'Hide examples' : 'Show examples'}
+            {showExamples ? 'Hide more examples' : 'More example meals'}
           </button>
           {showExamples && (
             <div className="examples-grid" id="examples-list">
@@ -320,11 +595,7 @@ export function FiberCalculator({
                   key={ex}
                   type="button"
                   className={activeExample === ex ? 'is-active' : undefined}
-                  onClick={() => {
-                    setMeal(ex)
-                    setActiveExample(ex)
-                    runCalc(ex, 'example')
-                  }}
+                  onClick={() => pickExample(ex)}
                 >
                   {ex}
                 </button>
@@ -334,18 +605,19 @@ export function FiberCalculator({
         </div>
 
         <div className="actions">
-          <button type="submit" className="btn btn-primary btn-calc">
+          <button
+            type="submit"
+            className={`btn btn-primary btn-calc${calcReady ? ' btn-calc--ready' : ''}`}
+            disabled={!meal.trim()}
+            aria-disabled={!meal.trim()}
+          >
             Calculate fiber
           </button>
           <button
             type="button"
             className="btn btn-text"
-            onClick={() => {
-              setMeal('')
-              setResult(null)
-              setMealError(null)
-              setActiveExample(null)
-            }}
+            onClick={onClear}
+            disabled={!meal && !result && !mealError}
           >
             Clear
           </button>
@@ -374,13 +646,7 @@ export function FiberCalculator({
                       ? `${gap}g still to go`
                       : 'On track for today'}
                 </h2>
-                <p className="score-meta">
-                  {result.matches.length} food{result.matches.length === 1 ? '' : 's'}
-                  {result.estimatedCount > 0
-                    ? ` · ${result.estimatedCount} estimated`
-                    : ' matched'}{' '}
-                  · {result.totalCalories} kcal
-                </p>
+                <p className="score-meta">{scoreMetaLine(result)}</p>
               </div>
               <ProgressRing pct={pct} />
             </div>
@@ -404,10 +670,15 @@ export function FiberCalculator({
               </div>
             </div>
 
-            <p className="score-estimate-note">
-              Totals are estimates from reference servings — edit portions on the right if needed.
-              {result.estimatedCount > 0 ? ' Includes category-based estimates.' : ''}
-            </p>
+            {estimateNote && (
+              <p
+                className={`score-estimate-note${
+                  estimateNote.attention ? ' score-estimate-note--attention' : ''
+                }`}
+              >
+                {estimateNote.text}
+              </p>
+            )}
             {result.warnings.length > 0 && (
               <p className="score-estimate-note">{result.warnings[0]}</p>
             )}
@@ -437,84 +708,95 @@ export function FiberCalculator({
 
           <div className="detail-panel">
             <h3>Matched foods</h3>
-            <p className="estimate-note">
-              Adjust servings or weight — fiber updates live.
-            </p>
+            <p className="estimate-note">Adjust servings or weight — fiber updates live.</p>
             <ul className="food-list food-list-editable">
-              {result.matches.map((m, idx) => (
-                <li key={`${m.food.id}-${m.matchedAlias}-${idx}`}>
-                  <div className="food-row-head">
-                    <span className="food-name">
-                      {m.food.name}
-                      {m.source === 'estimate' ? (
-                        <span
-                          className="src-badge src-estimate"
-                          title="Category-based estimate — not a verified USDA line item"
-                        >
-                          Estimated
-                        </span>
-                      ) : (
-                        <span className="src-badge src-db" title="Matched in food database">
-                          Database
-                        </span>
-                      )}
-                    </span>
-                  </div>
-                  <div className="food-row-data">
-                    <label className="qty-edit">
-                      <span className="qty-edit-label">Servings</span>
-                      <span className="qty-edit-controls">
-                        <input
-                          type="number"
-                          min={0}
-                          step={0.25}
-                          value={m.qty}
-                          aria-label={`Servings of ${m.food.serving}`}
-                          onChange={(e) => {
-                            const v = parseFloat(e.target.value)
-                            if (!Number.isFinite(v)) return
-                            const next = result.matches.map((row, i) =>
-                              i === idx ? updateMatchServings(row, v) : row,
-                            )
-                            patchResult(next)
-                          }}
-                        />
-                        <span className="qty-unit">× {m.food.serving}</span>
+              {result.matches.map((m, idx) => {
+                const hint = rowTrustHint(m)
+                const rowClass =
+                  m.needsConfirm || m.tag === 'needs_confirm'
+                    ? 'food-row--confirm'
+                    : m.assumed || m.tag === 'assumed'
+                      ? 'food-row--assumed'
+                      : undefined
+                const highlightWeight =
+                  m.needsConfirm || m.tag === 'needs_confirm' || m.assumed || m.tag === 'assumed'
+                return (
+                  <li key={`${m.food.id}-${m.matchedAlias}-${idx}`} className={rowClass}>
+                    <div className="food-row-head">
+                      <span className="food-name">
+                        {m.food.name}
+                        {trustBadge(m)}
                       </span>
-                    </label>
-                    <label className="qty-edit">
-                      <span className="qty-edit-label">Weight</span>
-                      <span className="qty-edit-controls">
-                        <input
-                          type="number"
-                          min={0}
-                          step={1}
-                          value={m.grams}
-                          aria-label="Weight in grams"
-                          onChange={(e) => {
-                            const v = parseFloat(e.target.value)
-                            if (!Number.isFinite(v)) return
-                            const next = result.matches.map((row, i) =>
-                              i === idx ? updateMatchGrams(row, v) : row,
-                            )
-                            patchResult(next)
-                          }}
-                        />
-                        <span className="qty-unit">g</span>
-                      </span>
-                    </label>
-                    <div className="fib-result">
-                      <span className="fib-result-label">Fiber</span>
-                      <span className="fib">{m.fiberG}g</span>
                     </div>
-                  </div>
-                </li>
-              ))}
+                    {hint && (
+                      <p
+                        className={`row-trust-hint${
+                          m.needsConfirm || m.tag === 'needs_confirm'
+                            ? ' row-trust-hint--confirm'
+                            : ''
+                        }`}
+                      >
+                        {hint}
+                      </p>
+                    )}
+                    <div className="food-row-data">
+                      <label className="qty-edit">
+                        <span className="qty-edit-label">Servings</span>
+                        <span className="qty-edit-controls">
+                          <input
+                            type="number"
+                            min={0}
+                            step={0.25}
+                            value={m.qty}
+                            aria-label={`Servings of ${m.food.serving}`}
+                            onChange={(e) => {
+                              const v = parseFloat(e.target.value)
+                              if (!Number.isFinite(v)) return
+                              const next = result.matches.map((row, i) =>
+                                i === idx ? updateMatchServings(row, v) : row,
+                              )
+                              patchResult(next)
+                            }}
+                          />
+                          <span className="qty-unit">× {m.food.serving}</span>
+                        </span>
+                      </label>
+                      <label className="qty-edit">
+                        <span className="qty-edit-label">Weight</span>
+                        <span className="qty-edit-controls">
+                          <input
+                            type="number"
+                            min={0}
+                            step={1}
+                            value={m.grams}
+                            className={highlightWeight ? 'qty-input--focus' : undefined}
+                            aria-label="Weight in grams"
+                            onChange={(e) => {
+                              const v = parseFloat(e.target.value)
+                              if (!Number.isFinite(v)) return
+                              const next = result.matches.map((row, i) =>
+                                i === idx ? updateMatchGrams(row, v) : row,
+                              )
+                              patchResult(next)
+                            }}
+                          />
+                          <span className="qty-unit">g</span>
+                        </span>
+                      </label>
+                      <div className="fib-result">
+                        <span className="fib-result-label">Fiber</span>
+                        <span className="fib">{m.fiberG}g</span>
+                      </div>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
             {result.unmatchedHints.length > 0 && (
               <p className="unmatched-note">
                 Couldn’t match: {result.unmatchedHints.slice(0, 8).join(', ')}
-                {result.unmatchedHints.length > 8 ? '…' : ''}
+                {result.unmatchedHints.length > 8 ? '…' : ''}. Try simpler food names or add them as
+                separate lines.
               </p>
             )}
 
@@ -591,4 +873,5 @@ export function FiberCalculator({
       )}
     </>
   )
-}
+  },
+)

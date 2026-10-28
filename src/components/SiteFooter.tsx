@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 
 const GUIDE_LINKS = [
+  { to: '/what-is-fibermaxxing', label: 'What is fibermaxxing?' },
   { to: '/how-much-fiber-per-day', label: 'How much fiber / day' },
+  { to: '/fibermaxxing-foods', label: 'Fibermaxxing foods' },
+  { to: '/fibermaxxing-smoothie', label: 'Fibermaxxing smoothie' },
   { to: '/oatmeal', label: 'Oatmeal fiber' },
   { to: '/chia-seeds', label: 'Chia seeds' },
   { to: '/high-fiber-breakfast', label: 'High-fiber breakfast' },
