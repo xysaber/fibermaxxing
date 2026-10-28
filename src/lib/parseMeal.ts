@@ -339,7 +339,7 @@ function foodFromEstimate(phrase: string, est: NonNullable<ReturnType<typeof est
   const calories100g = est.calories
   return {
     id: `estimate:${est.category}:${phrase.toLowerCase().replace(/\s+/g, '_')}`,
-    name: `${est.label} (estimated)`,
+    name: est.label,
     aliases: [phrase],
     fiberG: est.fiberG,
     serving: est.serving,

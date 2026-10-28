@@ -30,10 +30,8 @@ export function MethodStrip() {
               USDA FoodData Central
             </a>{' '}
             (SR Legacy) plus a few curated staples. Servings are typical reference amounts; real
-            portions vary. <strong>Assumed portion</strong> means we filled a default serving when
-            you didn’t specify amount — edit weight if yours differ. <strong>Check match</strong>{' '}
-            means the closest database line may be wrong. <strong>Estimated</strong> means a
-            category-based approximation when a food is not a verified line item.
+            portions vary. <strong>Estimated</strong> means a category-based approximation when a
+            food is not a verified line item.
           </p>
           <p className="method-source">Data source: {FOOD_SOURCE}</p>
         </div>

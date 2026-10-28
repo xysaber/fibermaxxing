@@ -2285,6 +2285,51 @@ a {
   color: rgba(244, 246, 251, 0.72);
 }
 
+/* Close-the-gap: title + icon-only refresh (production-bound) */
+.suggestions-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.suggestions-title-row h3 {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.suggestions-in-score .suggestions-title-row h3 {
+  margin: 0;
+}
+
+.suggestions-refresh {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: -0.15rem 0 0;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(244, 246, 251, 0.88);
+  cursor: pointer;
+  transition:
+    background var(--duration) ease,
+    border-color var(--duration) ease,
+    color var(--duration) ease;
+}
+
+.suggestions-refresh:hover {
+  background: rgba(91, 140, 255, 0.2);
+  border-color: rgba(91, 140, 255, 0.45);
+  color: #fff;
+}
+
 /* Long-form SEO guide body (under facts band) */
 .seo-article {
   margin: 0 0 var(--space-section);

@@ -8,7 +8,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from 'react'
-import { buildSuggestions } from '../data/suggestions'
+import { buildSuggestions, type SuggestionItem } from '../data/suggestions'
 import { track } from '../lib/analytics'
 import {
   fiberTarget,
@@ -151,20 +151,6 @@ function useStarterTypewriter(enabled: boolean) {
 }
 
 function trustBadge(m: MatchedFood): ReactNode {
-  if (m.needsConfirm || m.tag === 'needs_confirm') {
-    return (
-      <span className="src-badge src-confirm" title="Closest match may be wrong">
-        Check match
-      </span>
-    )
-  }
-  if (m.assumed || m.tag === 'assumed') {
-    return (
-      <span className="src-badge src-assumed" title="Default serving used">
-        Assumed portion
-      </span>
-    )
-  }
   if (m.source === 'estimate') {
     return (
       <span
@@ -182,50 +168,39 @@ function trustBadge(m: MatchedFood): ReactNode {
   )
 }
 
-function rowTrustHint(m: MatchedFood): string | null {
-  if (m.needsConfirm || m.tag === 'needs_confirm') {
-    return 'Closest match may be wrong — adjust servings or weight so the total isn’t misleading.'
-  }
-  if (m.assumed || m.tag === 'assumed') {
-    return 'We used a default serving — adjust weight if needed.'
-  }
-  return null
-}
-
-function scoreEstimateNote(result: ParseResult): { text: string; attention: boolean } {
-  if (result.needsConfirmCount > 0) {
-    return {
-      text: 'Some items need a closer look — totals may be off until you adjust those portions.',
-      attention: true,
-    }
-  }
-  if (result.assumedCount > 0) {
-    return {
-      text: 'Some portions used default servings — edit weight if yours differ.',
-      attention: true,
-    }
-  }
-  if (result.estimatedCount > 0) {
-    return {
-      text: 'Totals are estimates from reference servings — edit portions on the right if needed. Includes category-based estimates.',
-      attention: false,
-    }
-  }
-  return {
-    text: 'Totals are estimates from reference servings — edit portions on the right if needed.',
-    attention: false,
-  }
-}
-
 function scoreMetaLine(result: ParseResult): string {
   const n = result.matches.length
-  const parts = [`${n} food${n === 1 ? '' : 's'}`]
-  if (result.needsConfirmCount > 0) parts.push(`${result.needsConfirmCount} to check`)
-  else if (result.assumedCount > 0) parts.push(`${result.assumedCount} assumed`)
-  else if (result.estimatedCount > 0) parts.push(`${result.estimatedCount} estimated`)
-  else parts[0] = `${parts[0]} matched`
+  const parts = [
+    result.estimatedCount > 0
+      ? `${n} food${n === 1 ? '' : 's'} · ${result.estimatedCount} estimated`
+      : `${n} food${n === 1 ? '' : 's'} matched`,
+  ]
   parts.push(`~${result.totalCalories} kcal`)
   return parts.join(' · ')
+}
+
+function SuggestionsRefreshIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+      <path
+        d="M14.5 9a5.5 5.5 0 0 1-9.3 3.95M3.5 9A5.5 5.5 0 0 1 12.8 5.05"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M12.5 3.5v2.8H15M5.5 14.5v-2.8H3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function combosKey(combos: SuggestionItem[][]): string {
+  return combos.map((c) => c.map((i) => i.id).join('+')).join('||')
 }
 
 export type FiberCalculatorProps = {
@@ -266,6 +241,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   const [activeStarterId, setActiveStarterId] = useState<string | null>(null)
   const [activeExample, setActiveExample] = useState<string | null>(null)
   const [showExamples, setShowExamples] = useState(false)
+  const [suggestionComboIndex, setSuggestionComboIndex] = useState(0)
   const resultsRef = useRef<HTMLElement>(null)
   const reportCardRef = useRef<HTMLDivElement>(null)
   const mealInputRef = useRef<HTMLTextAreaElement>(null)
@@ -293,6 +269,16 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     const eaten = new Set(result.matches.map((m) => m.food.id))
     return buildSuggestions(gap, eaten, result.estimatedCount)
   }, [hasMatches, result, gap])
+
+  const suggestionCombosKey = suggestions ? combosKey(suggestions.combos) : ''
+  useEffect(() => {
+    setSuggestionComboIndex(0)
+  }, [suggestionCombosKey])
+
+  const suggestionItems =
+    suggestions && suggestions.combos.length > 0
+      ? suggestions.combos[suggestionComboIndex % suggestions.combos.length]
+      : suggestions?.items ?? []
 
   const shareFoods = useMemo(() => {
     if (!hasMatches || !result) return []
@@ -467,8 +453,6 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       setDownloading(false)
     }
   }
-
-  const estimateNote = hasMatches && result ? scoreEstimateNote(result) : null
 
   return (
     <>
@@ -670,32 +654,37 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
               </div>
             </div>
 
-            {estimateNote && (
-              <p
-                className={`score-estimate-note${
-                  estimateNote.attention ? ' score-estimate-note--attention' : ''
-                }`}
-              >
-                {estimateNote.text}
-              </p>
-            )}
             {result.warnings.length > 0 && (
               <p className="score-estimate-note">{result.warnings[0]}</p>
             )}
 
             {suggestions && (
               <div className={`suggestions suggestions-${suggestions.tone} suggestions-in-score`}>
-                <h3>{suggestions.headline}</h3>
-                <p className="suggestions-detail">{suggestions.detail}</p>
-                {suggestions.items.length > 0 && (
+                <div className="suggestions-title-row">
+                  <h3>{suggestions.headline}</h3>
+                  {suggestions.combos.length > 1 && (
+                    <button
+                      type="button"
+                      className="suggestions-refresh"
+                      aria-label="Show another combination"
+                      title="Show another combination"
+                      onClick={() => setSuggestionComboIndex((i) => i + 1)}
+                    >
+                      <SuggestionsRefreshIcon />
+                    </button>
+                  )}
+                </div>
+                {suggestions.detail ? (
+                  <p className="suggestions-detail">{suggestions.detail}</p>
+                ) : null}
+                {suggestionItems.length > 0 && (
                   <ul className="suggestions-list">
-                    {suggestions.items.map((item) => (
-                      <li key={item.id}>
+                    {suggestionItems.map((item) => (
+                      <li key={`${suggestionComboIndex}-${item.id}`}>
                         <div className="suggestions-copy">
                           <strong>{item.name}</strong>
                           <span>
-                            {item.serving} · ~{item.fiberG}g fiber (optional add-on — not added to
-                            your log)
+                            {item.serving} · ~{item.fiberG}g fiber
                           </span>
                         </div>
                       </li>
@@ -708,37 +697,16 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
 
           <div className="detail-panel">
             <h3>Matched foods</h3>
-            <p className="estimate-note">Adjust servings or weight — fiber updates live.</p>
             <ul className="food-list food-list-editable">
               {result.matches.map((m, idx) => {
-                const hint = rowTrustHint(m)
-                const rowClass =
-                  m.needsConfirm || m.tag === 'needs_confirm'
-                    ? 'food-row--confirm'
-                    : m.assumed || m.tag === 'assumed'
-                      ? 'food-row--assumed'
-                      : undefined
-                const highlightWeight =
-                  m.needsConfirm || m.tag === 'needs_confirm' || m.assumed || m.tag === 'assumed'
                 return (
-                  <li key={`${m.food.id}-${m.matchedAlias}-${idx}`} className={rowClass}>
+                  <li key={`${m.food.id}-${m.matchedAlias}-${idx}`}>
                     <div className="food-row-head">
                       <span className="food-name">
                         {m.food.name}
                         {trustBadge(m)}
                       </span>
                     </div>
-                    {hint && (
-                      <p
-                        className={`row-trust-hint${
-                          m.needsConfirm || m.tag === 'needs_confirm'
-                            ? ' row-trust-hint--confirm'
-                            : ''
-                        }`}
-                      >
-                        {hint}
-                      </p>
-                    )}
                     <div className="food-row-data">
                       <label className="qty-edit">
                         <span className="qty-edit-label">Servings</span>
@@ -769,7 +737,6 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
                             min={0}
                             step={1}
                             value={m.grams}
-                            className={highlightWeight ? 'qty-input--focus' : undefined}
                             aria-label="Weight in grams"
                             onChange={(e) => {
                               const v = parseFloat(e.target.value)
