@@ -247,6 +247,12 @@ async function handleMealLogList(request: Request, env: Env): Promise<Response> 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url)
+    // Permanent strip of trailing slash so /slug/ and /slug share one URL with canonicals
+    // (Assets html_handling=drop-trailing-slash alone uses 307, which GSC treats as soft).
+    if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
+      url.pathname = url.pathname.replace(/\/+$/, '') || '/'
+      return Response.redirect(url.toString(), 301)
+    }
     if (url.pathname === '/api/meal-logs/health' && request.method === 'GET') {
       return Response.json({
         ok: true,
