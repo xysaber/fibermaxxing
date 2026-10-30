@@ -119,12 +119,22 @@ function writePageHtml(slug, html) {
   console.log('prerender /')
 }
 
+// FAQPage JSON-LD only for these published guides (smoothie HOLD this round).
+const FAQ_SCHEMA_SLUGS = new Set([
+  'oatmeal',
+  'chia-seeds',
+  'high-fiber-breakfast',
+  'how-much-fiber-per-day',
+  'what-is-fibermaxxing',
+  'fibermaxxing-foods',
+])
+
 for (const page of pages) {
   const html = injectHead(shell, {
     title: page.title,
     description: page.description,
     path: `/${page.slug}`,
-    faqs: page.faqs,
+    faqs: FAQ_SCHEMA_SLUGS.has(page.slug) ? page.faqs : [],
   }).replace('<div id="root"></div>', `<div id="root">${renderPage(`/${page.slug}`)}</div>`)
   writePageHtml(page.slug, html)
   console.log('prerender', `/${page.slug}`)
