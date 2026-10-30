@@ -1,1 +1,54 @@
 /* Layout tokens live in index.css; keep App.css for component-local overrides if needed. */
+
+/* SEO portion comparison table (oatmeal P0) */
+.seo-portion-table {
+  max-width: 920px;
+  margin: 0 auto 2rem;
+  padding: 0 1.25rem;
+}
+.seo-portion-table h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+.seo-portion-table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(26, 34, 56, 0.12);
+  border-radius: 12px;
+  background: #fff;
+}
+.seo-portion-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.seo-portion-table th,
+.seo-portion-table td {
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(26, 34, 56, 0.08);
+}
+.seo-portion-table thead th {
+  background: rgba(47, 91, 255, 0.06);
+  font-weight: 600;
+}
+.seo-portion-table tbody th {
+  font-weight: 600;
+}
+.seo-portion-table tbody tr:last-child th,
+.seo-portion-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.seo-portion-table-note {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(26, 34, 56, 0.7);
+  line-height: 1.45;
+}
+.seo-portion-table-links {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.seo-portion-table-links a {
+  color: #2f5bff;
+}
