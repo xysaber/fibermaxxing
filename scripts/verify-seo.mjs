@@ -31,4 +31,31 @@ assert.equal((sitemap.match(/<loc>/g) || []).length, pages.length + 1 + legalSlu
 for (const slug of legalSlugs) {
   assert.match(sitemap, new RegExp(`<loc>https://www.getfibermaxxing.com/${slug}</loc>`))
 }
+
+const FAQ_SCHEMA_SLUGS = new Set([
+  'oatmeal',
+  'chia-seeds',
+  'high-fiber-breakfast',
+  'how-much-fiber-per-day',
+  'what-is-fibermaxxing',
+  'fibermaxxing-foods',
+])
+for (const page of pages) {
+  const html = readFileSync(`dist/${page.slug}.html`, 'utf8')
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
+  const faq = blocks.find((b) => b['@type'] === 'FAQPage')
+  if (FAQ_SCHEMA_SLUGS.has(page.slug)) {
+    assert.ok(faq, `${page.slug} should have FAQPage JSON-LD`)
+    const names = faq.mainEntity.map((e) => e.name)
+    for (const f of page.faqs || []) {
+      assert.ok(names.includes(f.q), `${page.slug} FAQPage missing: ${f.q}`)
+      const ent = faq.mainEntity.find((e) => e.name === f.q)
+      assert.equal(ent.acceptedAnswer.text, f.a)
+    }
+  } else {
+    assert.equal(faq, undefined, `${page.slug} must not have FAQPage JSON-LD this round`)
+  }
+  console.log('FAQ schema verified:', page.slug, faq ? 'FAQPage' : 'no FAQPage')
+}
+
 console.log('404 and sitemap verified')
