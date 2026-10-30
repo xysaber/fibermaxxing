@@ -11,6 +11,8 @@ binding = "ASSETS"
 not_found_handling = "404-page"
 # Flat dist/<slug>.html → /<slug> without forcing a trailing-slash redirect.
 html_handling = "drop-trailing-slash"
+# Worker must see /slug/ before Assets soft-307 so our 301 runs first.
+run_worker_first = true
 
 # R2 bucket created in Dashboard: fibermaxxing-meal-logs
 [[r2_buckets]]
