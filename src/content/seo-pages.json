@@ -44,15 +44,15 @@
     "faqs": [
       {
         "q": "What is the recommended fiber intake per day?",
-        "a": "Commonly cited U.S. Adequate Intake examples: women 19–50 ≈ 25g; men 19–50 ≈ 38g; women 51+ ≈ 21g; men 51+ ≈ 30g. Individual needs vary with calories and health status."
+        "a": "Commonly cited U.S. Adequate Intake examples used in Standard mode here: women 19–50 ≈ 25 g; men 19–50 ≈ 38 g; women 51+ ≈ 21 g; men 51+ ≈ 30 g. Individual needs vary with calories and health status."
       },
       {
         "q": "What does Fibermaxxing mean here?",
-        "a": "Standard daily target × 1.5, capped at 50g. Not medical advice and not an official guideline."
+        "a": "As a habit: eating enough fiber to hit your daily target on purpose. In the calculator, default mode is Standard (those AI references). Optional Fibermaxxing mode is Standard × 1.5, rounded, capped at 50 g — not medical advice and not an official guideline."
       },
       {
         "q": "How do I know how much I ate?",
-        "a": "Paste your meals into the calculator for a USDA-based estimate, then edit portions if a match looks wrong."
+        "a": "Paste your meals into the free calculator for a USDA-based estimate, then edit portions if a match looks wrong."
       },
       {
         "q": "Does every meal need the same amount of fiber?",
@@ -105,7 +105,7 @@
       {
         "heading": "Standard goals and Fibermaxxing mode",
         "paragraphs": [
-          "Standard mode uses the age-and-sex references above. Fibermaxxing mode multiplies the standard value by 1.5 and caps the result at 50 g: for example, 25 g becomes 37.5 g, while 38 g becomes 50 g.",
+          "Standard mode uses the age-and-sex references above. Fibermaxxing mode multiplies the standard value by 1.5 and caps the result at 50 g: for example, 25 g Standard becomes about 38 g in Fibermaxxing mode after rounding (×1.5, cap 50 g), while 38 g Standard becomes 50 g.",
           "A stretch target is optional. Increase fiber gradually rather than trying to close a large gap in one sitting, and drink fluids as appropriate for you. A bigger number is not automatically a better personal goal.",
           "The calculator estimates food intake; it does not diagnose digestive symptoms or determine a treatment plan. If a clinician has given you a specific dietary plan, use that guidance when interpreting the result."
         ]
@@ -139,7 +139,7 @@
       {
         "label": "Example bowl",
         "value": "~10g",
-        "note": "1 cup cooked oatmeal + 1 tbsp chia (≈12 g) + ½ cup blueberries"
+        "note": "1 cup cooked oatmeal + 1 tbsp chia + ½ cup blueberries"
       }
     ],
     "sections": [
@@ -334,23 +334,23 @@
     "faqs": [
       {
         "q": "How much fiber is in a tablespoon of chia?",
-        "a": "About 4.1g on this site when we treat 1 tbsp as ~12g of dried chia seeds. Edit grams after matching if your scale reading differs."
-      },
-      {
-        "q": "Chia vs psyllium?",
-        "a": "Psyllium is a concentrated husk; chia is a whole seed. Compare labels and your tolerance — then calculate real portions."
-      },
-      {
-        "q": "Can I only eat chia to hit my goal?",
-        "a": "Usually better to mix legumes, grains, fruit, and vegetables. Chia is a strong helper, not the whole diet."
-      },
-      {
-        "q": "Does soaking chia change its fiber content?",
-        "a": "Soaking adds water. Estimate fiber from the dry seed amount used and log the other pudding ingredients separately."
+        "a": "About 4.1 g on this site when 1 tbsp is ~12 g of dried chia seeds (USDA chia density). Edit grams after matching if your scoop differs."
       },
       {
         "q": "How much fiber is in two tablespoons?",
-        "a": "About 8.3 g if the two tablespoons weigh 24 g in total. Use your package serving weight or a scale if your scoop differs."
+        "a": "About 8.3 g if the two tablespoons weigh 24 g total. Use a scale or package serving weight when your scoop differs."
+      },
+      {
+        "q": "Does soaking chia change its fiber content?",
+        "a": "Soaking adds water, not fiber. Estimate from the dry seed weight, then log milk, fruit, and other pudding ingredients separately."
+      },
+      {
+        "q": "Can I only eat chia to hit my goal?",
+        "a": "Usually better to mix legumes, grains, fruit, and vegetables. Chia is a strong helper, not the whole diet. Default goal mode on this site is Standard."
+      },
+      {
+        "q": "Chia vs psyllium?",
+        "a": "Psyllium is a concentrated husk; chia is a whole seed. Serving sizes differ — compare labels and tolerance, then calculate real portions. This site does not invent a soluble/insoluble split."
       }
     ],
     "related": [
@@ -438,23 +438,23 @@
     "faqs": [
       {
         "q": "What is a high-fiber breakfast?",
-        "a": "Oatmeal with fruit and seeds, chia pudding with berries, and whole-wheat toast with avocado are useful starting combinations. The portions determine the fiber total."
+        "a": "Useful starting combinations on this site: oatmeal with fruit and seeds, chia pudding with berries, and whole-wheat toast with avocado. Portions determine the fiber total."
       },
       {
         "q": "How are the example totals calculated?",
-        "a": "They add rounded reference amounts for the listed portions: about 10 g for the oat bowl, 11 g for chia and raspberries, and 10 g for the savory plate. Plain nonfat Greek yogurt and eggs add no fiber in these examples."
+        "a": "They add this site’s rounded reference amounts: about 10 g for 1 cup cooked oatmeal + 1 tbsp chia (~12 g) + ½ cup blueberries; about 11 g for 20 g chia + ½ cup raspberries (plain nonfat Greek yogurt adds 0 g); about 10 g for 75 g avocado + 1 slice whole-wheat bread + 1 medium orange."
       },
       {
         "q": "How many grams should breakfast provide?",
-        "a": "There is no official breakfast quota. Use your daily reference and the rest of your meals to decide how much to include."
+        "a": "There is no official breakfast quota. Compare with your Standard daily reference (or optional Fibermaxxing mode) and the rest of your meals."
       },
       {
         "q": "Can I prepare these breakfasts ahead?",
-        "a": "Oats and chia mixtures can be portioned from a batch. Divide each ingredient by the share you eat, and follow suitable food storage guidance for your recipe."
+        "a": "Oats and chia mixtures can be portioned from a batch. Log only the share of each ingredient you ate, and follow suitable food storage guidance."
       },
       {
         "q": "Will the example calculate automatically?",
-        "a": "Examples fill the meal field. Press Calculate fiber to see results, then review the matches and edit portions."
+        "a": "Examples fill the meal field. Press Calculate fiber, then review matches and edit portions or grams."
       }
     ],
     "related": [
@@ -555,15 +555,15 @@
     "faqs": [
       {
         "q": "What does fibermaxxing mean?",
-        "a": "It means intentionally eating more fiber—usually enough to meet or slightly exceed common daily targets—mainly from plants. It is a trend name, not a clinical protocol."
+        "a": "It means intentionally eating more fiber—usually enough to meet common daily targets—mainly from plants. It is a trend name, not a clinical protocol."
       },
       {
         "q": "How much fiber should I eat if I am fibermaxxing?",
-        "a": "Start with the Standard targets on this site: about 25 g/day for women 19–50 and 38 g for men 19–50. Optional Fibermaxxing mode multiplies that by 1.5 (capped at 50 g). Raise intake over weeks, not in one day."
+        "a": "Start with Standard targets on this site: about 25 g/day for women 19–50 and 38 g for men 19–50 (lower after 50). Optional Fibermaxxing mode multiplies Standard by 1.5 (rounded, capped at 50 g). Raise intake over weeks, not in one day."
       },
       {
         "q": "How do I start fibermaxxing?",
-        "a": "Add fiber to meals you already eat: beans in a bowl, berries on oats, chia in a smoothie, whole-grain bread. Estimate a real day in the calculator, then close the gap with one food at a time."
+        "a": "Add fiber to meals you already eat: beans in a bowl, berries on oats, chia in a smoothie, whole-grain bread. Estimate a real day in the free calculator, then close the gap with one food at a time."
       },
       {
         "q": "Is fibermaxxing safe?",
@@ -571,7 +571,7 @@
       },
       {
         "q": "Do I need fiber gummies or supplements?",
-        "a": "Whole foods also bring other nutrients. Supplements can add grams but are optional. Use the calculator on labeled servings if you include them."
+        "a": "Whole foods also bring other nutrients. Supplements can add grams but are optional. If you use them, estimate labeled servings in the calculator along with the rest of the day."
       }
     ],
     "related": [
@@ -665,11 +665,11 @@
       },
       {
         "q": "How much fiber is in a chia smoothie?",
-        "a": "It depends on the spoonful. On this site, 1 tbsp dried chia (~12 g) is about 4.1 g of fiber; fruit and beans add more. Always total the full recipe."
+        "a": "It depends on the full recipe. On this site, 1 tbsp dried chia (~12 g) is about 4.1 g of fiber; fruit, beans, and other add-ins change the total. Always paste the full ingredient list and calculate."
       },
       {
         "q": "Will a smoothie alone hit 25 g?",
-        "a": "Sometimes, if legumes and seeds are generous—but many blends land lower. Calculate the recipe, then plan the rest of the day."
+        "a": "Sometimes, if legumes and seeds are generous—but many blends land lower. Calculate the recipe against your Standard daily target, then plan the rest of the day."
       },
       {
         "q": "Any tolerance tips?",
@@ -946,7 +946,7 @@
     "faqs": [
       {
         "q": "What foods are best for fibermaxxing?",
-        "a": "Cooked beans and lentils, chia or ground flax, berries, pears/apples with skin, oats, broccoli, and whole-grain bread are reliable starting points. Rank by the portion you will actually eat."
+        "a": "Cooked beans and lentils, chia or ground flax, berries, pears/apples with skin, oats, broccoli, and whole-grain bread are reliable starting points. Rank by the portion you will actually eat, then check grams in the calculator."
       },
       {
         "q": "Is meat high in fiber?",
@@ -958,7 +958,7 @@
       },
       {
         "q": "Can supplements replace this list?",
-        "a": "Powders and gummies can add grams but skip many nutrients in whole foods. If you use them, still estimate the rest of the day."
+        "a": "Powders and gummies can add grams but skip many nutrients in whole foods. If you use them, still estimate the rest of the day against your Standard target."
       },
       {
         "q": "Where are smoothies and breakfast ideas?",
