@@ -151,27 +151,7 @@ function useStarterTypewriter(enabled: boolean, meals: string[]) {
 }
 
 function trustBadge(m: MatchedFood): ReactNode {
-  if (m.needsConfirm || m.tag === 'needs_confirm') {
-    return (
-      <span
-        className="src-badge src-confirm"
-        title="Closest match may be wrong — adjust servings or weight"
-      >
-        Check match
-      </span>
-    )
-  }
-  if (m.assumed || m.tag === 'assumed') {
-    return (
-      <span
-        className="src-badge src-assumed"
-        title="We used a default serving — adjust weight if needed"
-      >
-        Assumed portion
-      </span>
-    )
-  }
-  if (m.source === 'estimate' || m.tag === 'estimated') {
+  if (m.source === 'estimate') {
     return (
       <span
         className="src-badge src-estimate"
@@ -182,34 +162,19 @@ function trustBadge(m: MatchedFood): ReactNode {
     )
   }
   return (
-    <span className="src-badge src-db" title="Matched USDA/curated line + portion as entered">
+    <span className="src-badge src-db" title="Matched in food database">
       Database
     </span>
   )
 }
 
-function foodRowClass(m: MatchedFood): string | undefined {
-  if (m.needsConfirm || m.tag === 'needs_confirm') return 'food-row--confirm'
-  if (m.assumed || m.tag === 'assumed') return 'food-row--assumed'
-  return undefined
-}
-
-function rowTrustHint(m: MatchedFood): string | null {
-  if (m.needsConfirm || m.tag === 'needs_confirm') {
-    return 'Closest match may be wrong — adjust servings or weight so the total isn’t misleading.'
-  }
-  if (m.assumed || m.tag === 'assumed') {
-    return 'We used a default serving — adjust weight if needed.'
-  }
-  return null
-}
-
 function scoreMetaLine(result: ParseResult): string {
   const n = result.matches.length
-  const parts = [`${n} food${n === 1 ? '' : 's'} matched`]
-  if (result.needsConfirmCount > 0) parts.push(`${result.needsConfirmCount} need check`)
-  if (result.assumedCount > 0) parts.push(`${result.assumedCount} assumed portion`)
-  if (result.estimatedCount > 0) parts.push(`${result.estimatedCount} estimated`)
+  const parts = [
+    result.estimatedCount > 0
+      ? `${n} food${n === 1 ? '' : 's'} · ${result.estimatedCount} estimated`
+      : `${n} food${n === 1 ? '' : 's'} matched`,
+  ]
   parts.push(`~${result.totalCalories} kcal`)
   return parts.join(' · ')
 }
@@ -747,29 +712,14 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
             <h3>Matched foods</h3>
             <ul className="food-list food-list-editable">
               {result.matches.map((m, idx) => {
-                const hint = rowTrustHint(m)
                 return (
-                  <li
-                    key={`${m.food.id}-${m.matchedAlias}-${idx}`}
-                    className={foodRowClass(m)}
-                  >
+                  <li key={`${m.food.id}-${m.matchedAlias}-${idx}`}>
                     <div className="food-row-head">
                       <span className="food-name">
                         {m.food.name}
                         {trustBadge(m)}
                       </span>
                     </div>
-                    {hint ? (
-                      <p
-                        className={`row-trust-hint${
-                          m.needsConfirm || m.tag === 'needs_confirm'
-                            ? ' row-trust-hint--confirm'
-                            : ''
-                        }`}
-                      >
-                        {hint}
-                      </p>
-                    ) : null}
                     <div className="food-row-data">
                       <label className="qty-edit">
                         <span className="qty-edit-label">Servings</span>
