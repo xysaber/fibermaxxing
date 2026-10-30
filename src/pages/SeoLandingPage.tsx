@@ -95,12 +95,54 @@ export function SeoLandingPage() {
           initialMode={page.defaultMode}
           initialMeal={page.defaultMeal}
           examples={page.examples?.length ? page.examples : [page.defaultMeal]}
+          starters={page.quickPills}
           panelLabel="Estimate this meal — or paste your own"
         />
       </section>
 
       {facts.length > 0 ? (
         <InfoBand id="seo-facts" ariaLabel="Key figures" tiles={facts} />
+      ) : null}
+
+      {page.portionTable ? (
+        <section className="seo-portion-table" aria-labelledby="portion-table-heading">
+          <h2 id="portion-table-heading">{page.portionTable.caption}</h2>
+          <div className="seo-portion-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  {page.portionTable.columns.map((c) => (
+                    <th key={c} scope="col">
+                      {c}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {page.portionTable.rows.map((row) => (
+                  <tr key={row[0]}>
+                    {row.map((cell, i) =>
+                      i === 0 ? (
+                        <th key={i} scope="row">
+                          {cell}
+                        </th>
+                      ) : (
+                        <td key={i}>{cell}</td>
+                      ),
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {page.portionTable.note ? <p className="seo-portion-table-note">{page.portionTable.note}</p> : null}
+          <p className="seo-portion-table-links">
+            Prefill a portion above, then add toppings — or open{' '}
+            <a href="/chia-seeds">chia seeds</a>,{' '}
+            <a href="/high-fiber-breakfast">high-fiber breakfast</a>, or the{' '}
+            <a href="/">daily calculator</a> for a full bowl estimate.
+          </p>
+        </section>
       ) : null}
 
       {page.sections && page.sections.length > 0 ? (

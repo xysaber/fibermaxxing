@@ -9,6 +9,19 @@ export type SeoFact = {
   note?: string
 }
 
+export type SeoQuickPill = {
+  id: string
+  label: string
+  meal: string
+}
+
+export type SeoPortionTable = {
+  caption: string
+  note?: string
+  columns: string[]
+  rows: string[][]
+}
+
 /** First-viewport direct answer (P0) — big number under the H1 */
 export type SeoAnswer = {
   value: string
@@ -51,6 +64,10 @@ export type SeoPage = {
   defaultMeal: string
   /** Theme-specific meal examples for the calculator (shown collapsed by default) */
   examples?: string[]
+  /** Always-visible calculator prefills (portion pills). Replaces default Quick start when set. */
+  quickPills?: SeoQuickPill[]
+  /** Optional comparison table (e.g. oatmeal dry vs cooked portions). */
+  portionTable?: SeoPortionTable
   faqs: SeoFaq[]
   related: string[]
   /** Only published pages are routed + sitemap’d */

@@ -118,8 +118,8 @@
     "slug": "oatmeal",
     "publish": true,
     "layout": "bands",
-    "title": "How Much Fiber Is in Oatmeal? Per Cup + Calculator",
-    "description": "One cup of cooked oatmeal (234 g) has about 4 g of fiber in this calculator’s reference data. Compare dry vs cooked oats, boost your bowl, and estimate your meal for free.",
+    "title": "Oatmeal Fiber Calculator: ½ Cup, 1 Cup Cooked & Dry vs Cooked",
+    "description": "Calculate fiber in oatmeal by portion — ½ cup, 1 cup cooked, or dry oats. Compare rolled, steel-cut & instant, then estimate your full bowl.",
     "h1": "How much fiber is in oatmeal?",
     "answer": {
       "value": "~4",
@@ -143,6 +143,12 @@
       }
     ],
     "sections": [
+      {
+        "heading": "Common portions at a glance",
+        "paragraphs": [
+          "Use the portion table below for quick cooked vs dry comparisons. Rolled dry oats use this site’s dry-oats serving; steel-cut and instant cup sizes are marked — when we lack a separate reference line. Tap a pill in the calculator to prefill ½ / 1 / 1½ cup cooked or dry, then add toppings for a full bowl."
+        ]
+      },
       {
         "heading": "How much fiber is in a cup of oatmeal?",
         "paragraphs": [
@@ -190,7 +196,11 @@
     ],
     "faqs": [
       {
-        "q": "How much fiber is in a cup of oatmeal?",
+        "q": "How much fiber is in 1/2 cup of oatmeal?",
+        "a": "About 2 g for ½ cup cooked (117 g) on this site. Dry ½ cup rolled oats is denser — about 4.2 g from the dry-oats reference (40 g)."
+      },
+      {
+        "q": "How much fiber is in a cup of cooked oatmeal?",
         "a": "About 4 g per 1 cup cooked (234 g) on this site — edit grams if your water ratio differs."
       },
       {
@@ -199,7 +209,7 @@
       },
       {
         "q": "Does steel-cut have more fiber than rolled oats?",
-        "a": "Per gram of dry oats, usually similar — portion size and water matter more than the cut."
+        "a": "Per gram of dry oats, usually similar — portion size and water matter more than the cut. This page has no separate steel-cut cup line, so prefer grams."
       },
       {
         "q": "Is one bowl enough for the day?",
@@ -213,7 +223,75 @@
       "how-much-fiber-per-day"
     ],
     "calculatorCta": "Estimate this bowl",
-    "articleCta": "Estimate your bowl in the calculator"
+    "articleCta": "Estimate your bowl in the calculator",
+    "quickPills": [
+      {
+        "id": "oat_half_cooked",
+        "label": "½ cup cooked",
+        "meal": "1/2 cup cooked oatmeal"
+      },
+      {
+        "id": "oat_1_cooked",
+        "label": "1 cup cooked",
+        "meal": "1 cup cooked oatmeal"
+      },
+      {
+        "id": "oat_1_5_cooked",
+        "label": "1½ cup cooked",
+        "meal": "1.5 cups cooked oatmeal"
+      },
+      {
+        "id": "oat_half_dry",
+        "label": "½ cup dry",
+        "meal": "1/2 cup dry oats"
+      },
+      {
+        "id": "oat_1_dry",
+        "label": "1 cup dry",
+        "meal": "1 cup dry oats"
+      },
+      {
+        "id": "oat_1_5_dry",
+        "label": "1½ cup dry",
+        "meal": "1.5 cups dry oats"
+      }
+    ],
+    "portionTable": {
+      "caption": "Common oatmeal portions (fiber grams)",
+      "note": "Cooked uses this site’s cooked oatmeal line (1.7 g/100 g, 234 g per cup). Dry rolled uses dry oats (10.6 g/100 g, 40 g per ½ cup). Steel-cut and instant cup lines are not separate reference servings here — use an em dash and prefer grams or a packet label.",
+      "columns": [
+        "Type",
+        "½ cup",
+        "1 cup",
+        "1½ cup"
+      ],
+      "rows": [
+        [
+          "Cooked oatmeal",
+          "~2 g",
+          "~4 g",
+          "~6 g"
+        ],
+        [
+          "Dry rolled oats",
+          "~4.2 g",
+          "~8.5 g",
+          "~12.7 g"
+        ],
+        [
+          "Dry steel-cut",
+          "—",
+          "—",
+          "—"
+        ],
+        [
+          "Dry instant",
+          "—",
+          "—",
+          "—"
+        ]
+      ]
+    }
   },
   {
     "slug": "chia-seeds",

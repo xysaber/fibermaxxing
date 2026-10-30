@@ -56,7 +56,6 @@ const DEFAULT_EXAMPLES = [
   'Psyllium husk in water, salad, hummus, and a pear',
 ]
 
-const STARTER_DEMO_MEALS = STARTERS.map((s) => s.meal)
 
 function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'light' }) {
   const r = 46
@@ -91,12 +90,13 @@ function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'li
 }
 
 /** Empty-state typewriter over the three Quick start meals (visual only). */
-function useStarterTypewriter(enabled: boolean) {
+function useStarterTypewriter(enabled: boolean, meals: string[]) {
   const [text, setText] = useState('')
   const [index, setIndex] = useState(0)
+  const mealsKey = meals.join('\0')
 
   useEffect(() => {
-    if (!enabled) {
+    if (!enabled || meals.length === 0) {
       setText('')
       setIndex(0)
       return
@@ -111,7 +111,7 @@ function useStarterTypewriter(enabled: boolean) {
 
     const tick = () => {
       if (cancelled) return
-      const full = STARTER_DEMO_MEALS[i] ?? ''
+      const full = meals[i] ?? ''
       if (phase === 'type') {
         pos += 1
         setText(full.slice(0, pos))
@@ -131,7 +131,7 @@ function useStarterTypewriter(enabled: boolean) {
       pos -= 1
       setText(full.slice(0, Math.max(0, pos)))
       if (pos <= 0) {
-        i = (i + 1) % STARTER_DEMO_MEALS.length
+        i = (i + 1) % meals.length
         setIndex(i)
         phase = 'type'
         timer = setTimeout(tick, 320)
@@ -145,7 +145,7 @@ function useStarterTypewriter(enabled: boolean) {
       cancelled = true
       if (timer) clearTimeout(timer)
     }
-  }, [enabled])
+  }, [enabled, mealsKey])
 
   return { text, index }
 }
@@ -203,12 +203,20 @@ function combosKey(combos: SuggestionItem[][]): string {
   return combos.map((c) => c.map((i) => i.id).join('+')).join('||')
 }
 
+export type CalculatorStarter = {
+  id: string
+  label: string
+  meal: string
+}
+
 export type FiberCalculatorProps = {
   initialSex?: Sex
   initialAge?: AgeGroup
   initialMode?: GoalMode
   initialMeal?: string
   examples?: string[]
+  /** When set, replaces the default Quick start chips (and typewriter demos). */
+  starters?: CalculatorStarter[]
   panelLabel?: string
 }
 
@@ -225,10 +233,15 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       initialMode = 'standard',
       initialMeal = '',
       examples = DEFAULT_EXAMPLES,
+      starters,
       panelLabel = 'Fiber intake estimator',
     },
     ref,
   ) {
+  const starterList: CalculatorStarter[] = starters?.length
+    ? starters
+    : STARTERS.map((s) => ({ id: s.id, label: s.label, meal: s.meal }))
+  const starterDemoMeals = starterList.map((s) => s.meal)
   const [sex, setSex] = useState<Sex>(initialSex)
   const [age, setAge] = useState<AgeGroup>(initialAge)
   const [mode, setMode] = useState<GoalMode>(initialMode)
@@ -254,7 +267,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   )
 
   const showTypewriter = !meal.trim() && !mealFocused
-  const { text: demoText, index: demoIndex } = useStarterTypewriter(showTypewriter)
+  const { text: demoText, index: demoIndex } = useStarterTypewriter(showTypewriter, starterDemoMeals)
 
   const standardAi = useMemo(() => standardFiberAi(sex, age), [sex, age])
   const target = useMemo(() => fiberTarget(sex, age, mode), [sex, age, mode])
@@ -286,7 +299,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   }, [hasMatches, result])
 
   function resolveInputOrigin(text: string): MealLogInputOrigin {
-    const starter = STARTERS.find((s) => s.id === activeStarterId)
+    const starter = starterList.find((s) => s.id === activeStarterId)
     if (starter && text === starter.meal.trim()) return 'starter'
     if (activeExample !== null && text === activeExample.trim()) return 'example'
     if (initialMeal && text === initialMeal.trim()) return 'prefill'
@@ -359,7 +372,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     })
   }
 
-  function pickStarter(id: (typeof STARTERS)[number]['id'], mealText: string) {
+  function pickStarter(id: string, mealText: string) {
     setActiveStarterId(id)
     setActiveExample(null)
     setMeal(mealText)
@@ -383,7 +396,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
         // Don't overwrite an in-progress meal or existing result.
         if (meal.trim() || result) return
-        const starter = STARTERS[demoIndex] ?? STARTERS[0]
+        const starter = starterList[demoIndex] ?? starterList[0]
         pickStarter(starter.id, starter.meal)
         track('try_calculator_cta', { starter_id: starter.id })
       },
@@ -545,9 +558,9 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         </div>
 
         <div className="starter-block" aria-label="Meal starters">
-          <p className="starter-label">Quick start</p>
+          <p className="starter-label">{starters?.length ? 'Quick portions' : 'Quick start'}</p>
           <div className="starter-chips">
-            {STARTERS.map((s, i) => (
+            {starterList.map((s, i) => (
               <button
                 key={s.id}
                 type="button"
