@@ -244,9 +244,22 @@ async function handleMealLogList(request: Request, env: Env): Promise<Response> 
   return Response.json({ ok: true, prefix, count: keys.length, keys })
 }
 
+/** Short URLs still hit by posts and analytics. Destination is the no-slash canonical. */
+const LEGACY_PATH_REDIRECTS: Record<string, string> = {
+  '/how-much': '/how-much-fiber-per-day',
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url)
+    // Alias first so /how-much and /how-much/ are one 301 (query string kept via url.search).
+    // Must run before the trailing-slash strip, which would otherwise 301 /how-much/ → /how-much.
+    const barePath = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, '') || '/' : url.pathname
+    const legacyTarget = LEGACY_PATH_REDIRECTS[barePath]
+    if (legacyTarget) {
+      url.pathname = legacyTarget
+      return Response.redirect(url.toString(), 301)
+    }
     // Permanent strip of trailing slash so /slug/ and /slug share one URL with canonicals
     // (Assets html_handling=drop-trailing-slash alone uses 307, which GSC treats as soft).
     if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
