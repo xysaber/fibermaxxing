@@ -57,6 +57,11 @@ export type SeoPage = {
    */
   layout?: 'default' | 'bands'
   calculatorCta?: string
+  /**
+   * Trust line beside the hero calculator CTA.
+   * When set, that CTA renders as a primary button (oatmeal only today).
+   */
+  calculatorCtaNote?: string
   articleCta?: string
   defaultSex: Sex
   defaultAge: AgeGroup

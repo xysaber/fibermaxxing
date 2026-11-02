@@ -118,8 +118,8 @@
     "slug": "oatmeal",
     "publish": true,
     "layout": "bands",
-    "title": "Oatmeal Fiber Calculator: ½ Cup, 1 Cup Cooked & Dry vs Cooked",
-    "description": "Calculate fiber in oatmeal by portion — ½ cup, 1 cup cooked, or dry oats. Compare rolled, steel-cut & instant, then estimate your full bowl.",
+    "title": "How Much Fiber in a Cup of Oatmeal? Cooked + Calculator",
+    "description": "How much fiber is in 1 cup of cooked oatmeal? See ½ cup & 1 cup, dry vs cooked, then calculate your bowl free — no login.",
     "h1": "How much fiber is in oatmeal?",
     "answer": {
       "value": "~4",
@@ -146,7 +146,7 @@
       {
         "heading": "Common portions at a glance",
         "paragraphs": [
-          "Use the portion table below for quick cooked vs dry comparisons. Rolled dry oats use this site’s dry-oats serving; steel-cut and instant cup sizes are marked — when we lack a separate reference line. Tap a pill in the calculator to prefill ½ / 1 / 1½ cup cooked or dry, then add toppings for a full bowl."
+          "Use the portion table above for quick cooked vs dry comparisons. Rolled dry oats use this site’s dry-oats serving; steel-cut and instant cup sizes are marked — when we lack a separate reference line. Tap a pill in the calculator to prefill ½ / 1 / 1½ cup cooked or dry, then add toppings for a full bowl."
         ]
       },
       {
@@ -222,7 +222,8 @@
       "fibermaxxing-foods",
       "how-much-fiber-per-day"
     ],
-    "calculatorCta": "Estimate this bowl",
+    "calculatorCta": "Calculate my bowl",
+    "calculatorCtaNote": "Free · no login",
     "articleCta": "Estimate your bowl in the calculator",
     "quickPills": [
       {

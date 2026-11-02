@@ -10,7 +10,7 @@ import { SeoAnswer } from '../components/SeoAnswer'
 import { SeoArticle } from '../components/SeoArticle'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
-import { getSeoPage, SEO_PAGE_MAP } from '../content/seoPages'
+import { getSeoPage, SEO_PAGE_MAP, type SeoPortionTable } from '../content/seoPages'
 import { trackPageView } from '../lib/analytics'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -26,6 +26,42 @@ function focusCalculator(e: MouseEvent<HTMLAnchorElement>) {
   const meal = document.getElementById('meal') as HTMLTextAreaElement | null
   panel?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   window.setTimeout(() => meal?.focus({ preventScroll: true }), 280)
+}
+
+function PortionComparison({ table }: { table: SeoPortionTable }) {
+  return (
+    <section className="seo-portion-table" aria-labelledby="portion-table-heading">
+      <h2 id="portion-table-heading">{table.caption}</h2>
+      <div className="seo-portion-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              {table.columns.map((c) => (
+                <th key={c} scope="col">
+                  {c}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {table.rows.map((row) => (
+              <tr key={row[0]}>
+                {row.map((cell, i) =>
+                  i === 0 ? (
+                    <th key={i} scope="row">
+                      {cell}
+                    </th>
+                  ) : (
+                    <td key={i}>{cell}</td>
+                  ),
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )
 }
 
 export function SeoLandingPage() {
@@ -79,13 +115,24 @@ export function SeoLandingPage() {
 
           {heroLede ? <p className="lede">{heroLede}</p> : null}
 
-          <a
-            className={useBands ? 'hero-method-link hero-calc-link' : 'hero-method-link'}
-            href="#calculator"
-            onClick={focusCalculator}
-          >
-            {page.calculatorCta ?? 'Estimate this meal'}
-          </a>
+          {page.portionTable ? <PortionComparison table={page.portionTable} /> : null}
+
+          {page.calculatorCtaNote ? (
+            <div className="hero-cta-row">
+              <a className="btn btn-primary hero-cta" href="#calculator" onClick={focusCalculator}>
+                {page.calculatorCta ?? 'Estimate this meal'}
+              </a>
+              <p className="hero-cta-note">{page.calculatorCtaNote}</p>
+            </div>
+          ) : (
+            <a
+              className={useBands ? 'hero-method-link hero-calc-link' : 'hero-method-link'}
+              href="#calculator"
+              onClick={focusCalculator}
+            >
+              {page.calculatorCta ?? 'Estimate this meal'}
+            </a>
+          )}
         </div>
 
         <FiberCalculator
@@ -100,49 +147,20 @@ export function SeoLandingPage() {
         />
       </section>
 
-      {facts.length > 0 ? (
-        <InfoBand id="seo-facts" ariaLabel="Key figures" tiles={facts} />
-      ) : null}
-
       {page.portionTable ? (
-        <section className="seo-portion-table" aria-labelledby="portion-table-heading">
-          <h2 id="portion-table-heading">{page.portionTable.caption}</h2>
-          <div className="seo-portion-table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  {page.portionTable.columns.map((c) => (
-                    <th key={c} scope="col">
-                      {c}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {page.portionTable.rows.map((row) => (
-                  <tr key={row[0]}>
-                    {row.map((cell, i) =>
-                      i === 0 ? (
-                        <th key={i} scope="row">
-                          {cell}
-                        </th>
-                      ) : (
-                        <td key={i}>{cell}</td>
-                      ),
-                    )}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        <div className="seo-portion-follow">
           {page.portionTable.note ? <p className="seo-portion-table-note">{page.portionTable.note}</p> : null}
           <p className="seo-portion-table-links">
-            Prefill a portion above, then add toppings — or open{' '}
+            Prefill a portion in the calculator, then add toppings — or open{' '}
             <a href="/chia-seeds">chia seeds</a>,{' '}
             <a href="/high-fiber-breakfast">high-fiber breakfast</a>, or the{' '}
             <a href="/">daily calculator</a> for a full bowl estimate.
           </p>
-        </section>
+        </div>
+      ) : null}
+
+      {facts.length > 0 ? (
+        <InfoBand id="seo-facts" ariaLabel="Key figures" tiles={facts} />
       ) : null}
 
       {page.sections && page.sections.length > 0 ? (
