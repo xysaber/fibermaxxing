@@ -1,54 +1,97 @@
 /* Layout tokens live in index.css; keep App.css for component-local overrides if needed. */
 
-/* SEO portion comparison table (oatmeal P0) */
+/* SEO portion comparison (oatmeal only — sole page with portionTable) */
 .seo-portion-table {
-  max-width: 920px;
-  margin: 0 auto 2rem;
-  padding: 0 1.25rem;
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  max-width: none;
 }
+
 .seo-portion-table h2 {
-  font-size: 1.25rem;
-  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-3);
+  color: var(--ink);
 }
+
 .seo-portion-table-wrap {
   overflow-x: auto;
-  border: 1px solid rgba(26, 34, 56, 0.12);
-  border-radius: 12px;
-  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--elevated);
+  box-shadow: var(--shadow-elevated);
 }
+
 .seo-portion-table table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
 }
+
 .seo-portion-table th,
 .seo-portion-table td {
-  padding: 0.7rem 0.85rem;
+  padding: 0.45rem 0.6rem;
   text-align: left;
-  border-bottom: 1px solid rgba(26, 34, 56, 0.08);
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
 }
+
 .seo-portion-table thead th {
-  background: rgba(47, 91, 255, 0.06);
-  font-weight: 600;
+  background: var(--band);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
+
 .seo-portion-table tbody th {
   font-weight: 600;
+  color: var(--ink);
 }
+
+.seo-portion-table td {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: var(--tracking-mono);
+  color: var(--ink);
+}
+
+.seo-portion-table tbody tr:first-child {
+  background: rgba(47, 91, 255, 0.06);
+}
+
 .seo-portion-table tbody tr:last-child th,
 .seo-portion-table tbody tr:last-child td {
   border-bottom: none;
 }
+
+.seo-portion-follow {
+  margin: 0 0 var(--space-6);
+  padding-top: var(--space-6);
+  max-width: 46rem;
+}
+
 .seo-portion-table-note {
-  margin: 0.75rem 0 0.5rem;
-  font-size: 0.85rem;
-  color: rgba(26, 34, 56, 0.7);
-  line-height: 1.45;
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--ink-faint);
+  line-height: var(--leading-snug);
 }
+
 .seo-portion-table-links {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
-  line-height: 1.45;
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  color: var(--ink-soft);
 }
+
 .seo-portion-table-links a {
-  color: #2f5bff;
+  color: var(--accent);
+  font-weight: 600;
 }

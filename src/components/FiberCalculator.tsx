@@ -557,9 +557,12 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
           )}
         </div>
 
-        <div className="starter-block" aria-label="Meal starters">
+        <div
+          className={`starter-block${starters?.length ? ' starter-block--portions' : ''}`}
+          aria-label="Meal starters"
+        >
           <p className="starter-label">{starters?.length ? 'Quick portions' : 'Quick start'}</p>
-          <div className="starter-chips">
+          <div className={`starter-chips${starters?.length ? ' starter-chips--portions' : ''}`}>
             {starterList.map((s, i) => (
               <button
                 key={s.id}

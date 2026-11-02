@@ -1630,6 +1630,19 @@ a {
   background: var(--surface);
 }
 
+.hero-cta-note {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+  line-height: var(--leading-snug);
+}
+
+.hero.seo-split .hero-cta-row {
+  margin-top: var(--space-4);
+}
+
 .field-hint {
   margin: -0.15rem 0 0.45rem;
   font-size: var(--text-xs);
@@ -1688,6 +1701,23 @@ a {
 
 .panel-calc .starter-block {
   margin: 0;
+}
+
+/* Oatmeal portion pills: show every one-click prefill, no horizontal clip */
+.starter-chips--portions {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+.starter-block--portions .starter-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.starter-chips--portions .starter-chip {
+  border-color: var(--line-strong);
+  color: var(--ink);
 }
 
 /* Form already has gap; don't stack .examples top margin on top of starter */
