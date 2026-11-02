@@ -534,6 +534,9 @@ a {
 }
 
 .field select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   appearance: none;
   border: 1px solid var(--line-strong);
   background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235c6578' d='M1 1l5 5 5-5'/%3E%3C/svg%3E")
@@ -560,6 +563,18 @@ a {
 
 @media (max-width: 640px) {
   .row-profile {
+    flex-direction: column;
+  }
+}
+
+/* Oatmeal calculator column can be ~390px while the viewport is still wide.
+   Stack profile fields before "Prefer not to say" / "Fibermaxxing" clip. */
+.hero.seo-split .panel-calc {
+  container-type: inline-size;
+}
+
+@container (max-width: 26rem) {
+  .hero.seo-split .row-profile {
     flex-direction: column;
   }
 }
@@ -1630,6 +1645,21 @@ a {
   background: var(--surface);
 }
 
+/* Phone: calculator is below the fold, so the hero jump stays the primary action. */
+@media (max-width: 860px) {
+  .hero.seo-split .hero-cta-row .btn-ghost.hero-cta {
+    background: var(--cta);
+    color: #f3f4f7;
+    border-color: transparent;
+  }
+
+  .hero.seo-split .hero-cta-row .btn-ghost.hero-cta:hover {
+    background: #222833;
+    color: #f3f4f7;
+    border-color: transparent;
+  }
+}
+
 .hero-cta-note {
   margin: 0;
   font-size: var(--text-sm);
@@ -1932,9 +1962,17 @@ a {
   padding-top: 0.35rem;
 }
 
+.hero.seo-split .hero-copy,
+.hero.seo-split .panel {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .hero.seo-split .hero-copy h1 {
-  max-width: 11em;
+  /* 11em caps the desktop measure; 100% keeps a narrow column from clipping it. */
+  max-width: min(11em, 100%);
   margin-bottom: var(--space-5);
+  overflow-wrap: break-word;
 }
 
 .hero.seo-split .seo-answer {
@@ -2014,7 +2052,8 @@ a {
 
 @media (max-width: 860px) {
   .hero.seo-split {
-    grid-template-columns: 1fr;
+    /* minmax(0, …) — a nowrap table must not stretch the column past the viewport. */
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .hero.seo-split .lede {

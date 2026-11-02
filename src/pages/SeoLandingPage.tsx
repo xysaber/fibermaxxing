@@ -119,7 +119,9 @@ export function SeoLandingPage() {
 
           {page.calculatorCtaNote ? (
             <div className="hero-cta-row">
-              <a className="btn btn-primary hero-cta" href="#calculator" onClick={focusCalculator}>
+              {/* Ghost on desktop, where the calculator is already on screen.
+                  Mobile restores the primary fill — the panel sits below the fold. */}
+              <a className="btn btn-ghost hero-cta" href="#calculator" onClick={focusCalculator}>
                 {page.calculatorCta ?? 'Estimate this meal'}
               </a>
               <p className="hero-cta-note">{page.calculatorCtaNote}</p>

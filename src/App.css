@@ -19,6 +19,7 @@
 
 .seo-portion-table-wrap {
   overflow-x: auto;
+  max-width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--elevated);
@@ -69,6 +70,40 @@
 .seo-portion-table tbody tr:last-child th,
 .seo-portion-table tbody tr:last-child td {
   border-bottom: none;
+}
+
+/*
+  Narrow first screen (~390px and below): nowrap columns were wider than the
+  column and the last headers/values sat past the viewport. Fit all four
+  columns in the box; wrap labels instead of clipping them.
+*/
+@media (max-width: 520px) {
+  .seo-portion-table table {
+    table-layout: fixed;
+  }
+
+  .seo-portion-table th,
+  .seo-portion-table td {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    padding: 0.4rem 0.28rem;
+    vertical-align: top;
+  }
+
+  .seo-portion-table thead th {
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+  }
+
+  .seo-portion-table th:first-child,
+  .seo-portion-table td:first-child {
+    width: 34%;
+    overflow-wrap: break-word;
+  }
+
+  .seo-portion-table td {
+    font-size: var(--text-xs);
+  }
 }
 
 .seo-portion-follow {
