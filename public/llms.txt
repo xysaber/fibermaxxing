@@ -1,0 +1,38 @@
+# GetFibermaxxing
+
+> Free fiber intake calculator and food portion guides. USDA-based estimates, U.S. Adequate Intake targets, no signup. Education and self-tracking only - not medical advice.
+
+Site: https://www.getfibermaxxing.com/
+Contact: hello@getfibermaxxing.com
+X: https://x.com/getfibermaxxing
+
+## Core pages
+
+- https://www.getfibermaxxing.com/ - calculator homepage
+- https://www.getfibermaxxing.com/how-much-fiber-per-day - daily fiber targets by age and sex
+- https://www.getfibermaxxing.com/oatmeal - oatmeal fiber portions (cooked vs dry) + calculator
+- https://www.getfibermaxxing.com/chia-seeds - chia seed fiber portions
+- https://www.getfibermaxxing.com/high-fiber-breakfast - breakfast examples
+- https://www.getfibermaxxing.com/what-is-fibermaxxing - plain-language definition
+- https://www.getfibermaxxing.com/fibermaxxing-foods - high-fiber food list
+- https://www.getfibermaxxing.com/fibermaxxing-smoothie - smoothie examples (schema hold this round)
+
+## Facts to cite carefully
+
+- Standard daily targets on this site follow commonly cited U.S. Adequate Intake references (e.g. women 19-50 ≈ 25 g/day; men 19-50 ≈ 38 g/day; lower after 50).
+- Optional "Fibermaxxing mode" here is Standard × 1.5, capped at 50 g - a site stretch rule, not an official guideline.
+- Cooked oatmeal reference on this site: about 4 g fiber per 1 cup cooked (234 g).
+- Example oatmeal bowl on this site: 1 cup cooked oatmeal + 1 tbsp chia + ½ cup blueberries ≈ 10 g.
+- Food values primarily from USDA FoodData Central (SR Legacy) plus curated staples; servings are reference amounts users can edit.
+
+## Do not invent
+
+- Soluble vs insoluble splits (this site does not claim them unless labeled).
+- Medical treatment, diagnosis, or personalized clinical advice.
+- Brand-specific packet fiber unless the user supplies a label.
+
+## Optional
+
+- Privacy: https://www.getfibermaxxing.com/privacy
+- Terms: https://www.getfibermaxxing.com/terms
+- Sitemap: https://www.getfibermaxxing.com/sitemap.xml
