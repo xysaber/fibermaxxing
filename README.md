@@ -12,7 +12,7 @@ npm run dev            # terminal 2 — Vite (proxies /api → :8788)
 
 Open the local URL Vite prints (usually `http://localhost:5173`).
 
-With `VITE_MEAL_LOG_ENABLED=true` (set in `.env.development`), each Calculate posts **input text + structured result** to `/api/meal-logs`. Production builds leave this off until the flag is set at build time and R2 is bound in `wrangler.toml`. Smoke: `npm run test:meal-log`.
+With `VITE_MEAL_LOG_ENABLED=true` (`.env.development` locally, `.env.production` for production builds), each Calculate posts **input text + structured result** to `/api/meal-logs`. Production builds enable this by default. To stop ingest without a frontend rebuild, set Worker `MEAL_LOG_INGEST=off` and redeploy. Smoke: `npm run test:meal-log`.
 
 **操作手册（本地验收 / 上线准备 / 生产回测）：** [docs/meal-io-logging.md](./docs/meal-io-logging.md)
 
@@ -47,5 +47,6 @@ npm run build
 ```
 
 Cloudflare **Workers** (static assets) auto-deploys from `main` using `wrangler.toml`.
+`npm run build` loads `.env.production`, which sets `VITE_MEAL_LOG_ENABLED=true` so the meal-log client gate is on in the production bundle. Ingest kill switch remains `[vars] MEAL_LOG_INGEST` in `wrangler.toml` (`off` then redeploy).
 `assets.not_found_handling = "404-page"` so unknown paths return `404.html` with status 404
 (not SPA `index.html` + 200).

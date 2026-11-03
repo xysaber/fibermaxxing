@@ -8,7 +8,9 @@
 | 环境 | 客户端开关 | 存储 |
 |------|------------|------|
 | 本地 | `.env.development` → `VITE_MEAL_LOG_ENABLED=true` | `data/meal-logs/YYYY-MM-DD.jsonl` |
-| 生产 | 构建变量同名（**最后一步再开**） | R2：`meal-logs/{接收日UTC}/{event_id}.json` |
+| 生产 | `.env.production` → `VITE_MEAL_LOG_ENABLED=true`（**默认开**） | R2：`meal-logs/{接收日UTC}/{event_id}.json` |
+
+生产构建默认上报：`vite build` 读取已提交的 `.env.production`，把开关打进前端包。急停不改前端：Worker `MEAL_LOG_INGEST=off` 后重新 deploy（旧缓存页仍会 POST，服务端 503，不再写入）。
 
 ---
 
@@ -70,16 +72,18 @@ tail -n 2 /Users/yy/.cursor/Fibermaxxing/data/meal-logs/*.jsonl
 
 ---
 
-## 2. 上线顺序（重要：先 API 落盘，后开前端）
+## 2. 上线顺序（R2 已就绪；前端默认开）
 
-**错误顺序：** 先开 `VITE_MEAL_LOG_ENABLED` 再确认 R2。  
-**正确顺序：**
+R2 绑定与落盘验收已完成。生产构建**默认** `VITE_MEAL_LOG_ENABLED=true`（`.env.production`）。  
+急停只用 Worker `MEAL_LOG_INGEST=off`，不要把生产包再编回关。
+
+历史上线顺序（前端开关已由 `.env.production` 落地）：
 
 1. 代码已含 Worker + 校验 + `is_test`（本仓库）  
-2. **你：** 创建私有 R2、解开绑定、部署 Worker（前端开关仍关）  
-3. **你/协助：** 对线上 API **手动 POST** 并 **下载对象** 证明落盘  
+2. 创建私有 R2、解开绑定、部署 Worker  
+3. 对线上 API **手动 POST** 并 **下载对象** 证明落盘  
 4. （另项）隐私说明上线  
-5. **你：** 构建打开 `VITE_MEAL_LOG_ENABLED` 再部署前端  
+5. 生产构建打开 `VITE_MEAL_LOG_ENABLED`（现为默认）并部署前端  
 6. 带 `utm_source=self` 做浏览器回测  
 
 ### 2.1 health 含义
@@ -126,9 +130,9 @@ bucket_name = "fibermaxxing-meal-logs"
 
 保存。确认 `[vars] MEAL_LOG_INGEST = "on"`（急停时改为 `"off"` 后重新 deploy，无需改前端）。
 
-#### D. 部署 Worker（前端上报仍关闭）
+#### D. 部署 Worker
 
-确认构建时**没有** `VITE_MEAL_LOG_ENABLED=true`（或显式 `false`），这样线上旧/新前端都不会自动狂打（新包不会发；若曾开过开关需靠 `MEAL_LOG_INGEST`）。
+`npm run build` 读取 `.env.production`，生产包带 `VITE_MEAL_LOG_ENABLED=true`。急停见 §H（`MEAL_LOG_INGEST=off`），不要在构建时关掉这个 Vite 变量。
 
 ```bash
 cd /Users/yy/.cursor/Fibermaxxing
@@ -139,7 +143,7 @@ curl -sS https://www.getfibermaxxing.com/api/meal-logs/health
 
 期望 `r2_bound: true` 且 `ingest_enabled: true`。
 
-#### E. 手动 POST 验收落盘（前端仍关）
+#### E. 手动 POST 验收落盘（可不经浏览器）
 
 用任意 `event_id`（8–80 位字母数字 `_` `-`）：
 
@@ -206,10 +210,10 @@ python3 -m json.tool /tmp/meal-log-sample.json
 
 核对：`input_text`、`is_test`、`received_at`、`matches`。
 
-#### G. 打开前端上报（仅在 F 成功后）
+#### G. 浏览器回测（前端默认已开）
 
-1. 在 Cloudflare 构建环境或本机 deploy 前设置：`VITE_MEAL_LOG_ENABLED=true`  
-2. `npm run build && npx wrangler deploy`（或走你的 CI）  
+1. 使用默认 production 构建（`.env.production` 中 `VITE_MEAL_LOG_ENABLED=true`）  
+2. `npm run build && npx wrangler deploy`（或走 Workers Builds）  
 3. 浏览器：
 
 ```text
@@ -237,7 +241,7 @@ https://www.getfibermaxxing.com/?clear_meal_log_test=1
 | 改代码/文档、本地冒烟、协助写 curl | `wrangler login`、建 bucket |
 | 协助改 `wrangler.toml` 解注释 | 在 CF 确认 R2 私有 |
 | 指导 deploy / 核对 JSON | 最终 deploy 与生产浏览器验收 |
-| — | 构建变量打开前端开关的决策与操作 |
+| — | 急停时把 `MEAL_LOG_INGEST` 设为 `off` 并 deploy |
 | 隐私文案（后续） | 确认可开采集的合规口径 |
 
 ### 2.4 上线 Checklist
@@ -248,7 +252,7 @@ https://www.getfibermaxxing.com/?clear_meal_log_test=1
 - [x] 手动 POST + `r2 object get --remote` 看到对象  
 - [x] 非法请求 400（停收 503 可选）  
 - [ ] Privacy + Terms + Footer（**D2 · 2026-10-27**）  
-- [x] 再开 `VITE_MEAL_LOG_ENABLED` 并 deploy  
+- [x] 生产构建默认 `VITE_MEAL_LOG_ENABLED=true`（`.env.production`）并 deploy  
 - [x] `utm_source=self` 浏览器回测 `is_test: true`  
 - [ ] 无痕无 UTM：用 **`X-Meal-Log-Key`** 复核 `is_test: false`（**D2**）  
 
@@ -260,7 +264,7 @@ https://www.getfibermaxxing.com/?clear_meal_log_test=1
 1. self UTM 入口计算 → 204 → 用 `event_id` get 对象 → `is_test: true`  
 2. 无痕无 UTM → `is_test: false`  
 3. GA4 DebugView（需单独开调试模式；**仅 self UTM 不会打开 DebugView**）确认无原文  
-4. 失败对照：无 POST→构建开关；503→绑定/停收；204 无对象→日期/key/`--remote`  
+4. 失败对照：无 POST→确认生产包打进了 `VITE_MEAL_LOG_ENABLED=true`；503→绑定或 `MEAL_LOG_INGEST=off`；204 无对象→日期/key/`--remote`  
 
 ---
 
