@@ -15,6 +15,7 @@ const pages = allPages.filter((p) => p.publish)
 
 const ssrServer = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
 const { renderPage } = await ssrServer.ssrLoadModule('/scripts/render-pages.tsx')
+const { pageJsonLd, PAGE_JSON_LD_ID } = await ssrServer.ssrLoadModule('/src/lib/pageJsonLd.ts')
 await ssrServer.close()
 
 const shell = readFileSync(join(dist, 'index.html'), 'utf8')
@@ -42,6 +43,13 @@ function injectHead(html, { title, description, path, faqs, noindex = false }) {
           })),
         })}</script>`
       : ''
+
+  // One extra entity script beside FAQPage. Home and /oatmeal only; FAQ payload above is unchanged.
+  const extra = pageJsonLd(path)
+  const extraLd = extra
+    ? `<script type="application/ld+json" id="${PAGE_JSON_LD_ID}">${JSON.stringify(extra)}</script>`
+    : ''
+  const schemaLd = [faqLd, extraLd].filter(Boolean).join('\n')
 
   let out = html
   out = out.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
@@ -82,10 +90,10 @@ function injectHead(html, { title, description, path, faqs, noindex = false }) {
   if (!out.includes('property="og:image"')) {
     out = out.replace(
       '</head>',
-      `    <meta property="og:image" content="${ogImage}" />\n    <meta name="twitter:image" content="${ogImage}" />\n${faqLd}\n  </head>`,
+      `    <meta property="og:image" content="${ogImage}" />\n    <meta name="twitter:image" content="${ogImage}" />\n${schemaLd}\n  </head>`,
     )
   } else {
-    out = out.replace('</head>', `${faqLd}\n  </head>`)
+    out = out.replace('</head>', `${schemaLd}\n  </head>`)
   }
 
   return out
