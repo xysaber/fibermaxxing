@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://www.getfibermaxxing.com/oatmeal#calculator",
+  "name": "Oatmeal Fiber Calculator",
+  "url": "https://www.getfibermaxxing.com/oatmeal",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "description": "How much fiber is in 1 cup of cooked oatmeal? See ½ cup & 1 cup, dry vs cooked, then calculate your bowl free — no login.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free · no login"
+  },
+  "isAccessibleForFree": true,
+  "publisher": {
+    "@type": "Organization",
+    "name": "GetFibermaxxing",
+    "url": "https://www.getfibermaxxing.com/"
+  }
+}

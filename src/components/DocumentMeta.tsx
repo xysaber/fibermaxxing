@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { PAGE_JSON_LD_ID, pageJsonLd } from '../lib/pageJsonLd'
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -93,6 +94,13 @@ export function DocumentMeta({
       })
     } else {
       document.getElementById('ld-faq')?.remove()
+    }
+
+    const extraLd = pageJsonLd(path)
+    if (extraLd) {
+      setJsonLd(PAGE_JSON_LD_ID, extraLd)
+    } else {
+      document.getElementById(PAGE_JSON_LD_ID)?.remove()
     }
   }, [title, description, path, faqs, noindex])
 

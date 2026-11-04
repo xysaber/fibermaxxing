@@ -1,7 +1,16 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
+
+function parseJsonLd(html) {
+  return [...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/g)].map((m) =>
+    JSON.parse(m[1]),
+  )
+}
+
 const pages = JSON.parse(readFileSync('src/content/seo-pages.json', 'utf8')).filter(p => p.publish)
 const legalSlugs = ['privacy', 'terms']
+const homeSchema = JSON.parse(readFileSync('src/content/schema/home.json', 'utf8'))
+const oatmealSchema = JSON.parse(readFileSync('src/content/schema/oatmeal.json', 'utf8'))
 for (const path of ['index', ...pages.map(p => p.slug)]) {
   const html = readFileSync(`dist/${path}.html`, 'utf8')
   assert.match(html, /<div id="root"><div class="app">/)
@@ -12,7 +21,10 @@ for (const path of ['index', ...pages.map(p => p.slug)]) {
     assert.equal((html.match(/<article /g) || []).length, pages.find(p => p.slug === path).sections.length)
     assert.match(html, /aria-label="On this page"/)
   }
-  for (const json of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)) JSON.parse(json[1])
+  for (const block of parseJsonLd(html)) {
+    assert.notEqual(block['@type'], 'Article')
+    for (const node of block['@graph'] || []) assert.notEqual(node['@type'], 'Article')
+  }
   console.log('Static HTML verified:', path)
 }
 for (const slug of legalSlugs) {
@@ -42,7 +54,7 @@ const FAQ_SCHEMA_SLUGS = new Set([
 ])
 for (const page of pages) {
   const html = readFileSync(`dist/${page.slug}.html`, 'utf8')
-  const blocks = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
+  const blocks = parseJsonLd(html)
   const faq = blocks.find((b) => b['@type'] === 'FAQPage')
   if (FAQ_SCHEMA_SLUGS.has(page.slug)) {
     assert.ok(faq, `${page.slug} should have FAQPage JSON-LD`)
@@ -57,5 +69,67 @@ for (const page of pages) {
   }
   console.log('FAQ schema verified:', page.slug, faq ? 'FAQPage' : 'no FAQPage')
 }
+
+const indexBlocks = parseJsonLd(readFileSync('dist/index.html', 'utf8'))
+const indexFaq = indexBlocks.find((b) => b['@type'] === 'FAQPage')
+assert.ok(indexFaq, 'home should keep FAQPage JSON-LD')
+assert.deepEqual(indexFaq, {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is fibermaxxing?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Fibermaxxing means intentionally increasing daily dietary fiber — often toward stretch targets above standard adequate intake.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much fiber should I eat per day?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Commonly cited U.S. Adequate Intake: about 25g/day for women 19–50 and 38g/day for men 19–50 (lower after 50).',
+      },
+    },
+  ],
+})
+assert.equal(indexBlocks.filter((b) => b['@graph']).length, 1, 'home should have one extra JSON-LD graph')
+assert.deepEqual(
+  indexBlocks.find((b) => b['@graph']),
+  homeSchema,
+)
+assert.deepEqual(
+  homeSchema['@graph'].map((node) => node['@type']),
+  ['Organization', 'WebSite', 'WebApplication'],
+)
+assert.match(readFileSync('dist/index.html', 'utf8'), /<script type="application\/ld\+json" id="ld-page">/)
+console.log('Home entity schema verified: Organization + WebSite + WebApplication')
+
+const oatmealHtml = readFileSync('dist/oatmeal.html', 'utf8')
+const oatmealBlocks = parseJsonLd(oatmealHtml)
+assert.equal(oatmealBlocks.filter((b) => b['@type'] === 'FAQPage').length, 1, 'oatmeal FAQPage must stay')
+assert.equal(oatmealBlocks.filter((b) => b['@type'] === 'WebApplication').length, 1)
+assert.deepEqual(
+  oatmealBlocks.find((b) => b['@type'] === 'WebApplication'),
+  oatmealSchema,
+)
+assert.equal((oatmealHtml.match(/<script type="application\/ld\+json"/g) || []).length, 2)
+console.log('Oatmeal entity schema verified: WebApplication + FAQPage')
+
+for (const file of ['index.html', 'oatmeal.html', ...pages.map((p) => `${p.slug}.html`), 'privacy.html', 'terms.html', '404.html']) {
+  const html = readFileSync(`dist/${file}`, 'utf8')
+  assert.doesNotMatch(html, /"@type":"Article"/)
+  assert.doesNotMatch(html, /https:\/\/getfibermaxxing\.com(?!\/)/)
+}
+for (const page of pages) {
+  if (page.slug === 'oatmeal') continue
+  const html = readFileSync(`dist/${page.slug}.html`, 'utf8')
+  assert.doesNotMatch(html, /id="ld-page"/)
+}
+assert.doesNotMatch(readFileSync('dist/privacy.html', 'utf8'), /id="ld-page"/)
+assert.doesNotMatch(readFileSync('dist/terms.html', 'utf8'), /id="ld-page"/)
+assert.doesNotMatch(readFileSync('dist/404.html', 'utf8'), /id="ld-page"/)
 
 console.log('404 and sitemap verified')
