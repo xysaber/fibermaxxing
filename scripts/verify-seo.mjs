@@ -51,6 +51,7 @@ const FAQ_SCHEMA_SLUGS = new Set([
   'how-much-fiber-per-day',
   'what-is-fibermaxxing',
   'fibermaxxing-foods',
+  'fibermaxxing-smoothie',
 ])
 for (const page of pages) {
   const html = readFileSync(`dist/${page.slug}.html`, 'utf8')
