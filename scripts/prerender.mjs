@@ -127,7 +127,7 @@ function writePageHtml(slug, html) {
   console.log('prerender /')
 }
 
-// FAQPage JSON-LD only for these published guides (smoothie HOLD this round).
+// FAQPage JSON-LD for published guides with a visible FAQ (same payload as the FAQ block).
 const FAQ_SCHEMA_SLUGS = new Set([
   'oatmeal',
   'chia-seeds',
@@ -135,6 +135,7 @@ const FAQ_SCHEMA_SLUGS = new Set([
   'how-much-fiber-per-day',
   'what-is-fibermaxxing',
   'fibermaxxing-foods',
+  'fibermaxxing-smoothie',
 ])
 
 for (const page of pages) {

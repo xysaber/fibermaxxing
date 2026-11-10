@@ -3,8 +3,8 @@
     "slug": "how-much-fiber-per-day",
     "publish": true,
     "layout": "bands",
-    "title": "How Much Fiber Per Day? Daily Targets + Calculator",
-    "description": "How much fiber should you eat per day? See commonly cited U.S. Adequate Intake levels by sex and age, then estimate today’s intake with a free calculator.",
+    "title": "How Much Fiber Per Day? ~25–38g for Adults",
+    "description": "Women 19–50 ≈ 25g; men 19–50 ≈ 38g (21g / 30g after 50). U.S. Adequate Intake + free calculator — no login.",
     "h1": "How much fiber should you eat per day?",
     "intro": [
       "Start with the reference for your age and sex, then estimate the meals you actually ate. The calculator adds up fiber from food and shows how that total compares with your daily target."
@@ -403,8 +403,8 @@
     "slug": "high-fiber-breakfast",
     "publish": true,
     "layout": "bands",
-    "title": "High Fiber Breakfast Ideas (with Portions) + Calculator",
-    "description": "Three high-fiber breakfast ideas with measured portions: an oat bowl (~10 g), chia pudding (~11 g), and avocado toast with fruit (~10 g). Estimate your own meal.",
+    "title": "High-Fiber Breakfast Ideas: ~10–11g Examples",
+    "description": "Oat bowl ~10g, chia pudding ~11g, avocado toast ~10g. Three measured breakfasts + free calculator — no login.",
     "h1": "High fiber breakfast ideas",
     "intro": [
       "Build breakfast around a whole grain, seeds, or fruit, then measure the portions you actually use. These three combinations offer a practical starting point for the calculator."
@@ -514,8 +514,8 @@
     "slug": "what-is-fibermaxxing",
     "publish": true,
     "layout": "bands",
-    "title": "What Is Fibermaxxing? Meaning, Daily Target + Calculator",
-    "description": "Fibermaxxing means deliberately eating enough fiber to hit (or slightly stretch) your daily target. See the simple definition, safe how-to, and estimate today's intake free—no signup.",
+    "title": "What Is Fibermaxxing? Hit ~25–38g per Day",
+    "description": "Hit your daily fiber target on purpose—about 25g (women 19–50) or 38g (men 19–50). Free calculator — no login.",
     "h1": "What is fibermaxxing?",
     "answer": {
       "value": "Eat enough fiber",
@@ -620,8 +620,8 @@
     "slug": "fibermaxxing-smoothie",
     "publish": true,
     "layout": "bands",
-    "title": "Fibermaxxing Smoothie Ideas (with Grams) + Calculator",
-    "description": "Fibermaxxing smoothie ideas with portions and fiber grams—including bean-and-berry blends. Paste a recipe into the free calculator; no signup.",
+    "title": "Fibermaxxing Smoothie Ideas: ~12–20g Examples",
+    "description": "Berry–chia ~12g+; bean–berry ~15g+. Example blends + free calculator — no login.",
     "h1": "Fibermaxxing smoothie ideas",
     "answer": {
       "value": "~12–20",
@@ -895,8 +895,8 @@
     "slug": "fibermaxxing-foods",
     "publish": true,
     "layout": "bands",
-    "title": "Fibermaxxing Foods List (with Portions) + Calculator",
-    "description": "High-fiber foods for fibermaxxing with reference portions and grams on this site—beans, oats, chia, berries, and more. Paste a mixed meal into the free calculator.",
+    "title": "Fibermaxxing Foods List: ~15g per Cup of Beans",
+    "description": "Cooked lentils ~15.6g and black beans ~15g per cup; chia 1 tbsp ~4.1g. Reference list + free calculator — no login.",
     "h1": "Fibermaxxing foods",
     "answer": {
       "value": "~15",
