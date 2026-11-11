@@ -61,13 +61,19 @@
       {
         "q": "Why does the target change after age 50?",
         "a": "The U.S. Adequate Intake references reflect different typical energy needs by age and sex. This site switches to the 51+ reference when you select that age group."
+      },
+      {
+        "q": "Is the 25 g Daily Value on a nutrition label the same as this site’s target?",
+        "a": "Not always. A label Daily Value is a different reference from the age-and-sex Adequate Intake used in Standard mode here: women 19–50 ≈ 25 g; men 19–50 ≈ 38 g; 21 g / 30 g after 50. Compare grams you ate, not the %DV alone."
       }
     ],
     "related": [
       "what-is-fibermaxxing",
       "fibermaxxing-foods",
       "oatmeal",
-      "chia-seeds"
+      "chia-seeds",
+      "high-fiber-breakfast",
+      "fibermaxxing-smoothie"
     ],
     "answer": {
       "value": "25–38",
@@ -99,7 +105,7 @@
         "paragraphs": [
           "Build from foods you already eat: oats or whole-grain toast at breakfast, beans or lentils at lunch, and vegetables with dinner. Whole fruit, nuts, or seeds can add another source between meals.",
           "For illustration, a 25 g day could be divided into roughly 7 g at breakfast, 8 g at lunch, 8 g at dinner, and 2 g in snacks. This is planning arithmetic, not an official meal-by-meal quota.",
-          "Use the oatmeal, chia, and breakfast guides for starting combinations. Recalculate your actual portions rather than assuming every bowl or slice has the same fiber content."
+          "Use the [oatmeal](/oatmeal) (1 cup cooked ≈ 4 g), [chia seeds](/chia-seeds) (1 tbsp ≈ 4.1 g), and [high-fiber breakfast](/high-fiber-breakfast) (example meals ~10–11 g) guides for starting combinations, or the [fibermaxxing smoothie](/fibermaxxing-smoothie) and [fibermaxxing foods](/fibermaxxing-foods) guides for blends and staple cups. Recalculate your actual portions rather than assuming every bowl or slice has the same fiber content."
         ]
       },
       {
@@ -367,10 +373,19 @@
       {
         "q": "Chia vs psyllium?",
         "a": "Psyllium is a concentrated husk; chia is a whole seed. Serving sizes differ — compare labels and tolerance, then calculate real portions. This site does not invent a soluble/insoluble split."
+      },
+      {
+        "q": "How much fiber is in 1 oz of chia seeds?",
+        "a": "About 9.8 g on this site for 28.35 g of dried chia. That ounce is not a tablespoon (1 tbsp ≈12 g, about 4.1 g) and is not two tablespoons (about 8.3 g at 24 g). Enter grams if your portion differs."
+      },
+      {
+        "q": "How much fiber is in chia pudding?",
+        "a": "Use the dry seed weight, not a cup of prepared pudding. One tablespoon of dried chia (≈12 g) is about 4.1 g in the pudding; soaking water does not add fiber. The example on this page — 20 g chia seeds with 1/2 cup raspberries and plain nonfat Greek yogurt — is roughly 11 g from the seeds and berries together."
       }
     ],
     "related": [
       "oatmeal",
+      "high-fiber-breakfast",
       "fibermaxxing-smoothie",
       "fibermaxxing-foods",
       "how-much-fiber-per-day"
@@ -382,6 +397,7 @@
           "The dried chia entry in this site’s USDA-based dataset contains about 34.4 g of fiber per 100 g. Using a 12 g tablespoon, that works out to approximately 4.1 g of fiber; two such tablespoons provide about 8.3 g.",
           "A tablespoon is a volume measure, so the weight depends on the scoop. If your tablespoon weighs closer to 10 g, the same density gives about 3.4 g of fiber. Enter grams when you know the weight.",
           "For a repeatable estimate, weigh the seeds and enter grams. The 1 oz reference is 28.35 g of seeds and provides about 9.8 g of fiber; it is not the same portion as one tablespoon.",
+          "One ounce of chia is not the same as two tablespoons. On this site, 1 oz (28.35 g) is about 9.8 g of fiber; two tablespoons at 24 g total are about 8.3 g. If you searched fiber in 1 oz of chia seeds, use the ounce line, not a tablespoon count.",
           "Increase gradually and drink water — chia is dense fiber, not a one-day catch-up plan.",
           "Weigh the dry seeds before soaking for the clearest estimate. Water changes the pudding’s weight and volume, but does not add fiber."
         ]
@@ -391,14 +407,15 @@
         "paragraphs": [
           "Soaking chia adds liquid and changes the texture. The fiber estimate should still follow the amount of dry seeds used, rather than treating a cup of prepared pudding as a cup of dry chia.",
           "For a shared batch, divide the ingredients by the fraction you ate. If a batch starts with 40 g of chia and you eat half, log 20 g of seeds plus half of the milk, fruit, and other ingredients.",
-          "Water contributes no fiber. Dairy milk and plain yogurt generally contribute little or none; fruit and other plant ingredients can contribute more. Check the actual label for packaged pudding or a fortified product."
+          "Water contributes no fiber. Dairy milk and plain yogurt generally contribute little or none; fruit and other plant ingredients can contribute more. Check the actual label for packaged pudding or a fortified product.",
+          "If you searched how much fiber is in chia pudding, there is no single cup-of-pudding number on this site. The fiber comes from the dry seeds you started with, plus any fruit or other plants you added — not from the soaking liquid. A 1 tablespoon (≈12 g) dry start is about 4.1 g in the finished pudding; the example on this page (20 g chia seeds, 1/2 cup raspberries, and plain nonfat Greek yogurt) is roughly 11 g from the seeds and berries together."
         ]
       },
       {
         "heading": "Ways to add chia to breakfast",
         "paragraphs": [
           "Start with a measured amount mixed into oatmeal, yogurt, or a smoothie. Name the seeds separately from the base and fruit so the calculator can estimate each ingredient.",
-          "Try 1 cup cooked oatmeal, 1 tbsp chia seeds, and 1/2 cup blueberries. Using this site’s reference portions, the combination supplies roughly 10 g of fiber; your oat portion and berry weight can change the result.",
+          "Try 1 cup cooked oatmeal, 1 tbsp chia seeds, and 1/2 cup blueberries. Using this site’s reference portions, the combination supplies roughly 10 g of fiber; your oat portion and berry weight can change the result. The oat line is on the [oatmeal](/oatmeal) guide (1 cup cooked ≈ 4 g). For more breakfast combinations with approximate totals, see the [high-fiber breakfast](/high-fiber-breakfast) guide (oat bowl ~10 g, chia pudding ~11 g). For a blended version, see the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide (berry–chia ~12g+).",
           "For a pudding-style breakfast, try 20 g chia seeds with 1/2 cup raspberries and plain nonfat Greek yogurt. The seeds and berries supply roughly 11 g of fiber together. Adjust the liquid and preparation to your recipe."
         ]
       },
@@ -471,13 +488,23 @@
       {
         "q": "Will the example calculate automatically?",
         "a": "Examples fill the meal field. Press Calculate fiber, then review matches and edit portions or grams."
+      },
+      {
+        "q": "Does the ~10 g oatmeal breakfast use dry or cooked oats?",
+        "a": "Cooked. The example uses 1 cup cooked oatmeal (about 4 g on this site), plus 1 tbsp chia (≈12 g, about 4.1 g) and ½ cup blueberries (about 1.8 g). A cup of dry rolled oats is a different portion (about 8.5 g on the oatmeal guide). Don’t enter a dry cup as cooked oatmeal."
+      },
+      {
+        "q": "Is a 10 g breakfast enough for the day?",
+        "a": "There is no official breakfast quota. A 10 g breakfast is about 40% of a 25 g reference day, leaving about 15 g across the rest of the day’s meals. Compare with your Standard daily target on this site."
       }
     ],
     "related": [
       "fibermaxxing-smoothie",
       "fibermaxxing-foods",
       "what-is-fibermaxxing",
-      "oatmeal"
+      "oatmeal",
+      "chia-seeds",
+      "how-much-fiber-per-day"
     ],
     "answer": {
       "value": "~10–11",
@@ -491,10 +518,11 @@
         "paragraphs": [
           "Combine 1 cup cooked oatmeal, 1 tbsp chia seeds (≈12 g), and 1/2 cup blueberries. The reference contributions are about 4 g from the oatmeal, 4.1 g from chia, and 1.8 g from blueberries, or roughly 10 g altogether.",
           "Measure oatmeal after cooking for this example. A cup of dry oats contains a different amount of grain, so entering a dry cup against a cooked entry will give a misleading estimate.",
+          "A cup of dry oats is not this example. On the [oatmeal](/oatmeal) guide, 1 cup cooked oatmeal is about 4 g (234 g), while 1 cup dry rolled oats is about 8.5 g. Log the cooked cup used here, or weigh the dry oats you started with.",
           "Swap the fruit to match your kitchen, but recalculate rather than carrying over the same total. A banana, pear, or serving of raspberries has its own portion weight and fiber density.",
           "There is no official breakfast fiber quota. Compare your meal with your daily reference, and choose a portion that fits your appetite and usual intake.",
           "Example totals are rounded estimates. Brands, fruit size, and cooked weights can change the result; check the matched ingredients after calculating.",
-          "Looking for a blended drink instead? See the fibermaxxing smoothie guide for bean-and-berry recipes you can paste into the same calculator."
+          "Looking for a blended drink instead? See the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide for bean-and-berry recipes you can paste into the same calculator (berry–chia ~12g+; bean–berry ~15g+)."
         ]
       },
       {
@@ -502,7 +530,8 @@
         "paragraphs": [
           "Use 20 g dried chia seeds, 1/2 cup raspberries, and 170 g plain nonfat Greek yogurt, with liquid to suit your recipe. The chia supplies about 6.9 g and the raspberries about 4 g, for roughly 11 g of fiber.",
           "The plain nonfat Greek yogurt reference supplies 0 g of fiber. The seeds and fruit provide the fiber in this combination; flavored or fortified yogurt should be checked against its label.",
-          "For a batch made ahead, log only the share you ate. If you split the mixture into two equal portions, each contains half the fiber of the full recipe."
+          "For a batch made ahead, log only the share you ate. If you split the mixture into two equal portions, each contains half the fiber of the full recipe.",
+          "The chia line is on the [chia seeds](/chia-seeds) guide: 1 tbsp dried chia (≈12 g) is about 4.1 g, and pudding fiber follows the dry seed weight, not a cup of prepared pudding. The 6.9 g in this example is from 20 g of dried chia."
         ]
       },
       {
@@ -517,7 +546,7 @@
         "heading": "Make a breakfast that fits your day",
         "paragraphs": [
           "Choose one starting combination and adjust a single ingredient at a time. A smaller portion of chia, a different fruit, or an extra slice of bread changes the total without requiring a completely new breakfast.",
-          "Include the rest of your meals when comparing with a daily goal. For example, a 10 g breakfast is about 40% of a 25 g reference day, leaving approximately 15 g to obtain across lunch, dinner, and snacks.",
+          "Include the rest of your meals when comparing with a daily goal. For example, a 10 g breakfast is about 40% of a 25 g reference day, leaving approximately 15 g to obtain across lunch, dinner, and snacks. Adult daily references are on the [how much fiber per day](/how-much-fiber-per-day) guide (women 19–50 ≈ 25 g; men 19–50 ≈ 38 g).",
           "If these examples contain much more fiber than your usual breakfast, start with smaller portions and increase gradually. A consistent routine with enough fluids is more useful than forcing a large serving in one meal."
         ]
       }
@@ -588,13 +617,19 @@
       {
         "q": "Do I need fiber gummies or supplements?",
         "a": "Whole foods also bring other nutrients. Supplements can add grams but are optional. If you use them, estimate labeled servings in the calculator along with the rest of the day."
+      },
+      {
+        "q": "Does fibermaxxing mean I should eat 50 g of fiber a day?",
+        "a": "No. On this site the Standard target is about 25 g (women 19–50) or 38 g (men 19–50). 50 g is only the cap on optional Fibermaxxing mode (Standard × 1.5, capped at 50 g), not the default goal."
       }
     ],
     "related": [
       "how-much-fiber-per-day",
       "fibermaxxing-foods",
       "fibermaxxing-smoothie",
-      "high-fiber-breakfast"
+      "high-fiber-breakfast",
+      "oatmeal",
+      "chia-seeds"
     ],
     "sections": [
       {
@@ -609,7 +644,7 @@
       {
         "heading": "How much fiber per day?",
         "paragraphs": [
-          "On this site, Standard mode uses about 25 g/day for women ages 19–50 and 38 g for men ages 19–50 (lower after 50). See the full age table on the daily target guide.",
+          "On this site, Standard mode uses about 25 g/day for women ages 19–50 and 38 g for men ages 19–50 (lower after 50). See the full age table on the [how much fiber per day](/how-much-fiber-per-day) guide.",
           "Fibermaxxing mode here is Standard × 1.5, capped at 50 g. That stretch is optional product behavior, not an official guideline."
         ]
       },
@@ -617,7 +652,7 @@
         "heading": "How to start without overdoing it",
         "paragraphs": [
           "Add one high-fiber item per meal for a week, drink water, and watch comfort. Examples: chia in yogurt, lentils at lunch, berries at breakfast.",
-          "Paste a full day into the calculator to see grams vs target. Then use the foods or smoothie guides for concrete portions you can edit."
+          "Paste a full day into the calculator to see grams vs target. Then use the [fibermaxxing foods](/fibermaxxing-foods) list (1 cup cooked lentils ≈ 15.6 g), the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide (berry–chia ~12g+), the [high-fiber breakfast](/high-fiber-breakfast) guide (~10–11 g examples), or the [oatmeal](/oatmeal) and [chia seeds](/chia-seeds) guides for concrete portions you can edit."
         ]
       },
       {
@@ -694,6 +729,14 @@
       {
         "q": "Smoothie vs breakfast bowl?",
         "a": "Use this page for blended drinks. For oatmeal bowls and toast plates, open the high-fiber breakfast guide."
+      },
+      {
+        "q": "How much fiber is in the berry–chia smoothie?",
+        "a": "The ballpark on this page is ~12g+. 1 cup raspberries is about 8 g and 1 tbsp dried chia (≈12 g) is about 4.1 g on this site; banana and liquid change the rest. Paste the full ingredient list and calculate."
+      },
+      {
+        "q": "How much fiber is in the bean–berry smoothie?",
+        "a": "The ballpark on this page is ~15g+. The starter uses 1/2 cup black beans, 1 cup raspberries (about 8 g), 1 tbsp chia (about 4.1 g), 1 banana, and plain nonfat Greek yogurt. Edit portions and calculate rather than assuming 15 g."
       }
     ],
     "related": [
@@ -701,6 +744,7 @@
       "fibermaxxing-foods",
       "high-fiber-breakfast",
       "chia-seeds",
+      "oatmeal",
       "how-much-fiber-per-day"
     ],
     "sections": [
@@ -708,23 +752,25 @@
         "heading": "Berry and chia smoothie (simple)",
         "paragraphs": [
           "Try 1 cup raspberries, 1 tablespoon chia seeds, and 1 banana, with liquid you like. Chia alone contributes about 4.1 g here; berries add a large share—run the calculator for the combined total.",
+          "The ballpark on this page for that berry–chia cup is ~12g+. Of the amounts already listed on this site, 1 cup raspberries is about 8 g (foods list) and 1 tbsp dried chia (≈12 g) is about 4.1 g; banana and liquid change the rest, so paste the full list and calculate. Chia details are on the [chia seeds](/chia-seeds) guide; the raspberry cup is on the [fibermaxxing foods](/fibermaxxing-foods) list.",
           "Soak chia a few minutes if you prefer a thicker texture; fiber still follows the dry seed weight.",
           "The examples below are starting points. Paste them into the calculator, then change grams to match your blender.",
-          "For non-drink breakfasts, use the high-fiber breakfast guide instead."
+          "For non-drink breakfasts, use the [high-fiber breakfast](/high-fiber-breakfast) guide instead (oat bowl ~10 g, chia pudding ~11 g, avocado toast ~10 g)."
         ]
       },
       {
         "heading": "Bean and berry blend (higher fiber)",
         "paragraphs": [
           "A searched idea is beans in a smoothie. Example starter: 1/2 cup black beans, 1 cup raspberries, 1 tbsp chia, 1 banana, and plain nonfat Greek yogurt. Clear or edit the calculator matches after blending.",
-          "Beans change flavor and texture—use ripe fruit and cold liquid. If the taste is new, begin with 1/4 cup beans."
+          "Beans change flavor and texture—use ripe fruit and cold liquid. If the taste is new, begin with 1/4 cup beans.",
+          "The ballpark on this page for the bean–berry blend is ~15g+. It starts with 1/2 cup black beans, 1 cup raspberries (about 8 g on the foods list), 1 tbsp chia (about 4.1 g), 1 banana, and plain nonfat Greek yogurt. Don’t assume 15 g without calculating—bean and fruit amounts move the total. Cooked-bean cups are on the [fibermaxxing foods](/fibermaxxing-foods) list (1 cup cooked black beans ≈ 15 g)."
         ]
       },
       {
         "heading": "Log the blend, then finish the day",
         "paragraphs": [
           "Paste the full ingredient list after you blend so portions match what went in the jar.",
-          "Compare with your daily target. Short days can add lunch legumes or a guided breakfast from the related pages."
+          "Compare with your daily target on the [how much fiber per day](/how-much-fiber-per-day) guide (women 19–50 ≈ 25 g; men 19–50 ≈ 38 g). Short days can add lunch legumes from the [fibermaxxing foods](/fibermaxxing-foods) list, a bowl from the [high-fiber breakfast](/high-fiber-breakfast) guide, or cooked oats from the [oatmeal](/oatmeal) guide (1 cup cooked ≈ 4 g)."
         ]
       }
     ],
@@ -979,6 +1025,10 @@
       {
         "q": "Where are smoothies and breakfast ideas?",
         "a": "See the fibermaxxing smoothie guide for blended recipes and the high-fiber breakfast guide for bowls and toast."
+      },
+      {
+        "q": "Is the ~15 g per cup of beans for dry or cooked beans?",
+        "a": "Cooked. On this site, 1 cup cooked lentils is about 15.6 g and 1 cup cooked black beans is about 15 g. A cup of dry beans is a different portion—log the cooked amount you ate, or enter grams."
       }
     ],
     "related": [
@@ -994,15 +1044,16 @@
         "heading": "Legumes (usually the biggest jumps)",
         "paragraphs": [
           "A cup of cooked lentils is about 15.6 g of fiber on this site; a cup of cooked black beans is about 15 g. They are often the fastest way to move a short day toward the target.",
+          "If you searched how much fiber is in a cup of beans, this list uses cooked cups: about 15.6 g for 1 cup cooked lentils and about 15 g for 1 cup cooked black beans. A cup of dry beans is not the same portion. If you cooked from dry, log the cooked amount you ate, or enter grams.",
           "Rinse canned beans if you use them, and increase portions gradually if legumes are new for you.",
           "Treat the figures as a shopping checklist. Build a real plate, then paste the named foods and amounts into the calculator instead of guessing.",
-          "For a drinkable combo, see the smoothie guide. For morning bowls and toast, see high-fiber breakfast."
+          "For a drinkable combo, see the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide (berry–chia ~12g+; bean–berry ~15g+). For morning bowls and toast, see the [high-fiber breakfast](/high-fiber-breakfast) guide (oat bowl ~10 g, chia pudding ~11 g, avocado toast ~10 g)."
         ]
       },
       {
         "heading": "Seeds, oats, and fruit",
         "paragraphs": [
-          "One tablespoon of dried chia (~12 g) is about 4.1 g of fiber here; one cup of cooked oatmeal is about 4 g; one cup of raspberries is about 8 g.",
+          "One tablespoon of dried chia (~12 g) is about 4.1 g of fiber here; one cup of cooked oatmeal is about 4 g; one cup of raspberries is about 8 g. More detail on those staples is on the [chia seeds](/chia-seeds) and [oatmeal](/oatmeal) guides (a dry cup of oats is about 8.5 g, not the cooked-cup 4 g).",
           "Stack small adds—chia on oats, berries on yogurt—then recalculate rather than assuming a \"healthy\" bowl is automatically high-fiber."
         ]
       },
