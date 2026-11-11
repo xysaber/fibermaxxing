@@ -376,11 +376,11 @@
       },
       {
         "q": "How much fiber is in 1 oz of chia seeds?",
-        "a": "About 9.8 g on this site for 1 oz (28.35 g). One ounce is not the same as 1 tbsp or 2 tbsp: two tablespoons at 24 g total are about 8.3 g. If you searched fiber in 1 oz of chia seeds, use the ounce line, not a tablespoon count."
+        "a": "About 9.8 g on this site for 28.35 g of dried chia. That ounce is not a tablespoon (1 tbsp ≈12 g, about 4.1 g) and is not two tablespoons (about 8.3 g at 24 g). Enter grams if your portion differs."
       },
       {
         "q": "How much fiber is in chia pudding?",
-        "a": "There is no single cup-of-pudding number on this site. The fiber comes from the dry seeds you started with, plus any fruit or other plants you added — not from the soaking liquid. A 1 tablespoon (≈12 g) dry start is about 4.1 g in the finished pudding; the example on this page (20 g chia seeds, 1/2 cup raspberries, and plain nonfat Greek yogurt) is roughly 11 g from the seeds and berries together."
+        "a": "Use the dry seed weight, not a cup of prepared pudding. One tablespoon of dried chia (≈12 g) is about 4.1 g in the pudding; soaking water does not add fiber. The example on this page — 20 g chia seeds with 1/2 cup raspberries and plain nonfat Greek yogurt — is roughly 11 g from the seeds and berries together."
       }
     ],
     "related": [
@@ -415,7 +415,7 @@
         "heading": "Ways to add chia to breakfast",
         "paragraphs": [
           "Start with a measured amount mixed into oatmeal, yogurt, or a smoothie. Name the seeds separately from the base and fruit so the calculator can estimate each ingredient.",
-          "Try 1 cup cooked oatmeal, 1 tbsp chia seeds, and 1/2 cup blueberries. Using this site’s reference portions, the combination supplies roughly 10 g of fiber; your oat portion and berry weight can change the result. One cup cooked oatmeal is about 4 g on the [oatmeal](/oatmeal) guide. For more breakfast combinations with approximate totals, see the [high-fiber breakfast](/high-fiber-breakfast) guide (oat bowl about 10 g, chia pudding about 11 g). For a blended drink, see the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide (berry–chia ~12g+).",
+          "Try 1 cup cooked oatmeal, 1 tbsp chia seeds, and 1/2 cup blueberries. Using this site’s reference portions, the combination supplies roughly 10 g of fiber; your oat portion and berry weight can change the result. The oat line is on the [oatmeal](/oatmeal) guide (1 cup cooked ≈ 4 g). For more breakfast combinations with approximate totals, see the [high-fiber breakfast](/high-fiber-breakfast) guide (oat bowl ~10 g, chia pudding ~11 g). For a blended version, see the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide (berry–chia ~12g+).",
           "For a pudding-style breakfast, try 20 g chia seeds with 1/2 cup raspberries and plain nonfat Greek yogurt. The seeds and berries supply roughly 11 g of fiber together. Adjust the liquid and preparation to your recipe."
         ]
       },
