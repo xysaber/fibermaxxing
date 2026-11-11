@@ -2065,6 +2065,130 @@ a {
   }
 }
 
+/*
+  Oatmeal only. Desktop stays a two-column hero: answer on the left, calculator
+  on the right, portion table between the lede and “Calculate my bowl”.
+  The table and jump are siblings so a phone can lift the calculator without
+  rewriting the source order. Row gap stays 0 so those margins match the old
+  single-column flow (siblings in a grid do not collapse).
+*/
+@media (min-width: 861px) {
+  .hero.seo-split.hero-oatmeal {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "copy calc"
+      "table calc"
+      "cta calc";
+    column-gap: var(--space-6);
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .hero.seo-split.hero-oatmeal > .hero-copy {
+    grid-area: copy;
+  }
+
+  .hero.seo-split.hero-oatmeal > .seo-portion-table {
+    grid-area: table;
+    margin-bottom: 0;
+  }
+
+  .hero.seo-split.hero-oatmeal > .hero-cta-row {
+    grid-area: cta;
+  }
+
+  .hero.seo-split.hero-oatmeal > .panel-calc {
+    grid-area: calc;
+  }
+
+  .hero.seo-split.hero-oatmeal > .results {
+    grid-column: 1 / -1;
+  }
+}
+
+.hero.seo-split.hero-oatmeal > .seo-portion-table,
+.hero.seo-split.hero-oatmeal > .hero-cta-row {
+  min-width: 0;
+  max-width: 100%;
+  animation: rise var(--duration-enter) var(--ease-out) 40ms both;
+}
+
+/* Phone: H1 and ~4g stay above the calculator; the portion table drops below it.
+   Inside the form, the portion field and Calculate fiber come before the target
+   and sex/age/goal controls, which are 200px+ when stacked. Quick portions follow
+   the button. The “Calculate my bowl” row, including “Free · no login”, is a desktop jump only. */
+@media (max-width: 860px) {
+  .hero.seo-split.hero-oatmeal {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  /* container-type on the calculator collapses a flexed item unless the
+     cross size is definite. */
+  .hero.seo-split.hero-oatmeal > .hero-copy,
+  .hero.seo-split.hero-oatmeal > .panel-calc,
+  .hero.seo-split.hero-oatmeal > .results,
+  .hero.seo-split.hero-oatmeal > .seo-portion-table,
+  .hero.seo-split.hero-oatmeal > .hero-cta-row {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
+  }
+
+  .hero.seo-split.hero-oatmeal > .hero-copy {
+    order: 1;
+  }
+
+  .hero.seo-split.hero-oatmeal > .panel-calc {
+    order: 2;
+    margin-top: var(--space-5);
+  }
+
+  .hero.seo-split.hero-oatmeal > .results {
+    order: 3;
+    margin-top: var(--space-5);
+  }
+
+  .hero.seo-split.hero-oatmeal > .seo-portion-table {
+    order: 4;
+    margin-top: var(--space-5);
+  }
+
+  .hero.seo-split.hero-oatmeal > .hero-cta-row {
+    display: none;
+  }
+
+  .hero.seo-split.hero-oatmeal .panel-calc > .panel-label {
+    order: 1;
+  }
+
+  .hero.seo-split.hero-oatmeal .panel-calc > .field-meal {
+    order: 2;
+  }
+
+  .hero.seo-split.hero-oatmeal .panel-calc > .actions {
+    order: 3;
+  }
+
+  .hero.seo-split.hero-oatmeal .panel-calc > .starter-block {
+    order: 4;
+  }
+
+  .hero.seo-split.hero-oatmeal .panel-calc > .examples {
+    order: 5;
+  }
+
+  .hero.seo-split.hero-oatmeal .panel-calc > .target-banner {
+    order: 6;
+  }
+
+  .hero.seo-split.hero-oatmeal .panel-calc > .row-profile {
+    order: 7;
+  }
+}
+
 /* Shared info band (homepage trust + SEO facts) */
 .info-band {
   margin: 0 0 var(--space-section);
