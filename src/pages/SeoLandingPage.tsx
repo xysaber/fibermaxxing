@@ -84,6 +84,26 @@ export function SeoLandingPage() {
   const facts = page.facts ?? []
   const heroLede = page.intro?.[0]?.trim() || null
 
+  const oatmeal = page.slug === 'oatmeal'
+  const calculatorJump = page.calculatorCtaNote ? (
+    <div className="hero-cta-row">
+      {/* Ghost on desktop, where the calculator is already on screen.
+          Mobile restores the primary fill — the panel sits below the fold. */}
+      <a className="btn btn-ghost hero-cta" href="#calculator" onClick={focusCalculator}>
+        {page.calculatorCta ?? 'Estimate this meal'}
+      </a>
+      <p className="hero-cta-note">{page.calculatorCtaNote}</p>
+    </div>
+  ) : (
+    <a
+      className={useBands ? 'hero-method-link hero-calc-link' : 'hero-method-link'}
+      href="#calculator"
+      onClick={focusCalculator}
+    >
+      {page.calculatorCta ?? 'Estimate this meal'}
+    </a>
+  )
+
   const relatedCards = [
     ...related.map((r) => ({
       to: `/${r.slug}`,
@@ -107,7 +127,11 @@ export function SeoLandingPage() {
       />
       <SiteHeader />
 
-      <section className={useBands ? 'hero seo-split' : 'hero'}>
+      <section
+        className={['hero', useBands ? 'seo-split' : '', oatmeal ? 'hero-oatmeal' : '']
+          .filter(Boolean)
+          .join(' ')}
+      >
         <div className="hero-copy seo-landing-copy">
           <h1>{page.h1}</h1>
 
@@ -115,27 +139,16 @@ export function SeoLandingPage() {
 
           {heroLede ? <p className="lede">{heroLede}</p> : null}
 
-          {page.portionTable ? <PortionComparison table={page.portionTable} /> : null}
+          {page.portionTable && !oatmeal ? <PortionComparison table={page.portionTable} /> : null}
 
-          {page.calculatorCtaNote ? (
-            <div className="hero-cta-row">
-              {/* Ghost on desktop, where the calculator is already on screen.
-                  Mobile restores the primary fill — the panel sits below the fold. */}
-              <a className="btn btn-ghost hero-cta" href="#calculator" onClick={focusCalculator}>
-                {page.calculatorCta ?? 'Estimate this meal'}
-              </a>
-              <p className="hero-cta-note">{page.calculatorCtaNote}</p>
-            </div>
-          ) : (
-            <a
-              className={useBands ? 'hero-method-link hero-calc-link' : 'hero-method-link'}
-              href="#calculator"
-              onClick={focusCalculator}
-            >
-              {page.calculatorCta ?? 'Estimate this meal'}
-            </a>
-          )}
+          {!oatmeal ? calculatorJump : null}
         </div>
+
+        {/* Same source order as before (answer, table, jump, calculator). Desktop
+            grid keeps the calculator in the right column; mobile flex lifts it
+            under the ~4g answer and drops the portion table below the form. */}
+        {oatmeal && page.portionTable ? <PortionComparison table={page.portionTable} /> : null}
+        {oatmeal ? calculatorJump : null}
 
         <FiberCalculator
           key={page.slug}
@@ -146,6 +159,7 @@ export function SeoLandingPage() {
           examples={page.examples?.length ? page.examples : [page.defaultMeal]}
           starters={page.quickPills}
           panelLabel="Estimate this meal — or paste your own"
+          anchorOnInput={oatmeal}
         />
       </section>
 

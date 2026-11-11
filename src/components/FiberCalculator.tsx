@@ -218,6 +218,11 @@ export type FiberCalculatorProps = {
   /** When set, replaces the default Quick start chips (and typewriter demos). */
   starters?: CalculatorStarter[]
   panelLabel?: string
+  /**
+   * Put #calculator on the portion field so in-page jumps land where the user types.
+   * Other pages keep the id on the form.
+   */
+  anchorOnInput?: boolean
 }
 
 /** Hero CTA can adopt the current typewriter Quick start (full meal, not partial text). */
@@ -235,6 +240,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       examples = DEFAULT_EXAMPLES,
       starters,
       panelLabel = 'Fiber intake estimator',
+      anchorOnInput = false,
     },
     ref,
   ) {
@@ -469,7 +475,11 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
 
   return (
     <>
-      <form className="panel panel-calc" onSubmit={onSubmit} id="calculator">
+      <form
+        className="panel panel-calc"
+        onSubmit={onSubmit}
+        id={anchorOnInput ? undefined : 'calculator'}
+      >
         <p className="panel-label">{panelLabel}</p>
 
         <div className="target-banner" aria-live="polite">
@@ -512,7 +522,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
           </div>
         </div>
 
-        <div className="field field-meal">
+        <div className="field field-meal" id={anchorOnInput ? 'calculator' : undefined}>
           <label htmlFor="meal">What did you eat today?</label>
           <div className={`meal-box-wrap${showTypewriter ? ' meal-box-wrap--demo' : ''}`}>
             <textarea
