@@ -108,8 +108,14 @@ check('foods copy describes paste-a-mix (not per-food deep links)', () => {
   assert.ok(how, 'foods how-to section')
 })
 
-check('footer-ready: oatmeal related trimmed to 4', () => {
-  assert.equal(bySlug.oatmeal.related.length, 4)
+check('footer-ready: oatmeal related keeps prior guides and adds smoothie after breakfast', () => {
+  assert.deepEqual(bySlug.oatmeal.related, [
+    'chia-seeds',
+    'high-fiber-breakfast',
+    'fibermaxxing-smoothie',
+    'fibermaxxing-foods',
+    'how-much-fiber-per-day',
+  ])
 })
 
 check('published defaultMeals are unique (no shared prefill)', () => {
@@ -144,7 +150,7 @@ check('change-scope mutual links', () => {
   assert.ok(has('oatmeal', 'fibermaxxing-foods'))
   assert.ok(has('oatmeal', 'chia-seeds'))
   assert.ok(has('oatmeal', 'how-much-fiber-per-day'))
-  // smoothie ↔ breakfast / foods (oatmeal related trimmed; smoothie still reaches oats via foods)
+  // smoothie ↔ breakfast / foods, and oatmeal related lists smoothie after breakfast
   assert.ok(has('fibermaxxing-foods', 'high-fiber-breakfast'))
   assert.ok(has('high-fiber-breakfast', 'fibermaxxing-smoothie'))
   assert.ok(has('chia-seeds', 'fibermaxxing-smoothie') || has('chia-seeds', 'fibermaxxing-foods'))

@@ -153,6 +153,7 @@
         "heading": "How much fiber is in a cup of oatmeal?",
         "paragraphs": [
           "People usually mean a prepared cup when they ask how much fiber is in oatmeal. On GetFibermaxxing, cooked oatmeal is referenced at about 4 g of fiber per 1 cup (234 g). That is a typical USDA-style cooked serving, not a brand promise — water ratio, oat type, and package labels can shift the number.",
+          "If you searched how much fiber is in a cup of oats, do not use the cooked-cup number for a dry scoop. On this site, 1 cup dry rolled oats is about 8.5 g of fiber; 1 cup cooked oatmeal (234 g) is about 4 g. Same oats, different fill: water takes up space in the cooked cup.",
           "If you only know a dry scoop, do not assume one dry cup equals one cooked cup. Dry oats pack more grain into the same volume. Prefer a kitchen scale: enter the dry weight in grams, or cook the oats and log cooked oatmeal with the bowl size you ate.",
           "Instant packets vary widely. Some are plain oats; others add sugar or dried fruit. When the label lists fiber per packet, use that weight in the calculator after matching the closest oat entry, then edit grams.",
           "Dry oats are denser per cup — weigh in grams, or log a prepared bowl as cooked oatmeal.",
@@ -164,7 +165,8 @@
         "paragraphs": [
           "Dry rolled oats and cooked oatmeal are the same food at different hydration. Fiber grams track the oat solids, so the dry weight is what matters for accuracy. Cooking adds water, which lowers fiber per cup even though total fiber in the pot stays similar.",
           "Practical rule: if you weighed oats before cooking, log dry oats (or rolled oats) with that gram amount. If you filled a measuring cup with the finished porridge, log cooked oatmeal and start from about 1 cup / 234 g, then scale servings up or down.",
-          "Overnight oats are usually closer to a hydrated bowl than to dry cups. Treat them like cooked or soaked oats: estimate the oat solids you started with, or enter the prepared portion and adjust after you calculate."
+          "Overnight oats are usually closer to a hydrated bowl than to dry cups. Treat them like cooked or soaked oats: estimate the oat solids you started with, or enter the prepared portion and adjust after you calculate.",
+          "Cooking does not remove the fiber. For fiber in cooked oatmeal, use the cooked line: about 2 g per ½ cup, 4 g per 1 cup, and 6 g per 1½ cups. The dry rolled line is higher per cup (about 4.2 g, 8.5 g, and 12.7 g) because that cup is mostly oat solids."
         ]
       },
       {
@@ -179,7 +181,7 @@
         "heading": "How to make a higher-fiber oatmeal bowl",
         "paragraphs": [
           "A plain cooked cup is a solid start (~4 g), but toppings often close more of a daily fiber gap. Chia seeds, ground flaxseed, raspberries, blueberries, pear, and apple are common high-fiber add-ins that this calculator can match when you name them with portions.",
-          "Example pattern: 1 cup cooked oatmeal + 1 tablespoon chia seeds + ½ cup blueberries. Run that as a meal example on this page, then swap fruit or seed amounts to match your bowl. For more breakfast combinations with approximate totals, see the high-fiber breakfast guide.",
+          "Example pattern: 1 cup cooked oatmeal + 1 tablespoon chia seeds + ½ cup blueberries — about 10 g of fiber. Run that as a meal example on this page, then swap fruit or seed amounts to match your bowl. For more breakfast combinations with approximate totals, see the [high-fiber breakfast](/high-fiber-breakfast) guide (oat bowl about 10 g, chia pudding about 11 g). One tablespoon of chia is about 4.1 g on the [chia seeds](/chia-seeds) guide. For a blended drink, see the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide.",
           "Increase fiber gradually and drink water. Large one-day jumps from seeds or bran can be uncomfortable. Use the daily fiber target tools on this site as population references, not personal medical advice — especially if you have a digestive condition."
         ]
       }
@@ -214,11 +216,24 @@
       {
         "q": "Is one bowl enough for the day?",
         "a": "A plain cup (~4 g) is a start, not a full adult day. Add the rest of your meals in the calculator."
+      },
+      {
+        "q": "How much fiber is in a cup of oats?",
+        "a": "About 8.5 g for 1 cup dry rolled oats on this site, and about 4 g for 1 cup cooked oatmeal (234 g). Do not use the cooked-cup number for a dry scoop."
+      },
+      {
+        "q": "Does cooking oatmeal reduce its fiber?",
+        "a": "No. Cooking adds water, which is why a cooked cup is lower than a dry cup."
+      },
+      {
+        "q": "How much fiber is in 1½ cups of cooked oatmeal?",
+        "a": "About 6 g for 1½ cups cooked oatmeal on this site."
       }
     ],
     "related": [
       "chia-seeds",
       "high-fiber-breakfast",
+      "fibermaxxing-smoothie",
       "fibermaxxing-foods",
       "how-much-fiber-per-day"
     ],

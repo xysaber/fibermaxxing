@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEventHandler } from 'react'
+import { Fragment, useEffect, useState, type MouseEventHandler, type ReactNode } from 'react'
 
 export type SeoArticleSection = {
   heading: string
@@ -14,6 +14,34 @@ type Props = {
   ctaHref?: string
   ctaLabel?: string
   onCtaClick?: MouseEventHandler<HTMLAnchorElement>
+}
+
+/** [label](/slug) in a paragraph becomes an in-site anchor. Plain paragraphs stay text. */
+function renderParagraph(text: string): ReactNode {
+  const re = /\[([^\]\n]+)\]\((\/[a-z0-9]+(?:-[a-z0-9]+)*)\)/g
+  const nodes: ReactNode[] = []
+  let last = 0
+  let i = 0
+  for (const match of text.matchAll(re)) {
+    const index = match.index ?? 0
+    if (index > last) {
+      nodes.push(<Fragment key={`t${i}`}>{text.slice(last, index)}</Fragment>)
+    }
+    const label = match[1]
+    const href = match[2]
+    if (label && href) {
+      nodes.push(
+        <a key={`a${i}`} href={href}>
+          {label}
+        </a>,
+      )
+    }
+    last = index + match[0].length
+    i += 1
+  }
+  if (i === 0) return text
+  if (last < text.length) nodes.push(<Fragment key={`t${i}`}>{text.slice(last)}</Fragment>)
+  return nodes
 }
 
 /** Long-form SEO body for guide pages — keeps the hero short, content crawlable. */
@@ -76,7 +104,7 @@ export function SeoArticle({
             <article className="seo-article-block">
               <h2 id={showContents ? `${id}-section-${i + 1}` : undefined}>{s.heading}</h2>
               {s.paragraphs.map((p) => (
-                <p key={p.slice(0, 56)}>{p}</p>
+                <p key={p.slice(0, 56)}>{renderParagraph(p)}</p>
               ))}
             </article>
             {i === insertAt ? (
