@@ -2116,7 +2116,7 @@ a {
 /* Phone: H1 and ~4g stay above the calculator; the portion table drops below it.
    Inside the form, the portion field and Calculate fiber come before the target
    and sex/age/goal controls, which are 200px+ when stacked. Quick portions follow
-   the button. “Calculate my bowl” is a desktop jump only. */
+   the button. The “Calculate my bowl” row, including “Free · no login”, is a desktop jump only. */
 @media (max-width: 860px) {
   .hero.seo-split.hero-oatmeal {
     display: flex;
@@ -2157,10 +2157,6 @@ a {
   }
 
   .hero.seo-split.hero-oatmeal > .hero-cta-row {
-    order: 5;
-  }
-
-  .hero.seo-split.hero-oatmeal .hero-cta-row .hero-cta {
     display: none;
   }
 
