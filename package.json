@@ -18,6 +18,8 @@
     "test:accuracy": "node --import tsx scripts/fiber-accuracy-regression.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
     "html-to-image": "^1.11.13",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",

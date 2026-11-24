@@ -58,7 +58,7 @@ export function DocumentMeta({
 }: Props) {
   useEffect(() => {
     const url = absoluteUrl(path)
-    const ogImage = `${SITE_URL}/og.svg`
+    const ogImage = `${SITE_URL}/og.png`
 
     document.title = title
     setMeta('name', 'description', description)

@@ -42,6 +42,14 @@ export function AboutPage() {
             is no account, no paywall, and no sponsored food ranking.
           </p>
 
+          <h2 id="editor">Who runs it</h2>
+          <p>
+            GetFibermaxxing was founded by <strong>Mira Xin</strong>, who writes and edits every guide.
+            Mira checks each gram figure against USDA FoodData Central, lists the sources on the page,
+            and updates the review date when anything changes. Guides stick to published reference
+            data and say so when a number is an estimate.
+          </p>
+
           <h2>Where the numbers come from</h2>
           <p>
             Food values come from{' '}

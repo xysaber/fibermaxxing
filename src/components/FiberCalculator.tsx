@@ -64,8 +64,8 @@ function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'li
   const c = 2 * Math.PI * r
   const clamped = Math.min(100, Math.max(0, pct))
   const offset = c - (clamped / 100) * c
-  const track = tone === 'light' ? 'rgba(26, 34, 56, 0.1)' : 'rgba(255,255,255,0.15)'
-  const progress = tone === 'light' ? '#2f5bff' : '#5b8cff'
+  const track = tone === 'light' ? 'rgba(19, 32, 26, 0.1)' : 'rgba(255,255,255,0.15)'
+  const progress = tone === 'light' ? '#1f6b45' : '#5bd08a'
 
   return (
     <div className={`ring-wrap ring-wrap-${tone}`} aria-hidden>

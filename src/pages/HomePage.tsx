@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { DocumentMeta } from '../components/DocumentMeta'
 import { FaqBlock } from '../components/FaqBlock'
 import {
@@ -6,10 +7,11 @@ import {
   type FiberCalculatorHandle,
 } from '../components/FiberCalculator'
 import { GuidesStrip } from '../components/GuidesStrip'
-import { InfoBand } from '../components/InfoBand'
+import { FoodTable } from '../components/FoodTable'
 import { MethodStrip } from '../components/MethodStrip'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
+import { FOOD_COUNT } from '../data/foods'
 import { trackPageView } from '../lib/analytics'
 
 const HOME_FAQS = [
@@ -28,24 +30,6 @@ const HOME_FAQS = [
   {
     q: 'Is this fibermaxxing calculator medical advice?',
     a: 'No. Fiber totals are approximate estimates for education and self-tracking only. If you have a digestive condition or take medication, check with a qualified clinician before making large diet changes.',
-  },
-]
-
-const HOME_TRUST_TILES = [
-  {
-    label: 'Data',
-    value: 'USDA-based estimates',
-    note: 'Reference servings you can edit',
-  },
-  {
-    label: 'Targets',
-    value: 'Adequate Intake goals',
-    note: 'By sex and age, plus optional stretch',
-  },
-  {
-    label: 'Control',
-    value: 'Confirm every match',
-    note: 'Adjust servings or grams before you trust the total',
   },
 ]
 
@@ -70,32 +54,21 @@ export function HomePage() {
             Paste a meal or tap a quick start, then hit Calculate — see fiber grams vs your daily
             target. No signup.
           </p>
-          <div className="hero-cta-row">
-            <a
-              className="btn btn-primary hero-cta"
-              href="#calculator"
-              onClick={(e) => {
-                e.preventDefault()
-                calcRef.current?.adoptCurrentDemo()
-              }}
-            >
-              Try the calculator
-            </a>
-            <a className="btn btn-ghost hero-cta" href="#method">
-              How it works
-            </a>
-          </div>
+          <ul className="hero-proof">
+            <li>{FOOD_COUNT.toLocaleString()} foods from USDA FoodData Central</li>
+            <li>Targets from U.S. Adequate Intake by age and sex</li>
+            <li>Edit any portion before you trust the total</li>
+          </ul>
+          <p className="hero-reviewed">
+            Updated November 24, 2026 · <a href="#method">Method and sources</a> ·{' '}
+            <Link to="/about">Editorial standards</Link>
+          </p>
         </div>
 
         <FiberCalculator ref={calcRef} />
       </section>
 
-      <InfoBand
-        id="trust"
-        ariaLabel="Why this calculator"
-        tiles={HOME_TRUST_TILES}
-      />
-
+      <FoodTable />
       <GuidesStrip />
       <MethodStrip />
       <FaqBlock title="Fibermaxxing FAQ" faqs={HOME_FAQS} />

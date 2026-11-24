@@ -74,7 +74,7 @@ export async function downloadReportPng(node: HTMLElement, filename = 'fibermax-
   const dataUrl = await toPng(target, {
     cacheBust: true,
     pixelRatio: 3,
-    backgroundColor: '#f3f5f9',
+    backgroundColor: '#f5f3ec',
     width: REPORT_W,
     height,
     style: {
