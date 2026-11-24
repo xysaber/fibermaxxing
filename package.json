@@ -14,7 +14,8 @@
     "test:audit": "node --import tsx reports/2026-10-26/matching-audit.mjs",
     "test:seo": "node scripts/verify-seo.mjs",
     "test:analytics": "node scripts/analytics-regression.mjs",
-    "test:meal-log": "node scripts/meal-log-smoke.mjs && node --import tsx scripts/meal-log-dedupe-smoke.mjs"
+    "test:meal-log": "node scripts/meal-log-smoke.mjs && node --import tsx scripts/meal-log-dedupe-smoke.mjs",
+    "test:accuracy": "node --import tsx scripts/fiber-accuracy-regression.mjs"
   },
   "dependencies": {
     "html-to-image": "^1.11.13",
