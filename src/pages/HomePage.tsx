@@ -26,7 +26,7 @@ const HOME_FAQS = [
   },
   {
     q: 'Where do fiber values come from?',
-    a: 'Primarily USDA FoodData Central reference data, with typical servings. See How it works for details on targets, estimates, and limits.',
+    a: 'USDA FoodData Central (SR Legacy), plus a small set of curated staples and common packaged foods. Values are per typical portion, and you can edit any serving or gram amount.',
   },
   {
     q: 'Is this fibermaxxing calculator medical advice?',
@@ -46,14 +46,13 @@ export function HomePage() {
       <DocumentMeta path="/" faqs={HOME_FAQS} />
       <SiteHeader />
 
-      <section className="hero">
+      <section className="hero hero-home">
         <div className="hero-copy">
-          <h1>
-            How much fiber have you <em>actually</em> eaten today?
-          </h1>
+          <p className="hero-kicker">Free fiber calculator · no signup</p>
+          <h1>How much fiber have you actually eaten today?</h1>
           <p className="lede">
-            Paste a meal or tap a quick start, then hit Calculate — see fiber grams vs your daily
-            target. No signup.
+            Type your meals the way you’d say them. We match each food to USDA data and show your
+            total against the daily target for your age and sex.
           </p>
           <ul className="hero-proof">
             <li>{FOOD_COUNT.toLocaleString()} foods from USDA FoodData Central</li>
@@ -71,11 +70,30 @@ export function HomePage() {
 
       <FoodTable />
       <GuidesStrip />
-      <section className="plan-band" aria-label="Free 7-day plan">
-        <EmailSignup source="home" />
+      <section className="plan-band" id="plan" aria-label="Fiber plans">
+        <EmailSignup
+          source="home"
+          variant="card"
+          kicker="Free"
+          title="7-day starter plan"
+          copy="Add fiber slowly without the bloating. One short email a day with one easy change, sized so your gut keeps up."
+          button="Get the plan"
+        />
+        <div className="plan-card-dark">
+          <p className="plan-card-kicker">Coming soon</p>
+          <h3>30-day Fibermaxxing plan</h3>
+          <p>
+            A week-by-week ramp to your target, with meal plans, shopping lists, and versions for
+            GLP-1 users and sensitive stomachs.
+          </p>
+          <p className="plan-card-price">
+            <strong>$9</strong> <s>$14.99</s> <span>launch price, one-time</span>
+          </p>
+          <p className="plan-card-note">Starter-plan subscribers hear about it first.</p>
+        </div>
       </section>
       <MethodStrip />
-      <FaqBlock title="Fibermaxxing FAQ" faqs={HOME_FAQS} />
+      <FaqBlock title="Questions" faqs={HOME_FAQS} />
       <SiteFooter />
     </div>
   )

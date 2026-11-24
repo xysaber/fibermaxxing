@@ -56,7 +56,7 @@ function unsubscribeUrl(id: string, token: string): string {
 
 async function sendPlanEmail(env: SubscribeEnv, id: string, sub: Subscriber, day: number): Promise<boolean> {
   const unsub = unsubscribeUrl(id, sub.token)
-  const { subject, html, text } = renderPlanEmail(day, unsub)
+  const { subject, html, text } = renderPlanEmail(day, unsub, { targetG: sub.target_g, gapG: sub.gap_g })
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {

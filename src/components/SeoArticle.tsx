@@ -14,6 +14,12 @@ type Props = {
   ctaHref?: string
   ctaLabel?: string
   onCtaClick?: MouseEventHandler<HTMLAnchorElement>
+  /** Rendered in the main column after the sections (FAQ, sources). */
+  after?: ReactNode
+  /** Extra "On this page" links for blocks passed in `after`. */
+  extraToc?: { href: string; label: string }[]
+  /** Rendered in the sidebar under the contents (e.g. email signup). */
+  asideExtra?: ReactNode
 }
 
 /** [label](/slug) in a paragraph becomes an in-site anchor. Plain paragraphs stay text. */
@@ -53,6 +59,9 @@ export function SeoArticle({
   ctaHref = '#calculator',
   ctaLabel = 'Estimate your bowl in the calculator',
   onCtaClick,
+  after,
+  extraToc = [],
+  asideExtra,
 }: Props) {
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -90,12 +99,16 @@ export function SeoArticle({
                   </a>
                 </li>
               ))}
+              {extraToc.map((t) => (
+                <li key={t.href}>
+                  <a href={t.href}>
+                    <span>{t.label}</span>
+                  </a>
+                </li>
+              ))}
             </ol>
-            <div className="seo-contents-action">
-              <p>Put the guide into practice.</p>
-              <a className="hero-method-link" href={ctaHref} onClick={onCtaClick}>Back to calculator <span aria-hidden="true">↑</span></a>
-            </div>
           </nav>
+          {asideExtra}
         </aside>
       ) : null}
       <div className="seo-article-inner">
@@ -116,6 +129,7 @@ export function SeoArticle({
             ) : null}
           </div>
         ))}
+        {after}
       </div>
     </section>
   )

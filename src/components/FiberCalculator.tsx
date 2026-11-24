@@ -166,7 +166,7 @@ function trustBadge(m: MatchedFood): ReactNode {
   }
   return (
     <span className="src-badge src-db" title="Matched in food database">
-      Database
+      Matched
     </span>
   )
 }
@@ -206,6 +206,38 @@ function combosKey(combos: SuggestionItem[][]): string {
   return combos.map((c) => c.map((i) => i.id).join('+')).join('||')
 }
 
+function Segmented({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string
+  value: string
+  options: [string, string][]
+  onChange: (v: string) => void
+}) {
+  return (
+    <div className="seg">
+      <span className="seg-label">{label}</span>
+      <div className="seg-track" role="radiogroup" aria-label={label}>
+        {options.map(([v, text]) => (
+          <button
+            key={v}
+            type="button"
+            role="radio"
+            aria-checked={value === v}
+            className={value === v ? 'is-on' : undefined}
+            onClick={() => onChange(v)}
+          >
+            {text}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export type CalculatorStarter = {
   id: string
   label: string
@@ -220,6 +252,7 @@ export type FiberCalculatorProps = {
   examples?: string[]
   /** When set, replaces the default Quick start chips (and typewriter demos). */
   starters?: CalculatorStarter[]
+  /** Optional small heading above the target (guides). Home shows none. */
   panelLabel?: string
   /**
    * Put #calculator on the portion field so in-page jumps land where the user types.
@@ -242,7 +275,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       initialMeal = '',
       examples = DEFAULT_EXAMPLES,
       starters,
-      panelLabel = 'Fiber intake estimator',
+      panelLabel,
       anchorOnInput = false,
     },
     ref,
@@ -265,6 +298,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   const [activeStarterId, setActiveStarterId] = useState<string | null>(null)
   const [activeExample, setActiveExample] = useState<string | null>(null)
   const [showExamples, setShowExamples] = useState(false)
+  const [moreProfile, setMoreProfile] = useState(false)
   const [suggestionComboIndex, setSuggestionComboIndex] = useState(0)
   const resultsRef = useRef<HTMLElement>(null)
   const reportCardRef = useRef<HTMLDivElement>(null)
@@ -288,6 +322,15 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   )
   const calorieTarget = calorieFiberTarget(kcalNumber)
   const stageLabel = stage === 'pregnant' ? ' (pregnancy)' : stage === 'lactating' ? ' (breastfeeding)' : ''
+  const simpleProfile =
+    !moreProfile &&
+    stage === 'none' &&
+    (sex === 'female' || sex === 'male') &&
+    (age === '19-50' || age === '51+') &&
+    (mode === 'standard' || mode === 'maxxing')
+  const profileLabel = `${sex === 'male' ? 'men' : sex === 'female' ? 'women' : 'adults'} ${
+    age === '51+' ? '51+' : age === '14-18' ? '14–18' : '19–50'
+  }`
 
   const hasMatches = !!result && result.matches.length > 0
   const pct = hasMatches ? Math.min(150, (result.totalFiberG / target) * 100) : 0
@@ -499,27 +542,78 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         onSubmit={onSubmit}
         id={anchorOnInput ? undefined : 'calculator'}
       >
-        <p className="panel-label">{panelLabel}</p>
+        {panelLabel ? <p className="panel-label">{panelLabel}</p> : null}
 
-        <div className="target-banner" aria-live="polite">
-          <div className="target-banner-main">
-            <span className="target-banner-label">Your daily target</span>
-            <span className="target-banner-value">
-              {target}
-              <small>g</small>
+        <div className="target-head" aria-live="polite">
+          <div className="target-head-copy">
+            <span className="target-head-label">Your daily target</span>
+            <span className="target-head-note">
+              {mode === 'standard'
+                ? `U.S. Adequate Intake${stageLabel}, ${profileLabel}`
+                : mode === 'calories'
+                  ? calorieTarget != null
+                    ? `14 g per 1,000 kcal · ${Math.round(kcalNumber).toLocaleString('en-US')} kcal/day`
+                    : `Enter 800–6,000 kcal · showing ${standardAi} g`
+                  : `Stretch goal · ${standardAi} g × 1.5, max 50 g`}
             </span>
           </div>
-          <p className="target-banner-note">
-            {mode === 'standard'
-              ? `U.S. Adequate Intake reference${stageLabel} · ~${standardAi}g for this profile`
-              : mode === 'calories'
-                ? calorieTarget != null
-                  ? `14g per 1,000 kcal · ${Math.round(kcalNumber).toLocaleString('en-US')} kcal/day`
-                  : `Enter 800–6,000 kcal · showing AI ~${standardAi}g`
-                : `Fibermaxxing stretch · ${standardAi}g × 1.5 (max 50g)`}
-          </p>
+          <span className="target-head-value">
+            {target}
+            <small> g</small>
+          </span>
         </div>
 
+        {simpleProfile ? (
+          <div className="seg-row" role="group" aria-label="Your profile">
+            <Segmented
+              label="Sex"
+              value={sex}
+              options={[
+                ['female', 'Female'],
+                ['male', 'Male'],
+              ]}
+              onChange={(v) => setSex(v as Sex)}
+            />
+            <Segmented
+              label="Age"
+              value={age}
+              options={[
+                ['19-50', '19–50'],
+                ['51+', '51+'],
+              ]}
+              onChange={(v) => setAge(v as AgeGroup)}
+            />
+            <Segmented
+              label="Goal"
+              value={mode}
+              options={[
+                ['standard', 'Standard'],
+                ['maxxing', 'Stretch'],
+              ]}
+              onChange={(v) => setMode(v as GoalMode)}
+            />
+          </div>
+        ) : null}
+        <button
+          type="button"
+          className="profile-more"
+          aria-expanded={!simpleProfile}
+          onClick={() => {
+            if (!simpleProfile) {
+              setSex(sex === 'male' ? 'male' : 'female')
+              setStage('none')
+              if (age === '14-18') setAge('19-50')
+              if (mode === 'calories') setMode('standard')
+              setMoreProfile(false)
+            } else {
+              setMoreProfile(true)
+            }
+          }}
+        >
+          {simpleProfile ? 'More options: pregnancy, teens, by calories' : 'Fewer options'}
+        </button>
+
+        {!simpleProfile ? (
         <div className="row row-profile">
           <div className="field">
             <label htmlFor="sex">Sex</label>
@@ -577,6 +671,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
             </div>
           )}
         </div>
+        ) : null}
 
         <div className="field field-meal" id={anchorOnInput ? 'calculator' : undefined}>
           <label htmlFor="meal">What did you eat today?</label>
@@ -627,7 +722,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
           className={`starter-block${starters?.length ? ' starter-block--portions' : ''}`}
           aria-label="Meal starters"
         >
-          <p className="starter-label">{starters?.length ? 'Quick portions' : 'Quick start'}</p>
+          <p className="starter-label">{starters?.length ? 'Quick portions' : 'Or start from an example'}</p>
           <div className={`starter-chips${starters?.length ? ' starter-chips--portions' : ''}`}>
             {starterList.map((s, i) => (
               <button
@@ -673,68 +768,53 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         <div className="actions">
           <button
             type="submit"
-            className={`btn btn-primary btn-calc${calcReady ? ' btn-calc--ready' : ''}`}
+            className={`btn btn-primary btn-calc${calcReady ? ' btn-calc--ready' : ''}${
+              meal.trim() ? '' : ' btn-calc--empty'
+            }`}
             disabled={!meal.trim()}
             aria-disabled={!meal.trim()}
           >
-            Calculate fiber
+            {meal.trim() ? 'Calculate fiber' : 'Type a meal or pick an example'}
           </button>
-          <button
-            type="button"
-            className="btn btn-text"
-            onClick={onClear}
-            disabled={!meal && !result && !mealError}
-          >
-            Clear
-          </button>
+          {meal || result || mealError ? (
+            <button type="button" className="btn btn-text" onClick={onClear}>
+              Clear
+            </button>
+          ) : null}
         </div>
+        <p className="calc-footnote">Free, no signup. Estimates only, not medical advice.</p>
       </form>
 
       {hasMatches && result && (
         <section className="results" aria-live="polite" ref={resultsRef}>
           <div className="score-card">
-            <p className="score-kicker">Today’s fiber score</p>
             <div className="score-hero">
+              <ProgressRing pct={pct} />
               <div className="score-hero-copy">
+                <p className="score-of-label">Fiber so far today</p>
                 <p className="score-total">
                   {result.totalFiberG}
-                  <small>g</small>
+                  <small> g</small>
                 </p>
                 <p className="score-of">
-                  of {target}g {mode === 'maxxing' ? 'fibermaxxing' : 'daily'} target
+                  of your {target} g {mode === 'maxxing' ? 'stretch' : 'daily'} target
                 </p>
-                <h2 className="score-status">
-                  {pct >= 100
-                    ? mode === 'maxxing'
-                      ? 'Fibermaxxing goal reached'
-                      : 'Daily fiber goal reached'
-                    : gap > 0
-                      ? `${gap}g still to go`
-                      : 'On track for today'}
-                </h2>
                 <p className="score-meta">{scoreMetaLine(result)}</p>
               </div>
-              <ProgressRing pct={pct} />
             </div>
 
-            <div className="metrics metrics-2">
-              <div className="metric">
-                <div className="k">Daily target</div>
-                <div className="v">
-                  {target}
-                  <small>g</small>
-                </div>
-              </div>
-              <div className="metric metric-accent">
-                <div className="k">{gap <= 0 ? 'Over goal' : 'Still to go'}</div>
-                <div className="v">
-                  {gap <= 0
-                    ? Math.round((result.totalFiberG - target) * 10) / 10
-                    : gap}
-                  <small>g</small>
-                </div>
-              </div>
-            </div>
+            <h2 className={`score-status${gap > 0 ? ' score-status--gap' : ' score-status--done'}`}>
+              {gap > 0 ? (
+                <>
+                  <strong>{gap} g to go.</strong> Add a food below to see how it closes the gap.
+                </>
+              ) : (
+                <>
+                  <strong>{mode === 'maxxing' ? 'Stretch goal reached.' : 'Target reached.'}</strong>{' '}
+                  Spread fiber across meals and drink water as you go.
+                </>
+              )}
+            </h2>
 
             {result.warnings.length > 0 && (
               <p className="score-estimate-note">{result.warnings[0]}</p>
@@ -785,8 +865,12 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
             )}
           </div>
 
+          <div className="results-side">
           <div className="detail-panel">
-            <h3>Matched foods</h3>
+            <div className="detail-head">
+              <h3>What we matched</h3>
+              <span>Edit a portion to recalculate</span>
+            </div>
             <ul className="food-list food-list-editable">
               {result.matches.map((m, idx) => {
                 return (
@@ -860,32 +944,26 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
             )}
 
             <div className="share-block">
-              <p className="share-label">Share results</p>
               <div className="share-row">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-ghost"
                   onClick={onDownload}
                   disabled={downloading}
                 >
-                  {downloading ? 'Preparing…' : 'Download PNG'}
+                  {downloading ? 'Preparing…' : 'Save as image'}
                 </button>
                 <button
                   type="button"
                   className={`btn btn-ghost${copied ? ' is-copied' : ''}`}
                   onClick={copyShare}
                 >
-                  {copied ? 'Copied' : 'Copy text report'}
+                  {copied ? 'Copied' : 'Copy summary'}
                 </button>
               </div>
             </div>
 
-            <EmailSignup
-              source="result"
-              variant="result"
-              targetG={target}
-              gapG={gap > 0 ? gap : undefined}
-            />
+
 
             <div className="report-card-capture" ref={reportCardRef} id="share-card" aria-hidden>
               <div className="report-card-portrait">
@@ -934,6 +1012,13 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
                 </div>
               </div>
             </div>
+          </div>
+            <EmailSignup
+              source="result"
+              variant="result"
+              targetG={target}
+              gapG={gap > 0 ? gap : undefined}
+            />
           </div>
         </section>
       )}

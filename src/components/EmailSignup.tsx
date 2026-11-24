@@ -6,12 +6,16 @@ type Props = {
   source: string
   targetG?: number
   gapG?: number
-  variant?: 'result' | 'section'
+  variant?: 'result' | 'section' | 'card' | 'aside'
+  kicker?: string
+  title?: string
+  copy?: string
+  button?: string
 }
 
 type Status = 'idle' | 'sending' | 'done' | 'already' | 'error' | 'invalid'
 
-export function EmailSignup({ source, targetG, gapG, variant = 'section' }: Props) {
+export function EmailSignup({ source, targetG, gapG, variant = 'section', kicker, title, copy, button }: Props) {
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [status, setStatus] = useState<Status>('idle')
@@ -47,13 +51,13 @@ export function EmailSignup({ source, targetG, gapG, variant = 'section' }: Prop
 
   return (
     <div className={`email-signup email-signup--${variant}`}>
-      <p className="email-signup-kicker">Free · by email</p>
+      {kicker !== '' ? <p className="email-signup-kicker">{kicker ?? 'Free · by email'}</p> : null}
       <h3 className="email-signup-title">
-        {gapText ? `Get a 7-day plan to close your ${gapText} gap` : 'Free 7-day starter plan'}
+        {title ?? (gapText ? `Get a 7-day plan to close your ${gapText} gap` : 'Free 7-day starter plan')}
       </h3>
       <p className="email-signup-copy">
-        One short email a day with one easy change, sized so you add fiber without the bloating.
-        Unsubscribe anytime.
+        {copy ??
+          'One short email a day with one easy change, sized so you add fiber without the bloating. Unsubscribe anytime.'}
       </p>
       {status === 'done' || status === 'already' ? (
         <p className="email-signup-done" role="status">
@@ -90,7 +94,7 @@ export function EmailSignup({ source, targetG, gapG, variant = 'section' }: Prop
             onChange={(e) => setCompany(e.target.value)}
           />
           <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
-            {status === 'sending' ? 'Sending…' : 'Send my plan'}
+            {status === 'sending' ? 'Sending…' : button ?? 'Send my plan'}
           </button>
         </form>
       )}
