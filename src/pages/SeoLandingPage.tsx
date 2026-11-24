@@ -1,5 +1,5 @@
 import { useEffect, type MouseEvent } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { DocumentMeta } from '../components/DocumentMeta'
 import { FaqBlock } from '../components/FaqBlock'
 import { FiberCalculator } from '../components/FiberCalculator'
@@ -142,6 +142,11 @@ export function SeoLandingPage() {
           .join(' ')}
       >
         <div className="hero-copy seo-landing-copy">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link to="/">Home</Link>
+            <span aria-hidden="true">/</span>
+            <Link to="/#guides">Guides</Link>
+          </nav>
           <h1>{page.h1}</h1>
 
           {page.updated ? <GuideByline updated={page.updated} /> : null}
