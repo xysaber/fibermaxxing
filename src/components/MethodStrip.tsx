@@ -9,6 +9,23 @@ export function MethodStrip() {
         <h2>How it works</h2>
         <p>Targets and food values — what this calculator uses, and what it doesn’t claim.</p>
       </div>
+      <ol className="method-steps">
+        <li>
+          <span className="method-step-n" aria-hidden="true">1</span>
+          <h3>Set your target</h3>
+          <p>Pick sex and age. The target follows U.S. Adequate Intake, or an optional stretch goal.</p>
+        </li>
+        <li>
+          <span className="method-step-n" aria-hidden="true">2</span>
+          <h3>Type what you ate</h3>
+          <p>Write meals the way you’d say them. Each food is matched to USDA FoodData Central.</p>
+        </li>
+        <li>
+          <span className="method-step-n" aria-hidden="true">3</span>
+          <h3>Check and adjust</h3>
+          <p>Edit servings or grams. Anything approximated is marked Estimated.</p>
+        </li>
+      </ol>
       <div className="method-grid">
         <div className="method-col">
           <h3>Daily fiber target</h3>

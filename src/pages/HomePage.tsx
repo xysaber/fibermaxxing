@@ -7,6 +7,7 @@ import {
   type FiberCalculatorHandle,
 } from '../components/FiberCalculator'
 import { GuidesStrip } from '../components/GuidesStrip'
+import { EmailSignup } from '../components/EmailSignup'
 import { FoodTable } from '../components/FoodTable'
 import { MethodStrip } from '../components/MethodStrip'
 import { SiteFooter } from '../components/SiteFooter'
@@ -70,6 +71,9 @@ export function HomePage() {
 
       <FoodTable />
       <GuidesStrip />
+      <section className="plan-band" aria-label="Free 7-day plan">
+        <EmailSignup source="home" />
+      </section>
       <MethodStrip />
       <FaqBlock title="Fibermaxxing FAQ" faqs={HOME_FAQS} />
       <SiteFooter />

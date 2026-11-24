@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { buildSuggestions, type SuggestionItem } from '../data/suggestions'
+import { EmailSignup } from './EmailSignup'
 import { track } from '../lib/analytics'
 import {
   fiberTarget,
@@ -431,6 +432,14 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     track('edit_portion', { foods: nextMatches.length, fiber: summary.totalFiberG })
   }
 
+  function addSuggestion(item: SuggestionItem) {
+    const base = meal.trim().replace(/[,\s]+$/, '')
+    const next = base ? `${base}, ${item.addPhrase}` : item.addPhrase
+    track('add_suggestion', { food: item.id })
+    setMeal(next)
+    runCalc(next)
+  }
+
   function onSubmit(e: FormEvent) {
     e.preventDefault()
     if (!meal.trim()) return
@@ -760,6 +769,14 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
                             {item.serving} · ~{item.fiberG}g fiber
                           </span>
                         </div>
+                        <button
+                          type="button"
+                          className="suggestions-add"
+                          aria-label={`Add ${item.name} to today`}
+                          onClick={() => addSuggestion(item)}
+                        >
+                          Add
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -862,6 +879,13 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
                 </button>
               </div>
             </div>
+
+            <EmailSignup
+              source="result"
+              variant="result"
+              targetG={target}
+              gapG={gap > 0 ? gap : undefined}
+            />
 
             <div className="report-card-capture" ref={reportCardRef} id="share-card" aria-hidden>
               <div className="report-card-portrait">
