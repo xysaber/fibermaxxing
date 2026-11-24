@@ -26,7 +26,7 @@ const HOME_FAQS = [
   },
   {
     q: 'Where do fiber values come from?',
-    a: 'Primarily USDA FoodData Central reference data, with typical servings. See How it works for details on targets, estimates, and limits.',
+    a: 'USDA FoodData Central (SR Legacy), plus a small set of curated staples and common packaged foods. Values are per typical portion, and you can edit any serving or gram amount.',
   },
   {
     q: 'Is this fibermaxxing calculator medical advice?',
@@ -75,7 +75,7 @@ export function HomePage() {
         <EmailSignup source="home" />
       </section>
       <MethodStrip />
-      <FaqBlock title="Fibermaxxing FAQ" faqs={HOME_FAQS} />
+      <FaqBlock title="Questions" faqs={HOME_FAQS} />
       <SiteFooter />
     </div>
   )

@@ -1,61 +1,44 @@
-import { FOOD_SOURCE } from '../data/foods'
+import { Link } from 'react-router-dom'
 
 const USDA_FDC_URL = 'https://fdc.nal.usda.gov/'
 
 export function MethodStrip() {
   return (
     <section className="method-strip" id="method">
-      <div className="method-strip-head">
-        <h2>How it works</h2>
-        <p>Targets and food values — what this calculator uses, and what it doesn’t claim.</p>
-      </div>
+      <h2>How it works</h2>
       <ol className="method-steps">
         <li>
           <span className="method-step-n" aria-hidden="true">1</span>
           <h3>Set your target</h3>
-          <p>Pick sex and age. The target follows U.S. Adequate Intake, or an optional stretch goal.</p>
+          <p>
+            U.S. Adequate Intake: about 14 g per 1,000 kcal, or 25 g for women and 38 g for men
+            aged 19–50.
+          </p>
         </li>
         <li>
           <span className="method-step-n" aria-hidden="true">2</span>
           <h3>Type what you ate</h3>
-          <p>Write meals the way you’d say them. Each food is matched to USDA FoodData Central.</p>
+          <p>
+            Each food is matched to{' '}
+            <a href={USDA_FDC_URL} target="_blank" rel="noopener noreferrer">
+              USDA FoodData Central
+            </a>{' '}
+            (SR Legacy), with a few curated staples and common packaged foods.
+          </p>
         </li>
         <li>
           <span className="method-step-n" aria-hidden="true">3</span>
           <h3>Check and adjust</h3>
-          <p>Edit servings or grams. Anything approximated is marked Estimated.</p>
+          <p>
+            Portions are typical references. Change servings or grams; anything approximated is
+            marked Estimated.
+          </p>
         </li>
       </ol>
-      <div className="method-grid">
-        <div className="method-col">
-          <h3>Daily fiber target</h3>
-          <p>
-            The <strong>Standard</strong> goal follows commonly cited U.S. Adequate Intake levels —
-            about <strong>14g per 1,000 kcal</strong> — shown as daily grams by sex and age (for
-            example, women 19–50 ≈ 25g; men 19–50 ≈ 38g; lower after age 50).
-          </p>
-          <p>
-            <strong>Fibermaxxing</strong> here is Standard × 1.5, capped at 50g. It is a personal
-            stretch rule on this site, not an official recommendation.
-          </p>
-        </div>
-        <div className="method-col">
-          <h3>Food fiber values</h3>
-          <p>
-            Food matches use{' '}
-            <a href={USDA_FDC_URL} target="_blank" rel="noopener noreferrer">
-              USDA FoodData Central
-            </a>{' '}
-            (SR Legacy) plus a few curated staples. Servings are typical reference amounts; real
-            portions vary. <strong>Estimated</strong> means a category-based approximation when a
-            food is not a verified line item.
-          </p>
-          <p className="method-source">Data source: {FOOD_SOURCE}</p>
-        </div>
-      </div>
       <p className="method-limit">
-        GetFibermaxxing is for education and self-tracking only — not medical advice. Talk to a clinician
-        before major diet changes.
+        Fibermaxxing mode is this site’s optional stretch goal (Standard × 1.5, capped at 50 g), not
+        an official recommendation. For education and self-tracking only. Talk to a clinician before
+        major diet changes. <Link to="/about">Sources and editorial standards</Link>
       </p>
     </section>
   )

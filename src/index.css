@@ -4091,3 +4091,124 @@ a {
 .results .score-card {
   align-self: start;
 }
+
+/* Home v1.1: How it works band + Questions accordion (matches design board 03) */
+.method-strip {
+  margin: 0 0 var(--space-section);
+  padding: 80px 0;
+  background: var(--paper);
+  box-shadow: 0 0 0 100vmax var(--paper);
+  clip-path: inset(0 -100vmax);
+}
+
+.method-strip > h2 {
+  margin: 0 0 32px;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.method-steps {
+  margin: 0 0 32px;
+  gap: 32px;
+}
+
+.method-steps h3 {
+  font-size: 1.125rem;
+}
+
+.method-steps p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.method-strip .method-limit {
+  margin: 0;
+  max-width: 820px;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+
+#faq {
+  max-width: 880px;
+}
+
+#faq h2 {
+  margin: 0 0 24px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.faq details,
+.faq details:last-child {
+  border-top: 1px solid var(--line);
+  border-bottom: none;
+  padding: 0;
+}
+
+.faq details:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+
+.faq summary:hover {
+  color: var(--leaf);
+}
+
+.faq-sign {
+  flex: none;
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+
+.faq-sign::before,
+.faq-sign::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--leaf);
+  transition: transform var(--duration-fast, 150ms) ease;
+}
+
+.faq-sign::after {
+  transform: rotate(90deg);
+}
+
+.faq details[open] .faq-sign::after {
+  transform: rotate(0deg);
+}
+
+.faq p {
+  margin: 0 0 18px;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  .method-strip {
+    padding: 56px 0;
+  }
+
+  .method-strip > h2,
+  #faq h2 {
+    font-size: 1.625rem;
+  }
+}

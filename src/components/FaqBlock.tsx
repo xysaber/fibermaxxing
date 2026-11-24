@@ -14,7 +14,10 @@ export function FaqBlock({ title = 'FAQ', faqs, id = 'faq' }: Props) {
       <div className="faq">
         {faqs.map((f, i) => (
           <details key={f.q} open={i === 0}>
-            <summary>{f.q}</summary>
+            <summary>
+              {f.q}
+              <span className="faq-sign" aria-hidden="true" />
+            </summary>
             <p>{f.a}</p>
           </details>
         ))}
