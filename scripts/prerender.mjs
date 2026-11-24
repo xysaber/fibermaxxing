@@ -30,7 +30,7 @@ function escapeHtml(s) {
 
 function injectHead(html, { title, description, path, faqs, noindex = false }) {
   const url = path === '/' ? `${siteUrl}/` : `${siteUrl}${path}`
-  const ogImage = `${siteUrl}/og.svg`
+  const ogImage = `${siteUrl}/og.png`
   const faqLd =
     faqs && faqs.length
       ? `<script type="application/ld+json">${JSON.stringify({

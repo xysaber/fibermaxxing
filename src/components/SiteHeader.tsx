@@ -41,17 +41,20 @@ export function SiteHeader() {
   return (
     <header className="topbar">
       <Link className="brand" to="/">
-        <svg className="brand-icon" viewBox="0 0 32 32" aria-hidden>
-          <rect width="32" height="32" rx="8" fill="#151b2e" />
-          <circle cx="16" cy="16" r="8.5" fill="none" stroke="#3d4660" strokeWidth="2.75" />
-          <path
-            d="M16 7.5a8.5 8.5 0 0 1 7.36 12.75"
+        <svg className="brand-icon" viewBox="0 0 44 44" aria-hidden>
+          <circle cx="22" cy="22" r="17" fill="none" stroke="#e7f2ea" strokeWidth="6" />
+          <circle
+            cx="22"
+            cy="22"
+            r="17"
             fill="none"
-            stroke="#2f5bff"
-            strokeWidth="2.75"
+            stroke="#1f6b45"
+            strokeWidth="6"
             strokeLinecap="round"
+            strokeDasharray="80 107"
+            transform="rotate(-90 22 22)"
           />
-          <circle cx="16" cy="7.5" r="2.4" fill="#5b8cff" />
+          <path d="M22 14c-4 3-5 9-1 14 4-3 5-9 1-14z" fill="#2e9e5b" />
         </svg>
         <span className="brand-lockup">
           <span className="brand-mark">
