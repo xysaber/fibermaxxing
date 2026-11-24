@@ -39,10 +39,10 @@ export const CATEGORY_DEFAULTS: Record<
   FiberCategory,
   { fiberG: number; calories: number; glpScore: number; serving: string }
 > = {
-  legume: { fiberG: 12, calories: 220, glpScore: 8, serving: '~1 cup cooked (est.)' },
+  legume: { fiberG: 9, calories: 200, glpScore: 8, serving: '~3/4 cup cooked (est.)' },
   seed_supplement: { fiberG: 8, calories: 100, glpScore: 9, serving: '~2 tbsp (est.)' },
   nut: { fiberG: 3, calories: 160, glpScore: 4, serving: '~1 oz (est.)' },
-  berry: { fiberG: 6, calories: 70, glpScore: 6, serving: '~1 cup (est.)' },
+  berry: { fiberG: 4, calories: 60, glpScore: 6, serving: '~1 cup (est.)' },
   fruit: { fiberG: 3.5, calories: 90, glpScore: 5, serving: '~1 medium (est.)' },
   leafy: { fiberG: 2.5, calories: 25, glpScore: 3, serving: '~2 cups raw (est.)' },
   cruciferous: { fiberG: 4, calories: 50, glpScore: 5, serving: '~1 cup (est.)' },
@@ -71,8 +71,8 @@ const CATEGORY_KEYWORDS: { category: FiberCategory; keywords: string[] }[] = [
       'stir fry', 'stir-fry', '炒菜', 'curry', '咖喱', 'soup', '汤',
       // Compounds before short tokens (chicken salad ≠ pure chicken)
       'chicken salad', 'egg salad', 'tuna salad', 'salad bowl', 'salad',
-      'burrito', 'taco', 'pizza', '披萨', 'ramen', '拉面',
-      'pho', 'dumpling', '饺子', '包子', 'bibimbap', 'poké', 'poke bowl',
+      'burrito', 'taco', 'pizza', '披萨',
+      'dumpling', '饺子', '包子', 'bibimbap', 'poké', 'poke bowl',
       'bowl', '盖饭', '麻辣烫', '冒菜', '串串',
       // Recipes — must beat dairy/tea single-token matches (e.g. milk tea ≠ dairy cup)
       'milk tea', 'milktea', 'milk-tea', 'bubble tea', 'boba', 'smoothie', 'pudding',
@@ -151,7 +151,8 @@ const CATEGORY_KEYWORDS: { category: FiberCategory; keywords: string[] }[] = [
   },
   {
     category: 'noodle',
-    keywords: ['noodle', 'noodles', 'pasta', 'spaghetti', '面', '面条', '粉丝', '米粉', '河粉'],
+    // Noodle soups: ~1 bowl of refined noodles, not a high-fiber mixed dish.
+    keywords: ['noodle', 'noodles', 'pasta', 'spaghetti', 'ramen', 'pho', 'udon', '拉面', '面', '面条', '粉丝', '米粉', '河粉'],
   },
   {
     category: 'refined_grain',

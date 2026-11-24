@@ -273,7 +273,11 @@ function pickPortion(portions) {
 
   const scored = portions
     .map((p) => {
-      const g = parseFloat(p.gram_weight)
+      // food_portion rows are "amount × unit = gram_weight" (e.g. 0.5 cup = 78 g).
+      // Normalize to ONE unit so a "1 cup" label never carries half-cup grams.
+      const amount = parseFloat(p.amount)
+      const rawG = parseFloat(p.gram_weight)
+      const g = Number.isFinite(amount) && amount > 0 ? rawG / amount : rawG
       if (!Number.isFinite(g) || g <= 0 || g > 1000) return null
       const mod = `${p.modifier || ''} ${p.portion_description || ''}`.toLowerCase().trim()
       let score = 0

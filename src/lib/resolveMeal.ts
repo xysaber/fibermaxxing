@@ -32,48 +32,154 @@ export type ResolvedFood = {
   candidates?: FoodItem[]
 }
 
-type Concept = { names: string[]; id: string; count?: number; cup?: number; tbsp?: number; tsp?: number }
+type Concept = {
+  names: string[]
+  id: string
+  /** Grams per piece (bare counts: "2 dates"). */
+  count?: number
+  /** Serving label shown for a counted piece (default: medium edible portion). */
+  countLabel?: string
+  /** Grams per household unit, from USDA household measures or the product label. */
+  cup?: number
+  tbsp?: number
+  tsp?: number
+  /** Grams for "1 can" (15 oz, drained) and "a handful". */
+  can?: number
+  handful?: number
+  /** Portion used when the user names the food with no amount ("chia"). */
+  dflt?: { g: number; label: string }
+}
+const OZ = { g: 28.35, label: '1 oz' }
 // Reviewed everyday concepts are separate from generated USDA aliases. IDs retain
-// the original nutrient density; optional weights describe explicit household portions.
+// the original nutrient density; optional weights describe explicit household portions
+// (USDA FoodData Central household measures unless the comment says "label").
 const CONCEPTS: Concept[] = [
   { names: ['apple'], id: 'curated:apple' },
-  { names: ['avocado', 'avo'], id: 'curated:avocado' },
+  { names: ['avocado', 'avo'], id: 'curated:avocado', cup: 146 },
   { names: ['egg'], id: 'curated:egg' },
   { names: ['fried egg'], id: '173423' },
   { names: ['poached egg'], id: '172186' },
   { names: ['oatmeal', 'cooked oatmeal', 'oat porridge', 'porridge'], id: 'curated:oatmeal', cup: 234 },
-  { names: ['oat', 'rolled oat', 'dry oat'], id: 'curated:oats', cup: 80 },
+  { names: ['oat', 'rolled oat', 'dry oat', 'old fashioned oat', 'quaker oat'], id: 'curated:oats', cup: 80 },
+  { names: ['instant oatmeal', 'instant oatmeal packet', 'quaker instant oatmeal', 'oatmeal packet'], id: '171661', count: 28, countLabel: '1 packet' },
+  { names: ['oat bran', 'raw oat bran'], id: '168872', cup: 94, tbsp: 5.9, dflt: { g: 15, label: '2 1/2 tbsp' } },
   { names: ['psyllium', 'psyllium husk'], id: 'curated:psyllium', tbsp: 9, tsp: 3 },
   { names: ['inulin', 'inulin powder'], id: 'curated:inulin', tsp: 5 },
   { names: ['sourdough', 'sourdough bread', 'sourdough toast'], id: 'curated:sourdough' },
   { names: ['orange', 'raw orange'], id: '169097', count: 131, cup: 180 },
+  { names: ['clementine', 'mandarin', 'tangerine', 'cutie'], id: '168195', count: 74 },
   { names: ['tomato', 'raw tomato'], id: '170457', count: 123, cup: 180 },
-  { names: ['black bean', 'cooked black bean'], id: '173735', cup: 172 },
-  { names: ['chickpea', 'garbanzo bean', 'cooked chickpea'], id: '173757', cup: 164 },
-  { names: ['quinoa', 'cooked quinoa'], id: '168917', cup: 185 },
   { names: ['pear', 'raw pear'], id: '169118', count: 178, cup: 140 },
-  { names: ['almond'], id: '170567', count: 1.2, cup: 95 },
-  { names: ['flaxseed', 'flax seed', 'ground flaxseed'], id: '169414', tbsp: 10, tsp: 3.3 },
-  { names: ['spinach', 'raw spinach'], id: '168462', cup: 30 },
-  { names: ['carrot', 'raw carrot'], id: '170393', count: 61, cup: 110 },
-  { names: ['boiled carrot', 'cooked carrot', 'carrot boiled'], id: '170394', cup: 78 },
-  { names: ['peanut butter', 'smooth peanut butter'], id: '172470', tbsp: 16, tsp: 5.3, cup: 258 },
-  { names: ['almond butter'], id: '168588', tbsp: 16, tsp: 5.3, cup: 250 },
   { names: ['banana', 'raw banana'], id: '173944', count: 118, cup: 150 },
-  { names: ['chia', 'chia seed'], id: '170554', tbsp: 12, tsp: 4 },
-  { names: ['lentil', 'cooked lentil'], id: '172421', cup: 198 },
-  { names: ['raw lentil', 'lentil raw', 'dry lentil', 'uncooked lentil'], id: '172420', cup: 192 },
-  { names: ['whole wheat bread', 'whole wheat toast'], id: '172689' },
+  { names: ['kiwi', 'kiwifruit', 'green kiwi'], id: '168153', count: 69, cup: 180 },
+  { names: ['mango', 'raw mango'], id: '169910', count: 336, cup: 165 },
+  { names: ['peach', 'raw peach'], id: '169928', count: 150, cup: 154 },
+  { names: ['plum', 'raw plum'], id: '169949', count: 66, cup: 165 },
+  { names: ['grape', 'grapes', 'red grape', 'green grape'], id: '174683', count: 4.9, countLabel: '1 grape', cup: 151 },
+  { names: ['cherry', 'sweet cherry'], id: '171719', count: 8.2, countLabel: '1 cherry', cup: 138 },
+  { names: ['pineapple'], id: '169124', cup: 165 },
+  { names: ['watermelon'], id: '167765', cup: 152 },
+  { names: ['fig', 'fresh fig'], id: '173021', count: 50 },
+  { names: ['dried fig'], id: '174665', count: 8.4, countLabel: '1 dried fig', cup: 149 },
+  { names: ['date', 'medjool date'], id: '168191', count: 24, countLabel: '1 date, pitted' },
+  { names: ['prune', 'dried plum'], id: '168162', count: 9.5, countLabel: '1 prune', cup: 174 },
+  { names: ['raisin'], id: '168165', cup: 145, tbsp: 9, handful: 28, dflt: { g: 36, label: '1/4 cup' } },
   { names: ['blueberry', 'raw blueberry'], id: '171711', cup: 148 },
   { names: ['frozen blueberry', 'blueberry frozen'], id: '173950', cup: 155 },
   { names: ['raspberry'], id: '167755', cup: 123 },
+  { names: ['blackberry'], id: '173946', cup: 144 },
   { names: ['strawberry'], id: '167762', count: 12, cup: 144 },
+  { names: ['berry', 'mixed berry', 'frozen mixed berry', 'frozen berry'], id: 'curated:mixed-berries', cup: 145, dflt: { g: 72, label: '1/2 cup' } },
+  { names: ['black bean', 'cooked black bean'], id: '173735', cup: 172, can: 250 },
+  { names: ['canned black bean'], id: '175238', cup: 240, can: 250 },
+  { names: ['chickpea', 'garbanzo bean', 'cooked chickpea'], id: '173757', cup: 164, can: 253 },
+  { names: ['canned chickpea', 'canned garbanzo bean'], id: '173800', cup: 164, can: 253 },
+  { names: ['kidney bean', 'red kidney bean', 'cooked kidney bean'], id: '173740', cup: 177, can: 250 },
+  { names: ['pinto bean', 'cooked pinto bean'], id: '175200', cup: 171, can: 250 },
+  { names: ['navy bean'], id: '173746', cup: 182, can: 250 },
+  { names: ['white bean', 'cannellini bean', 'cannellini'], id: '175203', cup: 179, can: 250 },
+  { names: ['great northern bean'], id: '175191', cup: 177, can: 250 },
+  { names: ['refried bean'], id: '172438', cup: 238, can: 450, dflt: { g: 119, label: '1/2 cup' } },
+  { names: ['baked bean'], id: '175182', cup: 254, can: 450, dflt: { g: 127, label: '1/2 cup' } },
+  { names: ['lentil', 'cooked lentil'], id: '172421', cup: 198, can: 250 },
+  { names: ['raw lentil', 'lentil raw', 'dry lentil', 'uncooked lentil'], id: '172420', cup: 192 },
+  { names: ['split pea', 'cooked split pea'], id: '172429', cup: 196 },
+  { names: ['pea', 'green pea', 'cooked pea', 'frozen pea', 'frozen green pea'], id: '170420', cup: 160 },
+  { names: ['edamame', 'shelled edamame', 'cooked edamame'], id: 'curated:edamame', cup: 155 },
+  { names: ['snow pea', 'snap pea', 'sugar snap pea'], id: '170010', cup: 98 },
+  { names: ['hummus'], id: '174289', cup: 246, tbsp: 15.375, tsp: 5.125, dflt: { g: 30, label: '2 tbsp' } },
+  { names: ['guacamole', 'guac'], id: 'curated:guacamole', cup: 240, tbsp: 15, dflt: { g: 30, label: '2 tbsp' } },
+  { names: ['quinoa', 'cooked quinoa'], id: '168917', cup: 185 },
   { names: ['brown rice', 'cooked brown rice'], id: '169704', cup: 202 },
-  { names: ['broccoli', 'cooked broccoli'], id: '169967', cup: 78 },
+  { names: ['rice', 'white rice', 'cooked rice', 'cooked white rice', 'steamed rice'], id: '168878', cup: 158, dflt: { g: 158, label: '1 cup cooked' } },
+  { names: ['barley', 'pearl barley', 'cooked barley'], id: '170285', cup: 157 },
+  { names: ['bulgur', 'cooked bulgur'], id: '170287', cup: 182 },
+  { names: ['couscous', 'cooked couscous'], id: '169700', cup: 157 },
+  { names: ['buckwheat', 'buckwheat groat', 'kasha'], id: '170686', cup: 168 },
+  { names: ['pasta', 'spaghetti', 'penne', 'macaroni', 'cooked pasta', 'cooked spaghetti'], id: '169737', cup: 140, dflt: { g: 140, label: '1 cup cooked' } },
+  { names: ['whole wheat pasta', 'whole wheat spaghetti', 'whole wheat penne', 'whole grain pasta', 'cooked whole wheat pasta'], id: '168910', cup: 140, dflt: { g: 140, label: '1 cup cooked' } },
+  { names: ['popcorn', 'air popped popcorn'], id: '170246', cup: 8, dflt: { g: 24, label: '3 cups popped' } },
+  { names: ['corn', 'sweet corn', 'cooked corn', 'corn kernel'], id: '168539', cup: 164, count: 103, countLabel: '1 medium ear' },
+  { names: ['almond'], id: '170567', count: 1.2, cup: 143, handful: 28.35, dflt: OZ },
+  { names: ['walnut'], id: '170187', cup: 117, handful: 28.35, dflt: OZ },
+  { names: ['pecan'], id: '170182', cup: 99, handful: 28.35, dflt: OZ },
+  { names: ['pistachio'], id: '170185', count: 0.7, cup: 123, handful: 28.35, dflt: OZ },
+  { names: ['cashew'], id: '170571', cup: 137, handful: 28.35, dflt: OZ },
+  { names: ['peanut'], id: '173806', cup: 146, handful: 28.35, dflt: OZ },
+  { names: ['pumpkin seed', 'pepita'], id: '170556', cup: 129, tbsp: 8, handful: 28.35, dflt: OZ },
+  { names: ['sunflower seed', 'sunflower seed kernel'], id: '170563', cup: 128, tbsp: 8, handful: 28.35, dflt: OZ },
+  { names: ['hemp seed', 'hemp heart', 'hulled hemp seed'], id: '170148', tbsp: 10, dflt: { g: 30, label: '3 tbsp' } },
+  { names: ['flaxseed', 'flax seed', 'flax', 'whole flaxseed'], id: '169414', tbsp: 10.3, tsp: 3.4, dflt: { g: 7, label: '1 tbsp ground' } },
+  { names: ['ground flaxseed', 'ground flax', 'flax meal', 'flaxseed meal', 'milled flaxseed'], id: '169414', tbsp: 7, tsp: 2.3, dflt: { g: 7, label: '1 tbsp' } },
+  { names: ['chia', 'chia seed'], id: '170554', tbsp: 12, tsp: 4, dflt: { g: 12, label: '1 tbsp' } },
+  { names: ['peanut butter', 'smooth peanut butter'], id: '172470', tbsp: 16, tsp: 5.3, cup: 258, dflt: { g: 32, label: '2 tbsp' } },
+  { names: ['almond butter'], id: '168588', tbsp: 16, tsp: 5.3, cup: 250, dflt: { g: 32, label: '2 tbsp' } },
+  { names: ['spinach', 'raw spinach', 'baby spinach'], id: '168462', cup: 30 },
+  { names: ['cooked spinach', 'sauteed spinach', 'steamed spinach', 'boiled spinach'], id: '168463', cup: 180 },
+  { names: ['kale', 'raw kale'], id: '168421', cup: 21 },
+  { names: ['cooked kale', 'sauteed kale', 'steamed kale'], id: '169238', cup: 118 },
+  { names: ['collard', 'collard green', 'cooked collard green'], id: '170407', cup: 190 },
+  { names: ['romaine', 'romaine lettuce', 'lettuce'], id: '169247', cup: 47 },
+  { names: ['salad green', 'mixed green', 'spring mix', 'leafy green'], id: '169247', cup: 30 },
+  { names: ['carrot', 'raw carrot', 'baby carrot'], id: '170393', count: 61, cup: 128 },
+  { names: ['boiled carrot', 'cooked carrot', 'carrot boiled', 'roasted carrot', 'steamed carrot'], id: '170394', cup: 156 },
+  { names: ['broccoli', 'cooked broccoli', 'steamed broccoli', 'roasted broccoli', 'boiled broccoli'], id: '169967', cup: 156 },
   { names: ['raw broccoli', 'broccoli raw'], id: '170379', cup: 91 },
-  { names: ['cabbage', 'cooked cabbage', 'boiled cabbage'], id: '168514', cup: 75 },
-  { names: ['raw cabbage'], id: '169335', cup: 35 },
-  { names: ['hummus'], id: '174289', cup: 246, tbsp: 15.375, tsp: 5.125 },
+  { names: ['frozen broccoli'], id: '169969', cup: 184 },
+  { names: ['brussels sprout', 'cooked brussels sprout', 'roasted brussels sprout'], id: '169971', cup: 156 },
+  { names: ['raw brussels sprout'], id: '170383', cup: 88 },
+  { names: ['cauliflower', 'cooked cauliflower', 'roasted cauliflower', 'steamed cauliflower'], id: '170397', cup: 124 },
+  { names: ['raw cauliflower'], id: '169986', cup: 107 },
+  { names: ['cauliflower rice', 'riced cauliflower'], id: '169986', cup: 107 },
+  { names: ['cabbage', 'cooked cabbage', 'boiled cabbage'], id: '168514', cup: 150 },
+  { names: ['raw cabbage', 'coleslaw mix'], id: '169975', cup: 89 },
+  { names: ['green bean', 'string bean', 'snap bean', 'cooked green bean'], id: '169141', cup: 125 },
+  { names: ['asparagus', 'cooked asparagus'], id: '168390', cup: 180, count: 15, countLabel: '1 spear' },
+  { names: ['beet', 'cooked beet'], id: '169146', cup: 170 },
+  { names: ['okra'], id: '169261', cup: 160 },
+  { names: ['zucchini'], id: '169291', cup: 113 },
+  { names: ['bell pepper', 'red bell pepper', 'red pepper'], id: '170108', cup: 92, count: 119 },
+  { names: ['mushroom', 'white mushroom'], id: '169251', cup: 70 },
+  { names: ['cucumber'], id: '168409', cup: 104, count: 301 },
+  { names: ['celery'], id: '169988', cup: 101, count: 40, countLabel: '1 medium stalk' },
+  { names: ['mixed vegetable', 'frozen mixed vegetable', 'mixed veggie', 'frozen mixed veggie'], id: '170472', cup: 182 },
+  { names: ['butternut squash', 'roasted butternut squash'], id: '169296', cup: 205 },
+  { names: ['pumpkin', 'canned pumpkin', 'pumpkin puree'], id: '168450', cup: 245 },
+  { names: ['artichoke', 'raw artichoke'], id: '169205', count: 128 },
+  { names: ['artichoke heart'], id: '168386', cup: 168 },
+  { names: ['potato', 'baked potato'], id: '170093', count: 173, countLabel: '1 medium (173 g)' },
+  { names: ['sweet potato', 'cooked sweet potato'], id: '168483', count: 114, countLabel: '1 medium, baked in skin', cup: 200 },
+  { names: ['corn tortilla'], id: '175036', count: 26, countLabel: '1 tortilla (6")' },
+  { names: ['flour tortilla', 'tortilla'], id: '175037', count: 45, countLabel: '1 tortilla (8")' },
+  { names: ['whole wheat tortilla'], id: '174081', count: 41, countLabel: '1 tortilla' },
+  { names: ['whole wheat bread', 'whole wheat toast'], id: '172689' },
+  { names: ['white bread', 'bread'], id: 'curated:white-bread' },
+  { names: ['toast', 'white toast'], id: '174925', count: 27, countLabel: '1 slice', dflt: { g: 27, label: '1 slice' } },
+  { names: ['multigrain bread', 'multi grain bread'], id: '168013', count: 26, countLabel: '1 slice' },
+  { names: ['rye bread'], id: '172684', count: 32, countLabel: '1 slice' },
+  { names: ['whole wheat pita', 'whole wheat pita bread'], id: '174916', count: 64, countLabel: '1 large pita' },
+  { names: ['bagel', 'plain bagel'], id: '175049', count: 105, countLabel: '1 medium bagel' },
+  { names: ['whole wheat english muffin'], id: 'pkg:ww-english-muffin' },
   { names: ['plain nonfat greek yogurt', 'nonfat greek yogurt', 'yogurt greek plain nonfat'], id: '170894' },
   { names: ['plain lowfat greek yogurt', 'lowfat greek yogurt', 'yogurt greek plain lowfat'], id: '170903' },
   { names: ['whole milk greek yogurt', 'yogurt greek plain whole milk'], id: '171304' },
@@ -86,18 +192,62 @@ const CONCEPTS: Concept[] = [
   { names: ['chicken', 'grilled chicken', 'roasted chicken', 'baked chicken', 'chicken grilled', 'chicken roasted'], id: '172395', cup: 140 },
   { names: ['chicken breast', 'grilled chicken breast', 'chicken breast grilled', 'roasted chicken breast'], id: '171140' },
   { names: ['fried chicken', 'chicken fried'], id: '171053', cup: 140 },
+  // Soups and dishes with a reviewed typical value (otherwise recipes are estimated)
+  { names: ['lentil soup'], id: 'curated:lentil-soup', cup: 245, can: 540 },
+  { names: ['split pea soup', 'pea soup'], id: 'curated:split-pea-soup', cup: 245, can: 540 },
+  { names: ['black bean soup'], id: '172903', cup: 247, can: 540 },
+  { names: ['minestrone', 'minestrone soup'], id: '171550', cup: 240, can: 540 },
+  { names: ['bean burrito'], id: 'curated:bean-burrito', count: 200, countLabel: '1 burrito' },
+  // Packaged foods (label values; see src/data/curatedFoods.ts)
+  { names: ['cheerio', 'original cheerio', 'plain cheerio'], id: '173884', cup: 28 },
+  { names: ['honey nut cheerio'], id: 'pkg:honey-nut-cheerios', cup: 37 },
+  { names: ['bran flake', 'post bran flake', 'wheat bran flake'], id: '173888', cup: 40 },
+  { names: ['raisin bran'], id: 'pkg:raisin-bran', cup: 59 },
+  { names: ['all bran', 'all bran original'], id: 'pkg:all-bran', cup: 62 },
+  { names: ['fiber one cereal', 'fiber one original cereal', 'fiber one original'], id: 'pkg:fiber-one-cereal', cup: 60 },
+  { names: ['fiber one bar', 'fiber one', 'fiber one chewy bar'], id: 'pkg:fiber-one-bar' },
+  { names: ['grape nut', 'grape nut cereal'], id: '171647', cup: 116 },
+  { names: ['shredded wheat'], id: '173910', count: 23.5, countLabel: '1 biscuit', cup: 49 },
+  { names: ['kashi go', 'kashi golean', 'kashi go lean'], id: 'pkg:kashi-go', cup: 42 },
+  { names: ['special k'], id: 'pkg:special-k', cup: 31 },
+  { names: ['corn flake'], id: 'pkg:corn-flakes', cup: 28 },
+  { names: ['granola'], id: 'curated:granola', cup: 110, dflt: { g: 55, label: '1/2 cup' } },
+  { names: ['metamucil', 'metamucil powder'], id: 'pkg:metamucil' },
+  { names: ['metamucil capsule', 'metamucil pill'], id: 'pkg:metamucil-capsules', count: 0.72, countLabel: '1 capsule', dflt: { g: 3.6, label: '5 capsules' } },
+  { names: ['benefiber'], id: 'pkg:benefiber', tsp: 2 },
+  { names: ['citrucel'], id: 'pkg:citrucel' },
+  { names: ['quest bar', 'quest protein bar'], id: 'pkg:quest-bar' },
+  { names: ['clif bar', 'cliff bar'], id: 'pkg:clif-bar' },
+  { names: ['kind bar'], id: 'pkg:kind-bar' },
+  { names: ['rxbar', 'rx bar'], id: 'pkg:rxbar' },
+  { names: ['larabar', 'lara bar'], id: 'pkg:larabar' },
+  { names: ['nature valley bar', 'nature valley granola bar', 'nature valley'], id: 'pkg:nature-valley' },
+  { names: ['granola bar'], id: '167954', count: 28, countLabel: '1 bar' },
+  { names: ['protein bar'], id: 'curated:protein-bar' },
+  { names: ['protein powder', 'whey', 'whey protein', 'whey protein powder'], id: 'curated:protein-powder' },
+  { names: ['plant protein', 'plant protein powder', 'pea protein', 'vegan protein powder'], id: 'curated:plant-protein' },
+  { names: ['daves killer bread', 'dave killer bread', '21 whole grain bread'], id: 'pkg:daves-21' },
+  { names: ['ezekiel bread', 'ezekiel'], id: 'pkg:ezekiel' },
+  { names: ['triscuit'], id: 'pkg:triscuit', count: 4.7, countLabel: '1 cracker', dflt: { g: 28, label: '6 crackers' } },
+  { names: ['wasa', 'wasa crispbread', 'wasa cracker'], id: 'pkg:wasa-rye' },
 ]
 
 const FORMS: Record<string, string> = {
   tomatoes: 'tomato', tomatos: 'tomato', potatoes: 'potato', blueberries: 'blueberry',
   raspberries: 'raspberry', strawberries: 'strawberry', berries: 'berry',
-  milktea: 'milk tea', 'milk-tea': 'milk tea', yoghurt: 'yogurt',
+  milktea: 'milk tea', 'milk-tea': 'milk tea', yoghurt: 'yogurt', mangoes: 'mango', peaches: 'peach',
+  veggies: 'veggie', cliff: 'clif', 'rx bar': 'rxbar', 'lara bar': 'larabar', 'all-bran': 'all bran',
+  "dave's": 'daves', 'dave s': 'daves',
   'fat free': 'nonfat', 'low fat': 'lowfat',
 }
 export function normalizeFoodPhrase(value: string): string {
   let s = value.toLowerCase().replace(/[’']/g, '').replace(/-/g, ' ').replace(/\s+/g, ' ').trim()
   for (const [from, to] of Object.entries(FORMS)) s = s.replace(new RegExp(`\\b${from}\\b`, 'g'), to)
-  return s.split(' ').map(w => w.length > 3 && w.endsWith('s') && !w.endsWith('ss') && !/^(couscous|asparagus|hummus|citrus)$/.test(w) ? w.slice(0, -1) : w).join(' ')
+  return s.split(' ').map(w => {
+    if (w.length > 4 && w.endsWith('ies')) return `${w.slice(0, -3)}y` // cherries → cherry
+    if (w.length > 4 && /(?:ch|sh|x)es$/.test(w)) return w.slice(0, -2) // radishes → radish
+    return w.length > 3 && w.endsWith('s') && !w.endsWith('ss') && !/^(couscous|asparagus|hummus|citrus)$/.test(w) ? w.slice(0, -1) : w
+  }).join(' ')
 }
 
 const byId = new Map(FOODS.map(f => [f.id, f]))
@@ -105,7 +255,7 @@ const concepts = CONCEPTS.flatMap(c => {
   const original = byId.get(c.id)
   if (!original) throw new Error(`Missing reviewed food ID: ${c.id}`)
   const g = c.count ?? original.servingG
-  const food = { ...original, servingG: g, serving: c.count ? '1 medium (edible portion)' : original.serving,
+  const food = { ...original, servingG: g, serving: c.count ? c.countLabel ?? '1 medium (edible portion)' : original.serving,
     fiberG: Math.round(original.fiber100g * g / 10) / 10, calories: Math.round(original.calories100g * g / 100) }
   return [{ ...c, food, names: c.names.map(normalizeFoodPhrase) }]
 })
@@ -139,8 +289,9 @@ function compatible(text: string, food: FoodItem, opts: { curated?: boolean } = 
   const name = normalizeFoodPhrase(food.name)
   for (const attr of EVIDENCE_REQUIRED) {
     if (attr.test(name) && !attr.test(text)) {
-      // USDA seed/nut rows are often labeled “dried”; curated concepts already chose that row.
-      if (opts.curated && /\b(dry|dried|dehydrated|uncooked)\b/.test(attr.source)) continue
+      // Curated concepts already chose that row on purpose (e.g. “Edamame, frozen,
+      // prepared”, dried seeds); only the user's own modifiers can veto it.
+      if (opts.curated) continue
       return false
     }
     if (attr.test(text) && !attr.test(name)) return false
@@ -289,7 +440,7 @@ function number(raw: string): number {
   return value + (parts.length ? Number(parts[0]) : 0)
 }
 const NUMBER = '(?:\\d+\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d+(?:\\.\\d+)?|half an?\\b|half\\b|one\\b|two\\b|three\\b|four\\b|five\\b|six\\b|seven\\b|eight\\b|nine\\b|ten\\b|an?\\b)'
-const QUANTITY = new RegExp(`^(${NUMBER})\\s*(?:(kg|grams?|g|ounces?|oz|tablespoons?|tbsp|teaspoons?|tsp|cups?|slices?|bowls?|servings?|ml|liters?|l)(?![a-z]))?(?=\\s|$|[a-z])\\s*(?:of\\s+)?`, 'i')
+const QUANTITY = new RegExp(`^(${NUMBER})\\s*(?:(kg|grams?|g|ounces?|oz|tablespoons?|tbsp|teaspoons?|tsp|cups?|slices?|bowls?|servings?|ml|liters?|l|handfuls?|cans?|packets?|packs?|pouch(?:es)?|scoops?|pieces?|pcs|doses?|sticks?)(?![a-z]))?(?=\\s|$|[a-z])\\s*(?:of\\s+)?`, 'i')
 const WORD_NUMBERS: Record<string, number> = {
   half: .5, one: 1, two: 2, three: 3, four: 4, five: 5,
   six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
@@ -375,10 +526,14 @@ function splitMentions(text: string): { clause: string; negated: boolean }[] {
   return mentions
 }
 
+/** Serving labels that are a measure, not a countable piece ("1 cup", "1 oz", "1 nlea serving"). */
+const MEASURE_LABEL = /^1 (?:cups?|tbsp|tablespoons?|tsp|teaspoons?|oz|ounces?|fl|lb|pints?|quarts?|nlea|servings?|portions?|packages?|g\b|dose)\b/i
 function pieceWeightG(food: FoodItem, concept?: (typeof concepts)[number]): number | undefined {
   if (concept?.count != null) return concept.count
   if (/^1 (medium|large|small|egg)\b/i.test(food.serving)) return food.servingG
   if (/^1 slice\b/i.test(food.serving)) return food.servingG
+  // "1 date, pitted", "1 bar", "1 fruit", "1 packet", "1 muffin": the default serving is one piece.
+  if (/^1 [a-z]/i.test(food.serving) && !MEASURE_LABEL.test(food.serving)) return food.servingG
   return undefined
 }
 
@@ -461,10 +616,6 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
       if (normalized) pushIssue('Name the food, not only its size or preparation.', [], 'ambiguous', qtySnapshot)
       return
     }
-    if (RECIPE.test(normalized)) {
-      pushIssue('Recipe and portion vary. Confirm volume/ingredients, or enter items separately.', [], 'recipe', qtySnapshot)
-      return
-    }
     // A controlled concept must explain the whole food phrase. No substring wins.
     const stripped = normalized
       .replace(/\b(?:medium|fresh|ripe|a|an|of|bowl|slice|small|large)\b/g, '')
@@ -473,6 +624,11 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
     const tokens = (value: string) => value.split(' ').sort().join(' ')
     const identity = stripped.replace(IDENTITY_PREPARATION, '').replace(/\s+/g, ' ').trim()
     const exactConcept = concepts.find(c => c.names.some(name => tokens(name) === tokens(normalized) || tokens(name) === tokens(stripped)))
+    // Reviewed dishes ("lentil soup", "salad greens") beat the generic recipe estimate.
+    if (!exactConcept && RECIPE.test(normalized)) {
+      pushIssue('Recipe and portion vary. Confirm volume/ingredients, or enter items separately.', [], 'recipe', qtySnapshot)
+      return
+    }
     const concept = exactConcept
       ?? concepts.find(c => c.names.some(name => tokens(name) === tokens(identity)) && compatible(normalized, c.food, { curated: true }))
     let corrected = false
@@ -537,8 +693,9 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
       pickNeedsConfirm = picked.needsConfirm
       altCandidates = picked.candidates
     } else {
-      // Defaults are explicitly curated; explicit modifiers must still agree.
-      if (!compatible(normalized, food, { curated: true })) {
+      // Defaults are explicitly curated; explicit modifiers must still agree
+      // (an exact reviewed name, e.g. "frozen peas", was already checked by hand).
+      if (!exactConcept && !compatible(normalized, food, { curated: true })) {
         pushIssue('This preparation does not match the reference food. Choose the exact form.', [food], 'ambiguous', qtySnapshot)
         return
       }
@@ -618,6 +775,42 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
         // Do NOT treat tbsp count as N × cup-sized default servings.
         assumeDefaultServings(`No reliable ${household} weight for this food.`, 1)
       }
+    } else if (/^handful/.test(rawUnit)) {
+      // A handful ≈ 1 oz of nuts/seeds/dried fruit, or ~1/2 cup of produce.
+      const cupRef = activeConcept?.cup ?? (servingIsCupSized(food) ? food.servingG : undefined)
+      const each = activeConcept?.handful ?? (food.calories100g >= 250 ? 28.35 : cupRef ? cupRef / 2 : undefined)
+      if (each) {
+        portion = amount * each
+        unit = 'g'
+        portionAssumed = true
+        locked = 'mass'
+        notes.push(`A handful counted as ~${Math.round(each)} g. Adjust the weight if yours was bigger.`)
+      } else {
+        assumeDefaultServings('Handful size varies for this food.', amount === 0 ? 0 : amount)
+      }
+    } else if (/^can/.test(rawUnit)) {
+      // Standard 15-oz can, drained (beans ≈ 1.5 cups).
+      const cupRef = activeConcept?.cup ?? (servingIsCupSized(food) ? food.servingG : undefined)
+      const each = activeConcept?.can ?? (/\bcan\b/i.test(food.serving) ? food.servingG : cupRef ? cupRef * 1.5 : undefined)
+      if (each) {
+        portion = amount * each
+        unit = 'g'
+        portionAssumed = true
+        locked = 'mass'
+        notes.push(`1 can (15 oz, drained) counted as ~${Math.round(each)} g.`)
+      } else {
+        assumeDefaultServings('Can size varies for this food.', amount === 0 ? 0 : amount)
+      }
+    } else if (/^(packet|pack|pouch|scoop|piece|pcs|dose|stick)/.test(rawUnit)) {
+      // Count units: one packet/scoop/bar is the product's default serving.
+      const each = pieceWeightG(food, activeConcept)
+      if (each != null) {
+        portion = amount * each
+        unit = 'g'
+        locked = 'count'
+      } else {
+        assumeDefaultServings(`Using the label serving for each ${rawUnit.replace(/e?s$/, '')}.`, amount)
+      }
     } else if (/^slice/.test(rawUnit)) {
       if (/\bslice\b/i.test(food.serving)) {
         unit = 'serving'
@@ -647,7 +840,14 @@ export function resolveMeal(input: string): { resolved: ResolvedFood[]; issues: 
     } else if (!rawUnit) {
       // Bare count: only multiply reviewed piece weight — never treat cup rows as “N nuts”.
       const piece = pieceWeightG(food, activeConcept)
-      if (piece != null && (q || activeConcept?.count != null || /^1 (medium|large|small|egg)\b/i.test(food.serving))) {
+      if (!q && activeConcept?.dflt) {
+        // No amount at all ("chia", "rice"): use the reviewed everyday portion, not the USDA row's.
+        portion = activeConcept.dflt.g
+        unit = 'g'
+        portionAssumed = true
+        locked = 'mass'
+        notes.push(`No amount given — assumed ${activeConcept.dflt.label} (${activeConcept.dflt.g} g). Edit if yours differs.`)
+      } else if (piece != null && (q || activeConcept?.count != null || /^1 (medium|large|small|egg)\b/i.test(food.serving))) {
         portion = amount * piece
         unit = 'g'
         locked = 'count'

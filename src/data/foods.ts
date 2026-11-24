@@ -1,4 +1,5 @@
 import usda from './usda-foods.json'
+import { CURATED_EXTRA, SERVING_FIXES } from './curatedFoods'
 
 export type FoodItem = {
   id: string
@@ -150,8 +151,40 @@ function applyPreferredAliases(foods: FoodItem[]): FoodItem[] {
 }
 
 /** English L1 index: USDA SR Legacy (slim) + curated fiber staples. */
+/** Grams per unit used to restore a portion count the old build script dropped. */
+const UNIT_G: { re: RegExp; g: number }[] = [
+  { re: /^1 (oz)\b/i, g: 28.35 },
+  { re: /^1 (tbsp|tablespoons?)\b/i, g: 15 },
+  { re: /^1 (tsp|teaspoons?)\b/i, g: 5 },
+]
+
+/**
+ * SR Legacy portions like "3 oz" (85 g) were stored as "1 oz" with 85 g. Grams are
+ * right; restore the count in the label so per-unit math (tbsp/tsp) and the UI agree.
+ */
+function restoreLabelCount(serving: UsdaFood['serving']): UsdaFood['serving'] {
+  for (const { re, g } of UNIT_G) {
+    const m = serving.label.match(re)
+    if (!m) continue
+    const n = serving.g / g
+    if (n < 1.5) return serving
+    const count = g === 28.35 ? Math.round(n * 10) / 10 : Math.round(n)
+    return { ...serving, label: serving.label.replace(/^1 /, `${count} `) }
+  }
+  return serving
+}
+
+function withReviewedServing(row: UsdaFood): UsdaFood {
+  const fix = SERVING_FIXES[String(row.id)] ?? restoreLabelCount(row.serving)
+  // Metamucil is a dosed product, not a tablespoon of raw psyllium husk.
+  const aliases = row.id === 'curated:psyllium' ? row.aliases.filter((a) => a !== 'metamucil') : row.aliases
+  return { ...row, aliases, serving: fix }
+}
+
 export const FOODS: FoodItem[] = applyPreferredAliases(
-  (usda.foods as UsdaFood[]).map(toFoodItem).filter((f) => f.aliases.length > 0),
+  [...(usda.foods as UsdaFood[]).map(withReviewedServing), ...CURATED_EXTRA]
+    .map(toFoodItem)
+    .filter((f) => f.aliases.length > 0),
 )
 
 export const FOOD_COUNT = FOODS.length

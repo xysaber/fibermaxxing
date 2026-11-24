@@ -14,11 +14,13 @@ import {
   fiberTarget,
   parseMeal,
   standardFiberAi,
+  calorieFiberTarget,
   summarizeMatches,
   updateMatchGrams,
   updateMatchServings,
   type AgeGroup,
   type GoalMode,
+  type LifeStage,
   type MatchedFood,
   type ParseResult,
   type Sex,
@@ -249,6 +251,8 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     : STARTERS.map((s) => ({ id: s.id, label: s.label, meal: s.meal }))
   const starterDemoMeals = starterList.map((s) => s.meal)
   const [sex, setSex] = useState<Sex>(initialSex)
+  const [stage, setStage] = useState<LifeStage>('none')
+  const [kcal, setKcal] = useState('2000')
   const [age, setAge] = useState<AgeGroup>(initialAge)
   const [mode, setMode] = useState<GoalMode>(initialMode)
   const [meal, setMeal] = useState(initialMeal)
@@ -275,8 +279,14 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   const showTypewriter = !meal.trim() && !mealFocused
   const { text: demoText, index: demoIndex } = useStarterTypewriter(showTypewriter, starterDemoMeals)
 
-  const standardAi = useMemo(() => standardFiberAi(sex, age), [sex, age])
-  const target = useMemo(() => fiberTarget(sex, age, mode), [sex, age, mode])
+  const standardAi = useMemo(() => standardFiberAi(sex, age, stage), [sex, age, stage])
+  const kcalNumber = Number.parseFloat(kcal)
+  const target = useMemo(
+    () => fiberTarget(sex, age, mode, { stage, kcal: kcalNumber }),
+    [sex, age, mode, stage, kcalNumber],
+  )
+  const calorieTarget = calorieFiberTarget(kcalNumber)
+  const stageLabel = stage === 'pregnant' ? ' (pregnancy)' : stage === 'lactating' ? ' (breastfeeding)' : ''
 
   const hasMatches = !!result && result.matches.length > 0
   const pct = hasMatches ? Math.min(150, (result.totalFiberG / target) * 100) : 0
@@ -492,16 +502,36 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
           </div>
           <p className="target-banner-note">
             {mode === 'standard'
-              ? `U.S. Adequate Intake reference · ~${standardAi}g for this profile`
-              : `Fibermaxxing stretch · ${standardAi}g × 1.5 (max 50g)`}
+              ? `U.S. Adequate Intake reference${stageLabel} · ~${standardAi}g for this profile`
+              : mode === 'calories'
+                ? calorieTarget != null
+                  ? `14g per 1,000 kcal · ${Math.round(kcalNumber).toLocaleString('en-US')} kcal/day`
+                  : `Enter 800–6,000 kcal · showing AI ~${standardAi}g`
+                : `Fibermaxxing stretch · ${standardAi}g × 1.5 (max 50g)`}
           </p>
         </div>
 
         <div className="row row-profile">
           <div className="field">
             <label htmlFor="sex">Sex</label>
-            <select id="sex" value={sex} onChange={(e) => setSex(e.target.value as Sex)}>
+            <select
+              id="sex"
+              value={stage === 'none' ? sex : `female-${stage}`}
+              onChange={(e) => {
+                const v = e.target.value
+                if (v === 'female-pregnant' || v === 'female-lactating') {
+                  setSex('female')
+                  setStage(v === 'female-pregnant' ? 'pregnant' : 'lactating')
+                  if (age === '51+') setAge('19-50')
+                } else {
+                  setSex(v as Sex)
+                  setStage('none')
+                }
+              }}
+            >
               <option value="female">Female</option>
+              <option value="female-pregnant">Female · pregnant</option>
+              <option value="female-lactating">Female · breastfeeding</option>
               <option value="male">Male</option>
               <option value="unspecified">Prefer not to say</option>
             </select>
@@ -509,8 +539,9 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
           <div className="field">
             <label htmlFor="age">Age</label>
             <select id="age" value={age} onChange={(e) => setAge(e.target.value as AgeGroup)}>
+              <option value="14-18">14–18</option>
               <option value="19-50">19–50</option>
-              <option value="51+">51+</option>
+              {stage === 'none' && <option value="51+">51+</option>}
             </select>
           </div>
           <div className="field">
@@ -518,8 +549,24 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
             <select id="mode" value={mode} onChange={(e) => setMode(e.target.value as GoalMode)}>
               <option value="standard">Standard</option>
               <option value="maxxing">Fibermaxxing</option>
+              <option value="calories">By calories</option>
             </select>
           </div>
+          {mode === 'calories' && (
+            <div className="field">
+              <label htmlFor="kcal">Calories/day</label>
+              <input
+                id="kcal"
+                type="number"
+                inputMode="numeric"
+                min={800}
+                max={6000}
+                step={50}
+                value={kcal}
+                onChange={(e) => setKcal(e.target.value)}
+              />
+            </div>
+          )}
         </div>
 
         <div className="field field-meal" id={anchorOnInput ? 'calculator' : undefined}>

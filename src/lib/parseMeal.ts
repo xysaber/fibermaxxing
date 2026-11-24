@@ -559,23 +559,50 @@ export function parseMeal(input: string): ParseResult {
 }
 
 export type Sex = 'female' | 'male' | 'unspecified'
-export type AgeGroup = '19-50' | '51+'
-export type GoalMode = 'standard' | 'maxxing'
+export type AgeGroup = '14-18' | '19-50' | '51+'
+export type GoalMode = 'standard' | 'maxxing' | 'calories'
+/** Pregnancy / breastfeeding have their own Adequate Intake (applies to any age 14–50). */
+export type LifeStage = 'none' | 'pregnant' | 'lactating'
+
+/** Fiber AI is defined as 14 g per 1,000 kcal (IOM / Dietary Guidelines). */
+export const FIBER_G_PER_1000_KCAL = 14
 
 /**
- * U.S. Adequate Intake (AI) style targets commonly cited from IOM
- * (~14g fiber per 1,000 kcal, expressed as daily grams by sex/age).
+ * U.S. Adequate Intake (AI) for total fiber, IOM DRI tables
+ * (~14g fiber per 1,000 kcal, expressed as daily grams by sex/age/life stage).
  */
-export function standardFiberAi(sex: Sex, age: AgeGroup): number {
+export function standardFiberAi(sex: Sex, age: AgeGroup, stage: LifeStage = 'none'): number {
+  if (sex !== 'male' && stage === 'pregnant') return 28
+  if (sex !== 'male' && stage === 'lactating') return 29
+  if (age === '14-18') {
+    if (sex === 'female') return 26
+    if (sex === 'male') return 38
+    return 32
+  }
   if (sex === 'female') return age === '19-50' ? 25 : 21
   if (sex === 'male') return age === '19-50' ? 38 : 30
   // Prefer not to say → midpoint of male/female AI for that age band
   return age === '19-50' ? 30 : 25
 }
 
-/** Fibermaxxing stretch: Standard × 1.5, capped at 50g. */
-export function fiberTarget(sex: Sex, age: AgeGroup, mode: GoalMode): number {
-  const standard = standardFiberAi(sex, age)
+/** Calorie-based target: 14 g per 1,000 kcal eaten. Null when kcal is not plausible. */
+export function calorieFiberTarget(kcal: number | null | undefined): number | null {
+  if (kcal == null || !Number.isFinite(kcal) || kcal < 800 || kcal > 6000) return null
+  return Math.round((kcal * FIBER_G_PER_1000_KCAL) / 1000)
+}
+
+/**
+ * Daily target. Standard = AI; Fibermaxxing stretch = AI × 1.5 (max 50g);
+ * calorie mode = 14 g / 1,000 kcal (falls back to AI without a usable kcal).
+ */
+export function fiberTarget(
+  sex: Sex,
+  age: AgeGroup,
+  mode: GoalMode,
+  opts: { stage?: LifeStage; kcal?: number | null } = {},
+): number {
+  const standard = standardFiberAi(sex, age, opts.stage)
+  if (mode === 'calories') return calorieFiberTarget(opts.kcal) ?? standard
   if (mode === 'standard') return standard
   return Math.min(50, Math.round(standard * 1.5))
 }
