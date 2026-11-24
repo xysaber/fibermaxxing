@@ -4,6 +4,7 @@ export type GuideCardItem = {
   to: string
   title: string
   blurb: string
+  stat?: string
 }
 
 type Props = {
@@ -29,6 +30,7 @@ export function GuideCards({ id, title, subtitle, items }: Props) {
         {items.map((g) => (
           <li key={g.to}>
             <Link className="guide-card" to={g.to}>
+              {g.stat ? <span className="guide-card-stat">{g.stat}</span> : null}
               <strong>{g.title}</strong>
               <span>{g.blurb}</span>
             </Link>

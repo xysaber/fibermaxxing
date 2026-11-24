@@ -1,12 +1,12 @@
 import { useEffect, type MouseEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { DocumentMeta } from '../components/DocumentMeta'
+import { EmailSignup } from '../components/EmailSignup'
 import { FaqBlock } from '../components/FaqBlock'
 import { FiberCalculator } from '../components/FiberCalculator'
 import { GuideCards } from '../components/GuideCards'
+import { HOME_GUIDES } from '../components/GuidesStrip'
 import { GuideByline, GuideSources } from '../components/GuideSources'
-import { InfoBand } from '../components/InfoBand'
-import { MethodStrip } from '../components/MethodStrip'
 import { SeoAnswer } from '../components/SeoAnswer'
 import { SeoArticle } from '../components/SeoArticle'
 import { SiteFooter } from '../components/SiteFooter'
@@ -114,15 +114,20 @@ export function SeoLandingPage() {
   )
 
   const relatedCards = [
-    ...related.map((r) => ({
-      to: `/${r.slug}`,
-      title: r.h1,
-      blurb: shortBlurb(r.description),
-    })),
+    ...related.slice(0, 3).map((r) => {
+      const g = HOME_GUIDES.find((x) => x.to === `/${r.slug}`)
+      return {
+        to: `/${r.slug}`,
+        title: g?.title ?? r.h1,
+        blurb: g?.blurb ?? shortBlurb(r.description),
+        stat: g?.stat,
+      }
+    }),
     {
       to: '/',
       title: 'Daily fiber calculator',
       blurb: 'Paste any meal and compare to your daily target.',
+      stat: '25 g',
     },
   ]
 
@@ -146,12 +151,30 @@ export function SeoLandingPage() {
             <Link to="/">Home</Link>
             <span aria-hidden="true">/</span>
             <Link to="/#guides">Guides</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{page.h1.replace(/\?$/, '')}</span>
           </nav>
           <h1>{page.h1}</h1>
 
           {page.updated ? <GuideByline updated={page.updated} /> : null}
 
-          {page.answer ? <SeoAnswer answer={page.answer} showNote={false} /> : null}
+          {page.answer || facts.length > 0 ? (
+            <div className="quick-answer">
+              <p className="quick-answer-kicker">Quick answer</p>
+              {page.answer ? <SeoAnswer answer={page.answer} showNote={false} /> : null}
+              {facts.length > 0 ? (
+                <ul className="quick-answer-stats" data-count={Math.min(4, facts.length)}>
+                  {facts.map((f) => (
+                    <li key={f.label}>
+                      <span>{f.label}</span>
+                      <strong>{f.value}</strong>
+                      {f.note ? <em>{f.note}</em> : null}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          ) : null}
 
           {heroLede ? <p className="lede">{heroLede}</p> : null}
 
@@ -191,9 +214,6 @@ export function SeoLandingPage() {
         </div>
       ) : null}
 
-      {facts.length > 0 ? (
-        <InfoBand id="seo-facts" ariaLabel="Key figures" tiles={facts} />
-      ) : null}
 
       {page.dataTable ? (
         <div className="seo-data-table-wrap">
@@ -206,31 +226,56 @@ export function SeoLandingPage() {
         </div>
       ) : null}
 
-      {page.sections && page.sections.length > 0 ? (
-        <SeoArticle
-          sections={page.sections}
-          showContents
-          ctaAfter={2}
-          ctaHref="#calculator"
-          ctaLabel={page.articleCta ?? 'Estimate your bowl in the calculator'}
-          onCtaClick={focusCalculator}
-        />
-      ) : null}
-
-      <FaqBlock title="FAQ" faqs={page.faqs} />
-
-      {page.sources && page.sources.length > 0 ? (
-        <GuideSources sources={page.sources} updated={page.updated} />
-      ) : null}
+      {(() => {
+        const faq = <FaqBlock title="Questions" faqs={page.faqs} />
+        const sources =
+          page.sources && page.sources.length > 0 ? (
+            <GuideSources sources={page.sources} updated={page.updated} />
+          ) : null
+        const signup = (
+          <EmailSignup
+            source={`guide-${page.slug}`}
+            variant="aside"
+            kicker=""
+            title="Reach your target without the bloating"
+            copy="Free 7-day starter plan, one email a day."
+            button="Get the plan"
+          />
+        )
+        return page.sections && page.sections.length > 0 ? (
+          <SeoArticle
+            sections={page.sections}
+            showContents
+            ctaAfter={2}
+            ctaHref="#calculator"
+            ctaLabel={page.articleCta ?? 'Estimate your bowl in the calculator'}
+            onCtaClick={focusCalculator}
+            after={
+              <>
+                {faq}
+                {sources}
+              </>
+            }
+            extraToc={[
+              ...(page.faqs.length ? [{ href: '#faq', label: 'Questions' }] : []),
+              ...(sources ? [{ href: '#sources', label: 'Sources' }] : []),
+            ]}
+            asideExtra={signup}
+          />
+        ) : (
+          <>
+            {faq}
+            {sources}
+          </>
+        )
+      })()}
 
       <GuideCards
         id="related"
-        title="Related guides"
-        subtitle="More short answers — same calculator, different starting meal."
+        title="Keep reading"
         items={relatedCards}
       />
 
-      <MethodStrip />
       <SiteFooter />
     </div>
   )
