@@ -802,6 +802,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
                           <span className="qty-unit">× {m.food.serving}</span>
                         </span>
                       </label>
+                      {m.source === 'estimate' ? null : (
                       <label className="qty-edit">
                         <span className="qty-edit-label">Weight</span>
                         <span className="qty-edit-controls">
@@ -823,6 +824,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
                           <span className="qty-unit">g</span>
                         </span>
                       </label>
+                      )}
                       <div className="fib-result">
                         <span className="fib-result-label">Fiber</span>
                         <span className="fib">{m.fiberG}g</span>

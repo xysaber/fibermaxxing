@@ -207,7 +207,7 @@ const CONCEPTS: Concept[] = [
   { names: ['fiber one cereal', 'fiber one original cereal', 'fiber one original'], id: 'pkg:fiber-one-cereal', cup: 60 },
   { names: ['fiber one bar', 'fiber one', 'fiber one chewy bar'], id: 'pkg:fiber-one-bar' },
   { names: ['grape nut', 'grape nut cereal'], id: '171647', cup: 116 },
-  { names: ['shredded wheat'], id: '173910', count: 23.5, countLabel: '1 biscuit', cup: 49 },
+  { names: ['shredded wheat', 'shredded wheat biscuit'], id: '173910', count: 23.5, countLabel: '1 biscuit', cup: 49 },
   { names: ['kashi go', 'kashi golean', 'kashi go lean'], id: 'pkg:kashi-go', cup: 42 },
   { names: ['special k'], id: 'pkg:special-k', cup: 31 },
   { names: ['corn flake'], id: 'pkg:corn-flakes', cup: 28 },
