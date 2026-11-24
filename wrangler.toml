@@ -22,3 +22,11 @@ bucket_name = "fibermaxxing-meal-logs"
 [vars]
 # Kill switch for POST /api/meal-logs: set to "off" then redeploy to stop ingest.
 MEAL_LOG_INGEST = "on"
+# Free 7-day plan emails (Resend). Secret RESEND_API_KEY is set in the Cloudflare dashboard.
+# Kill switch: set SUBSCRIBE = "off" and redeploy.
+SUBSCRIBE = "on"
+EMAIL_FROM = "GetFibermaxxing <plan@getfibermaxxing.com>"
+
+# Daily 15:00 UTC (7 a.m. Pacific): send the next plan email.
+[triggers]
+crons = ["0 15 * * *"]

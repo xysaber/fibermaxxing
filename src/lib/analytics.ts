@@ -10,6 +10,9 @@ type EventName =
   | 'edit_portion'
   | 'share_png'
   | 'share_copy'
+  | 'add_suggestion'
+  | 'email_signup_attempt'
+  | 'email_signup_success'
 
 type GtagFn = (...args: unknown[]) => void
 

@@ -950,7 +950,7 @@ a {
 }
 
 .score-card {
-  background: linear-gradient(160deg, var(--panel) 0%, var(--panel-mid) 55%, #121826 100%);
+  background: var(--panel);
   color: #f5f3ec;
   border-radius: var(--radius-xl);
   padding: var(--space-6) var(--space-5) var(--space-5);
@@ -3882,4 +3882,212 @@ a {
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.03em;
+}
+
+/* Close-the-gap: add a suggestion in one tap */
+.suggestions-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.suggestions-add {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--acid-on-dark);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: background var(--duration) var(--ease-out);
+}
+
+.suggestions-add:hover {
+  background: #7fdca3;
+}
+
+.suggestions-add:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Email signup (free 7-day plan) */
+.email-signup {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  background: var(--leaf-tint);
+  color: var(--ink);
+}
+
+.email-signup--result {
+  margin-top: var(--space-5);
+}
+
+.email-signup-kicker {
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--leaf);
+}
+
+.email-signup-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.email-signup-copy {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-snug);
+  color: var(--ink-soft);
+}
+
+.email-signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  position: relative;
+}
+
+.email-signup-form input[type='email'] {
+  flex: 1 1 220px;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid #b9d3c1;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.email-signup-form input[type='email']:focus {
+  outline: 2px solid var(--leaf);
+  outline-offset: 1px;
+}
+
+.email-signup-form .btn {
+  min-height: 48px;
+}
+
+.email-signup-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.email-signup-done {
+  margin: 0;
+  font-weight: 600;
+  color: var(--leaf);
+}
+
+.email-signup-error {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--clay);
+}
+
+.plan-band {
+  margin: 0 0 var(--space-section-lg);
+}
+
+.plan-band .email-signup {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-6);
+  padding: var(--space-6);
+}
+
+.plan-band .email-signup > * {
+  grid-column: 1;
+}
+
+.plan-band .email-signup-form,
+.plan-band .email-signup-done,
+.plan-band .email-signup-error {
+  grid-column: 2;
+}
+
+.plan-band .email-signup-form {
+  grid-row: 1 / span 3;
+}
+
+@media (max-width: 860px) {
+  .plan-band .email-signup {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-5);
+  }
+
+  .plan-band .email-signup > *,
+  .plan-band .email-signup-form,
+  .plan-band .email-signup-done,
+  .plan-band .email-signup-error {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+/* How it works: three steps */
+.method-steps {
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.method-steps h3 {
+  margin: var(--space-3) 0 var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.method-steps p {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-snug);
+  color: var(--ink-soft);
+}
+
+.method-step-n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .method-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Keep close-the-gap ideas right under the score instead of pinned to the card bottom */
+.suggestions-in-score {
+  margin-top: var(--space-5);
+}
+
+.results .score-card {
+  align-self: start;
 }

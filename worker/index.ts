@@ -2,7 +2,9 @@
  * Cloudflare Worker: static assets + meal I/O log API → R2.
  * Kill switch: MEAL_LOG_INGEST=off rejects new writes (old cached clients included).
  */
-export interface Env {
+import { handleSubscribe, handleUnsubscribe, runPlanDrip, type SubscribeEnv } from './subscribe'
+
+export interface Env extends SubscribeEnv {
   ASSETS: Fetcher
   MEAL_LOGS?: R2Bucket
   /** "on" | "off" — default on when unset */
@@ -280,6 +282,16 @@ export default {
     if (url.pathname === '/api/meal-logs' && request.method === 'POST') {
       return handleMealLog(request, env)
     }
+    if (url.pathname === '/api/subscribe' && request.method === 'POST') {
+      return handleSubscribe(request, env)
+    }
+    if (url.pathname === '/api/unsubscribe' && (request.method === 'GET' || request.method === 'POST')) {
+      return handleUnsubscribe(request, env)
+    }
     return env.ASSETS.fetch(request)
+  },
+
+  async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    ctx.waitUntil(runPlanDrip(env))
   },
 }

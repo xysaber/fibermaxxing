@@ -62,9 +62,14 @@ export function PrivacyPolicyBody() {
           <li>Meal descriptions and food text (natural language input)</li>
           <li>Optional profile-style choices used for targets (e.g., sex, age group, goal mode)</li>
           <li>Any feedback or email you voluntarily send us</li>
+          <li>
+            Your email address, if you sign up for the free 7-day plan, plus the daily target and gap shown when you
+            signed up
+          </li>
         </ul>
         <p>
-          We do <strong>not</strong> require name, email, or payment information to run a calculation.
+          We do <strong>not</strong> require name, email, or payment information to run a calculation. Email is only
+          collected if you choose to sign up for plan emails.
         </p>
 
         <h4>2. Meal Logs (product improvement)</h4>
@@ -128,6 +133,8 @@ export function PrivacyPolicyBody() {
           <li>Estimate fiber intake and display results</li>
           <li>Improve parsing quality, reliability, and user experience (including Meal Log review)</li>
           <li>Measure product performance and diagnose errors</li>
+          <li>Send the plan emails you asked for (one per day for seven days), and tell you about related products
+            from GetFibermaxxing, such as the 30-day plan; every email has an unsubscribe link</li>
           <li>Respond to inquiries you send us</li>
           <li>Comply with legal obligations</li>
         </ul>
@@ -142,7 +149,7 @@ export function PrivacyPolicyBody() {
         <ul>
           <li>
             <strong>Service Providers</strong> that host or operate the Service (e.g., Cloudflare for hosting/edge
-            compute and object storage; Google Analytics for measurement)
+            compute and object storage; Resend for sending email; Google Analytics for measurement)
           </li>
           <li>
             <strong>Legal / safety</strong> recipients when required by law or to protect rights and security
@@ -162,6 +169,10 @@ export function PrivacyPolicyBody() {
             unless we delete them earlier or you successfully request deletion of identifiable logs where feasible.
           </li>
           <li>Analytics data is retained according to our analytics provider settings and our operational needs.</li>
+          <li>
+            Email sign-ups are kept until you unsubscribe or ask us to delete them; after you unsubscribe we keep only
+            what is needed to honor that choice.
+          </li>
           <li>Device-local storage remains until you clear site data in your browser.</li>
         </ul>
       </section>
@@ -177,6 +188,7 @@ export function PrivacyPolicyBody() {
           <li>Clear cookies and site storage in your browser</li>
           <li>Use browser / OS controls to limit analytics tracking where available</li>
           <li>Contact us to request deletion of Meal Logs that we can reasonably identify</li>
+          <li>Unsubscribe from plan emails with the link in any email, or ask us to delete your email address</li>
         </ul>
         <p>
           Contact: <a href="mailto:hello@getfibermaxxing.com">hello@getfibermaxxing.com</a>.
