@@ -4,6 +4,7 @@ import { DocumentMeta } from '../components/DocumentMeta'
 import { FaqBlock } from '../components/FaqBlock'
 import { FiberCalculator } from '../components/FiberCalculator'
 import { GuideCards } from '../components/GuideCards'
+import { GuideByline, GuideSources } from '../components/GuideSources'
 import { InfoBand } from '../components/InfoBand'
 import { MethodStrip } from '../components/MethodStrip'
 import { SeoAnswer } from '../components/SeoAnswer'
@@ -28,10 +29,18 @@ function focusCalculator(e: MouseEvent<HTMLAnchorElement>) {
   window.setTimeout(() => meal?.focus({ preventScroll: true }), 280)
 }
 
-function PortionComparison({ table }: { table: SeoPortionTable }) {
+function PortionComparison({
+  table,
+  headingId = 'portion-table-heading',
+  className = 'seo-portion-table',
+}: {
+  table: SeoPortionTable
+  headingId?: string
+  className?: string
+}) {
   return (
-    <section className="seo-portion-table" aria-labelledby="portion-table-heading">
-      <h2 id="portion-table-heading">{table.caption}</h2>
+    <section className={className} aria-labelledby={headingId}>
+      <h2 id={headingId}>{table.caption}</h2>
       <div className="seo-portion-table-wrap">
         <table>
           <thead>
@@ -135,6 +144,8 @@ export function SeoLandingPage() {
         <div className="hero-copy seo-landing-copy">
           <h1>{page.h1}</h1>
 
+          {page.updated ? <GuideByline updated={page.updated} /> : null}
+
           {page.answer ? <SeoAnswer answer={page.answer} showNote={false} /> : null}
 
           {heroLede ? <p className="lede">{heroLede}</p> : null}
@@ -179,6 +190,17 @@ export function SeoLandingPage() {
         <InfoBand id="seo-facts" ariaLabel="Key figures" tiles={facts} />
       ) : null}
 
+      {page.dataTable ? (
+        <div className="seo-data-table-wrap">
+          <PortionComparison
+            table={page.dataTable}
+            headingId="data-table-heading"
+            className="seo-portion-table seo-data-table"
+          />
+          {page.dataTable.note ? <p className="seo-portion-table-note">{page.dataTable.note}</p> : null}
+        </div>
+      ) : null}
+
       {page.sections && page.sections.length > 0 ? (
         <SeoArticle
           sections={page.sections}
@@ -191,6 +213,10 @@ export function SeoLandingPage() {
       ) : null}
 
       <FaqBlock title="FAQ" faqs={page.faqs} />
+
+      {page.sources && page.sources.length > 0 ? (
+        <GuideSources sources={page.sources} updated={page.updated} />
+      ) : null}
 
       <GuideCards
         id="related"

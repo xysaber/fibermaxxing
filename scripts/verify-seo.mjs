@@ -39,7 +39,30 @@ for (const slug of legalSlugs) {
 }
 assert.match(readFileSync('dist/404.html','utf8'), /content="noindex, follow"/)
 const sitemap = readFileSync('dist/sitemap.xml', 'utf8')
-assert.equal((sitemap.match(/<loc>/g) || []).length, pages.length + 1 + legalSlugs.length)
+assert.equal((sitemap.match(/<loc>/g) || []).length, pages.length + 2 + legalSlugs.length)
+assert.match(sitemap, /<loc>https:\/\/www.getfibermaxxing.com\/about<\/loc>/)
+{
+  const html = readFileSync('dist/about.html', 'utf8')
+  assert.match(html, /<div id="root"><div class="app">/)
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1)
+  assert.match(html, /<link rel="canonical" href="https:\/\/www.getfibermaxxing.com\/about"/)
+  assert.match(html, /content="index, follow"/)
+  assert.match(html, /fdc.nal.usda.gov/)
+  console.log('Static HTML verified: about')
+}
+for (const page of pages) {
+  if (!page.sources?.length) continue
+  const html = readFileSync(`dist/${page.slug}.html`, 'utf8')
+  assert.match(html, /id="sources"/, `${page.slug}: sources block`)
+  for (const src of page.sources) assert.ok(html.includes(src.url.replaceAll('&', '&amp;')), `${page.slug}: ${src.url}`)
+  if (page.updated) {
+    assert.match(html, new RegExp(`<time dateTime="${page.updated}"`, 'i'), `${page.slug}: review date`)
+    assert.match(sitemap, new RegExp(`<loc>https://www.getfibermaxxing.com/${page.slug}</loc>\\n    <lastmod>${page.updated}</lastmod>`))
+  }
+  if (page.dataTable) assert.match(html, /id="data-table-heading"/, `${page.slug}: data table`)
+  assert.doesNotMatch(JSON.stringify(page), /you searched/i, `${page.slug}: search-engine phrasing`)
+  console.log('Sources verified:', page.slug)
+}
 for (const slug of legalSlugs) {
   assert.match(sitemap, new RegExp(`<loc>https://www.getfibermaxxing.com/${slug}</loc>`))
 }

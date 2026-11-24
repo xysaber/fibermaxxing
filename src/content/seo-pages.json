@@ -118,7 +118,35 @@
       }
     ],
     "calculatorCta": "Estimate your daily intake",
-    "articleCta": "Estimate your day in the calculator"
+    "articleCta": "Estimate your day in the calculator",
+    "updated": "2026-11-24",
+    "sources": [
+      {
+        "label": "National Academies, Dietary Reference Intakes for Energy, Carbohydrate, Fiber (2005)",
+        "url": "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids",
+        "note": "Adequate Intake of 14 g fiber per 1,000 kcal"
+      },
+      {
+        "label": "Dietary Guidelines for Americans",
+        "url": "https://www.dietaryguidelines.gov/",
+        "note": "dietary fiber is a nutrient most U.S. adults under-consume"
+      },
+      {
+        "label": "Reynolds et al., Carbohydrate quality and human health, The Lancet (2019)",
+        "url": "https://doi.org/10.1016/S0140-6736(18)31809-9",
+        "note": "meta-analyses linking 25–29 g/day with lower disease risk"
+      },
+      {
+        "label": "USDA FoodData Central (SR Legacy)",
+        "url": "https://fdc.nal.usda.gov/",
+        "note": "fiber per 100 g behind every food figure on this page"
+      },
+      {
+        "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+        "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+        "note": "increase fiber gradually and drink enough water"
+      }
+    ]
   },
   {
     "slug": "oatmeal",
@@ -159,7 +187,7 @@
         "heading": "How much fiber is in a cup of oatmeal?",
         "paragraphs": [
           "People usually mean a prepared cup when they ask how much fiber is in oatmeal. On GetFibermaxxing, cooked oatmeal is referenced at about 4 g of fiber per 1 cup (234 g). That is a typical USDA-style cooked serving, not a brand promise — water ratio, oat type, and package labels can shift the number.",
-          "If you searched how much fiber is in a cup of oats, do not use the cooked-cup number for a dry scoop. On this site, 1 cup dry rolled oats is about 8.5 g of fiber; 1 cup cooked oatmeal (234 g) is about 4 g. Same oats, different fill: water takes up space in the cooked cup.",
+          "For a cup of dry oats, do not use the cooked-cup number for a dry scoop. On this site, 1 cup dry rolled oats is about 8.5 g of fiber; 1 cup cooked oatmeal (234 g) is about 4 g. Same oats, different fill: water takes up space in the cooked cup.",
           "If you only know a dry scoop, do not assume one dry cup equals one cooked cup. Dry oats pack more grain into the same volume. Prefer a kitchen scale: enter the dry weight in grams, or cook the oats and log cooked oatmeal with the bowl size you ate.",
           "Instant packets vary widely. Some are plain oats; others add sugar or dried fruit. When the label lists fiber per packet, use that weight in the calculator after matching the closest oat entry, then edit grams.",
           "Dry oats are denser per cup — weigh in grams, or log a prepared bowl as cooked oatmeal.",
@@ -313,7 +341,25 @@
           "—"
         ]
       ]
-    }
+    },
+    "updated": "2026-11-24",
+    "sources": [
+      {
+        "label": "USDA FoodData Central (SR Legacy)",
+        "url": "https://fdc.nal.usda.gov/",
+        "note": "fiber per 100 g behind every food figure on this page"
+      },
+      {
+        "label": "National Academies, Dietary Reference Intakes for Energy, Carbohydrate, Fiber (2005)",
+        "url": "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids",
+        "note": "Adequate Intake of 14 g fiber per 1,000 kcal"
+      },
+      {
+        "label": "Harvard T.H. Chan School of Public Health, The Nutrition Source: Fiber",
+        "url": "https://nutritionsource.hsph.harvard.edu/carbohydrates/fiber/",
+        "note": "soluble vs insoluble fiber and food sources"
+      }
+    ]
   },
   {
     "slug": "chia-seeds",
@@ -397,7 +443,7 @@
           "The dried chia entry in this site’s USDA-based dataset contains about 34.4 g of fiber per 100 g. Using a 12 g tablespoon, that works out to approximately 4.1 g of fiber; two such tablespoons provide about 8.3 g.",
           "A tablespoon is a volume measure, so the weight depends on the scoop. If your tablespoon weighs closer to 10 g, the same density gives about 3.4 g of fiber. Enter grams when you know the weight.",
           "For a repeatable estimate, weigh the seeds and enter grams. The 1 oz reference is 28.35 g of seeds and provides about 9.8 g of fiber; it is not the same portion as one tablespoon.",
-          "One ounce of chia is not the same as two tablespoons. On this site, 1 oz (28.35 g) is about 9.8 g of fiber; two tablespoons at 24 g total are about 8.3 g. If you searched fiber in 1 oz of chia seeds, use the ounce line, not a tablespoon count.",
+          "One ounce of chia is not the same as two tablespoons. On this site, 1 oz (28.35 g) is about 9.8 g of fiber; two tablespoons at 24 g total are about 8.3 g. For an ounce of chia, use the ounce line, not a tablespoon count.",
           "Increase gradually and drink water — chia is dense fiber, not a one-day catch-up plan.",
           "Weigh the dry seeds before soaking for the clearest estimate. Water changes the pudding’s weight and volume, but does not add fiber."
         ]
@@ -408,7 +454,7 @@
           "Soaking chia adds liquid and changes the texture. The fiber estimate should still follow the amount of dry seeds used, rather than treating a cup of prepared pudding as a cup of dry chia.",
           "For a shared batch, divide the ingredients by the fraction you ate. If a batch starts with 40 g of chia and you eat half, log 20 g of seeds plus half of the milk, fruit, and other ingredients.",
           "Water contributes no fiber. Dairy milk and plain yogurt generally contribute little or none; fruit and other plant ingredients can contribute more. Check the actual label for packaged pudding or a fortified product.",
-          "If you searched how much fiber is in chia pudding, there is no single cup-of-pudding number on this site. The fiber comes from the dry seeds you started with, plus any fruit or other plants you added — not from the soaking liquid. A 1 tablespoon (≈12 g) dry start is about 4.1 g in the finished pudding; the example on this page (20 g chia seeds, 1/2 cup raspberries, and plain nonfat Greek yogurt) is roughly 11 g from the seeds and berries together."
+          "There is no single cup-of-pudding fiber number, because recipes differ. The fiber comes from the dry seeds you started with, plus any fruit or other plants you added — not from the soaking liquid. A 1 tablespoon (≈12 g) dry start is about 4.1 g in the finished pudding; the example on this page (20 g chia seeds, 1/2 cup raspberries, and plain nonfat Greek yogurt) is roughly 11 g from the seeds and berries together."
         ]
       },
       {
@@ -429,7 +475,25 @@
       }
     ],
     "calculatorCta": "Estimate this meal",
-    "articleCta": "Estimate your chia meal in the calculator"
+    "articleCta": "Estimate your chia meal in the calculator",
+    "updated": "2026-11-24",
+    "sources": [
+      {
+        "label": "USDA FoodData Central (SR Legacy)",
+        "url": "https://fdc.nal.usda.gov/",
+        "note": "fiber per 100 g behind every food figure on this page"
+      },
+      {
+        "label": "Harvard T.H. Chan School of Public Health, The Nutrition Source: Fiber",
+        "url": "https://nutritionsource.hsph.harvard.edu/carbohydrates/fiber/",
+        "note": "soluble vs insoluble fiber and food sources"
+      },
+      {
+        "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+        "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+        "note": "increase fiber gradually and drink enough water"
+      }
+    ]
   },
   {
     "slug": "high-fiber-breakfast",
@@ -552,7 +616,25 @@
       }
     ],
     "calculatorCta": "Estimate this breakfast",
-    "articleCta": "Estimate your breakfast in the calculator"
+    "articleCta": "Estimate your breakfast in the calculator",
+    "updated": "2026-11-24",
+    "sources": [
+      {
+        "label": "USDA FoodData Central (SR Legacy)",
+        "url": "https://fdc.nal.usda.gov/",
+        "note": "fiber per 100 g behind every food figure on this page"
+      },
+      {
+        "label": "National Academies, Dietary Reference Intakes for Energy, Carbohydrate, Fiber (2005)",
+        "url": "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids",
+        "note": "Adequate Intake of 14 g fiber per 1,000 kcal"
+      },
+      {
+        "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+        "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+        "note": "increase fiber gradually and drink enough water"
+      }
+    ]
   },
   {
     "slug": "what-is-fibermaxxing",
@@ -649,10 +731,26 @@
         ]
       },
       {
+        "heading": "Why fiber, and why now",
+        "paragraphs": [
+          "The Dietary Guidelines for Americans list dietary fiber as a nutrient most U.S. adults do not get enough of; typical intake sits well below the ~25–38 g Adequate Intake. Fibermaxxing took off on social media in 2025 and became a mainstream food trend in 2026, with food brands adding fiber claims to snacks and drinks.",
+          "The interest is backed by more than hype. A 2019 series of meta-analyses in The Lancet found that people eating about 25–29 g of fiber a day had lower rates of heart disease, type 2 diabetes, and colorectal cancer than people eating less, with further benefit at higher intakes. Those are observational links, not guarantees, but they point in the same direction as the official targets.",
+          "Fiber from whole foods also comes with what supplements usually lack: a mix of soluble and insoluble fiber, plus vitamins, minerals, and protein (in legumes). That is why most guidance favors beans, whole grains, fruit, vegetables, nuts, and seeds over gummies."
+        ]
+      },
+      {
         "heading": "How to start without overdoing it",
         "paragraphs": [
           "Add one high-fiber item per meal for a week, drink water, and watch comfort. Examples: chia in yogurt, lentils at lunch, berries at breakfast.",
           "Paste a full day into the calculator to see grams vs target. Then use the [fibermaxxing foods](/fibermaxxing-foods) list (1 cup cooked lentils ≈ 15.6 g), the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide (berry–chia ~12g+), the [high-fiber breakfast](/high-fiber-breakfast) guide (~10–11 g examples), or the [oatmeal](/oatmeal) and [chia seeds](/chia-seeds) guides for concrete portions you can edit."
+        ]
+      },
+      {
+        "heading": "Who should be careful",
+        "paragraphs": [
+          "Talk to a clinician before a big fiber increase if you have inflammatory bowel disease, a history of bowel obstruction, gastroparesis, or are on a low-residue diet; if you are pregnant; or if you take a GLP-1 medication, where nausea and slowed digestion can make large fiber jumps uncomfortable.",
+          "Fiber supplements such as psyllium can affect how some medicines are absorbed. A common precaution is to take them a couple of hours apart from medication; ask your pharmacist about yours.",
+          "For everyone else, the main side effects of increasing too fast are gas, bloating, and cramping. Add one high-fiber food at a time over 2–3 weeks and drink more water as intake rises."
         ]
       },
       {
@@ -664,7 +762,35 @@
       }
     ],
     "calculatorCta": "Estimate today's fiber",
-    "articleCta": "Estimate your meals in the calculator"
+    "articleCta": "Estimate your meals in the calculator",
+    "updated": "2026-11-24",
+    "sources": [
+      {
+        "label": "National Academies, Dietary Reference Intakes for Energy, Carbohydrate, Fiber (2005)",
+        "url": "https://nap.nationalacademies.org/catalog/10490/dietary-reference-intakes-for-energy-carbohydrate-fiber-fat-fatty-acids-cholesterol-protein-and-amino-acids",
+        "note": "Adequate Intake of 14 g fiber per 1,000 kcal"
+      },
+      {
+        "label": "Dietary Guidelines for Americans",
+        "url": "https://www.dietaryguidelines.gov/",
+        "note": "dietary fiber is a nutrient most U.S. adults under-consume"
+      },
+      {
+        "label": "Reynolds et al., Carbohydrate quality and human health, The Lancet (2019)",
+        "url": "https://doi.org/10.1016/S0140-6736(18)31809-9",
+        "note": "meta-analyses linking 25–29 g/day with lower disease risk"
+      },
+      {
+        "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+        "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+        "note": "increase fiber gradually and drink enough water"
+      },
+      {
+        "label": "NPR, The “fibermaxxing” trend has health benefits worth the hype (May 2026)",
+        "url": "https://www.npr.org/2026/05/18/nx-s1-5821598/fibermaxxing-healthy-fiber-foods-diet-benefits",
+        "note": "background on the trend"
+      }
+    ]
   },
   {
     "slug": "fibermaxxing-smoothie",
@@ -767,6 +893,14 @@
         ]
       },
       {
+        "heading": "Why berries and beans do most of the work",
+        "paragraphs": [
+          "In the berry–chia blend, raspberries supply about 8.0 g of the ≈15.2 g total, more than half. Swapping them for the same cup of blueberries (3.6 g for 148 g) drops the blend by roughly 4.4 g, so the berry choice matters more than the chia.",
+          "Half a cup of cooked black beans adds about 7.5 g with little flavor once blended with ripe fruit, which is why the bean–berry version reaches ≈22.7 g.",
+          "If a high-fiber smoothie is new for you, start with half the beans or seeds for a week. A sudden jump can cause gas and bloating; most people adjust within a couple of weeks if they increase gradually and drink water."
+        ]
+      },
+      {
         "heading": "Log the blend, then finish the day",
         "paragraphs": [
           "Paste the full ingredient list after you blend so portions match what went in the jar.",
@@ -775,7 +909,81 @@
       }
     ],
     "calculatorCta": "Estimate this smoothie",
-    "articleCta": "Estimate your blend"
+    "articleCta": "Estimate your blend",
+    "updated": "2026-11-24",
+    "sources": [
+      {
+        "label": "USDA FoodData Central (SR Legacy)",
+        "url": "https://fdc.nal.usda.gov/",
+        "note": "fiber per 100 g behind every food figure on this page"
+      },
+      {
+        "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+        "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+        "note": "increase fiber gradually and drink enough water"
+      },
+      {
+        "label": "Harvard T.H. Chan School of Public Health, The Nutrition Source: Fiber",
+        "url": "https://nutritionsource.hsph.harvard.edu/carbohydrates/fiber/",
+        "note": "soluble vs insoluble fiber and food sources"
+      }
+    ],
+    "dataTable": {
+      "caption": "Where the fiber comes from in each blend",
+      "columns": [
+        "Ingredient",
+        "Portion",
+        "Fiber"
+      ],
+      "rows": [
+        [
+          "Berry–chia: Raspberries",
+          "1 cup (123 g)",
+          "8.0 g"
+        ],
+        [
+          "Berry–chia: Chia seeds, dried",
+          "1 tbsp (12 g)",
+          "4.1 g"
+        ],
+        [
+          "Berry–chia: Banana",
+          "1 medium (118 g)",
+          "3.1 g"
+        ],
+        [
+          "Berry–chia total",
+          "",
+          "≈15.2 g"
+        ],
+        [
+          "Bean–berry: Black beans, cooked",
+          "1/2 cup (86 g)",
+          "7.5 g"
+        ],
+        [
+          "Bean–berry: Raspberries",
+          "1 cup (123 g)",
+          "8.0 g"
+        ],
+        [
+          "Bean–berry: Chia seeds, dried",
+          "1 tbsp (12 g)",
+          "4.1 g"
+        ],
+        [
+          "Bean–berry: Banana",
+          "1 medium (118 g)",
+          "3.1 g"
+        ],
+        [
+          "Bean–berry total",
+          "",
+          "≈22.7 g (+ yogurt ≈0 g)"
+        ]
+      ],
+      "note": "Computed from USDA per-100 g values at the gram weights shown. Liquid, plain yogurt, and protein powder add little or no fiber; check labels for fortified products."
+    }
   },
   {
     "slug": "for-women",
@@ -1044,7 +1252,7 @@
         "heading": "Legumes (usually the biggest jumps)",
         "paragraphs": [
           "A cup of cooked lentils is about 15.6 g of fiber on this site; a cup of cooked black beans is about 15 g. They are often the fastest way to move a short day toward the target.",
-          "If you searched how much fiber is in a cup of beans, this list uses cooked cups: about 15.6 g for 1 cup cooked lentils and about 15 g for 1 cup cooked black beans. A cup of dry beans is not the same portion. If you cooked from dry, log the cooked amount you ate, or enter grams.",
+          "For a cup of beans, this list uses cooked cups: about 15.6 g for 1 cup cooked lentils and about 15 g for 1 cup cooked black beans. A cup of dry beans is not the same portion. If you cooked from dry, log the cooked amount you ate, or enter grams.",
           "Rinse canned beans if you use them, and increase portions gradually if legumes are new for you.",
           "Treat the figures as a shopping checklist. Build a real plate, then paste the named foods and amounts into the calculator instead of guessing.",
           "For a drinkable combo, see the [fibermaxxing smoothie](/fibermaxxing-smoothie) guide (berry–chia ~12g+; bean–berry ~15g+). For morning bowls and toast, see the [high-fiber breakfast](/high-fiber-breakfast) guide (oat bowl ~10 g, chia pudding ~11 g, avocado toast ~10 g)."
@@ -1058,6 +1266,14 @@
         ]
       },
       {
+        "heading": "Per portion vs per 100 g",
+        "paragraphs": [
+          "The table sorts by fiber per portion, because that is what lands on your plate. Per 100 g tells a different story: psyllium husk (78 g per 100 g) and chia (34.4 g) are far denser than beans, but you eat them by the spoonful, so a cup of cooked beans still moves the day further.",
+          "Air-popped popcorn is a good example of density hiding behind volume: 15.1 g per 100 g, but three cups weigh only about 24 g, so the portion gives about 3.6 g.",
+          "Cooked grains and legumes absorb water, which lowers fiber per 100 g without changing the fiber in the original dry amount. Log the form you actually ate (cooked or dry), not both."
+        ]
+      },
+      {
         "heading": "How to estimate from this list",
         "paragraphs": [
           "The calculator totals one meal at a time. Pick two or three items you ate, type them with portions in a single box, and compare the result with your daily target.",
@@ -1066,6 +1282,156 @@
       }
     ],
     "calculatorCta": "Estimate a sample meal",
-    "articleCta": "Estimate your mixed meal"
+    "articleCta": "Estimate your mixed meal",
+    "updated": "2026-11-24",
+    "sources": [
+      {
+        "label": "USDA FoodData Central (SR Legacy)",
+        "url": "https://fdc.nal.usda.gov/",
+        "note": "fiber per 100 g behind every food figure on this page"
+      },
+      {
+        "label": "Harvard T.H. Chan School of Public Health, The Nutrition Source: Fiber",
+        "url": "https://nutritionsource.hsph.harvard.edu/carbohydrates/fiber/",
+        "note": "soluble vs insoluble fiber and food sources"
+      },
+      {
+        "label": "Dietary Guidelines for Americans",
+        "url": "https://www.dietaryguidelines.gov/",
+        "note": "dietary fiber is a nutrient most U.S. adults under-consume"
+      }
+    ],
+    "dataTable": {
+      "caption": "Fiber in 20 common foods, by portion",
+      "columns": [
+        "Food",
+        "Portion",
+        "Fiber",
+        "Per 100 g"
+      ],
+      "rows": [
+        [
+          "Navy beans, cooked",
+          "1 cup (182 g)",
+          "19.1 g",
+          "10.5 g"
+        ],
+        [
+          "Split peas, cooked",
+          "1 cup (196 g)",
+          "16.3 g",
+          "8.3 g"
+        ],
+        [
+          "Lentils, cooked",
+          "1 cup (198 g)",
+          "15.6 g",
+          "7.9 g"
+        ],
+        [
+          "Black beans, cooked",
+          "1 cup (172 g)",
+          "15.0 g",
+          "8.7 g"
+        ],
+        [
+          "Kidney beans, cooked",
+          "1 cup (177 g)",
+          "11.3 g",
+          "6.4 g"
+        ],
+        [
+          "Chickpeas, canned, drained",
+          "1 cup (164 g)",
+          "10.5 g",
+          "6.4 g"
+        ],
+        [
+          "Avocado",
+          "1 medium (150 g)",
+          "10.1 g",
+          "6.7 g"
+        ],
+        [
+          "Edamame, prepared",
+          "1 cup (155 g)",
+          "8.1 g",
+          "5.2 g"
+        ],
+        [
+          "Raspberries",
+          "1 cup (123 g)",
+          "8.0 g",
+          "6.5 g"
+        ],
+        [
+          "Blackberries",
+          "1 cup (144 g)",
+          "7.6 g",
+          "5.3 g"
+        ],
+        [
+          "Psyllium husk",
+          "1 tbsp (9 g)",
+          "7.0 g",
+          "78 g"
+        ],
+        [
+          "Sweet potato, baked in skin",
+          "1 cup (200 g)",
+          "6.6 g",
+          "3.3 g"
+        ],
+        [
+          "Barley, pearled, cooked",
+          "1 cup (157 g)",
+          "6.0 g",
+          "3.8 g"
+        ],
+        [
+          "Quinoa, cooked",
+          "1 cup (185 g)",
+          "5.2 g",
+          "2.8 g"
+        ],
+        [
+          "Apple, with skin",
+          "1 medium (182 g)",
+          "4.4 g",
+          "2.4 g"
+        ],
+        [
+          "Oats, dry",
+          "1/2 cup (40 g)",
+          "4.2 g",
+          "10.6 g"
+        ],
+        [
+          "Chia seeds, dried",
+          "1 tbsp (12 g)",
+          "4.1 g",
+          "34.4 g"
+        ],
+        [
+          "Oatmeal, cooked",
+          "1 cup (234 g)",
+          "4.0 g",
+          "1.7 g"
+        ],
+        [
+          "Popcorn, air-popped",
+          "3 cups (24 g)",
+          "3.6 g",
+          "15.1 g"
+        ],
+        [
+          "Almonds",
+          "1 oz (28 g)",
+          "3.5 g",
+          "12.5 g"
+        ]
+      ],
+      "note": "Fiber per portion = USDA fiber per 100 g × portion weight, rounded to 0.1 g. Sorted by fiber per portion. Paste any row into the calculator to combine foods."
+    }
   }
 ]

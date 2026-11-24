@@ -17,6 +17,7 @@ export function SiteFooter() {
     <footer className="footer">
       <nav className="footer-nav" aria-label="Explore">
         <Link to="/#method">Method &amp; Sources</Link>
+        <Link to="/about">About &amp; editorial standards</Link>
         {GUIDE_LINKS.map((l) => (
           <Link key={l.to} to={l.to}>
             {l.label}
@@ -27,6 +28,7 @@ export function SiteFooter() {
       <div className="footer-bar">
         <p className="footer-copy">© {YEAR} GetFibermaxxing</p>
         <nav className="footer-legal" aria-label="Legal">
+          <Link to="/about">About</Link>
           <Link to="/privacy">Privacy</Link>
           <Link to="/terms">Terms</Link>
         </nav>

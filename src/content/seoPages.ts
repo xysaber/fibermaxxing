@@ -30,6 +30,13 @@ export type SeoAnswer = {
   note?: string
 }
 
+/** External reference shown in the guide's Sources block. */
+export type SeoSource = {
+  label: string
+  url: string
+  note?: string
+}
+
 export type SeoSection = {
   heading: string
   paragraphs: string[]
@@ -73,6 +80,12 @@ export type SeoPage = {
   quickPills?: SeoQuickPill[]
   /** Optional comparison table (e.g. oatmeal dry vs cooked portions). */
   portionTable?: SeoPortionTable
+  /** Optional reference table rendered after the key-figures band. */
+  dataTable?: SeoPortionTable
+  /** ISO date (YYYY-MM-DD) the guide's figures and copy were last reviewed. */
+  updated?: string
+  /** External references for the figures on this guide. */
+  sources?: SeoSource[]
   faqs: SeoFaq[]
   related: string[]
   /** Only published pages are routed + sitemap’d */
