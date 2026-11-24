@@ -174,6 +174,24 @@ for (const page of legalPages) {
   console.log('prerender', `/${page.slug}`)
 }
 
+// About / editorial standards
+const aboutPage = {
+  slug: 'about',
+  title: 'About GetFibermaxxing & Editorial Standards',
+  description:
+    'Who runs GetFibermaxxing, where the fiber numbers come from (USDA FoodData Central), how guides are reviewed, and what this site is not.',
+}
+{
+  const html = injectHead(shell, {
+    title: aboutPage.title,
+    description: aboutPage.description,
+    path: '/about',
+    faqs: [],
+  }).replace('<div id="root"></div>', `<div id="root">${renderPage('/about')}</div>`)
+  writePageHtml(aboutPage.slug, html)
+  console.log('prerender /about')
+}
+
 // 404 page for Cloudflare
 {
   const html = injectHead(shell, {
@@ -199,8 +217,9 @@ const urls = [
   `  <url>\n    <loc>${siteUrl}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>`,
   ...pages.map(
     (p) =>
-      `  <url>\n    <loc>${siteUrl}/${p.slug}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`,
+      `  <url>\n    <loc>${siteUrl}/${p.slug}</loc>\n${p.updated ? `    <lastmod>${p.updated}</lastmod>\n` : ''}    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`,
   ),
+  `  <url>\n    <loc>${siteUrl}/about</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
   ...legalPages.map(
     (p) =>
       `  <url>\n    <loc>${siteUrl}/${p.slug}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>`,
@@ -209,4 +228,4 @@ const urls = [
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`
 writeFileSync(join(dist, 'sitemap.xml'), sitemap)
 writeFileSync(join(root, 'public/sitemap.xml'), sitemap)
-console.log('wrote sitemap.xml (%d urls)', pages.length + 1 + legalPages.length)
+console.log('wrote sitemap.xml (%d urls)', pages.length + 2 + legalPages.length)
