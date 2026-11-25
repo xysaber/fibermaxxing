@@ -1,0 +1,1083 @@
+/*
+  Layout v2 (2026-11-25), approved Claude Design boards 13–23.
+  Rules: no orphan cards, one background per section, data tables span the
+  content width, quick-answer stats get one column per figure (≤5) and turn
+  into a divided list on phones, and the calculator looks the same everywhere.
+  Loaded last so it wins over the older layered rules in index.css / App.css.
+*/
+
+/* ---------- Guide hero: title left, quick answer right (board 19) ---------- */
+.app > .hero.seo-hero {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 24px 48px;
+  padding: 32px 0 56px;
+  margin: 0;
+}
+
+.app > .hero.seo-hero .hero-copy {
+  gap: 16px;
+  padding-top: 0;
+}
+
+.app > .hero.seo-hero .hero-copy h1 {
+  font-size: 48px;
+  line-height: 1.06;
+}
+
+.app > .hero.seo-hero .lede {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.app > .hero.seo-hero .seo-callout {
+  margin: 0;
+  max-width: none;
+}
+
+.app > .hero.seo-hero .hero-cta-row {
+  margin: 4px 0 0;
+}
+
+.app > .hero.seo-hero .hero-cta-row .btn-ghost.hero-cta {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--leaf);
+  border-radius: 8px;
+  color: var(--leaf);
+  font-size: 15px;
+  font-weight: 600;
+  gap: 6px;
+}
+
+/* Hub and 5-figure pages: title full width, quick answer card full width (boards 16, 18) */
+.app > .hero.seo-hero--wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.app > .hero.seo-hero--wide .hero-copy {
+  max-width: 820px;
+}
+
+.app > .hero.seo-hero--wide .hero-copy h1 {
+  font-size: 52px;
+  line-height: 1.05;
+}
+
+.app > .hero.seo-hero .quick-answer {
+  padding: 28px;
+  gap: 18px;
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.quick-answer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quick-answer--split {
+  display: grid !important;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 32px !important;
+  align-items: center;
+}
+
+.app > .hero.seo-hero .quick-answer-stats {
+  grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+}
+
+.quick-answer-stats[data-count='1'] { --n: 1; }
+.quick-answer-stats[data-count='2'] { --n: 2; }
+.quick-answer-stats[data-count='3'] { --n: 3; }
+.quick-answer-stats[data-count='4'] { --n: 4; }
+.quick-answer-stats[data-count='5'] { --n: 5; }
+
+.app > .hero.seo-hero .quick-answer-stats li {
+  padding: 14px 16px;
+  gap: 4px;
+}
+
+.app > .hero.seo-hero .quick-answer-stats span {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.app > .hero.seo-hero .quick-answer-stats strong {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+/* ---------- Calculator band: same panel as the home hero (boards 21–22) ---------- */
+.app > .calc-band {
+  margin: 0;
+  padding: 72px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 24px 56px;
+  align-items: start;
+}
+
+.calc-band-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.calc-band-copy h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.calc-band-copy .lede {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.calc-band-copy .hero-proof {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.calc-band-copy .hero-proof li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calc-band-copy .hero-proof li::before {
+  content: '';
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--leaf-tint)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.5 2.5L14 7.5' fill='none' stroke='%231f6b45' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 20px no-repeat;
+}
+
+.app > .calc-band > .panel-calc {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 1px 0 rgba(19, 32, 26, 0.04), 0 18px 40px rgba(19, 32, 26, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: none;
+}
+
+.app > .calc-band > .results {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* Panel heading on guide pages: small eyebrow, same level as "Quick answer" */
+.panel-calc .panel-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--leaf);
+}
+
+/* Solid button everywhere — no glow ring */
+.btn-calc.btn-calc--ready:not(:disabled) {
+  box-shadow: none;
+  animation: none;
+}
+
+.panel-calc .actions .btn-calc {
+  width: 100%;
+  height: 52px;
+  border-radius: 10px;
+}
+
+/* Clear sits on the meal label row */
+.meal-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.meal-clear {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: 500 14px var(--font-body);
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.meal-clear:hover {
+  color: var(--leaf);
+}
+
+/* ---------- Data tables: full content width (board 19) ---------- */
+.app > .seo-data-table-wrap {
+  margin: 0;
+  padding: 0 0 72px;
+  max-width: none;
+}
+
+.data-table-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+
+.data-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.data-table-v2 .data-table-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.data-table-note {
+  margin: 0;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+.data-table-v2 .seo-portion-table-wrap {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.data-table-v2 table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.data-table-v2 th,
+.data-table-v2 td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #eeebe3;
+  white-space: nowrap;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 15px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.data-table-v2 thead th {
+  padding: 12px 20px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.data-table-v2 tbody th {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.data-table-v2 td {
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table-v2 tbody tr:first-child {
+  background: none;
+}
+
+.data-table-v2 tbody tr:last-child th,
+.data-table-v2 tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table-v2 .col-num {
+  text-align: right;
+}
+
+.data-table-v2 thead .col-fiber {
+  width: 34%;
+}
+
+.fiber-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fiber-cell b {
+  flex: none;
+  min-width: 56px;
+  text-align: right;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fiber-bar {
+  flex: 1;
+  min-width: 60px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--leaf-tint);
+  overflow: hidden;
+  display: block;
+}
+
+.fiber-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--acid);
+}
+
+.app > .seo-data-table-wrap .seo-portion-table-links {
+  margin-top: 16px;
+}
+
+/* ---------- Hub: category panels (board 16) ---------- */
+.app > .seo-hub-groups {
+  margin: 0;
+  padding: 64px 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hub-groups-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hub-groups-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.hub-jump {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hub-jump a {
+  height: 36px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.hub-jump a:hover {
+  border-color: var(--line-strong);
+}
+
+.hub-jump a span {
+  color: var(--ink-faint);
+}
+
+.category-panel {
+  scroll-margin-top: 24px;
+  padding: 28px 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.category-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.category-panel-head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.category-panel-head h3 span {
+  margin-left: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-faint);
+}
+
+.category-panel-head p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.category-panel-head p b {
+  color: var(--ink);
+}
+
+/* Two balanced columns, filled top to bottom: 15 foods → 8 + 7, never a lone card */
+.category-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 48px;
+}
+
+.category-list li {
+  break-inside: avoid;
+}
+
+.category-list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px 64px;
+  gap: 16px;
+  align-items: center;
+  padding: 13px 4px;
+  border-top: 1px solid #eeebe3;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.category-list a:hover .category-food b {
+  color: var(--leaf);
+}
+
+.category-food {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.category-food b {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.category-food span {
+  font-size: 13px;
+  color: var(--ink-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-fiber {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Home: Fiber guides, 4 × 2 grid (board 14) ---------- */
+.app > .guides-v2 {
+  margin: 0;
+  padding: 72px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.guides-v2-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.guides-v2-head h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.guides-v2-head p {
+  margin: 0;
+  font-size: 17px;
+  color: var(--ink-soft);
+}
+
+.guides-v2-all {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--leaf);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.guides-v2-all:hover {
+  text-decoration: underline;
+}
+
+.guides-v2-all--button {
+  display: none;
+}
+
+.guides-v2-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.guides-v2-card {
+  height: 100%;
+  min-height: 212px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.12s;
+}
+
+.guides-v2-card:hover {
+  border-color: var(--line-strong);
+}
+
+.guides-v2-tag {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  background: #edebe3;
+}
+
+[data-group='foods'] .guides-v2-tag {
+  color: var(--leaf);
+  background: var(--leaf-tint);
+}
+
+[data-group='meals'] .guides-v2-tag {
+  color: var(--amber);
+  background: var(--amber-tint);
+}
+
+.guides-v2-stat {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--leaf);
+}
+
+.guides-v2-card strong {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.guides-v2-blurb {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.guides-v2-more {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--leaf);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 960px) {
+  .app > .hero.seo-hero,
+  .app > .calc-band,
+  .app > .calc-band > .results {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quick-answer--split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px !important;
+  }
+
+  .app > .hero.seo-hero .hero-copy h1,
+  .app > .hero.seo-hero--wide .hero-copy h1 {
+    font-size: 40px;
+  }
+
+  .app > .calc-band {
+    padding: 48px 0;
+  }
+
+  .guides-v2-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-list {
+    columns: 1;
+  }
+
+  /* Wide tables scroll sideways with the first column pinned (board 20) */
+  .data-table-v2 .seo-portion-table-wrap {
+    overflow-x: auto;
+  }
+
+  .data-table-v2 tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--surface);
+  }
+
+  .data-table-v2 thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+}
+
+/* ---------- Phone (boards 15, 17, 20, 23) ---------- */
+@media (max-width: 640px) {
+  /* Hero order: title, quick answer, then the intro copy */
+  .app > .hero.seo-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px 0 32px;
+  }
+
+  .app > .hero.seo-hero .hero-copy {
+    display: contents;
+  }
+
+  .app > .hero.seo-hero > * {
+    width: 100%;
+    max-width: none;
+  }
+
+  .app > .hero.seo-hero .breadcrumb { order: 1; }
+  .app > .hero.seo-hero .hero-copy h1 { order: 2; }
+  .app > .hero.seo-hero .guide-byline { order: 3; }
+  .app > .hero.seo-hero .quick-answer { order: 4; }
+  .app > .hero.seo-hero .lede { order: 5; }
+  .app > .hero.seo-hero .seo-callout { order: 6; }
+
+  /* The calculator is right below the hero on phones; no jump button needed */
+  .app > .hero.seo-hero .hero-cta-row {
+    display: none;
+  }
+
+  .app > .hero.seo-hero .hero-copy h1,
+  .app > .hero.seo-hero--wide .hero-copy h1 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .app > .hero.seo-hero .quick-answer {
+    padding: 18px;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  /* Stats: divided list, works for any count */
+  .app > .hero.seo-hero .quick-answer-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .app > .hero.seo-hero .quick-answer-stats li {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: none;
+  }
+
+  .app > .hero.seo-hero .quick-answer-stats span {
+    font-size: 14px;
+  }
+
+  .app > .hero.seo-hero .quick-answer-stats strong {
+    order: 2;
+    font-size: 20px;
+    white-space: nowrap;
+  }
+
+  .app > .hero.seo-hero .quick-answer-stats em {
+    display: none;
+  }
+
+  .app > .calc-band {
+    padding: 32px 0 40px;
+    gap: 16px;
+  }
+
+  .calc-band-copy {
+    padding-top: 0;
+    gap: 0;
+  }
+
+  .calc-band-copy .hero-kicker,
+  .calc-band-copy .lede,
+  .calc-band-copy .hero-proof {
+    display: none;
+  }
+
+  .calc-band-copy h2 {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .app > .calc-band > .panel-calc {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  /* Calculator on phones: labels shown, chips wrap (supersedes board 04) */
+  .seg-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .seg-row .seg:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .seg-label {
+    display: block;
+  }
+
+  .panel-calc .starter-chips {
+    flex-wrap: wrap;
+    overflow: visible;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .data-table-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .data-table-v2 .data-table-head h2 {
+    font-size: 22px;
+  }
+
+  .data-table-note {
+    text-align: left;
+  }
+
+  .data-table-v2 th,
+  .data-table-v2 td {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .data-table-v2 thead th {
+    padding: 10px 14px;
+  }
+
+  /* No bars on phones: the number alone, in leaf green */
+  .fiber-bar {
+    display: none;
+  }
+
+  .fiber-cell b {
+    min-width: 0;
+    color: var(--leaf);
+  }
+
+  .data-table-v2 thead .col-fiber,
+  .data-table-v2 td.col-fiber {
+    width: auto;
+    text-align: right;
+  }
+
+  .data-table-v2 .fiber-cell {
+    justify-content: flex-end;
+  }
+
+  .app > .seo-data-table-wrap {
+    padding-bottom: 48px;
+  }
+
+  /* Hub */
+  .app > .seo-hub-groups {
+    padding: 32px 0;
+    gap: 16px;
+  }
+
+  .hub-groups-head h2 {
+    font-size: 24px;
+  }
+
+  .hub-jump {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-right: -16px;
+    padding-right: 16px;
+    scrollbar-width: none;
+  }
+
+  .hub-jump a {
+    flex: none;
+    height: 34px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .category-panel {
+    padding: 18px 16px 6px;
+    border-radius: 16px;
+    gap: 4px;
+  }
+
+  .category-panel-head h3 {
+    font-size: 20px;
+  }
+
+  .category-panel-head p {
+    display: none;
+  }
+
+  .category-list a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'name fiber'
+      'name bar';
+    gap: 4px 12px;
+    padding: 12px 0;
+  }
+
+  .category-food { grid-area: name; }
+  .category-fiber { grid-area: fiber; font-size: 15px; color: var(--leaf); }
+
+  .category-list .fiber-bar {
+    display: block;
+    grid-area: bar;
+    width: 72px;
+    min-width: 72px;
+    height: 6px;
+    justify-self: end;
+  }
+
+  .category-food b {
+    font-size: 15px;
+  }
+
+  /* Home guides: grouped compact rows */
+  .app > .guides-v2 {
+    padding: 48px 0;
+    gap: 24px;
+  }
+
+  .guides-v2-head h2 {
+    font-size: 28px;
+  }
+
+  .guides-v2-head p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .guides-v2-head .guides-v2-all {
+    display: none;
+  }
+
+  .guides-v2-all--button {
+    display: flex;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--leaf);
+    border-radius: 8px;
+  }
+
+  .guides-v2-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .guides-v2-item[data-group-start]::before {
+    content: attr(data-group-start);
+    display: block;
+    margin: 14px 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .guides-v2-item[data-group-start]:first-child::before {
+    margin-top: 0;
+  }
+
+  .guides-v2-item[data-group='foods']::before {
+    color: var(--leaf);
+  }
+
+  .guides-v2-item[data-group='meals']::before {
+    color: var(--amber);
+  }
+
+  .guides-v2-card {
+    min-height: 0;
+    height: auto;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    grid-template-areas:
+      'stat title'
+      'stat blurb';
+    gap: 4px 14px;
+    align-items: center;
+  }
+
+  .guides-v2-tag,
+  .guides-v2-more {
+    display: none;
+  }
+
+  .guides-v2-stat {
+    grid-area: stat;
+    margin: 0;
+    font-size: 20px;
+    white-space: nowrap;
+  }
+
+  .guides-v2-card strong {
+    grid-area: title;
+    font-size: 16px;
+  }
+
+  .guides-v2-blurb {
+    grid-area: blurb;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+/* Quick answer value sits inline with its sentence: "~8 g fiber in 1 cup (123 g)" (board 19) */
+.app > .hero.seo-hero .seo-answer:not(.seo-answer--phrase) {
+  display: block;
+}
+
+.app > .hero.seo-hero .seo-answer:not(.seo-answer--phrase) .seo-answer-value,
+.app > .hero.seo-hero .seo-answer:not(.seo-answer--phrase) .seo-answer-detail {
+  display: inline;
+}
+
+.app > .hero.seo-hero .seo-answer:not(.seo-answer--phrase) .seo-answer-value {
+  margin: 0 10px 0 0;
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--leaf);
+  white-space: nowrap;
+}
+
+.app > .hero.seo-hero .seo-answer:not(.seo-answer--phrase) .seo-answer-value small {
+  margin-left: 0.2em;
+  font-size: inherit;
+  color: inherit;
+}
+
+.app > .hero.seo-hero .seo-answer-detail {
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.quick-answer-note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 640px) {
+  .app > .hero.seo-hero .seo-answer:not(.seo-answer--phrase) .seo-answer-value {
+    font-size: 26px;
+  }
+
+  .app > .hero.seo-hero .seo-answer-detail {
+    font-size: 16px;
+  }
+}
+
+.app > .hero.seo-hero .seo-answer,
+.app > .hero.seo-hero .seo-answer-detail {
+  max-width: none;
+}

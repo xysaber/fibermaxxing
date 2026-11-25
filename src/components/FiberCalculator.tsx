@@ -676,7 +676,14 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         ) : null}
 
         <div className="field field-meal" id={anchorOnInput ? 'calculator' : undefined}>
-          <label htmlFor="meal">What did you eat today?</label>
+          <div className="meal-label-row">
+            <label htmlFor="meal">What did you eat today?</label>
+            {meal || result || mealError ? (
+              <button type="button" className="meal-clear" onClick={onClear}>
+                Clear
+              </button>
+            ) : null}
+          </div>
           <div className={`meal-box-wrap${showTypewriter ? ' meal-box-wrap--demo' : ''}`}>
             <textarea
               ref={mealInputRef}
@@ -778,11 +785,6 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
           >
             {meal.trim() ? 'Calculate fiber' : 'Type a meal or pick an example'}
           </button>
-          {meal || result || mealError ? (
-            <button type="button" className="btn btn-text" onClick={onClear}>
-              Clear
-            </button>
-          ) : null}
         </div>
         <p className="calc-footnote">Free, no signup. Estimates only, not medical advice.</p>
       </form>

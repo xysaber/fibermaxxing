@@ -6,6 +6,7 @@ import { LegalPage } from './pages/LegalPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { SeoLandingPage } from './pages/SeoLandingPage'
 import './App.css'
+import './layout-v2.css'
 
 export default function App() {
   return (

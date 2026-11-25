@@ -36,6 +36,12 @@ function focusCalculator(e: MouseEvent<HTMLAnchorElement>) {
   window.setTimeout(() => meal?.focus({ preventScroll: true }), 280)
 }
 
+function cellNumber(text: string) {
+  const m = text.replace(/,/g, '').match(/\d+(\.\d+)?/)
+  return m ? Number(m[0]) : 0
+}
+
+/** Full-width data table (design board 19): numbers right-aligned, a bar on the Fiber column. */
 function PortionComparison({
   table,
   headingId = 'portion-table-heading',
@@ -45,15 +51,24 @@ function PortionComparison({
   headingId?: string
   className?: string
 }) {
+  const fiberIdx = table.columns.findIndex((c, i) => i > 0 && /^fiber$/i.test(c.trim()))
+  const max = fiberIdx > 0 ? Math.max(...table.rows.map((r) => cellNumber(r[fiberIdx] ?? ''))) : 0
+  const isText = (i: number) => i === 0 || /^(portion|serving)$/i.test(table.columns[i]?.trim() ?? '')
+  const colClass = (i: number) =>
+    i === fiberIdx && max > 0 ? 'col-fiber' : isText(i) ? undefined : 'col-num'
+
   return (
-    <section className={className} aria-labelledby={headingId}>
-      <h2 id={headingId}>{table.caption}</h2>
-      <div className="seo-portion-table-wrap">
+    <section className={`${className} data-table-v2`} aria-labelledby={headingId}>
+      <div className="data-table-head">
+        <h2 id={headingId}>{table.caption}</h2>
+        {table.note ? <p className="data-table-note">{table.note}</p> : null}
+      </div>
+      <div className="seo-portion-table-wrap data-table-scroll">
         <table>
           <thead>
             <tr>
-              {table.columns.map((c) => (
-                <th key={c} scope="col">
+              {table.columns.map((c, i) => (
+                <th key={c} scope="col" className={colClass(i)}>
                   {c}
                 </th>
               ))}
@@ -67,8 +82,19 @@ function PortionComparison({
                     <th key={i} scope="row">
                       {cell}
                     </th>
+                  ) : i === fiberIdx && max > 0 ? (
+                    <td key={i} className="col-fiber">
+                      <span className="fiber-cell">
+                        <b>{cell}</b>
+                        <span className="fiber-bar" aria-hidden="true">
+                          <i style={{ width: `${Math.max(4, Math.round((cellNumber(cell) / max) * 100))}%` }} />
+                        </span>
+                      </span>
+                    </td>
                   ) : (
-                    <td key={i}>{cell}</td>
+                    <td key={i} className={colClass(i)}>
+                      {cell}
+                    </td>
                   ),
                 )}
               </tr>
@@ -78,6 +104,57 @@ function PortionComparison({
       </div>
     </section>
   )
+}
+
+type HubItem = { to: string; name: string; serving: string; fiber: string }
+
+/** Hub: one panel per category, foods as a two-column list (design board 16) — no orphan cards. */
+function CategoryPanel({ id, title, items }: { id: string; title: string; items: HubItem[] }) {
+  if (items.length === 0) return null
+  const max = Math.max(...items.map((it) => cellNumber(it.fiber)))
+  const top = items.reduce((a, b) => (cellNumber(b.fiber) > cellNumber(a.fiber) ? b : a))
+  return (
+    <section className="category-panel" id={id} aria-labelledby={`${id}-heading`}>
+      <div className="category-panel-head">
+        <h3 id={`${id}-heading`}>
+          {title} <span>{items.length} foods</span>
+        </h3>
+        <p>
+          Most per serving:{' '}
+          <b>
+            {top.name}, {top.fiber}
+          </b>
+        </p>
+      </div>
+      <ul className="category-list">
+        {items.map((it) => (
+          <li key={it.to}>
+            <Link to={it.to}>
+              <span className="category-food">
+                <b>{it.name}</b>
+                <span>{it.serving}</span>
+              </span>
+              <span className="fiber-bar" aria-hidden="true">
+                <i style={{ width: `${Math.max(4, Math.round((cellNumber(it.fiber) / max) * 100))}%` }} />
+              </span>
+              <b className="category-fiber">{it.fiber}</b>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+const CALC_CHECKS = [
+  'Prefilled with an example you can edit',
+  'Matches each food to USDA FoodData Central',
+  'Same target and calculator as the home page',
+]
+
+function calculatorHeading(h1: string) {
+  const m = h1.match(/^How much fiber is in (.+)\?$/i)
+  return m ? `Add ${m[1]} to a meal and see your total` : 'Estimate a meal and see your total'
 }
 
 export function SeoLandingPage() {
@@ -135,24 +212,50 @@ export function SeoLandingPage() {
   const facts = page.facts ?? []
   const heroLede = page.intro?.[0]?.trim() || null
 
-  const oatmeal = page.slug === 'oatmeal'
-  const calculatorJump = page.calculatorCtaNote ? (
+  const wideHero = page.kind === 'hub' || facts.length > 4 || Boolean(page.callout)
+  const calculatorJump = (
     <div className="hero-cta-row">
-      {/* Ghost on desktop, where the calculator is already on screen.
-          Mobile restores the primary fill — the panel sits below the fold. */}
       <a className="btn btn-ghost hero-cta" href="#calculator" onClick={focusCalculator}>
-        {page.calculatorCta ?? 'Estimate this meal'}
+        {page.calculatorCta ?? 'Estimate this meal'} <span aria-hidden="true">↓</span>
       </a>
-      <p className="hero-cta-note">{page.calculatorCtaNote}</p>
+      {page.calculatorCtaNote ? <p className="hero-cta-note">{page.calculatorCtaNote}</p> : null}
     </div>
-  ) : (
-    <a
-      className={useBands ? 'hero-method-link hero-calc-link' : 'hero-method-link'}
-      href="#calculator"
-      onClick={focusCalculator}
-    >
-      {page.calculatorCta ?? 'Estimate this meal'}
-    </a>
+  )
+
+  const hubItems = (slugs: string[]): HubItem[] =>
+    slugs
+      .map((s) => GUIDE_INDEX_MAP[s])
+      .filter((g): g is NonNullable<typeof g> => Boolean(g?.name))
+      .map((g) => ({ to: `/${g.slug}`, name: g.name!, serving: g.serving ?? '', fiber: g.stat ?? '' }))
+
+  // Calculator: same width and style as the home page, in its own band (design boards 21–22).
+  // The hub keeps its food list first (board 16), so its calculator follows the table.
+  const calcBand = (
+      <section className="calc-band" aria-labelledby="calc-band-heading">
+        <div className="calc-band-copy">
+          <p className="hero-kicker">Free fiber calculator · no signup</p>
+          <h2 id="calc-band-heading">{calculatorHeading(page.h1)}</h2>
+          <p className="lede">
+            Type what you ate the way you’d say it. Edit any portion before you trust the total.
+          </p>
+          <ul className="hero-proof">
+            {CALC_CHECKS.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </div>
+
+        <FiberCalculator
+          key={page.slug}
+          initialSex={page.defaultSex}
+          initialAge={page.defaultAge}
+          initialMode={page.defaultMode}
+          initialMeal={page.defaultMeal}
+          examples={page.examples?.length ? page.examples : [page.defaultMeal]}
+          starters={page.quickPills}
+          panelLabel="Estimate this meal"
+        />
+      </section>
   )
 
   const relatedCards = [
@@ -179,7 +282,7 @@ export function SeoLandingPage() {
       <SiteHeader />
 
       <section
-        className={['hero', useBands ? 'seo-split' : '', oatmeal ? 'hero-oatmeal' : '']
+        className={['hero', useBands ? 'seo-split' : '', 'seo-hero', wideHero ? 'seo-hero--wide' : '']
           .filter(Boolean)
           .join(' ')}
       >
@@ -195,24 +298,6 @@ export function SeoLandingPage() {
 
           {page.updated ? <GuideByline updated={page.updated} /> : null}
 
-          {page.answer || facts.length > 0 ? (
-            <div className="quick-answer">
-              <p className="quick-answer-kicker">Quick answer</p>
-              {page.answer ? <SeoAnswer answer={page.answer} showNote={false} /> : null}
-              {facts.length > 0 ? (
-                <ul className="quick-answer-stats" data-count={Math.min(4, facts.length)}>
-                  {facts.map((f) => (
-                    <li key={f.label}>
-                      <span>{f.label}</span>
-                      <strong>{f.value}</strong>
-                      {f.note ? <em>{f.note}</em> : null}
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </div>
-          ) : null}
-
           {heroLede ? <p className="lede">{heroLede}</p> : null}
 
           {page.callout ? (
@@ -222,53 +307,62 @@ export function SeoLandingPage() {
             </aside>
           ) : null}
 
-          {page.portionTable && !oatmeal ? <PortionComparison table={page.portionTable} /> : null}
-
-          {!oatmeal ? calculatorJump : null}
+          {calculatorJump}
         </div>
 
-        {/* Same source order as before (answer, table, jump, calculator). Desktop
-            grid keeps the calculator in the right column; mobile flex lifts it
-            under the ~4g answer and drops the portion table below the form. */}
-        {oatmeal && page.portionTable ? <PortionComparison table={page.portionTable} /> : null}
-        {oatmeal ? calculatorJump : null}
-
-        <FiberCalculator
-          key={page.slug}
-          initialSex={page.defaultSex}
-          initialAge={page.defaultAge}
-          initialMode={page.defaultMode}
-          initialMeal={page.defaultMeal}
-          examples={page.examples?.length ? page.examples : [page.defaultMeal]}
-          starters={page.quickPills}
-          panelLabel="Estimate this meal — or paste your own"
-          anchorOnInput={oatmeal}
-        />
+        {page.answer || facts.length > 0 ? (
+          <div
+            className={`quick-answer${wideHero && facts.length <= 4 ? ' quick-answer--split' : ''}`}
+          >
+            <div className="quick-answer-main">
+              <p className="quick-answer-kicker">Quick answer</p>
+              {page.answer ? <SeoAnswer answer={page.answer} showNote={false} /> : null}
+            </div>
+            {facts.length > 0 ? (
+              <ul className="quick-answer-stats" data-count={Math.min(5, facts.length)}>
+                {facts.map((f) => (
+                  <li key={f.label}>
+                    <span>{f.label}</span>
+                    <strong>{f.value}</strong>
+                    {f.note ? <em>{f.note}</em> : null}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {page.answer?.note ? <p className="quick-answer-note">{page.answer.note}</p> : null}
+          </div>
+        ) : null}
       </section>
 
+      {page.kind !== 'hub' ? calcBand : null}
+
+      {page.guideGroups?.length ? (
+        <section className="seo-hub-groups" aria-labelledby="hub-groups-heading">
+          <div className="hub-groups-head">
+            <h2 id="hub-groups-heading">Browse by category</h2>
+            <nav className="hub-jump" aria-label="Categories">
+              {page.guideGroups.map((group, i) => (
+                <a key={group.title} href={`#group-${i}`}>
+                  {group.title} <span>{hubItems(group.items).length}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+          {page.guideGroups.map((group, i) => (
+            <CategoryPanel key={group.title} id={`group-${i}`} title={group.title} items={hubItems(group.items)} />
+          ))}
+        </section>
+      ) : null}
+
       {page.portionTable ? (
-        <div className="seo-portion-follow">
-          {page.portionTable.note ? <p className="seo-portion-table-note">{page.portionTable.note}</p> : null}
+        <div className="seo-data-table-wrap">
+          <PortionComparison table={page.portionTable} />
           <p className="seo-portion-table-links">
             Prefill a portion in the calculator, then add toppings — or open{' '}
             <a href="/chia-seeds">chia seeds</a>,{' '}
             <a href="/high-fiber-breakfast">high-fiber breakfast</a>, or the{' '}
             <a href="/">daily calculator</a> for a full bowl estimate.
           </p>
-        </div>
-      ) : null}
-
-
-      {page.guideGroups?.length ? (
-        <div className="seo-hub-groups">
-          {page.guideGroups.map((group, i) => (
-            <GuideCards
-              key={group.title}
-              id={`group-${i}`}
-              title={group.title}
-              items={group.items.map(cardFor).filter((c): c is NonNullable<typeof c> => Boolean(c))}
-            />
-          ))}
         </div>
       ) : null}
 
@@ -279,9 +373,10 @@ export function SeoLandingPage() {
             headingId="data-table-heading"
             className="seo-portion-table seo-data-table"
           />
-          {page.dataTable.note ? <p className="seo-portion-table-note">{page.dataTable.note}</p> : null}
         </div>
       ) : null}
+
+      {page.kind === 'hub' ? calcBand : null}
 
       {(() => {
         const faq = <FaqBlock title="Questions" faqs={page.faqs} />

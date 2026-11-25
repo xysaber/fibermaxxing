@@ -422,6 +422,8 @@ const index = [
     kind: 'food',
     category: f.cat,
     title: `${cap(f.display.toLowerCase())} fiber`,
+    name: cap(f.display.toLowerCase()),
+    serving: f.primary.label,
     blurb: `${fmt(f.primary.fiber)} g per ${f.primary.label}, from USDA data.`,
     stat: `${fmt(f.primary.fiber)} g`,
   })),

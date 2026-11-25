@@ -105,6 +105,9 @@ export type GuideIndexEntry = {
   kind: 'food' | 'hub' | 'audience'
   category?: string
   title: string
+  /** Food pages: display name and the serving the stat refers to. */
+  name?: string
+  serving?: string
   blurb: string
   stat?: string
 }
