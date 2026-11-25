@@ -29,9 +29,13 @@ for (const path of ['index', ...pages.map(p => p.slug)]) {
     assert.equal((html.match(/<article /g) || []).length, pages.find(p => p.slug === path).sections.length)
     assert.match(html, /aria-label="On this page"/)
   }
-  for (const block of parseJsonLd(html)) {
-    assert.notEqual(block['@type'], 'Article')
-    for (const node of block['@graph'] || []) assert.notEqual(node['@type'], 'Article')
+  // Guides carry one Article (byline + dateModified); home carries none.
+  const articles = parseJsonLd(html).filter((b) => b['@type'] === 'Article')
+  if (path === 'index') assert.equal(articles.length, 0)
+  else {
+    assert.equal(articles.length, 1)
+    assert.equal(articles[0].author.name, 'Mira Xin')
+    assert.equal(articles[0].dateModified, pages.find((p) => p.slug === path).updated)
   }
   console.log('Static HTML verified:', path)
 }
@@ -105,28 +109,12 @@ for (const page of pages) {
 const indexBlocks = parseJsonLd(readFileSync('dist/index.html', 'utf8'))
 const indexFaq = indexBlocks.find((b) => b['@type'] === 'FAQPage')
 assert.ok(indexFaq, 'home should keep FAQPage JSON-LD')
-assert.deepEqual(indexFaq, {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What is fibermaxxing?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Fibermaxxing means intentionally increasing daily dietary fiber — often toward stretch targets above standard adequate intake.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How much fiber should I eat per day?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Commonly cited U.S. Adequate Intake: about 25g/day for women 19–50 and 38g/day for men 19–50 (lower after 50).',
-      },
-    },
-  ],
-})
+// Home FAQPage must mirror the visible FAQ block (same source: src/content/homeFaqs.ts).
+{
+  const indexHtml = readFileSync('dist/index.html', 'utf8')
+  assert.ok(indexFaq.mainEntity.length >= 4)
+  for (const q of indexFaq.mainEntity) assert.ok(indexHtml.includes(`>${q.name}<`), `visible FAQ missing: ${q.name}`)
+}
 assert.equal(indexBlocks.filter((b) => b['@graph']).length, 1, 'home should have one extra JSON-LD graph')
 assert.deepEqual(
   indexBlocks.find((b) => b['@graph']),
@@ -147,12 +135,12 @@ assert.deepEqual(
   oatmealBlocks.find((b) => b['@type'] === 'WebApplication'),
   oatmealSchema,
 )
-assert.equal((oatmealHtml.match(/<script type="application\/ld\+json"/g) || []).length, 2)
+assert.equal((oatmealHtml.match(/<script type="application\/ld\+json"/g) || []).length, 3) // FAQPage + WebApplication + Article
 console.log('Oatmeal entity schema verified: WebApplication + FAQPage')
 
 for (const file of ['index.html', 'oatmeal.html', ...pages.map((p) => `${p.slug}.html`), 'privacy.html', 'terms.html', '404.html']) {
   const html = readFileSync(`dist/${file}`, 'utf8')
-  assert.doesNotMatch(html, /"@type":"Article"/)
+  if (['index.html', 'privacy.html', 'terms.html', '404.html'].includes(file)) assert.doesNotMatch(html, /"@type":"Article"/)
   assert.doesNotMatch(html, /https:\/\/getfibermaxxing\.com(?!\/)/)
 }
 for (const page of pages) {
