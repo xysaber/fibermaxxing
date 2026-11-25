@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Arrow } from './home/Arrow'
 
 export const HOME_GUIDES = [
   {
@@ -68,44 +69,40 @@ const GROUPS = [
 const GROUP_TITLE: Record<string, string> = Object.fromEntries(GROUPS.map((g) => [g.id, g.title]))
 
 /**
- * Home "Fiber guides" (design boards 14–15): one 4-column grid, 8 cards = 2 full rows.
- * Group shows as a tag on each card; phones list the cards under group headings.
+ * Home guides as an editorial two-column list with a big stat per guide
+ * (design boards 32–33). Every guide opens with the answer, then the calculator.
  */
 export function GuidesStrip() {
   return (
-    <section className="guides-v2" id="guides" aria-labelledby="guides-heading">
-      <div className="guides-v2-head">
-        <div>
-          <h2 id="guides-heading">Fiber guides</h2>
-          <p>Short answers first — then the same calculator with a relevant example meal.</p>
-        </div>
-        <Link className="guides-v2-all" to="/fiber-in-foods">
-          Browse fiber in 50 foods <span aria-hidden="true">→</span>
-        </Link>
+    <section className="hv-band hv-band--white" id="guides" aria-labelledby="guides-heading" data-reveal>
+      <div className="hv-head">
+        <h2 id="guides-heading" className="hv-h2">
+          Short answers,
+          <br />
+          then the calculator.
+        </h2>
+        <p className="hv-intro">
+          Eight guides that open with the answer, then let you check your own day.{' '}
+          <Link to="/fiber-in-foods">Browse fiber in 50 foods</Link>
+        </p>
       </div>
-      <ul className="guides-v2-grid">
-        {HOME_GUIDES.map((x, i) => (
-          <li
-            key={x.to}
-            className="guides-v2-item"
-            data-group={x.group}
-            data-group-start={i === 0 || HOME_GUIDES[i - 1].group !== x.group ? GROUP_TITLE[x.group] : undefined}
-          >
-            <Link className="guides-v2-card" to={x.to}>
-              <span className="guides-v2-tag">{GROUP_TITLE[x.group]}</span>
-              <span className="guides-v2-stat">{x.stat}</span>
-              <strong>{x.title}</strong>
-              <span className="guides-v2-blurb">{x.blurb}</span>
-              <span className="guides-v2-more">
-                Read guide <span aria-hidden="true">→</span>
+      <ul className="hv-guides">
+        {HOME_GUIDES.map((x) => (
+          <li key={x.to}>
+            <Link className="hv-guide" to={x.to}>
+              <span className="hv-guide-stat">{x.stat}</span>
+              <span className="hv-guide-copy">
+                <span className="hv-guide-group">{GROUP_TITLE[x.group]}</span>
+                <strong>{x.title}</strong>
+                <span>{x.blurb}</span>
+              </span>
+              <span className="hv-guide-arrow" aria-hidden="true">
+                <Arrow />
               </span>
             </Link>
           </li>
         ))}
       </ul>
-      <Link className="guides-v2-all guides-v2-all--button" to="/fiber-in-foods">
-        Browse fiber in 50 foods
-      </Link>
     </section>
   )
 }

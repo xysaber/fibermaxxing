@@ -1,0 +1,1074 @@
+/*
+  Home v3 (2026-11-25), approved Claude Design boards 28–33.
+  Editorial sections, fewer cards, bigger type contrast, and the motion spec:
+  · result ring + number count up 700 ms ease-out (FiberCalculator useCountUp)
+  · result rows rise one after another, 60 ms apart
+  · food bars grow from the left 600 ms, 50 ms apart
+  · sections rise 8 px / fade 400 ms once when scrolled into view (useReveal)
+  · nav underline grows from the left 200 ms
+  · buttons: arrow moves 3 px on hover, press scales to 98%
+  · page changes cross-fade (ViewTransitions)
+  · no entrance animation above the fold; reduced motion turns it all off
+  Loaded after layout-v2.css.
+*/
+
+:root {
+  --hv-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Header (all pages) ---------- */
+.topbar .site-nav a {
+  background-image: linear-gradient(var(--leaf), var(--leaf));
+  background-size: 0 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 3px;
+  text-decoration: none;
+  transition:
+    background-size 200ms ease,
+    color 150ms ease;
+}
+
+.topbar .site-nav-desktop a:hover,
+.topbar .site-nav-desktop a.is-active {
+  background-size: 100% 1.5px;
+  color: var(--ink);
+}
+
+.topbar .topbar-cta {
+  height: 42px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--leaf);
+  color: #fff;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.topbar .topbar-cta:hover {
+  background: #185638;
+  color: #fff;
+}
+
+.topbar .topbar-cta:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 960px) {
+  .app > .topbar {
+    gap: 8px;
+  }
+
+  .topbar .topbar-cta {
+    display: inline-flex;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+    margin-left: auto;
+  }
+
+  .topbar .topbar-menu {
+    margin-left: 0;
+  }
+
+  .topbar .brand-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .topbar .brand-mark {
+    font-size: 17px;
+  }
+
+  /* The panel repeats the CTA; the bar already shows it. */
+  .topbar .topbar-menu-cta {
+    display: none;
+  }
+}
+
+/* Page cross-fade (Chrome/Edge/Safari 18+). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease;
+}
+
+/* ---------- Shared home pieces ---------- */
+.home-v3 .hv-band {
+  position: relative;
+  margin: 0;
+  padding: 112px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  clip-path: inset(0 -100vmax);
+}
+
+.home-v3 .hv-band--white {
+  background: var(--surface);
+  box-shadow: 0 0 0 100vmax var(--surface);
+}
+
+.home-v3 .hv-band--paper {
+  background: var(--paper);
+  box-shadow: 0 0 0 100vmax var(--paper);
+}
+
+.home-v3 .hv-head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 16px 64px;
+  align-items: end;
+}
+
+.home-v3 .hv-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.home-v3 .hv-intro {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.home-v3 .hv-intro a {
+  color: var(--leaf);
+}
+
+.home-v3 .hv-num,
+.home-v3 .hv-big,
+.home-v3 .hv-food-g,
+.home-v3 .hv-guide-stat {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.home-v3 .hv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--leaf);
+  color: #fff;
+  font: 600 15px var(--font-body);
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease;
+}
+
+.home-v3 .hv-btn:hover {
+  background: #185638;
+}
+
+.home-v3 .hv-btn:active {
+  transform: scale(0.98);
+}
+
+.home-v3 .arrow {
+  flex: none;
+  transition: transform 150ms ease;
+}
+
+.home-v3 a:hover .arrow,
+.home-v3 button:hover .arrow {
+  transform: translateX(3px);
+}
+
+.home-v3 .hv-bar {
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  background: #eeebe3;
+  overflow: hidden;
+}
+
+.home-v3 .hv-bar > i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: #a9b5ae;
+}
+
+.home-v3 .hv-bar--high {
+  background: var(--leaf-tint);
+}
+
+.home-v3 .hv-bar--high > i,
+.home-v3 .hv-bar--food > i {
+  background: var(--acid);
+}
+
+/* ---------- Motion ---------- */
+@keyframes hv-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hv-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* The band's background stays put; only its content rises. */
+.home-v3 .reveal-armed > * {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.home-v3 .reveal-armed.is-in > * {
+  animation: hv-rise 400ms var(--hv-ease) both;
+}
+
+/* Bars grow when their section comes into view (or at once if it never hid). */
+.home-v3 .hv-grow {
+  transform-origin: left center;
+}
+
+.home-v3 .reveal-armed .hv-grow {
+  transform: scaleX(0);
+}
+
+.home-v3 .reveal-armed.is-in .hv-grow {
+  animation: hv-grow 600ms var(--hv-ease) both;
+}
+
+/* Calculator result rows: one after another, 60 ms apart. */
+.home-v3 .results .food-list-editable > li,
+.app .results .food-list-editable > li {
+  animation: hv-rise 400ms var(--hv-ease) both;
+  animation-delay: calc(300ms + var(--i, 0) * 60ms);
+}
+
+/* The ring is driven frame by frame by the count-up. */
+.results .score-hero .ring-wrap circle {
+  transition: none;
+}
+
+/* No entrance animation above the fold (LCP). */
+.home-v3 > .hero,
+.home-v3 > .hero > .hero-copy,
+.home-v3 > .hero > .panel-calc {
+  animation: none;
+}
+
+/* ---------- Hero ---------- */
+.home-v3 > .hero {
+  padding: 56px 0 96px;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px 64px;
+}
+
+.home-v3 > .hero > .hero-copy {
+  gap: 28px;
+}
+
+.home-v3 > .hero .hero-kicker {
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.home-v3 > .hero .hero-copy h1 {
+  font-size: 80px;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.home-v3 > .hero .hero-copy .lede {
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 540px;
+}
+
+.home-v3 .hv-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.home-v3 .hv-stats {
+  margin: 0;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.home-v3 .hv-stats > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.home-v3 .hv-stats dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.home-v3 .hv-stats dt {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+/* ---------- Same day, two ways ---------- */
+.home-v3 .hv-same-grid {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) 120px minmax(0, 1fr);
+  gap: 32px;
+}
+
+.home-v3 .hv-same-title {
+  grid-column: 1 / 3;
+}
+
+.home-v3 .hv-same-intro {
+  grid-column: 4 / 5;
+}
+
+.home-v3 .hv-same-cols {
+  padding-bottom: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-same-cols .is-high {
+  color: var(--leaf);
+}
+
+.home-v3 .hv-same-row {
+  align-items: baseline;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.home-v3 .hv-same-slot {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.home-v3 .hv-same-row p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.home-v3 .hv-same-low {
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-same-low s {
+  text-decoration: none;
+}
+
+.home-v3 .hv-same-high {
+  color: var(--ink);
+}
+
+.home-v3 .hv-same-plus {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--leaf);
+  white-space: nowrap;
+}
+
+.home-v3 .hv-same-plus--inline {
+  display: none;
+}
+
+.home-v3 .hv-same-total {
+  align-items: end;
+  padding-top: 28px;
+  border-top: 2px solid var(--ink);
+}
+
+.home-v3 .hv-same-total > .hv-same-slot,
+.home-v3 .hv-same-gain {
+  padding-bottom: 22px;
+}
+
+.home-v3 .hv-same-sum {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-v3 .hv-same-sum-label {
+  display: none;
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-same-sum.is-high .hv-same-sum-label {
+  color: var(--leaf);
+  font-weight: 600;
+}
+
+.home-v3 .hv-big {
+  font-size: 88px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--leaf);
+}
+
+.home-v3 .hv-big--muted {
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-big small {
+  font-size: 0.4em;
+}
+
+/* ---------- Food bars ---------- */
+.home-v3 .hv-foods {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-v3 .hv-food {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) 120px;
+  gap: 32px;
+  align-items: center;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.home-v3 .hv-food-name {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.home-v3 .hv-food-title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.home-v3 .hv-food:hover .hv-food-title {
+  color: var(--leaf);
+}
+
+.home-v3 .hv-food-portion {
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-bar--food {
+  height: 10px;
+}
+
+.home-v3 .hv-food-g {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: right;
+}
+
+.home-v3 .hv-food-g small {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+/* ---------- Guides ---------- */
+.home-v3 .hv-guides {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 64px;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-v3 .hv-guide {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr) 24px;
+  gap: 20px;
+  align-items: center;
+  padding: 24px 8px 24px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.home-v3 .hv-guide:hover {
+  background: #fbfaf6;
+}
+
+.home-v3 .hv-guide-stat {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--leaf);
+}
+
+.home-v3 .hv-guide-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-v3 .hv-guide-group {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-guide-copy strong {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.home-v3 .hv-guide-copy > span:last-child {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.home-v3 .hv-guide-arrow {
+  color: var(--leaf);
+}
+
+/* ---------- Your first week ---------- */
+.home-v3 .hv-head--week {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 16px 72px;
+}
+
+.home-v3 .hv-week-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 72px;
+  align-items: stretch;
+}
+
+.home-v3 .hv-week-days {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-v3 .hv-week-day {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+  align-content: center;
+  width: 100%;
+  padding: 16px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: none;
+  text-align: left;
+  font: inherit;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.home-v3 .hv-week-day:hover,
+.home-v3 .hv-week-day[aria-selected='true'] {
+  color: var(--ink);
+}
+
+.home-v3 .hv-week-day[aria-selected='true'] {
+  border-top-color: var(--ink);
+}
+
+.home-v3 .hv-week-d {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.home-v3 .hv-week-s {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.home-v3 .hv-week-a {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.home-v3 .hv-week-day[aria-selected='true'] .hv-week-d,
+.home-v3 .hv-week-day[aria-selected='true'] .hv-week-s,
+.home-v3 .hv-week-day[aria-selected='true'] .hv-week-a {
+  font-weight: 600;
+}
+
+.home-v3 .hv-week-day[aria-selected='true'] .hv-week-a {
+  color: var(--leaf);
+}
+
+.home-v3 .hv-mail {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px -24px rgba(19, 32, 26, 0.25);
+}
+
+.home-v3 .hv-mail-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #eeebe3;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-mail-head b {
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.home-v3 .hv-mail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px 24px;
+  animation: hv-rise 300ms var(--hv-ease) both;
+}
+
+.home-v3 .hv-mail-body h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.home-v3 .hv-mail-move {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--leaf-tint);
+}
+
+.home-v3 .hv-mail-move span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--leaf);
+}
+
+.home-v3 .hv-mail-move p,
+.home-v3 .hv-mail-why,
+.home-v3 .hv-mail-tip {
+  margin: 0;
+}
+
+.home-v3 .hv-mail-move p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.home-v3 .hv-mail-why {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.home-v3 .hv-mail-tip {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
+.home-v3 .hv-mail-tip b {
+  color: var(--ink);
+}
+
+.home-v3 .hv-mail-foot {
+  margin-top: auto;
+  padding: 20px 24px 24px;
+  border-top: 1px solid #eeebe3;
+  background: #fbfaf6;
+}
+
+.email-signup.email-signup--mail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.email-signup--mail .email-signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+}
+
+.email-signup--mail .email-signup-form input[type='email'] {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+}
+
+.email-signup--mail .email-signup-form .btn {
+  height: 48px;
+}
+
+.email-signup--mail .email-signup-copy {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+/* ---------- Plan cards, method, FAQ ---------- */
+.home-v3 > .plan-band {
+  margin: 0;
+  padding: 112px 0;
+}
+
+.home-v3 > .method-strip {
+  margin: 0;
+}
+
+.home-v3 > #faq {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 16px 64px;
+  max-width: none;
+  margin: 0;
+  padding: 112px 0;
+  background: var(--surface);
+}
+
+.home-v3 > #faq > .faq {
+  min-width: 0;
+}
+
+.home-v3 > #faq > h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.home-v3 > #faq > h2::after {
+  content: '.';
+}
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 960px) {
+  .home-v3 .hv-band,
+  .home-v3 > .plan-band,
+  .home-v3 > #faq {
+    padding: 56px 0;
+    gap: 24px;
+  }
+
+  .home-v3 .hv-head,
+  .home-v3 .hv-head--week,
+  .home-v3 .hv-week-grid,
+  .home-v3 > #faq {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .home-v3 .hv-h2,
+  .home-v3 > #faq > h2 {
+    font-size: 38px;
+    line-height: 1.04;
+  }
+
+  .home-v3 .hv-intro {
+    font-size: 16px;
+  }
+
+  /* Hero: headline, then the calculator, then the stats. */
+  .home-v3 > .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 28px 0 48px;
+  }
+
+  .home-v3 > .hero > .hero-copy {
+    display: contents;
+  }
+
+  .home-v3 > .hero .hero-copy h1 {
+    font-size: 38px;
+    line-height: 1.02;
+  }
+
+  .home-v3 > .hero .hero-copy .lede {
+    font-size: 17px;
+  }
+
+  .home-v3 > .hero > .panel-calc,
+  .home-v3 > .hero > .results {
+    order: 1;
+  }
+
+  .home-v3 .hv-hero-meta {
+    order: 2;
+    padding-top: 8px;
+  }
+
+  .home-v3 .hv-stats {
+    gap: 12px;
+  }
+
+  .home-v3 .hv-stats dd {
+    font-size: 21px;
+  }
+
+  /* Same day: one card per meal, totals stacked. */
+  .home-v3 .hv-same-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .home-v3 .hv-same-title,
+  .home-v3 .hv-same-intro {
+    grid-column: auto;
+  }
+
+  .home-v3 .hv-same-cols,
+  .home-v3 .hv-same-row > .hv-same-plus,
+  .home-v3 .hv-same-total > .hv-same-slot,
+  .home-v3 .hv-same-gain {
+    display: none;
+  }
+
+  .home-v3 .hv-same-row {
+    padding: 20px 0;
+  }
+
+  .home-v3 .hv-same-slot {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .home-v3 .hv-same-plus--inline {
+    display: inline;
+    font-size: 14px;
+  }
+
+  .home-v3 .hv-same-row p {
+    font-size: 15px;
+  }
+
+  .home-v3 .hv-same-low s {
+    text-decoration: line-through;
+    text-decoration-color: #b9b3a2;
+  }
+
+  .home-v3 .hv-same-total {
+    gap: 28px;
+    padding-top: 32px;
+  }
+
+  .home-v3 .hv-same-sum {
+    gap: 10px;
+  }
+
+  .home-v3 .hv-same-sum-label {
+    display: block;
+  }
+
+  .home-v3 .hv-big {
+    font-size: 56px;
+  }
+
+  .home-v3 .hv-btn {
+    width: 100%;
+  }
+
+  /* Foods: name and grams on one line, bar underneath. */
+  .home-v3 .hv-food {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 16px;
+    align-items: baseline;
+    padding: 16px 0;
+  }
+
+  .home-v3 .hv-bar--food {
+    order: 3;
+    grid-column: 1 / -1;
+    height: 6px;
+  }
+
+  .home-v3 .hv-food-name {
+    gap: 8px;
+  }
+
+  .home-v3 .hv-food-title {
+    font-size: 21px;
+  }
+
+  .home-v3 .hv-food-g {
+    font-size: 26px;
+  }
+
+  /* Guides: one column. */
+  .home-v3 .hv-guides {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-v3 .hv-guide {
+    grid-template-columns: 84px minmax(0, 1fr) 16px;
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  .home-v3 .hv-guide-stat {
+    font-size: 22px;
+  }
+
+  .home-v3 .hv-guide-copy strong {
+    font-size: 18px;
+  }
+
+  /* First week: days scroll sideways as chips. */
+  .home-v3 .hv-week-grid {
+    gap: 20px;
+  }
+
+  .home-v3 .hv-week-days {
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    border: 0;
+    scrollbar-width: none;
+  }
+
+  .home-v3 .hv-week-day {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+  }
+
+  .home-v3 .hv-week-day[aria-selected='true'] {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .home-v3 .hv-week-s,
+  .home-v3 .hv-week-a {
+    display: none;
+  }
+
+  .home-v3 .hv-week-d {
+    font-size: 14px;
+  }
+
+  .email-signup--mail .email-signup-form {
+    flex-direction: column;
+  }
+
+  .email-signup--mail .email-signup-form input[type='email'] {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-v3 .reveal-armed > *,
+  .home-v3 .reveal-armed .hv-grow {
+    opacity: 1;
+    transform: none;
+  }
+
+  .home-v3 .reveal-armed.is-in > *,
+  .home-v3 .reveal-armed.is-in .hv-grow,
+  .home-v3 .hv-mail-body,
+  .app .results .food-list-editable > li {
+    animation: none;
+  }
+
+  .topbar .site-nav a,
+  .home-v3 .arrow,
+  .home-v3 .hv-btn,
+  .topbar .topbar-cta {
+    transition: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
