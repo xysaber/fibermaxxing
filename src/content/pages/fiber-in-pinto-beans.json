@@ -1,0 +1,155 @@
+{
+  "slug": "fiber-in-pinto-beans",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "legumes",
+  "title": "How Much Fiber in Pinto Beans? 15.4g per Cup",
+  "description": "Pinto Beans: about 15.4 g of fiber per 1 cup, cooked (55% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in pinto beans?",
+  "answer": {
+    "value": "~15.4",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (171 g)",
+    "note": "USDA FoodData Central, Beans, pinto, mature seeds, cooked, boiled, without salt"
+  },
+  "intro": [
+    "Pinto beans rank #4 of 10 beans and legumes on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked",
+      "value": "15.4 g",
+      "note": "245 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "9 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "6.3 g",
+      "note": "#18 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "55%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in pinto beans by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked",
+        "171 g",
+        "15.4 g",
+        "245",
+        "55%"
+      ],
+      [
+        "1/2 cup, cooked",
+        "85.5 g",
+        "7.7 g",
+        "122",
+        "27%"
+      ],
+      [
+        "1/4 cup, cooked",
+        "42.8 g",
+        "3.8 g",
+        "61",
+        "14%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in pinto beans?",
+      "paragraphs": [
+        "USDA FoodData Central lists beans, pinto, mature seeds, cooked, boiled, without salt at 9 g of fiber per 100 g. One serving (1 cup, cooked; 171 g) therefore has about 15.4 g of fiber and 245 calories. That is 55% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 62% of a 25 g day and 41% of a 38 g day.",
+        "Pinto beans are the most commonly eaten dry bean in the United States, mostly in Mexican and Tex-Mex dishes. Whole cooked pintos are among the highest-fiber beans per cup in USDA data."
+      ]
+    },
+    {
+      "heading": "Whole pinto beans vs refried beans",
+      "paragraphs": [
+        "Refried beans are cooked pintos mashed with fat and often water. The fiber is still there, but a spoonful of refried beans is usually a smaller amount of actual beans than a spoonful of whole ones. For canned refried beans, use the label serving.",
+        "Restaurant sides vary a lot in portion size. A small side of beans is often around half a cup, which gives roughly half of the one-cup figure."
+      ]
+    },
+    {
+      "heading": "How pinto beans compare with other beans and legumes",
+      "paragraphs": [
+        "Of the 10 beans and legumes on this site, pinto beans rank #4 for fiber per typical serving and #6 for fiber per calorie. That works out to 6.3 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [lentils](/fiber-in-lentils) at 15.6 g (1 cup, cooked); [black beans](/fiber-in-black-beans) at 15 g (1 cup, cooked); [split peas](/fiber-in-split-peas) at 16.3 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), pinto beans are #18 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding pinto beans to your day",
+      "paragraphs": [
+        "Swap rice for beans in a burrito or bowl, or ask for extra beans instead of extra cheese. Half a cup of pintos with corn tortillas and avocado is an easy high-fiber lunch.",
+        "Example: 1 cup pinto beans, 2 corn tortillas, 1/2 avocado. Using the same USDA values as the calculator, that comes to about 23.7 g of fiber, with 15.4 g from the pinto beans. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup pinto beans, 2 corn tortillas, 1/2 avocado",
+  "examples": [
+    "1 cup pinto beans, 2 corn tortillas, 1/2 avocado"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your pinto beans meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of pinto beans?",
+      "a": "9 g, according to USDA FoodData Central (Beans, pinto, mature seeds, cooked, boiled, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in pinto beans (1/2 cup, cooked)?",
+      "a": "About 7.7 g, for 85.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Do refried beans have as much fiber as whole pinto beans?",
+      "a": "Per gram of beans, yes, since mashing does not remove fiber. But refried beans include added fat and water, so the same volume usually holds fewer beans. Compare the label’s grams of fiber per serving."
+    },
+    {
+      "q": "Which bean has the most fiber?",
+      "a": "Among the beans on this site, cooked navy beans lead at about 19.1 g (1 cup, cooked). Pinto, black, and split peas are close behind."
+    }
+  ],
+  "related": [
+    "fiber-in-lentils",
+    "fiber-in-black-beans",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Beans, pinto, mature seeds, cooked, boiled, without salt (FDC 175200)",
+      "url": "https://fdc.nal.usda.gov/food-details/175200/nutrients",
+      "note": "9 g fiber and 143 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

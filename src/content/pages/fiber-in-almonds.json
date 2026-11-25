@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-almonds",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "nuts",
+  "title": "How Much Fiber in Almonds? 3.5g per Ounce",
+  "description": "Almonds: about 3.5 g of fiber per 1 oz (13% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in almonds?",
+  "answer": {
+    "value": "~3.5",
+    "unit": "g",
+    "detail": "fiber in 1 oz (about 23 almonds), 28.4 g",
+    "note": "USDA FoodData Central, Nuts, almonds"
+  },
+  "intro": [
+    "Almonds rank #1 of 7 nuts, seeds, and treats on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 oz (about 23 almonds)",
+      "value": "3.5 g",
+      "note": "164 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "12.5 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.2 g",
+      "note": "#44 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "13%",
+      "note": "of 28 g, per 1 oz (about 23 almonds)"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in almonds by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 oz (about 23 almonds)",
+        "28.4 g",
+        "3.5 g",
+        "164",
+        "13%"
+      ],
+      [
+        "1/4 cup",
+        "35.8 g",
+        "4.5 g",
+        "207",
+        "16%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in almonds?",
+      "paragraphs": [
+        "USDA FoodData Central lists nuts, almonds at 12.5 g of fiber per 100 g. One serving (1 oz (about 23 almonds); 28.4 g) therefore has about 3.5 g of fiber and 164 calories. That is 13% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 14% of a 25 g day and 9% of a 38 g day.",
+        "Almonds have more fiber per ounce than most common nuts. A standard one-ounce handful gives about 3.5 g, though it also carries around 160 calories."
+      ]
+    },
+    {
+      "heading": "Whole almonds, almond butter, almond milk",
+      "paragraphs": [
+        "Almond butter keeps the fiber of the almonds it is made from, so 2 tablespoons is in a similar range to a one-ounce handful. Check the label.",
+        "Almond milk is mostly water and has almost no fiber. Almond flour keeps fiber but is used in small amounts per serving of baked goods."
+      ]
+    },
+    {
+      "heading": "How almonds compare with other nuts, seeds, and treats",
+      "paragraphs": [
+        "Of the 7 nuts, seeds, and treats on this site, almonds rank #1 for fiber per typical serving and #2 for fiber per calorie. That works out to 2.2 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [dark chocolate](/fiber-in-dark-chocolate) at 3.1 g (1 oz (70–85% cacao)); [pistachios](/fiber-in-pistachios) at 2.9 g (1 oz (about 49 kernels)); [flaxseed](/fiber-in-flaxseed) at 2.8 g (1 tbsp, whole). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), almonds are #44 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding almonds to your day",
+      "paragraphs": [
+        "Pre-portion one-ounce snack bags, or add a tablespoon of sliced almonds to oatmeal or salads.",
+        "Example: 1 oz almonds, 1 apple. Using the same USDA values as the calculator, that comes to about 7.9 g of fiber, with 3.5 g from the almonds. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 oz almonds, 1 apple",
+  "examples": [
+    "1 oz almonds, 1 apple"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your almonds meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of almonds?",
+      "a": "12.5 g, according to USDA FoodData Central (Nuts, almonds). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in almonds (1/4 cup)?",
+      "a": "About 4.5 g, for 35.8 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Which nut has the most fiber?",
+      "a": "Among common nuts on this site, almonds lead per ounce at about 3.5 g (1 oz (about 23 almonds)). Pistachios are close at about 2.9 g (1 oz (about 49 kernels))."
+    },
+    {
+      "q": "Does almond milk have fiber?",
+      "a": "Very little. Most of the almond solids are strained out."
+    }
+  ],
+  "related": [
+    "fiber-in-dark-chocolate",
+    "fiber-in-pistachios",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Nuts, almonds (FDC 170567)",
+      "url": "https://fdc.nal.usda.gov/food-details/170567/nutrients",
+      "note": "12.5 g fiber and 579 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "slug": "fiber-in-banana",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in a Banana? 3.1g per Medium",
+  "description": "Banana: about 3.1 g of fiber per 1 medium (11% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in a banana?",
+  "answer": {
+    "value": "~3.1",
+    "unit": "g",
+    "detail": "fiber in 1 medium (7–8\"), 118 g",
+    "note": "USDA FoodData Central, Bananas, raw"
+  },
+  "intro": [
+    "Banana ranks #10 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 medium (7–8\")",
+      "value": "3.1 g",
+      "note": "105 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2.6 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.9 g",
+      "note": "#36 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "11%",
+      "note": "of 28 g, per 1 medium (7–8\")"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in banana by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 medium (7–8\")",
+        "118 g",
+        "3.1 g",
+        "105",
+        "11%"
+      ],
+      [
+        "1 large (8–9\")",
+        "136 g",
+        "3.5 g",
+        "121",
+        "13%"
+      ],
+      [
+        "1 cup, sliced",
+        "150 g",
+        "3.9 g",
+        "134",
+        "14%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in a banana?",
+      "paragraphs": [
+        "USDA FoodData Central lists bananas, raw at 2.6 g of fiber per 100 g. One serving (1 medium (7–8\"); 118 g) therefore has about 3.1 g of fiber and 105 calories. That is 11% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 12% of a 25 g day and 8% of a 38 g day.",
+        "A banana is a moderate fiber source, similar to an orange, and it is the fruit most people already have at home. Its real value for fiber tracking is as a base: it blends into smoothies and oatmeal that carry other high-fiber ingredients."
+      ]
+    },
+    {
+      "heading": "Green vs ripe bananas",
+      "paragraphs": [
+        "Less ripe, greener bananas contain more resistant starch, which behaves somewhat like fiber in the gut. As bananas ripen, that starch turns to sugar. Standard fiber figures, including USDA’s, do not fully capture this difference, so treat the table as a ripe-banana estimate.",
+        "Banana chips are fried and sweetened; a handful is mostly fat and sugar with little fiber."
+      ]
+    },
+    {
+      "heading": "How banana compares with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, banana ranks #10 for fiber per typical serving and #13 for fiber per calorie. That works out to 2.9 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [orange](/fiber-in-orange) at 3.1 g (1 medium); [guava](/fiber-in-guava) at 3 g (1 fruit); [strawberries](/fiber-in-strawberries) at 2.9 g (1 cup, whole). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), banana is #36 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding banana to your day",
+      "paragraphs": [
+        "Pair a banana with peanut butter on whole wheat toast, or blend it with frozen berries and oats.",
+        "Example: 1 banana, 1 cup oatmeal, 1 tbsp chia seeds. Using the same USDA values as the calculator, that comes to about 11.2 g of fiber, with 3.1 g from the banana. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 banana, 1 cup oatmeal, 1 tbsp chia seeds",
+  "examples": [
+    "1 banana, 1 cup oatmeal, 1 tbsp chia seeds"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your banana meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of banana?",
+      "a": "2.6 g, according to USDA FoodData Central (Bananas, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in banana (1 large (8–9\"))?",
+      "a": "About 3.5 g, for 136 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are bananas high in fiber?",
+      "a": "Moderately. A medium banana is about 11% of the Daily Value."
+    },
+    {
+      "q": "Do bananas cause constipation?",
+      "a": "Not for most people. Some people notice firmer stools with very unripe bananas, but the evidence is mixed. Bananas also contain fiber that supports regularity."
+    }
+  ],
+  "related": [
+    "fiber-in-orange",
+    "fiber-in-guava",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Bananas, raw (FDC 173944)",
+      "url": "https://fdc.nal.usda.gov/food-details/173944/nutrients",
+      "note": "2.6 g fiber and 89 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

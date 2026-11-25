@@ -1,4 +1,4 @@
-import { useEffect, type MouseEvent } from 'react'
+import { useEffect, useState, type MouseEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { DocumentMeta } from '../components/DocumentMeta'
 import { EmailSignup } from '../components/EmailSignup'
@@ -11,7 +11,14 @@ import { SeoAnswer } from '../components/SeoAnswer'
 import { SeoArticle } from '../components/SeoArticle'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
-import { getSeoPage, SEO_PAGE_MAP, type SeoPortionTable } from '../content/seoPages'
+import {
+  getSeoPage,
+  GUIDE_INDEX_MAP,
+  hasLazyPage,
+  loadSeoPage,
+  SEO_PAGE_MAP,
+  type SeoPortionTable,
+} from '../content/seoPages'
 import { trackPageView } from '../lib/analytics'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -76,18 +83,53 @@ function PortionComparison({
 export function SeoLandingPage() {
   const { slug } = useParams<{ slug: string }>()
   const page = slug ? getSeoPage(slug) : undefined
+  const pending = Boolean(slug && !page && hasLazyPage(slug))
+  const [, setLoadedSlug] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!pending || !slug) return
+    let live = true
+    loadSeoPage(slug).then(() => {
+      if (live) setLoadedSlug(slug)
+    })
+    return () => {
+      live = false
+    }
+  }, [pending, slug])
 
   useEffect(() => {
     if (page) trackPageView(`/${page.slug}`)
   }, [page])
 
+  if (pending) {
+    // Client-side navigation to a code-split guide: keep the shell while its chunk loads.
+    return (
+      <div className="app">
+        <SiteHeader />
+        <div className="seo-loading" aria-busy="true" />
+        <SiteFooter />
+      </div>
+    )
+  }
+
   if (!page) {
     return <NotFoundPage />
   }
 
-  const related = page.related
-    .map((s) => SEO_PAGE_MAP[s])
-    .filter((p): p is NonNullable<typeof p> => Boolean(p?.publish))
+  const cardFor = (s: string) => {
+    const core = SEO_PAGE_MAP[s]
+    if (core?.publish) {
+      const g = HOME_GUIDES.find((x) => x.to === `/${core.slug}`)
+      return {
+        to: `/${core.slug}`,
+        title: g?.title ?? core.h1,
+        blurb: g?.blurb ?? shortBlurb(core.description),
+        stat: g?.stat as string | undefined,
+      }
+    }
+    const idx = GUIDE_INDEX_MAP[s]
+    return idx ? { to: `/${idx.slug}`, title: idx.title, blurb: idx.blurb, stat: idx.stat } : null
+  }
 
   const useBands = page.layout !== 'default'
   const facts = page.facts ?? []
@@ -114,15 +156,10 @@ export function SeoLandingPage() {
   )
 
   const relatedCards = [
-    ...related.slice(0, 3).map((r) => {
-      const g = HOME_GUIDES.find((x) => x.to === `/${r.slug}`)
-      return {
-        to: `/${r.slug}`,
-        title: g?.title ?? r.h1,
-        blurb: g?.blurb ?? shortBlurb(r.description),
-        stat: g?.stat,
-      }
-    }),
+    ...page.related
+      .map(cardFor)
+      .filter((c): c is NonNullable<typeof c> => Boolean(c))
+      .slice(0, 3),
     {
       to: '/',
       title: 'Daily fiber calculator',
@@ -178,6 +215,13 @@ export function SeoLandingPage() {
 
           {heroLede ? <p className="lede">{heroLede}</p> : null}
 
+          {page.callout ? (
+            <aside className="seo-callout" role="note" aria-label={page.callout.title}>
+              <strong>{page.callout.title}</strong>
+              <p>{page.callout.text}</p>
+            </aside>
+          ) : null}
+
           {page.portionTable && !oatmeal ? <PortionComparison table={page.portionTable} /> : null}
 
           {!oatmeal ? calculatorJump : null}
@@ -214,6 +258,19 @@ export function SeoLandingPage() {
         </div>
       ) : null}
 
+
+      {page.guideGroups?.length ? (
+        <div className="seo-hub-groups">
+          {page.guideGroups.map((group, i) => (
+            <GuideCards
+              key={group.title}
+              id={`group-${i}`}
+              title={group.title}
+              items={group.items.map(cardFor).filter((c): c is NonNullable<typeof c> => Boolean(c))}
+            />
+          ))}
+        </div>
+      ) : null}
 
       {page.dataTable ? (
         <div className="seo-data-table-wrap">

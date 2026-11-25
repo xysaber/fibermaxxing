@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-bulgur",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Bulgur? 8.2g per Cup",
+  "description": "Bulgur: about 8.2 g of fiber per 1 cup, cooked (29% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in bulgur?",
+  "answer": {
+    "value": "~8.2",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (182 g)",
+    "note": "USDA FoodData Central, Bulgur, cooked"
+  },
+  "intro": [
+    "Bulgur ranks #1 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked",
+      "value": "8.2 g",
+      "note": "151 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "4.5 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "5.4 g",
+      "note": "#21 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "29%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in bulgur by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked",
+        "182 g",
+        "8.2 g",
+        "151",
+        "29%"
+      ],
+      [
+        "1/2 cup, cooked",
+        "91 g",
+        "4.1 g",
+        "76",
+        "15%"
+      ],
+      [
+        "1/4 cup, dry",
+        "35 g",
+        "4.4 g",
+        "120",
+        "16%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in bulgur?",
+      "paragraphs": [
+        "USDA FoodData Central lists bulgur, cooked at 4.5 g of fiber per 100 g. One serving (1 cup, cooked; 182 g) therefore has about 8.2 g of fiber and 151 calories. That is 29% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 33% of a 25 g day and 22% of a 38 g day.",
+        "Bulgur is whole wheat that has been parboiled, dried, and cracked. It is the grain in tabbouleh and kibbeh, and it has more fiber per cooked cup than brown rice, quinoa, or pearled barley, while cooking in 10–15 minutes."
+      ]
+    },
+    {
+      "heading": "Fine vs coarse bulgur",
+      "paragraphs": [
+        "Fine bulgur only needs soaking in hot water, which is how tabbouleh is traditionally made. Coarse bulgur is simmered like rice for pilafs. Both are whole wheat, and USDA does not separate them for fiber.",
+        "Tabbouleh is usually more parsley than bulgur, so a cup of tabbouleh has much less bulgur than a cup of plain cooked bulgur."
+      ]
+    },
+    {
+      "heading": "How bulgur compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, bulgur ranks #1 for fiber per typical serving and #2 for fiber per calorie. That works out to 5.4 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [barley](/fiber-in-barley) at 6 g (1 cup, cooked (pearled)); [whole wheat pasta](/fiber-in-whole-wheat-pasta) at 5.5 g (1 cup spaghetti, cooked); [quinoa](/fiber-in-quinoa) at 5.2 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), bulgur is #21 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding bulgur to your day",
+      "paragraphs": [
+        "Use bulgur anywhere you would use rice or couscous. It is a good match for lentils, chickpeas, and roasted vegetables.",
+        "Example: 1 cup bulgur, 1/2 cup chickpeas, 1 cup spinach. Using the same USDA values as the calculator, that comes to about 15.1 g of fiber, with 8.2 g from the bulgur. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup bulgur, 1/2 cup chickpeas, 1 cup spinach",
+  "examples": [
+    "1 cup bulgur, 1/2 cup chickpeas, 1 cup spinach"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your bulgur meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of bulgur?",
+      "a": "4.5 g, according to USDA FoodData Central (Bulgur, cooked). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in bulgur (1/2 cup, cooked)?",
+      "a": "About 4.1 g, for 91 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Bulgur vs couscous: which has more fiber?",
+      "a": "Bulgur, by a lot. Regular couscous is made from refined semolina and has far less fiber per cooked cup. Whole wheat couscous is closer to bulgur."
+    },
+    {
+      "q": "Is bulgur gluten-free?",
+      "a": "No. Bulgur is wheat and contains gluten."
+    }
+  ],
+  "related": [
+    "fiber-in-barley",
+    "fiber-in-whole-wheat-pasta",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Bulgur, cooked (FDC 170287)",
+      "url": "https://fdc.nal.usda.gov/food-details/170287/nutrients",
+      "note": "4.5 g fiber and 83 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Bulgur, dry (FDC 170688)",
+      "url": "https://fdc.nal.usda.gov/food-details/170688/nutrients",
+      "note": "12.5 g fiber and 342 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

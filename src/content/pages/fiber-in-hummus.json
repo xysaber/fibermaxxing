@@ -1,0 +1,167 @@
+{
+  "slug": "fiber-in-hummus",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "legumes",
+  "title": "How Much Fiber in Hummus? 1.7g per 2 Tbsp",
+  "description": "Hummus: about 1.7 g of fiber per 2 tbsp (6% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in hummus?",
+  "answer": {
+    "value": "~1.7",
+    "unit": "g",
+    "detail": "fiber in 2 tbsp (30 g)",
+    "note": "USDA FoodData Central, Hummus, commercial"
+  },
+  "intro": [
+    "Hummus ranks #10 of 10 beans and legumes on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "2 tbsp",
+      "value": "1.7 g",
+      "note": "71 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "5.5 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.3 g",
+      "note": "#43 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "6%",
+      "note": "of 28 g, per 2 tbsp"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in hummus by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "2 tbsp",
+        "30 g",
+        "1.7 g",
+        "71",
+        "6%"
+      ],
+      [
+        "1/4 cup",
+        "62 g",
+        "3.4 g",
+        "147",
+        "12%"
+      ],
+      [
+        "1 cup",
+        "246 g",
+        "13.5 g",
+        "583",
+        "48%"
+      ],
+      [
+        "2 tbsp, homemade",
+        "30 g",
+        "1.2 g",
+        "53",
+        "4%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in hummus?",
+      "paragraphs": [
+        "USDA FoodData Central lists hummus, commercial at 5.5 g of fiber per 100 g. One serving (2 tbsp; 30 g) therefore has about 1.7 g of fiber and 71 calories. That is 6% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 7% of a 25 g day and 4% of a 38 g day.",
+        "Hummus is a chickpea dip with tahini, lemon, and oil. It is a useful fiber add because you usually eat it with other high-fiber foods, like raw vegetables or whole wheat pita, but a standard 2-tablespoon serving on its own is modest."
+      ]
+    },
+    {
+      "heading": "Why a spoonful of hummus is not a serving of beans",
+      "paragraphs": [
+        "A 2-tablespoon serving weighs about 30 g, and only part of that is chickpeas. Compare that with a half cup of cooked [chickpeas](/fiber-in-chickpeas) at 82 g. Most people eat more than 2 tablespoons in practice, so it helps to measure once and see what your usual scoop looks like.",
+        "Store-bought and homemade hummus vary with the ratio of chickpeas to tahini and oil. The commercial and homemade rows in the table come from two different USDA entries."
+      ]
+    },
+    {
+      "heading": "How hummus compares with other beans and legumes",
+      "paragraphs": [
+        "Of the 10 beans and legumes on this site, hummus ranks #10 for fiber per typical serving and #10 for fiber per calorie. That works out to 2.3 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [edamame](/fiber-in-edamame) at 8.1 g (1 cup, shelled, cooked); [green peas](/fiber-in-green-peas) at 8.8 g (1 cup, cooked); [kidney beans](/fiber-in-kidney-beans) at 11.3 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), hummus is #43 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding hummus to your day",
+      "paragraphs": [
+        "The bigger win is what you dip. Carrots, bell peppers, and whole wheat pita all add their own fiber. A quarter cup of hummus with a cup of raw carrots makes a solid afternoon snack.",
+        "Example: 1/4 cup hummus, 1 cup carrots, 1 whole wheat pita. Using the same USDA values as the calculator, that comes to about 10.9 g of fiber, with 3.4 g from the hummus. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1/4 cup hummus, 1 cup carrots, 1 whole wheat pita",
+  "examples": [
+    "1/4 cup hummus, 1 cup carrots, 1 whole wheat pita"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your hummus meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of hummus?",
+      "a": "5.5 g, according to USDA FoodData Central (Hummus, commercial). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in hummus (1/4 cup)?",
+      "a": "About 3.4 g, for 62 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is hummus high in fiber?",
+      "a": "Moderately. Two tablespoons give a gram or two, and a quarter cup gives a bit over 3 g. The fiber climbs quickly when you pair it with vegetables or whole-grain bread."
+    },
+    {
+      "q": "Does flavored hummus have different fiber?",
+      "a": "Usually only slightly. Added roasted pepper, garlic, or herbs barely change the fiber. Check the label if you eat a lot of one brand."
+    }
+  ],
+  "related": [
+    "fiber-in-edamame",
+    "fiber-in-green-peas",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Hummus, commercial (FDC 174289)",
+      "url": "https://fdc.nal.usda.gov/food-details/174289/nutrients",
+      "note": "5.5 g fiber and 237 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Hummus, home prepared (FDC 172454)",
+      "url": "https://fdc.nal.usda.gov/food-details/172454/nutrients",
+      "note": "4 g fiber and 177 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

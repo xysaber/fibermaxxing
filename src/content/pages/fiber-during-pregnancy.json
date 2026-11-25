@@ -1,0 +1,135 @@
+{
+  "slug": "fiber-during-pregnancy",
+  "title": "Fiber During Pregnancy: 28 g a Day and Constipation Tips",
+  "description": "The fiber target in pregnancy (28 g/day) and breastfeeding (29 g/day), why constipation is common, and easy high-fiber foods to try.",
+  "h1": "Fiber during pregnancy: how much you need",
+  "answer": {
+    "value": "28",
+    "unit": "g",
+    "detail": "of fiber a day is the U.S. Adequate Intake during pregnancy (29 g while breastfeeding)."
+  },
+  "intro": [
+    "Constipation is one of the most common complaints in pregnancy. Fiber, fluids, and gentle activity are the usual first steps. Here is the target, why it can be harder to reach, and foods that make it easier."
+  ],
+  "callout": {
+    "title": "Your prenatal care team comes first",
+    "text": "This page is general education, not medical advice. Talk to your obstetrician, midwife, or a registered dietitian about your diet in pregnancy, and ask before starting any fiber supplement or laxative. Contact your care team for severe abdominal pain, bleeding, or constipation that does not improve."
+  },
+  "facts": [
+    {
+      "label": "Pregnancy",
+      "value": "28 g/day",
+      "note": "U.S. Adequate Intake"
+    },
+    {
+      "label": "Breastfeeding",
+      "value": "29 g/day",
+      "note": "U.S. Adequate Intake"
+    },
+    {
+      "label": "Not pregnant, 19–50",
+      "value": "25 g/day",
+      "note": "for comparison"
+    },
+    {
+      "label": "Typical intake",
+      "value": "below target",
+      "note": "most U.S. adults"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Why the target is higher",
+      "paragraphs": [
+        "U.S. fiber targets are based on 14 g per 1,000 calories. Energy needs rise in pregnancy, especially in the second and third trimesters, so the Adequate Intake rises to 28 g a day, and 29 g while breastfeeding. The Dietary Guidelines for Americans list these values for ages 14 to 50.",
+        "The calculator on this page includes pregnancy and breastfeeding targets under More options."
+      ]
+    },
+    {
+      "heading": "Why constipation is common in pregnancy",
+      "paragraphs": [
+        "Pregnancy hormones slow the movement of the gut, and later the growing uterus presses on the bowel. Iron in prenatal vitamins can also contribute. More fiber, more fluids, and regular physical activity are the usual first steps, and your care team can suggest more if those are not enough.",
+        "If you are constipated, increase fiber gradually and drink water with it. Do not start a laxative or fiber supplement without checking with your care team."
+      ]
+    },
+    {
+      "heading": "Easy high-fiber foods in pregnancy",
+      "paragraphs": [
+        "Fruit you can eat without much prep helps on low-energy days: [pear](/fiber-in-pear) (5.5 g, 1 medium), [raspberries](/fiber-in-raspberries) (8 g, 1 cup), and [kiwi](/fiber-in-kiwi) (2.1 g, 1 kiwifruit). Two kiwifruit a day and a few [prunes](/fiber-in-prunes) (3.4 g, 5 prunes) are traditional options; studies in non-pregnant adults found both helped constipation.",
+        "For meals: [lentils](/fiber-in-lentils) (15.6 g, 1 cup, cooked) in soup, [black beans](/fiber-in-black-beans) (15 g, 1 cup, cooked) in a bowl, [sweet potato](/fiber-in-sweet-potato) (3.8 g, 1 medium, baked (flesh)) or [baked potato](/fiber-in-potato) (3.8 g, 1 medium, baked, flesh and skin) with the skin, and whole grains like [barley](/fiber-in-barley) (6 g, 1 cup, cooked (pearled)) or whole wheat bread.",
+        "During nausea in early pregnancy, plain whole-grain crackers, toast, or oatmeal may be easier than beans or raw vegetables. Do what you can and build up as appetite returns."
+      ]
+    },
+    {
+      "heading": "Food safety still applies",
+      "paragraphs": [
+        "Follow your care team’s food-safety advice alongside fiber goals. For example, U.S. guidance advises avoiding raw sprouts and unpasteurized juice during pregnancy, and washing produce well."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup oatmeal, 1 pear, 2 tbsp ground flaxseed",
+  "examples": [
+    "1 cup oatmeal, 1 pear, 2 tbsp ground flaxseed",
+    "1 cup lentil soup, 1 slice whole wheat bread, 2 kiwifruit",
+    "1 baked potato, 1/2 cup black beans, 1 cup broccoli"
+  ],
+  "faqs": [
+    {
+      "q": "How much fiber should I eat while pregnant?",
+      "a": "About 28 g a day is the U.S. Adequate Intake during pregnancy, and 29 g while breastfeeding."
+    },
+    {
+      "q": "Is it safe to take a fiber supplement while pregnant?",
+      "a": "Ask your obstetrician or midwife first. Food is the usual starting point; your care team can advise on supplements if needed."
+    },
+    {
+      "q": "What helps with constipation in pregnancy?",
+      "a": "More fiber, more fluids, and regular activity are the usual first steps. Prunes and kiwifruit help some people. Tell your care team if it does not improve."
+    },
+    {
+      "q": "Can too much fiber cause problems in pregnancy?",
+      "a": "Increasing very quickly can cause gas and bloating. Add fiber over a couple of weeks and drink enough water."
+    }
+  ],
+  "related": [
+    "how-much-fiber-per-day",
+    "fiber-in-prunes",
+    "fiber-in-kiwi"
+  ],
+  "sources": [
+    {
+      "label": "ACOG, Nutrition During Pregnancy (FAQ)",
+      "url": "https://www.acog.org/womens-health/faqs/nutrition-during-pregnancy",
+      "note": "healthy eating and food safety in pregnancy"
+    },
+    {
+      "label": "Dietary Guidelines for Americans, 2020–2025 (USDA/HHS)",
+      "url": "https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf",
+      "note": "fiber targets by age, sex, pregnancy and lactation (Appendix 1)"
+    },
+    {
+      "label": "NIDDK, Eating, Diet, & Nutrition for Constipation",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/constipation/eating-diet-nutrition",
+      "note": "fiber and fluids for constipation"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    },
+    {
+      "label": "USDA FoodData Central (SR Legacy)",
+      "url": "https://fdc.nal.usda.gov/",
+      "note": "fiber per 100 g behind every food figure on this page"
+    }
+  ],
+  "updated": "2026-11-25",
+  "kind": "audience",
+  "publish": true,
+  "layout": "bands",
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate a meal in the calculator"
+}

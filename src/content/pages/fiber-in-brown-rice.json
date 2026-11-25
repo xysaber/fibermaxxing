@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-brown-rice",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Brown Rice? 3.2g per Cup",
+  "description": "Brown Rice: about 3.2 g of fiber per 1 cup, cooked (12% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in brown rice?",
+  "answer": {
+    "value": "~3.2",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (202 g)",
+    "note": "USDA FoodData Central, Rice, brown, long-grain, cooked"
+  },
+  "intro": [
+    "Brown rice ranks #6 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked",
+      "value": "3.2 g",
+      "note": "248 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "1.6 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "1.3 g",
+      "note": "#47 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "12%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in brown rice by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked",
+        "202 g",
+        "3.2 g",
+        "248",
+        "12%"
+      ],
+      [
+        "1/2 cup, cooked",
+        "101 g",
+        "1.6 g",
+        "124",
+        "6%"
+      ],
+      [
+        "1 cup white rice, cooked",
+        "158 g",
+        "0.6 g",
+        "205",
+        "2%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in brown rice?",
+      "paragraphs": [
+        "USDA FoodData Central lists rice, brown, long-grain, cooked at 1.6 g of fiber per 100 g. One serving (1 cup, cooked; 202 g) therefore has about 3.2 g of fiber and 248 calories. That is 12% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 13% of a 25 g day and 9% of a 38 g day.",
+        "Brown rice keeps the bran layer that milling removes from white rice. That bran is where most of the fiber is, so brown rice has several times the fiber of white rice per cup. Still, compared with beans, oats, or barley, brown rice is a modest fiber source."
+      ]
+    },
+    {
+      "heading": "Brown rice vs white rice",
+      "paragraphs": [
+        "The third row of the table shows plain white rice for comparison. Switching your usual cup of rice from white to brown adds a few grams of fiber, which helps, but it is not a large jump on its own.",
+        "If rice is a daily staple, the bigger lever is what goes on it: half a cup of beans, a cup of vegetables, or a mix of rice with barley or lentils."
+      ]
+    },
+    {
+      "heading": "How brown rice compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, brown rice ranks #6 for fiber per typical serving and #8 for fiber per calorie. That works out to 1.3 g of fiber per 100 calories. Brown rice is calorie-dense, so the portion matters more than the fiber per gram.",
+        "Close neighbors by serving: [wheat bran](/fiber-in-wheat-bran) at 3.1 g (2 tbsp); [popcorn](/fiber-in-popcorn) at 3.6 g (3 cups, air-popped); [whole wheat bread](/fiber-in-whole-wheat-bread) at 1.9 g (1 slice). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), brown rice is #47 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding brown rice to your day",
+      "paragraphs": [
+        "Try a half-and-half mix of brown rice with lentils or barley, or serve rice with a bean dish instead of a meat-only one.",
+        "Example: 1 cup brown rice, 1/2 cup black beans, 1 cup broccoli. Using the same USDA values as the calculator, that comes to about 15.8 g of fiber, with 3.2 g from the brown rice. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup brown rice, 1/2 cup black beans, 1 cup broccoli",
+  "examples": [
+    "1 cup brown rice, 1/2 cup black beans, 1 cup broccoli"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your brown rice meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of brown rice?",
+      "a": "1.6 g, according to USDA FoodData Central (Rice, brown, long-grain, cooked). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in brown rice (1/2 cup, cooked)?",
+      "a": "About 1.6 g, for 101 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is brown rice high in fiber?",
+      "a": "It is moderate. A cup covers a little over 10% of the 28 g Daily Value. It is a better choice than white rice for fiber, but beans, barley, and bulgur supply more per cup."
+    },
+    {
+      "q": "Does wild rice have more fiber than brown rice?",
+      "a": "Slightly. USDA lists cooked wild rice at about 1.8 g per 100 g versus 1.6 g for long-grain brown rice. Both are in the same range."
+    }
+  ],
+  "related": [
+    "fiber-in-wheat-bran",
+    "fiber-in-popcorn",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Rice, brown, long-grain, cooked (FDC 169704)",
+      "url": "https://fdc.nal.usda.gov/food-details/169704/nutrients",
+      "note": "1.6 g fiber and 123 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Rice, white, long-grain, regular, enriched, cooked (FDC 168878)",
+      "url": "https://fdc.nal.usda.gov/food-details/168878/nutrients",
+      "note": "0.4 g fiber and 130 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

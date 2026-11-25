@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-dried-figs",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Dried Figs? 3.6g per 1/4 Cup",
+  "description": "Dried Figs: about 3.6 g of fiber per 1/4 cup (13% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in dried figs?",
+  "answer": {
+    "value": "~3.6",
+    "unit": "g",
+    "detail": "fiber in 1/4 cup (37 g)",
+    "note": "USDA FoodData Central, Figs, dried, uncooked"
+  },
+  "intro": [
+    "Dried figs rank #6 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1/4 cup",
+      "value": "3.6 g",
+      "note": "92 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "9.8 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "3.9 g",
+      "note": "#32 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "13%",
+      "note": "of 28 g, per 1/4 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in dried figs by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1/4 cup",
+        "37 g",
+        "3.6 g",
+        "92",
+        "13%"
+      ],
+      [
+        "1 dried fig",
+        "8.4 g",
+        "0.8 g",
+        "21",
+        "3%"
+      ],
+      [
+        "1 medium fresh fig",
+        "50 g",
+        "1.5 g",
+        "37",
+        "5%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in dried figs?",
+      "paragraphs": [
+        "USDA FoodData Central lists figs, dried, uncooked at 9.8 g of fiber per 100 g. One serving (1/4 cup; 37 g) therefore has about 3.6 g of fiber and 92 calories. That is 13% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 15% of a 25 g day and 10% of a 38 g day.",
+        "Dried figs are one of the most fiber-dense dried fruits by weight, thanks in part to their many tiny seeds. Like other dried fruit, they also concentrate sugar, so a small handful goes a long way."
+      ]
+    },
+    {
+      "heading": "Dried vs fresh figs",
+      "paragraphs": [
+        "Fresh figs are mostly water and in season only briefly. Drying removes water, so the fiber per gram rises sharply. One fresh fig and one dried fig are not the same portion.",
+        "Fig bars and fig cookies are mostly flour and sugar, with a thin fig filling."
+      ]
+    },
+    {
+      "heading": "How dried figs compare with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, dried figs rank #6 for fiber per typical serving and #11 for fiber per calorie. That works out to 3.9 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [blueberries](/fiber-in-blueberries) at 3.6 g (1 cup); [prunes](/fiber-in-prunes) at 3.4 g (5 prunes); [orange](/fiber-in-orange) at 3.1 g (1 medium). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), dried figs are #32 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding dried figs to your day",
+      "paragraphs": [
+        "Chop a few dried figs into oatmeal or a grain salad, or pair two with a piece of cheese and walnuts.",
+        "Example: 1/4 cup dried figs, 1 oz walnuts. Using the same USDA values as the calculator, that comes to about 5.6 g of fiber, with 3.7 g from the dried figs. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1/4 cup dried figs, 1 oz walnuts",
+  "examples": [
+    "1/4 cup dried figs, 1 oz walnuts"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your dried figs meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of dried figs?",
+      "a": "9.8 g, according to USDA FoodData Central (Figs, dried, uncooked). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in dried figs (1 dried fig)?",
+      "a": "About 0.8 g, for 8.4 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "How much fiber is in one dried fig?",
+      "a": "Most dried figs weigh about 8 g and carry close to 1 g of fiber each."
+    },
+    {
+      "q": "Do figs help with constipation?",
+      "a": "Their fiber may help some people. The evidence is stronger for prunes and kiwifruit."
+    }
+  ],
+  "related": [
+    "fiber-in-blueberries",
+    "fiber-in-prunes",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Figs, dried, uncooked (FDC 174665)",
+      "url": "https://fdc.nal.usda.gov/food-details/174665/nutrients",
+      "note": "9.8 g fiber and 249 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Figs, raw (FDC 173021)",
+      "url": "https://fdc.nal.usda.gov/food-details/173021/nutrients",
+      "note": "2.9 g fiber and 74 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

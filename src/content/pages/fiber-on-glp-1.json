@@ -1,0 +1,143 @@
+{
+  "slug": "fiber-on-glp-1",
+  "title": "Fiber on GLP-1 Medications: How Much and Which Foods",
+  "description": "Keeping fiber up on semaglutide or tirzepatide when appetite drops: daily targets, fiber-dense foods for small meals, and constipation tips.",
+  "h1": "Fiber on GLP-1 medications: how much, and which foods",
+  "answer": {
+    "value": "25–38",
+    "unit": "g",
+    "detail": "per day is the usual adult target. GLP-1 medicines do not change it, but they make it harder to reach."
+  },
+  "intro": [
+    "When a GLP-1 medicine cuts your appetite, fiber is often one of the first things to fall, and constipation is one of the side effects people report most. The goal is to fit more fiber into smaller meals, slowly, with enough fluid."
+  ],
+  "callout": {
+    "title": "Talk to your prescriber first",
+    "text": "This page is general education, not medical advice. GLP-1 medicines such as semaglutide and tirzepatide are prescribed and monitored by a clinician. Ask your prescriber, pharmacist, or a registered dietitian before major diet changes or starting a fiber supplement, and seek care promptly for severe or persistent abdominal pain, repeated vomiting, or several days without a bowel movement."
+  },
+  "facts": [
+    {
+      "label": "Women 19–50",
+      "value": "25 g/day",
+      "note": "U.S. Adequate Intake"
+    },
+    {
+      "label": "Men 19–50",
+      "value": "38 g/day",
+      "note": "U.S. Adequate Intake"
+    },
+    {
+      "label": "By calories",
+      "value": "14 g",
+      "note": "per 1,000 kcal eaten"
+    },
+    {
+      "label": "Increase by",
+      "value": "a few g",
+      "note": "every few days, with fluids"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Why fiber drops on a GLP-1 medicine",
+      "paragraphs": [
+        "GLP-1 receptor agonists slow stomach emptying and reduce appetite. Smaller meals are the point, but they also mean fewer servings of beans, whole grains, vegetables, and fruit. A day that used to include 20 g of fiber can quietly fall to 10 g.",
+        "Constipation is listed among the common side effects of semaglutide on MedlinePlus, alongside nausea, vomiting, and diarrhea. Low fiber and low fluid intake can make constipation more likely, which is one reason clinicians often ask about both."
+      ]
+    },
+    {
+      "heading": "How much fiber to aim for",
+      "paragraphs": [
+        "The U.S. Adequate Intake is 25 g a day for women and 38 g for men aged 19–50, a little lower after 50. It is also expressed as 14 g per 1,000 calories. If you are eating around 1,400 calories a day, the calorie-based figure is about 20 g, which is a more realistic first goal for many people on a GLP-1.",
+        "The calculator on this page has a “by calories” option under More options. Enter what you ate yesterday to see where you are now, then build up by a few grams every few days rather than all at once."
+      ]
+    },
+    {
+      "heading": "Fiber-dense foods for small appetites",
+      "paragraphs": [
+        "When every bite counts, choose foods with a lot of fiber for their size and calories. Berries are a good start: [raspberries](/fiber-in-raspberries) (8 g, 1 cup) and [blackberries](/fiber-in-blackberries) (7.6 g, 1 cup). Cooked vegetables pack more fiber per cup than raw salads: [broccoli](/fiber-in-broccoli) (5.1 g, 1 cup chopped, cooked), [spinach](/fiber-in-spinach) (4.3 g, 1 cup, cooked).",
+        "Seeds add fiber in a spoonful: [chia seeds](/chia-seeds) (about 4.1 g per tablespoon) or ground [flaxseed](/fiber-in-flaxseed) (2.8 g, 1 tbsp, whole) stirred into yogurt. Legumes are the strongest single foods, so even a quarter or half cup helps: [lentils](/fiber-in-lentils) (15.6 g, 1 cup, cooked), [black beans](/fiber-in-black-beans) (15 g, 1 cup, cooked).",
+        "Some people find liquids or soft foods easier when full quickly. A small smoothie with berries, Greek yogurt, and a tablespoon of chia, or a cup of lentil soup, can be easier than a large salad."
+      ]
+    },
+    {
+      "heading": "Constipation, bloating, and nausea",
+      "paragraphs": [
+        "Adding fiber without enough fluid can make constipation worse, not better. Raise fiber gradually and drink water through the day. Soluble fibers such as oats, chia, and psyllium form a gel and are often gentler than large amounts of wheat bran.",
+        "If you are bloated or nauseated, a big bean salad is probably not the right moment. Smaller, more frequent portions, and lower-fat meals, are often easier. A supplement like psyllium is commonly used, but check with your prescriber or pharmacist first: fiber supplements can change how quickly some medicines are absorbed.",
+        "Call your clinician if constipation lasts more than a few days, or if you have severe abdominal pain, vomiting, or blood in your stool."
+      ]
+    },
+    {
+      "heading": "Pair fiber with protein",
+      "paragraphs": [
+        "Clinicians usually emphasize protein on GLP-1 medicines to help preserve muscle while losing weight. Several foods cover both: [edamame](/fiber-in-edamame) (8.1 g, 1 cup, shelled, cooked), [lentils](/fiber-in-lentils) (15.6 g, 1 cup, cooked), and [chickpeas](/fiber-in-chickpeas) (12.5 g, 1 cup, cooked). Greek yogurt with raspberries and chia, or a bean-and-vegetable soup, are simple combinations."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "calories",
+  "defaultMeal": "170g greek yogurt, 1/2 cup raspberries, 1 tbsp chia seeds",
+  "examples": [
+    "170g greek yogurt, 1/2 cup raspberries, 1 tbsp chia seeds",
+    "1 cup lentil soup, 1 slice whole wheat bread",
+    "1/2 cup edamame, 1 cup broccoli, 1/2 cup brown rice"
+  ],
+  "faqs": [
+    {
+      "q": "Does fiber act like a natural GLP-1?",
+      "a": "Not in any way comparable to the medicines. In research, gut bacteria ferment some fibers into short-chain fatty acids that can prompt the gut to release small amounts of its own GLP-1. That is a real but modest effect, and it is not a substitute for prescribed treatment."
+    },
+    {
+      "q": "Should I take a fiber supplement on Ozempic, Wegovy, Mounjaro, or Zepbound?",
+      "a": "Ask your prescriber or pharmacist. Psyllium is commonly used for constipation, but start low, drink water, and check timing with your other medicines."
+    },
+    {
+      "q": "How can I eat more fiber when I am not hungry?",
+      "a": "Choose fiber-dense foods in small amounts: berries, cooked greens, a spoon of chia, a quarter cup of beans. Spread them across the day instead of trying to eat one large high-fiber meal."
+    },
+    {
+      "q": "Can more fiber make GLP-1 nausea worse?",
+      "a": "Large, bulky, high-fiber meals can feel heavy when your stomach empties slowly. Increase gradually and use smaller portions. If nausea is persistent, tell your clinician."
+    }
+  ],
+  "related": [
+    "fiber-for-weight-loss",
+    "fiber-for-ibs",
+    "how-much-fiber-per-day"
+  ],
+  "sources": [
+    {
+      "label": "MedlinePlus (NIH), Semaglutide Injection",
+      "url": "https://medlineplus.gov/druginfo/meds/a618008.html",
+      "note": "constipation, nausea, vomiting, and diarrhea listed among side effects"
+    },
+    {
+      "label": "NIDDK, Eating, Diet, & Nutrition for Constipation",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/constipation/eating-diet-nutrition",
+      "note": "fiber, fluids, and adding fiber gradually"
+    },
+    {
+      "label": "Dietary Guidelines for Americans, 2020–2025 (USDA/HHS)",
+      "url": "https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf",
+      "note": "fiber targets by age, sex, pregnancy and lactation (Appendix 1)"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    },
+    {
+      "label": "USDA FoodData Central (SR Legacy)",
+      "url": "https://fdc.nal.usda.gov/",
+      "note": "fiber per 100 g behind every food figure on this page"
+    }
+  ],
+  "updated": "2026-11-25",
+  "kind": "audience",
+  "publish": true,
+  "layout": "bands",
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate a meal in the calculator"
+}

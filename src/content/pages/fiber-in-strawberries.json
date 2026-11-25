@@ -1,0 +1,155 @@
+{
+  "slug": "fiber-in-strawberries",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Strawberries? 2.9g per Cup",
+  "description": "Strawberries: about 2.9 g of fiber per 1 cup, whole (10% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in strawberries?",
+  "answer": {
+    "value": "~2.9",
+    "unit": "g",
+    "detail": "fiber in 1 cup, whole (144 g)",
+    "note": "USDA FoodData Central, Strawberries, raw"
+  },
+  "intro": [
+    "Strawberries rank #12 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, whole",
+      "value": "2.9 g",
+      "note": "46 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "6.3 g",
+      "note": "#19 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "10%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in strawberries by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, whole",
+        "144 g",
+        "2.9 g",
+        "46",
+        "10%"
+      ],
+      [
+        "1 cup, sliced",
+        "166 g",
+        "3.3 g",
+        "53",
+        "12%"
+      ],
+      [
+        "1 medium strawberry",
+        "12 g",
+        "0.2 g",
+        "4",
+        "1%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in strawberries?",
+      "paragraphs": [
+        "USDA FoodData Central lists strawberries, raw at 2 g of fiber per 100 g. One serving (1 cup, whole; 144 g) therefore has about 2.9 g of fiber and 46 calories. That is 10% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 12% of a 25 g day and 8% of a 38 g day.",
+        "Strawberries are the most widely eaten berry in the U.S. but one of the lower-fiber ones per cup. That does not make them a bad choice; it just means they work best as part of a meal with another fiber source."
+      ]
+    },
+    {
+      "heading": "Whole vs sliced cups",
+      "paragraphs": [
+        "Sliced strawberries pack more tightly into a measuring cup than whole berries, so a sliced cup weighs more and carries a bit more fiber. The table shows both.",
+        "Strawberry yogurt, jam, or a strawberry smoothie from a shop usually contains far less fruit than a cup of fresh berries. Check the label or ask what is in it."
+      ]
+    },
+    {
+      "heading": "How strawberries compare with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, strawberries rank #12 for fiber per typical serving and #4 for fiber per calorie. That works out to 6.3 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [guava](/fiber-in-guava) at 3 g (1 fruit); [banana](/fiber-in-banana) at 3.1 g (1 medium (7–8\")); [mango](/fiber-in-mango) at 2.6 g (1 cup pieces). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), strawberries are #19 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding strawberries to your day",
+      "paragraphs": [
+        "Pair strawberries with something denser in fiber: a slice of whole-grain toast, oatmeal, or a spoon of chia. A strawberry-banana smoothie with oats is an easy combination.",
+        "Example: 1 cup strawberries, 1 cup oatmeal, 1 tbsp chia seeds. Using the same USDA values as the calculator, that comes to about 11 g of fiber, with 2.9 g from the strawberries. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup strawberries, 1 cup oatmeal, 1 tbsp chia seeds",
+  "examples": [
+    "1 cup strawberries, 1 cup oatmeal, 1 tbsp chia seeds"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your strawberries meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of strawberries?",
+      "a": "2 g, according to USDA FoodData Central (Strawberries, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in strawberries (1 cup, sliced)?",
+      "a": "About 3.3 g, for 166 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are strawberries a good source of fiber?",
+      "a": "A cup gives roughly 10% of the Daily Value, which counts as a good source in label terms but is modest next to raspberries or blackberries."
+    },
+    {
+      "q": "How much fiber is in one strawberry?",
+      "a": "A medium berry (about 12 g) has around a quarter of a gram. It takes a full cup to reach about 3 g."
+    }
+  ],
+  "related": [
+    "fiber-in-guava",
+    "fiber-in-banana",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Strawberries, raw (FDC 167762)",
+      "url": "https://fdc.nal.usda.gov/food-details/167762/nutrients",
+      "note": "2 g fiber and 32 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

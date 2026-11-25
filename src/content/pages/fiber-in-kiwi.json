@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-kiwi",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Kiwi? 2.1g per Kiwi",
+  "description": "Kiwi: about 2.1 g of fiber per 1 kiwifruit (7% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in kiwi?",
+  "answer": {
+    "value": "~2.1",
+    "unit": "g",
+    "detail": "fiber in 1 kiwifruit (69 g)",
+    "note": "USDA FoodData Central, Kiwifruit, green, raw"
+  },
+  "intro": [
+    "Kiwi ranks #14 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 kiwifruit",
+      "value": "2.1 g",
+      "note": "42 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "3 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "4.9 g",
+      "note": "#25 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "7%",
+      "note": "of 28 g, per 1 kiwifruit"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in kiwi by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 kiwifruit",
+        "69 g",
+        "2.1 g",
+        "42",
+        "7%"
+      ],
+      [
+        "2 kiwifruit",
+        "138 g",
+        "4.1 g",
+        "84",
+        "15%"
+      ],
+      [
+        "1 cup, sliced",
+        "180 g",
+        "5.4 g",
+        "110",
+        "19%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in kiwi?",
+      "paragraphs": [
+        "USDA FoodData Central lists kiwifruit, green, raw at 3 g of fiber per 100 g. One serving (1 kiwifruit; 69 g) therefore has about 2.1 g of fiber and 42 calories. That is 7% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 8% of a 25 g day and 5% of a 38 g day.",
+        "Kiwifruit is small, so one fruit gives a couple of grams of fiber. It has drawn research interest because, in clinical trials, eating two green kiwifruit a day improved bowel movement frequency in people with chronic constipation."
+      ]
+    },
+    {
+      "heading": "Kiwi skin and the “two a day” habit",
+      "paragraphs": [
+        "The fuzzy skin of green kiwi is edible and adds fiber, although USDA’s entry is for peeled fruit. If the texture is fine for you, washing and eating the skin gives a bit more.",
+        "Studies on kiwifruit and constipation typically used two green kiwifruit per day for several weeks. If you try it, give it time and keep fluids up; for ongoing constipation, a clinician can check for other causes."
+      ]
+    },
+    {
+      "heading": "How kiwi compares with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, kiwi ranks #14 for fiber per typical serving and #7 for fiber per calorie. That works out to 4.9 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [dates](/fiber-in-dates) at 1.6 g (1 Medjool date); [mango](/fiber-in-mango) at 2.6 g (1 cup pieces); [strawberries](/fiber-in-strawberries) at 2.9 g (1 cup, whole). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), kiwi is #25 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding kiwi to your day",
+      "paragraphs": [
+        "Two kiwis with breakfast is a simple routine. They also work sliced into yogurt or blended into a green smoothie.",
+        "Example: 2 kiwifruit, 170g greek yogurt, 2 tbsp wheat bran. Using the same USDA values as the calculator, that comes to about 7.2 g of fiber, with 4.1 g from the kiwi. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "2 kiwifruit, 170g greek yogurt, 2 tbsp wheat bran",
+  "examples": [
+    "2 kiwifruit, 170g greek yogurt, 2 tbsp wheat bran"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your kiwi meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of kiwi?",
+      "a": "3 g, according to USDA FoodData Central (Kiwifruit, green, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in kiwi (2 kiwifruit)?",
+      "a": "About 4.1 g, for 138 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Can you eat kiwi skin?",
+      "a": "Yes, the skin of green and gold kiwi is edible. Wash it well. It adds some fiber and texture."
+    },
+    {
+      "q": "Is kiwi good for constipation?",
+      "a": "Several clinical trials found two green kiwifruit a day improved stool frequency in adults with constipation. It is a reasonable food-first option, not a replacement for medical advice."
+    }
+  ],
+  "related": [
+    "fiber-in-dates",
+    "fiber-in-mango",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Kiwifruit, green, raw (FDC 168153)",
+      "url": "https://fdc.nal.usda.gov/food-details/168153/nutrients",
+      "note": "3 g fiber and 61 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "American College of Gastroenterology, Evidence-Based GI: Kiwifruit to improve stool frequency in mild constipation (2023)",
+      "url": "https://gi.org/journals-publications/ebgi/schoenfeld_aug2023/",
+      "note": "summary of the two-kiwifruit-a-day trial"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

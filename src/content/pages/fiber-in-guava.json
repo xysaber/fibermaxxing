@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-guava",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Guava? 3g per Guava",
+  "description": "Guava: about 3 g of fiber per 1 fruit (11% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in guava?",
+  "answer": {
+    "value": "~3",
+    "unit": "g",
+    "detail": "fiber in 1 fruit (55 g)",
+    "note": "USDA FoodData Central, Guavas, common, raw"
+  },
+  "intro": [
+    "Guava ranks #11 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 fruit",
+      "value": "3 g",
+      "note": "37 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "5.4 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "7.9 g",
+      "note": "#10 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "11%",
+      "note": "of 28 g, per 1 fruit"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in guava by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 fruit",
+        "55 g",
+        "3 g",
+        "37",
+        "11%"
+      ],
+      [
+        "1 cup",
+        "165 g",
+        "8.9 g",
+        "112",
+        "32%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in guava?",
+      "paragraphs": [
+        "USDA FoodData Central lists guavas, common, raw at 5.4 g of fiber per 100 g. One serving (1 fruit; 55 g) therefore has about 3 g of fiber and 37 calories. That is 11% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 12% of a 25 g day and 8% of a 38 g day.",
+        "Guava is one of the highest-fiber fruits per cup, rivaling raspberries. Its edible seeds and skin both contribute. It is common in Latin American, South Asian, and Southeast Asian markets and increasingly in U.S. grocery stores."
+      ]
+    },
+    {
+      "heading": "Eating guava whole",
+      "paragraphs": [
+        "You can eat the skin and seeds of common guava. Scooping out the seeds removes some fiber and leaves you with the softer flesh.",
+        "Guava juice and nectar have most of the fiber strained out and often added sugar."
+      ]
+    },
+    {
+      "heading": "How guava compares with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, guava ranks #11 for fiber per typical serving and #3 for fiber per calorie. That works out to 7.9 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [strawberries](/fiber-in-strawberries) at 2.9 g (1 cup, whole); [banana](/fiber-in-banana) at 3.1 g (1 medium (7–8\")); [orange](/fiber-in-orange) at 3.1 g (1 medium). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), guava is #10 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding guava to your day",
+      "paragraphs": [
+        "Slice guava into a fruit salad, eat it with a pinch of chili and salt, or blend it into a smoothie with yogurt.",
+        "Example: 1 cup guava, 170g greek yogurt. Using the same USDA values as the calculator, that comes to about 8.9 g of fiber, with 8.9 g from the guava. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup guava, 170g greek yogurt",
+  "examples": [
+    "1 cup guava, 170g greek yogurt"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your guava meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of guava?",
+      "a": "5.4 g, according to USDA FoodData Central (Guavas, common, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in guava (1 cup)?",
+      "a": "About 8.9 g, for 165 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is guava higher in fiber than an apple?",
+      "a": "Per cup, yes. A cup of guava is about 3 g (1 fruit), while a cup of apple slices with skin is about 2.6 g."
+    },
+    {
+      "q": "Can you eat guava seeds?",
+      "a": "Yes. They are hard but edible and contribute to the fiber."
+    }
+  ],
+  "related": [
+    "fiber-in-strawberries",
+    "fiber-in-banana",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Guavas, common, raw (FDC 173044)",
+      "url": "https://fdc.nal.usda.gov/food-details/173044/nutrients",
+      "note": "5.4 g fiber and 68 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

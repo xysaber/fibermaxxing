@@ -1,0 +1,129 @@
+{
+  "slug": "fiber-for-ibs",
+  "title": "Fiber for IBS: Soluble vs Insoluble and Low-FODMAP Choices",
+  "description": "Which fiber helps IBS and which can make it worse: soluble vs insoluble, what the ACG guideline recommends, and lower-FODMAP fiber foods.",
+  "h1": "Fiber for IBS: which kinds help, and which can hurt",
+  "answer": {
+    "value": "Soluble",
+    "detail": "fiber, such as psyllium, is the type the American College of Gastroenterology recommends for IBS symptoms. Insoluble fiber like wheat bran is not recommended."
+  },
+  "intro": [
+    "With irritable bowel syndrome, the type of fiber matters as much as the amount. Some fibers ease symptoms; others ferment quickly and cause gas and pain. Go slowly and change one thing at a time."
+  ],
+  "callout": {
+    "title": "Check with your clinician",
+    "text": "This page is general education, not medical advice. IBS should be diagnosed by a clinician, because other conditions can cause similar symptoms. Seek care for warning signs such as rectal bleeding, unintended weight loss, anemia, fever, symptoms that wake you at night, or a new change in bowel habits after age 45."
+  },
+  "facts": [
+    {
+      "label": "Recommended",
+      "value": "Soluble",
+      "note": "e.g. psyllium (ACG 2021)"
+    },
+    {
+      "label": "Not recommended",
+      "value": "Insoluble",
+      "note": "e.g. wheat bran"
+    },
+    {
+      "label": "Increase by",
+      "value": "2–3 g",
+      "note": "per day at a time (NIDDK)"
+    },
+    {
+      "label": "Low-FODMAP",
+      "value": "Trial",
+      "note": "short-term, with guidance"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Soluble vs insoluble fiber in IBS",
+      "paragraphs": [
+        "Soluble fiber dissolves in water and forms a gel. Psyllium is the best-studied example. The American College of Gastroenterology’s 2021 IBS guideline recommends soluble fiber for overall IBS symptoms, and recommends against insoluble fiber, because insoluble fiber such as wheat bran can worsen bloating and pain.",
+        "Soluble does not automatically mean gentle. Some soluble fibers, such as inulin, ferment quickly and are high-FODMAP. Psyllium ferments slowly, which is part of why it tends to be better tolerated."
+      ]
+    },
+    {
+      "heading": "Where FODMAPs come in",
+      "paragraphs": [
+        "FODMAPs are short-chain carbohydrates that are poorly absorbed and fermented by gut bacteria. Researchers at Monash University developed the low-FODMAP diet, and the ACG guideline suggests a limited trial of it for IBS, ideally with a dietitian. It is a short elimination followed by reintroduction, not a permanent diet.",
+        "Many high-fiber foods are also high-FODMAP: most beans in large servings, apples, pears, mango, artichokes, onions, and garlic. That is why a sudden switch to a “healthy high-fiber diet” can make IBS worse."
+      ]
+    },
+    {
+      "heading": "Higher-fiber foods that are often better tolerated",
+      "paragraphs": [
+        "Monash lists several fiber sources as low-FODMAP at standard servings, including oats, quinoa, brown rice, chia seeds, green kiwifruit, oranges, strawberries, blueberries, carrots, and spinach. On this site: [quinoa](/fiber-in-quinoa) (5.2 g, 1 cup, cooked), [kiwi](/fiber-in-kiwi) (2.1 g, 1 kiwifruit), [carrots](/fiber-in-carrots) (1.7 g, 1 medium carrot, raw), [spinach](/fiber-in-spinach) (4.3 g, 1 cup, cooked).",
+        "Canned, rinsed lentils and chickpeas are lower in FODMAPs than beans cooked from dry, because some of the fermentable carbohydrates move into the canning liquid. Small servings are often tolerated. Serving size matters: check the Monash app for current thresholds, since they are updated as foods are retested."
+      ]
+    },
+    {
+      "heading": "How to add fiber without a flare",
+      "paragraphs": [
+        "NIDDK suggests adding fiber slowly, by 2 to 3 g a day, to reduce gas and bloating. Spread fiber across meals instead of one large high-fiber dinner, and drink water through the day.",
+        "Keep a simple log of what you ate and how you felt. The calculator on this page can total fiber per meal; a symptom note beside it makes patterns easier to spot over a couple of weeks."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup oatmeal, 2 kiwifruit, 1 tbsp chia seeds",
+  "examples": [
+    "1 cup oatmeal, 2 kiwifruit, 1 tbsp chia seeds",
+    "1 cup quinoa, 1 cup carrots, 1 cup cooked spinach",
+    "1 cup brown rice, 1 cup strawberries"
+  ],
+  "faqs": [
+    {
+      "q": "Is psyllium good for IBS?",
+      "a": "Psyllium is the soluble fiber with the most evidence in IBS, and the ACG guideline recommends soluble fiber. Start with a small dose, increase slowly, and check with your clinician, especially if you take other medicines."
+    },
+    {
+      "q": "Should I avoid fiber if I have IBS?",
+      "a": "Usually not. Most people with IBS benefit from adequate fiber, but the type and pace matter. Soluble, slowly fermented fibers tend to be better tolerated than wheat bran or high-FODMAP foods."
+    },
+    {
+      "q": "Is the low-FODMAP diet high in fiber?",
+      "a": "It can be low in fiber if you simply remove foods. Including low-FODMAP fiber sources such as oats, quinoa, chia, kiwifruit, and carrots helps. A dietitian can help you plan it."
+    },
+    {
+      "q": "Does fiber help IBS with constipation and IBS with diarrhea?",
+      "a": "Soluble fiber can help both by normalizing stool form, but responses vary. Track your symptoms and talk with your clinician about which approach fits your subtype."
+    }
+  ],
+  "related": [
+    "fiber-on-glp-1",
+    "how-much-fiber-per-day",
+    "fiber-in-foods"
+  ],
+  "sources": [
+    {
+      "label": "Lacy BE, et al. ACG Clinical Guideline: Management of Irritable Bowel Syndrome. Am J Gastroenterol. 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33315591/",
+      "note": "soluble (not insoluble) fiber recommended; limited trial of low-FODMAP diet suggested"
+    },
+    {
+      "label": "Monash University, About FODMAPs and IBS",
+      "url": "https://www.monashfodmap.com/about-fodmap-and-ibs/",
+      "note": "what FODMAPs are and how the diet is structured"
+    },
+    {
+      "label": "NIDDK, Eating, Diet, & Nutrition for Irritable Bowel Syndrome",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/irritable-bowel-syndrome/eating-diet-nutrition",
+      "note": "add fiber slowly to reduce gas and bloating"
+    },
+    {
+      "label": "USDA FoodData Central (SR Legacy)",
+      "url": "https://fdc.nal.usda.gov/",
+      "note": "fiber per 100 g behind every food figure on this page"
+    }
+  ],
+  "updated": "2026-11-25",
+  "kind": "audience",
+  "publish": true,
+  "layout": "bands",
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate a meal in the calculator"
+}

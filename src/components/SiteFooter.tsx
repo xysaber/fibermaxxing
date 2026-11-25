@@ -24,7 +24,14 @@ export function SiteFooter() {
           <div>
             <h2>Tools</h2>
             <Link to="/">Fiber calculator</Link>
-            <Link to="/#foods">Fiber in foods</Link>
+            <Link to="/fiber-in-foods">Fiber in 50 foods</Link>
+          </div>
+          <div>
+            <h2>By goal</h2>
+            <Link to="/fiber-on-glp-1">Fiber on GLP-1 meds</Link>
+            <Link to="/fiber-for-weight-loss">Fiber for weight loss</Link>
+            <Link to="/fiber-for-ibs">Fiber for IBS</Link>
+            <Link to="/fiber-during-pregnancy">Fiber in pregnancy</Link>
           </div>
           <div>
             <h2>Guides</h2>

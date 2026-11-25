@@ -1,0 +1,165 @@
+{
+  "slug": "fiber-in-potato",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "vegetables",
+  "title": "How Much Fiber in a Baked Potato? 3.8g per Medium",
+  "description": "Baked Potato: about 3.8 g of fiber per 1 medium, baked, flesh and skin (14% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in a baked potato?",
+  "answer": {
+    "value": "~3.8",
+    "unit": "g",
+    "detail": "fiber in 1 medium, baked, flesh and skin (173 g)",
+    "note": "USDA FoodData Central, Potatoes, baked, flesh and skin, without salt"
+  },
+  "intro": [
+    "Baked potato ranks #8 of 10 vegetables on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 medium, baked, flesh and skin",
+      "value": "3.8 g",
+      "note": "161 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2.2 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.4 g",
+      "note": "#41 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "14%",
+      "note": "of 28 g, per 1 medium"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in baked potato by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 medium, baked, flesh and skin",
+        "173 g",
+        "3.8 g",
+        "161",
+        "14%"
+      ],
+      [
+        "1 potato skin (only)",
+        "58 g",
+        "4.6 g",
+        "115",
+        "16%"
+      ],
+      [
+        "1 cup baked flesh, no skin",
+        "61 g",
+        "0.9 g",
+        "57",
+        "3%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in a baked potato?",
+      "paragraphs": [
+        "USDA FoodData Central lists potatoes, baked, flesh and skin, without salt at 2.2 g of fiber per 100 g. One serving (1 medium, baked, flesh and skin; 173 g) therefore has about 3.8 g of fiber and 161 calories. That is 14% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 15% of a 25 g day and 10% of a 38 g day.",
+        "White potatoes are not usually thought of as a fiber food, but a medium baked potato with the skin gives about as much fiber as a medium apple. The skin is where it is most concentrated."
+      ]
+    },
+    {
+      "heading": "Why the skin matters",
+      "paragraphs": [
+        "USDA’s potato skin entry is about five times higher in fiber per 100 g than the flesh alone. Mashed potatoes made from peeled potatoes lose much of that.",
+        "Cooled potatoes, as in potato salad, form some resistant starch, which acts somewhat like fiber in the gut. Standard fiber figures do not count it fully."
+      ]
+    },
+    {
+      "heading": "How baked potato compares with other vegetables",
+      "paragraphs": [
+        "Of the 10 vegetables on this site, baked potato ranks #8 for fiber per typical serving and #10 for fiber per calorie. That works out to 2.4 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [sweet potato](/fiber-in-sweet-potato) at 3.8 g (1 medium, baked (flesh)); [green beans](/fiber-in-green-beans) at 4 g (1 cup, cooked); [Brussels sprouts](/fiber-in-brussels-sprouts) at 4.1 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), baked potato is #41 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding baked potato to your day",
+      "paragraphs": [
+        "Keep the skin on for baked, roasted, and smashed potatoes. Top with beans, broccoli, or chili rather than only cheese and sour cream.",
+        "Example: 1 baked potato, 1 cup broccoli, 1/2 cup black beans. Using the same USDA values as the calculator, that comes to about 16.4 g of fiber, with 3.8 g from the baked potato. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 baked potato, 1 cup broccoli, 1/2 cup black beans",
+  "examples": [
+    "1 baked potato, 1 cup broccoli, 1/2 cup black beans"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your baked potato meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of baked potato?",
+      "a": "2.2 g, according to USDA FoodData Central (Potatoes, baked, flesh and skin, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in baked potato (1 potato skin (only))?",
+      "a": "About 4.6 g (Potatoes, baked, skin, without salt), for 58 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "How much fiber is in potato skin?",
+      "a": "USDA lists a baked skin from one potato (about 58 g) at roughly 4.6 g of fiber, more than the rest of the potato combined."
+    },
+    {
+      "q": "Are French fries a source of fiber?",
+      "a": "A little, depending on portion and whether the skin is left on. Their fat and salt usually outweigh the fiber benefit."
+    }
+  ],
+  "related": [
+    "fiber-in-sweet-potato",
+    "fiber-in-green-beans",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Potatoes, baked, flesh and skin, without salt (FDC 170093)",
+      "url": "https://fdc.nal.usda.gov/food-details/170093/nutrients",
+      "note": "2.2 g fiber and 93 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Potatoes, baked, skin, without salt (FDC 170034)",
+      "url": "https://fdc.nal.usda.gov/food-details/170034/nutrients",
+      "note": "7.9 g fiber and 198 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Potatoes, baked, flesh, without salt (FDC 170033)",
+      "url": "https://fdc.nal.usda.gov/food-details/170033/nutrients",
+      "note": "1.5 g fiber and 93 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}
