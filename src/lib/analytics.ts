@@ -13,6 +13,9 @@ type EventName =
   | 'add_suggestion'
   | 'email_signup_attempt'
   | 'email_signup_success'
+  // Key events (mark in GA4 Admin → Key events)
+  | 'fiber_calculated'
+  | 'generate_lead'
 
 type GtagFn = (...args: unknown[]) => void
 

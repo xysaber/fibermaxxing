@@ -108,8 +108,10 @@ export function PrivacyPolicyBody() {
 
         <h3>Tracking Technologies and Analytics</h3>
         <p>
-          We use analytics tools (including Google Analytics 4) to understand how the Service is used—such as visits,
-          calculator attempts, and result quality signals—so we can improve the product.
+          We use Google Analytics 4 to understand how the Service is used—such as page visits, calculator attempts,
+          result quality signals, and free plan sign-ups—so we can improve the product. Google may set analytics cookies
+          and receive your IP address and browser information. Analytics events never include your meal text, food
+          names you type, or your email address. We do not use advertising cookies.
         </p>
         <ul>
           <li>
