@@ -35,5 +35,12 @@ try {
   assert.equal(window.dataLayer[0].status, 'no_match')
   window.gtag = () => { throw new Error('blocked') }
   assert.doesNotThrow(() => track('calculate_attempt'))
+  // GA4 gtag.js is loaded in the HTML shell with the automatic page_view off (we send our own).
+  const { readFileSync } = await import('node:fs')
+  const shell = readFileSync(new URL('../index.html', import.meta.url), 'utf8')
+  const head = shell.slice(0, shell.indexOf('</head>'))
+  assert.equal(head.split('googletagmanager.com/gtag/js?id=G-VN1K52FX6C').length - 1, 1, 'gtag.js once in <head>')
+  assert.ok(head.includes("gtag('config', 'G-VN1K52FX6C', { send_page_view: false })"), 'config without auto page_view')
+  assert.ok(!shell.includes('gtm.js'), 'no GTM container')
   console.log('Analytics dispatch, page view deduplication, fallback and failure isolation passed')
 } finally { await server.close() }

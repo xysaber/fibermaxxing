@@ -416,6 +416,8 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     }
 
     setMealError(null)
+    // Key event: the calculator returned at least one food. Counts only, never meal text.
+    track('fiber_calculated', { input_origin: inputOrigin, foods: parsed.matches.length, fiber: parsed.totalFiberG })
     if (inputOrigin === 'example') {
       track('run_example', { foods: parsed.matches.length, fiber: parsed.totalFiberG })
     } else if (inputOrigin === 'starter') {
