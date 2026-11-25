@@ -1,0 +1,24 @@
+# After a push to main, wait for the Cloudflare deploy, then ping IndexNow with the sitemap URLs.
+name: IndexNow
+on:
+  push:
+    branches: [main]
+    paths: ['src/**', 'public/**', 'scripts/prerender.mjs']
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Wait for deploy and key file
+        run: |
+          KEY=$(ls public | grep -E '^[0-9a-f]{32}\.txt$')
+          for i in $(seq 1 20); do
+            if curl -fsS "https://www.getfibermaxxing.com/$KEY" | grep -q "${KEY%.txt}"; then exit 0; fi
+            sleep 30
+          done
+          echo "Key file not live after 10 minutes"; exit 1
+      - run: node scripts/indexnow.mjs

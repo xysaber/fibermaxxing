@@ -4,6 +4,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Black beans fiber",
+    "name": "Black beans",
+    "serving": "1 cup, cooked",
     "blurb": "15 g per 1 cup, cooked, from USDA data.",
     "stat": "15 g"
   },
@@ -12,6 +14,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Chickpeas fiber",
+    "name": "Chickpeas",
+    "serving": "1 cup, cooked",
     "blurb": "12.5 g per 1 cup, cooked, from USDA data.",
     "stat": "12.5 g"
   },
@@ -20,6 +24,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Lentils fiber",
+    "name": "Lentils",
+    "serving": "1 cup, cooked",
     "blurb": "15.6 g per 1 cup, cooked, from USDA data.",
     "stat": "15.6 g"
   },
@@ -28,6 +34,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Kidney beans fiber",
+    "name": "Kidney beans",
+    "serving": "1 cup, cooked",
     "blurb": "11.3 g per 1 cup, cooked, from USDA data.",
     "stat": "11.3 g"
   },
@@ -36,6 +44,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Pinto beans fiber",
+    "name": "Pinto beans",
+    "serving": "1 cup, cooked",
     "blurb": "15.4 g per 1 cup, cooked, from USDA data.",
     "stat": "15.4 g"
   },
@@ -44,6 +54,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Navy beans fiber",
+    "name": "Navy beans",
+    "serving": "1 cup, cooked",
     "blurb": "19.1 g per 1 cup, cooked, from USDA data.",
     "stat": "19.1 g"
   },
@@ -52,6 +64,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Split peas fiber",
+    "name": "Split peas",
+    "serving": "1 cup, cooked",
     "blurb": "16.3 g per 1 cup, cooked, from USDA data.",
     "stat": "16.3 g"
   },
@@ -60,6 +74,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Green peas fiber",
+    "name": "Green peas",
+    "serving": "1 cup, cooked",
     "blurb": "8.8 g per 1 cup, cooked, from USDA data.",
     "stat": "8.8 g"
   },
@@ -68,6 +84,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Edamame fiber",
+    "name": "Edamame",
+    "serving": "1 cup, shelled, cooked",
     "blurb": "8.1 g per 1 cup, shelled, cooked, from USDA data.",
     "stat": "8.1 g"
   },
@@ -76,6 +94,8 @@
     "kind": "food",
     "category": "legumes",
     "title": "Hummus fiber",
+    "name": "Hummus",
+    "serving": "2 tbsp",
     "blurb": "1.7 g per 2 tbsp, from USDA data.",
     "stat": "1.7 g"
   },
@@ -84,6 +104,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Quinoa fiber",
+    "name": "Quinoa",
+    "serving": "1 cup, cooked",
     "blurb": "5.2 g per 1 cup, cooked, from USDA data.",
     "stat": "5.2 g"
   },
@@ -92,6 +114,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Brown rice fiber",
+    "name": "Brown rice",
+    "serving": "1 cup, cooked",
     "blurb": "3.2 g per 1 cup, cooked, from USDA data.",
     "stat": "3.2 g"
   },
@@ -100,6 +124,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Barley fiber",
+    "name": "Barley",
+    "serving": "1 cup, cooked (pearled)",
     "blurb": "6 g per 1 cup, cooked (pearled), from USDA data.",
     "stat": "6 g"
   },
@@ -108,6 +134,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Whole wheat bread fiber",
+    "name": "Whole wheat bread",
+    "serving": "1 slice",
     "blurb": "1.9 g per 1 slice, from USDA data.",
     "stat": "1.9 g"
   },
@@ -116,6 +144,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Popcorn fiber",
+    "name": "Popcorn",
+    "serving": "3 cups, air-popped",
     "blurb": "3.6 g per 3 cups, air-popped, from USDA data.",
     "stat": "3.6 g"
   },
@@ -124,6 +154,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Whole wheat pasta fiber",
+    "name": "Whole wheat pasta",
+    "serving": "1 cup spaghetti, cooked",
     "blurb": "5.5 g per 1 cup spaghetti, cooked, from USDA data.",
     "stat": "5.5 g"
   },
@@ -132,6 +164,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Bulgur fiber",
+    "name": "Bulgur",
+    "serving": "1 cup, cooked",
     "blurb": "8.2 g per 1 cup, cooked, from USDA data.",
     "stat": "8.2 g"
   },
@@ -140,6 +174,8 @@
     "kind": "food",
     "category": "grains",
     "title": "Wheat bran fiber",
+    "name": "Wheat bran",
+    "serving": "2 tbsp",
     "blurb": "3.1 g per 2 tbsp, from USDA data.",
     "stat": "3.1 g"
   },
@@ -148,6 +184,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Raspberries fiber",
+    "name": "Raspberries",
+    "serving": "1 cup",
     "blurb": "8 g per 1 cup, from USDA data.",
     "stat": "8 g"
   },
@@ -156,6 +194,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Blackberries fiber",
+    "name": "Blackberries",
+    "serving": "1 cup",
     "blurb": "7.6 g per 1 cup, from USDA data.",
     "stat": "7.6 g"
   },
@@ -164,6 +204,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Strawberries fiber",
+    "name": "Strawberries",
+    "serving": "1 cup, whole",
     "blurb": "2.9 g per 1 cup, whole, from USDA data.",
     "stat": "2.9 g"
   },
@@ -172,6 +214,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Blueberries fiber",
+    "name": "Blueberries",
+    "serving": "1 cup",
     "blurb": "3.6 g per 1 cup, from USDA data.",
     "stat": "3.6 g"
   },
@@ -180,6 +224,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Apple fiber",
+    "name": "Apple",
+    "serving": "1 medium (3\" diameter), with skin",
     "blurb": "4.4 g per 1 medium (3\" diameter), with skin, from USDA data.",
     "stat": "4.4 g"
   },
@@ -188,6 +234,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Pear fiber",
+    "name": "Pear",
+    "serving": "1 medium",
     "blurb": "5.5 g per 1 medium, from USDA data.",
     "stat": "5.5 g"
   },
@@ -196,6 +244,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Banana fiber",
+    "name": "Banana",
+    "serving": "1 medium (7–8\")",
     "blurb": "3.1 g per 1 medium (7–8\"), from USDA data.",
     "stat": "3.1 g"
   },
@@ -204,6 +254,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Orange fiber",
+    "name": "Orange",
+    "serving": "1 medium",
     "blurb": "3.1 g per 1 medium, from USDA data.",
     "stat": "3.1 g"
   },
@@ -212,6 +264,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Avocado fiber",
+    "name": "Avocado",
+    "serving": "1 medium avocado (flesh)",
     "blurb": "10.1 g per 1 medium avocado (flesh), from USDA data.",
     "stat": "10.1 g"
   },
@@ -220,6 +274,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Kiwi fiber",
+    "name": "Kiwi",
+    "serving": "1 kiwifruit",
     "blurb": "2.1 g per 1 kiwifruit, from USDA data.",
     "stat": "2.1 g"
   },
@@ -228,6 +284,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Mango fiber",
+    "name": "Mango",
+    "serving": "1 cup pieces",
     "blurb": "2.6 g per 1 cup pieces, from USDA data.",
     "stat": "2.6 g"
   },
@@ -236,6 +294,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Prunes fiber",
+    "name": "Prunes",
+    "serving": "5 prunes",
     "blurb": "3.4 g per 5 prunes, from USDA data.",
     "stat": "3.4 g"
   },
@@ -244,6 +304,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Dates fiber",
+    "name": "Dates",
+    "serving": "1 Medjool date",
     "blurb": "1.6 g per 1 Medjool date, from USDA data.",
     "stat": "1.6 g"
   },
@@ -252,6 +314,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Dried figs fiber",
+    "name": "Dried figs",
+    "serving": "1/4 cup",
     "blurb": "3.6 g per 1/4 cup, from USDA data.",
     "stat": "3.6 g"
   },
@@ -260,6 +324,8 @@
     "kind": "food",
     "category": "fruit",
     "title": "Guava fiber",
+    "name": "Guava",
+    "serving": "1 fruit",
     "blurb": "3 g per 1 fruit, from USDA data.",
     "stat": "3 g"
   },
@@ -268,6 +334,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Broccoli fiber",
+    "name": "Broccoli",
+    "serving": "1 cup chopped, cooked",
     "blurb": "5.1 g per 1 cup chopped, cooked, from USDA data.",
     "stat": "5.1 g"
   },
@@ -276,6 +344,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Brussels sprouts fiber",
+    "name": "Brussels sprouts",
+    "serving": "1 cup, cooked",
     "blurb": "4.1 g per 1 cup, cooked, from USDA data.",
     "stat": "4.1 g"
   },
@@ -284,6 +354,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Carrots fiber",
+    "name": "Carrots",
+    "serving": "1 medium carrot, raw",
     "blurb": "1.7 g per 1 medium carrot, raw, from USDA data.",
     "stat": "1.7 g"
   },
@@ -292,6 +364,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Sweet potato fiber",
+    "name": "Sweet potato",
+    "serving": "1 medium, baked (flesh)",
     "blurb": "3.8 g per 1 medium, baked (flesh), from USDA data.",
     "stat": "3.8 g"
   },
@@ -300,6 +374,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Baked potato fiber",
+    "name": "Baked potato",
+    "serving": "1 medium, baked, flesh and skin",
     "blurb": "3.8 g per 1 medium, baked, flesh and skin, from USDA data.",
     "stat": "3.8 g"
   },
@@ -308,6 +384,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Spinach fiber",
+    "name": "Spinach",
+    "serving": "1 cup, cooked",
     "blurb": "4.3 g per 1 cup, cooked, from USDA data.",
     "stat": "4.3 g"
   },
@@ -316,6 +394,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Kale fiber",
+    "name": "Kale",
+    "serving": "1 cup, cooked",
     "blurb": "4.7 g per 1 cup, cooked, from USDA data.",
     "stat": "4.7 g"
   },
@@ -324,6 +404,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Artichoke fiber",
+    "name": "Artichoke",
+    "serving": "1 medium globe artichoke, raw (edible part)",
     "blurb": "6.9 g per 1 medium globe artichoke, raw (edible part), from USDA data.",
     "stat": "6.9 g"
   },
@@ -332,6 +414,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Green beans fiber",
+    "name": "Green beans",
+    "serving": "1 cup, cooked",
     "blurb": "4 g per 1 cup, cooked, from USDA data.",
     "stat": "4 g"
   },
@@ -340,6 +424,8 @@
     "kind": "food",
     "category": "vegetables",
     "title": "Butternut squash fiber",
+    "name": "Butternut squash",
+    "serving": "1 cup cubes, baked",
     "blurb": "6.6 g per 1 cup cubes, baked, from USDA data.",
     "stat": "6.6 g"
   },
@@ -348,6 +434,8 @@
     "kind": "food",
     "category": "nuts",
     "title": "Almonds fiber",
+    "name": "Almonds",
+    "serving": "1 oz (about 23 almonds)",
     "blurb": "3.5 g per 1 oz (about 23 almonds), from USDA data.",
     "stat": "3.5 g"
   },
@@ -356,6 +444,8 @@
     "kind": "food",
     "category": "nuts",
     "title": "Flaxseed fiber",
+    "name": "Flaxseed",
+    "serving": "1 tbsp, whole",
     "blurb": "2.8 g per 1 tbsp, whole, from USDA data.",
     "stat": "2.8 g"
   },
@@ -364,6 +454,8 @@
     "kind": "food",
     "category": "nuts",
     "title": "Pumpkin seeds fiber",
+    "name": "Pumpkin seeds",
+    "serving": "1 oz hulled kernels (pepitas)",
     "blurb": "1.7 g per 1 oz hulled kernels (pepitas), from USDA data.",
     "stat": "1.7 g"
   },
@@ -372,6 +464,8 @@
     "kind": "food",
     "category": "nuts",
     "title": "Pistachios fiber",
+    "name": "Pistachios",
+    "serving": "1 oz (about 49 kernels)",
     "blurb": "2.9 g per 1 oz (about 49 kernels), from USDA data.",
     "stat": "2.9 g"
   },
@@ -380,6 +474,8 @@
     "kind": "food",
     "category": "nuts",
     "title": "Walnuts fiber",
+    "name": "Walnuts",
+    "serving": "1 oz (about 14 halves)",
     "blurb": "1.9 g per 1 oz (about 14 halves), from USDA data.",
     "stat": "1.9 g"
   },
@@ -388,6 +484,8 @@
     "kind": "food",
     "category": "nuts",
     "title": "Peanut butter fiber",
+    "name": "Peanut butter",
+    "serving": "2 tbsp",
     "blurb": "1.6 g per 2 tbsp, from USDA data.",
     "stat": "1.6 g"
   },
@@ -396,6 +494,8 @@
     "kind": "food",
     "category": "nuts",
     "title": "Dark chocolate fiber",
+    "name": "Dark chocolate",
+    "serving": "1 oz (70–85% cacao)",
     "blurb": "3.1 g per 1 oz (70–85% cacao), from USDA data.",
     "stat": "3.1 g"
   },

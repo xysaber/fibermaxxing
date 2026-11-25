@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Arrow } from './home/Arrow'
 
 export const HOME_GUIDES = [
   {
@@ -65,33 +66,43 @@ const GROUPS = [
   { id: 'meals', title: 'Meals' },
 ] as const
 
+const GROUP_TITLE: Record<string, string> = Object.fromEntries(GROUPS.map((g) => [g.id, g.title]))
+
+/**
+ * Home guides as an editorial two-column list with a big stat per guide
+ * (design boards 32–33). Every guide opens with the answer, then the calculator.
+ */
 export function GuidesStrip() {
   return (
-    <section className="guide-groups" id="guides" aria-labelledby="guides-heading">
-      <div className="section-head">
-        <div>
-          <h2 id="guides-heading">Fiber guides</h2>
-          <p>Short answers first — then the same calculator with a relevant example meal.</p>
-        </div>
+    <section className="hv-band hv-band--white" id="guides" aria-labelledby="guides-heading" data-reveal>
+      <div className="hv-head">
+        <h2 id="guides-heading" className="hv-h2">
+          Short answers,
+          <br />
+          then the calculator.
+        </h2>
+        <p className="hv-intro">
+          Eight guides that open with the answer, then let you check your own day.{' '}
+          <Link to="/fiber-in-foods">Browse fiber in 50 foods</Link>
+        </p>
       </div>
-      <div className="guide-groups-grid">
-        {GROUPS.map((g) => (
-          <div key={g.id} className="guide-group">
-            <h3 className="guide-group-title">{g.title}</h3>
-            <ul>
-              {HOME_GUIDES.filter((x) => x.group === g.id).map((x) => (
-                <li key={x.to}>
-                  <Link className="guide-tile" to={x.to}>
-                    <span className="guide-tile-stat">{x.stat}</span>
-                    <strong>{x.title}</strong>
-                    <span>{x.blurb}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <ul className="hv-guides">
+        {HOME_GUIDES.map((x) => (
+          <li key={x.to}>
+            <Link className="hv-guide" to={x.to}>
+              <span className="hv-guide-stat">{x.stat}</span>
+              <span className="hv-guide-copy">
+                <span className="hv-guide-group">{GROUP_TITLE[x.group]}</span>
+                <strong>{x.title}</strong>
+                <span>{x.blurb}</span>
+              </span>
+              <span className="hv-guide-arrow" aria-hidden="true">
+                <Arrow />
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }

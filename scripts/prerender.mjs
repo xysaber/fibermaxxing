@@ -23,6 +23,7 @@ const ssrServer = await createServer({ server: { middlewareMode: true, hmr: fals
 const { renderPage } = await ssrServer.ssrLoadModule('/scripts/render-pages.tsx')
 const { pageJsonLd, PAGE_JSON_LD_ID } = await ssrServer.ssrLoadModule('/src/lib/pageJsonLd.ts')
 const { loadAllSeoPages } = await ssrServer.ssrLoadModule('/src/content/seoPages.ts')
+const { HOME_FAQS } = await ssrServer.ssrLoadModule('/src/content/homeFaqs.ts')
 await loadAllSeoPages()
 await ssrServer.close()
 
@@ -36,7 +37,21 @@ function escapeHtml(s) {
     .replaceAll('"', '&quot;')
 }
 
-function injectHead(html, { title, description, path, faqs, noindex = false }) {
+function articleLd(page, url) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: page.h1 || page.title,
+    description: page.description,
+    mainEntityOfPage: url,
+    dateModified: page.updated,
+    author: { '@type': 'Person', name: 'Mira Xin', jobTitle: 'Founder & Editor', url: `${siteUrl}/about#editor` },
+    publisher: { '@type': 'Organization', name: 'GetFibermaxxing', url: `${siteUrl}/` },
+    image: `${siteUrl}/og.png`,
+  }
+}
+
+function injectHead(html, { title, description, path, faqs, noindex = false, article }) {
   const url = path === '/' ? `${siteUrl}/` : `${siteUrl}${path}`
   const ogImage = `${siteUrl}/og.png`
   const faqLd =
@@ -57,7 +72,11 @@ function injectHead(html, { title, description, path, faqs, noindex = false }) {
   const extraLd = extra
     ? `<script type="application/ld+json" id="${PAGE_JSON_LD_ID}">${JSON.stringify(extra)}</script>`
     : ''
-  const schemaLd = [faqLd, extraLd].filter(Boolean).join('\n')
+  // Article + dateModified for guides and long-tail pages (byline: Mira Xin).
+  const artLd = article
+    ? `<script type="application/ld+json" id="ld-article">${JSON.stringify(articleLd(article, url))}</script>`
+    : ''
+  const schemaLd = [faqLd, extraLd, artLd].filter(Boolean).join('\n')
 
   let out = html
   out = out.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
@@ -120,16 +139,7 @@ function writePageHtml(slug, html) {
     description:
       'Free fibermaxxing calculator. Estimate daily fiber from your meals with USDA-based values and U.S. Adequate Intake targets. No signup.',
     path: '/',
-    faqs: [
-      {
-        q: 'What is fibermaxxing?',
-        a: 'Fibermaxxing means intentionally increasing daily dietary fiber — often toward stretch targets above standard adequate intake.',
-      },
-      {
-        q: 'How much fiber should I eat per day?',
-        a: 'Commonly cited U.S. Adequate Intake: about 25g/day for women 19–50 and 38g/day for men 19–50 (lower after 50).',
-      },
-    ],
+    faqs: HOME_FAQS,
   }).replace('<div id="root"></div>', `<div id="root">${renderPage('/')}</div>`)
   writeFileSync(join(dist, 'index.html'), html)
   console.log('prerender /')
@@ -152,6 +162,7 @@ for (const page of pages) {
     description: page.description,
     path: `/${page.slug}`,
     faqs: FAQ_SCHEMA_SLUGS.has(page.slug) ? page.faqs : [],
+    article: page.updated ? page : undefined,
   }).replace('<div id="root"></div>', `<div id="root">${renderPage(`/${page.slug}`)}</div>`)
   writePageHtml(page.slug, html)
   console.log('prerender', `/${page.slug}`)
