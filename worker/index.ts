@@ -3,8 +3,16 @@
  * Kill switch: MEAL_LOG_INGEST=off rejects new writes (old cached clients included).
  */
 import { handleSubscribe, handleUnsubscribe, runPlanDrip, type SubscribeEnv } from './subscribe'
+import {
+  handlePlanCheckout,
+  handlePlanClaim,
+  handlePlanContent,
+  handlePlanResend,
+  handlePlanWebhook,
+  type PlanEnv,
+} from './plan/sales'
 
-export interface Env extends SubscribeEnv {
+export interface Env extends SubscribeEnv, PlanEnv {
   ASSETS: Fetcher
   MEAL_LOGS?: R2Bucket
   /** "on" | "off" — default on when unset */
@@ -287,6 +295,15 @@ export default {
     }
     if (url.pathname === '/api/unsubscribe' && (request.method === 'GET' || request.method === 'POST')) {
       return handleUnsubscribe(request, env)
+    }
+    if (url.pathname.startsWith('/api/plan/')) {
+      const route = `${request.method} ${url.pathname}`
+      if (route === 'POST /api/plan/checkout') return handlePlanCheckout(request, env)
+      if (route === 'GET /api/plan/claim') return handlePlanClaim(request, env)
+      if (route === 'POST /api/plan/resend') return handlePlanResend(request, env)
+      if (route === 'POST /api/plan/webhook') return handlePlanWebhook(request, env)
+      if (route === 'GET /api/plan/content') return handlePlanContent(request, env)
+      return Response.json({ ok: false, error: 'not_found' }, { status: 404 })
     }
     return env.ASSETS.fetch(request)
   },
