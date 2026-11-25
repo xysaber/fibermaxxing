@@ -403,7 +403,7 @@ export function renderPlanLinkEmail(key: string): { subject: string; html: strin
 ${steps.map((s, i) => `<p style="margin:0 0 6px;font-size:15px;line-height:1.55;color:#45524b">${i + 1}. ${esc(s)}</p>`).join('\n')}
 </div>
 <p style="margin:16px 0 0;font-size:14px;line-height:1.6;color:#45524b">Not for you? Reply within 7 days and we will refund you in full. Stripe sends your receipt separately.</p>
-<p style="margin:16px 0 0;font-size:14px;line-height:1.6;color:#45524b">Mira Xin<br>Founder &amp; Editor, GetFibermaxxing</p>
+<p style="margin:16px 0 0;font-size:14px;line-height:1.6;color:#45524b">The GetFibermaxxing team</p>
 </div>
 <p style="margin:20px 4px 0;font-size:12px;line-height:1.6;color:#5f6b64">General guidance for healthy adults, not medical advice. If you have a digestive condition, are pregnant, or take GLP-1 medication, check with your clinician first. This is a one-time purchase email.</p>
 </div></body></html>`
@@ -418,8 +418,7 @@ ${steps.map((s, i) => `<p style="margin:0 0 6px;font-size:15px;line-height:1.55;
     '',
     'Not for you? Reply within 7 days and we will refund you in full. Stripe sends your receipt separately.',
     '',
-    'Mira Xin',
-    'Founder & Editor, GetFibermaxxing',
+    'The GetFibermaxxing team',
     '',
     'General guidance for healthy adults, not medical advice.',
   ].join('\n')

@@ -93,6 +93,6 @@ export function buildGuide() {
     },
     bloating: 'Stay on last week’s goal for 3 more days and drink an extra glass of water with each high-fiber meal. Most people adjust within 1–2 weeks. See a clinician if you have pain, blood in your stool, or symptoms that do not settle.',
     sources: PLAN_SOURCES,
-    disclaimer: 'General guidance for healthy adults, not medical advice. If you have a digestive condition, are pregnant, or take GLP-1 medication, check with your clinician before changing your diet. Plan by Mira Xin, Founder & Editor, GetFibermaxxing. Gram counts from USDA FoodData Central (SR Legacy) and typical U.S. nutrition labels.',
+    disclaimer: 'General guidance for healthy adults, not medical advice. If you have a digestive condition, are pregnant, or take GLP-1 medication, check with your clinician before changing your diet. Gram counts from USDA FoodData Central (SR Legacy) and typical U.S. nutrition labels.',
   }
 }

@@ -111,7 +111,7 @@ assert.equal(r.status, 200)
 const c = await r.json()
 assert.equal(c.menus.std['24'].length, 4)
 assert.equal(c.menus.std['24'][0].length, 7)
-assert.ok(c.guide.weeks.length === 4 && c.guide.disclaimer.includes('Mira Xin'))
+assert.ok(c.guide.weeks.length === 4 && !JSON.stringify(c).includes('Mira') && c.guide.disclaimer.includes('USDA'))
 
 // State: saved under the key, cleaned
 assert.equal((await call('GET', '/api/plan/state?k=' + 'b'.repeat(48))).status, 404)

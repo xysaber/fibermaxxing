@@ -33,8 +33,8 @@ export const PLAN_FAQS = [
     a: 'Reply to the plan email, or write to hello@getfibermaxxing.com, within 7 days of buying and we will refund you in full.',
   },
   {
-    q: 'Who wrote it?',
-    a: 'Mira Xin, Founder & Editor of GetFibermaxxing. Every gram count comes from USDA FoodData Central, the same data the free calculator uses, so you can type any day into the calculator and get the same total.',
+    q: 'Where do the numbers come from?',
+    a: 'Every gram count comes from USDA FoodData Central, the same data the free calculator uses, so you can type any day into the calculator and get the same total. The targets, pacing and version rules are listed with their sources below.',
   },
   {
     q: 'Is this medical advice?',
@@ -305,7 +305,7 @@ export function PlanSalesPage() {
         </div>
         <BuyButton place="footer" className="pl-buy-inline" />
         <p className="pl-fine pl-final-note">
-          By Mira Xin, Founder &amp; Editor. For education, not medical advice. If you have a digestive condition, are
+          Gram counts from USDA FoodData Central. For education, not medical advice. If you have a digestive condition, are
           pregnant, or take GLP-1 medication, check with your clinician before changing your diet.
         </p>
         <RecoverLink />
