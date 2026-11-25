@@ -185,3 +185,49 @@
   color: var(--ink-soft);
   font-weight: 600;
 }
+
+/* Safety note on audience guides (GLP-1, IBS, pregnancy, weight loss) */
+.seo-callout {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4);
+  max-width: 40rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius-sm);
+  background: var(--amber-tint);
+}
+
+.seo-callout strong {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.seo-callout p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  color: var(--ink-soft);
+}
+
+/* Hub: food link groups stay two-up on phones so 50 cards are not one long column */
+.seo-hub-groups .guide-cards-strip {
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 520px) {
+  .seo-hub-groups .guide-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seo-hub-groups .guide-card span:not(.guide-card-stat) {
+    display: none;
+  }
+}
+
+/* Placeholder while a code-split guide loads after client navigation */
+.seo-loading {
+  min-height: 60vh;
+}

@@ -1,0 +1,153 @@
+{
+  "slug": "fiber-in-whole-wheat-pasta",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Whole Wheat Pasta? 5.5g per Cup",
+  "description": "Whole Wheat Pasta: about 5.5 g of fiber per 1 cup spaghetti, cooked (20% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in whole wheat pasta?",
+  "answer": {
+    "value": "~5.5",
+    "unit": "g",
+    "detail": "fiber in 1 cup spaghetti, cooked (140 g)",
+    "note": "USDA FoodData Central, Pasta, whole-wheat, cooked"
+  },
+  "intro": [
+    "Whole wheat pasta ranks #3 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup spaghetti, cooked",
+      "value": "5.5 g",
+      "note": "209 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "3.9 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.6 g",
+      "note": "#38 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "20%",
+      "note": "of 28 g, per 1 cup spaghetti"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in whole wheat pasta by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup spaghetti, cooked",
+        "140 g",
+        "5.5 g",
+        "209",
+        "20%"
+      ],
+      [
+        "2 oz dry (typical label serving)",
+        "56.7 g",
+        "5.2 g",
+        "200",
+        "19%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in whole wheat pasta?",
+      "paragraphs": [
+        "USDA FoodData Central lists pasta, whole-wheat, cooked at 3.9 g of fiber per 100 g. One serving (1 cup spaghetti, cooked; 140 g) therefore has about 5.5 g of fiber and 209 calories. That is 20% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 22% of a 25 g day and 14% of a 38 g day.",
+        "Whole wheat pasta has roughly twice the fiber of regular pasta per cooked cup. Since pasta portions in real life are often two cups or more, the difference adds up quickly."
+      ]
+    },
+    {
+      "heading": "Dry weight vs cooked cups",
+      "paragraphs": [
+        "Pasta labels use a dry serving, typically 2 oz (56 g), which cooks to roughly one cup. The table shows both. Log one or the other, not both.",
+        "Pasta made from lentils or chickpeas is a different product: labels often list more fiber than whole wheat pasta. Use the package label for those."
+      ]
+    },
+    {
+      "heading": "How whole wheat pasta compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, whole wheat pasta ranks #3 for fiber per typical serving and #5 for fiber per calorie. That works out to 2.6 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [quinoa](/fiber-in-quinoa) at 5.2 g (1 cup, cooked); [barley](/fiber-in-barley) at 6 g (1 cup, cooked (pearled)); [popcorn](/fiber-in-popcorn) at 3.6 g (3 cups, air-popped). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), whole wheat pasta is #38 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding whole wheat pasta to your day",
+      "paragraphs": [
+        "A cup of whole wheat pasta with a cup of broccoli and white beans in the sauce is a 12 g-plus dinner. If whole wheat pasta tastes too heavy, a half-and-half mix with regular pasta is a reasonable start.",
+        "Example: 1 cup whole wheat pasta, 1 cup broccoli, 1/2 cup navy beans. Using the same USDA values as the calculator, that comes to about 20.2 g of fiber, with 5.5 g from the whole wheat pasta. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup whole wheat pasta, 1 cup broccoli, 1/2 cup navy beans",
+  "examples": [
+    "1 cup whole wheat pasta, 1 cup broccoli, 1/2 cup navy beans"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your whole wheat pasta meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of whole wheat pasta?",
+      "a": "3.9 g, according to USDA FoodData Central (Pasta, whole-wheat, cooked). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in whole wheat pasta (2 oz dry (typical label serving))?",
+      "a": "About 5.2 g (Pasta, whole-wheat, dry), for 56.7 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "How much fiber is in regular pasta?",
+      "a": "Regular enriched spaghetti is about 2.5 g per cooked cup on this site, roughly half of whole wheat."
+    },
+    {
+      "q": "Is chickpea or lentil pasta higher in fiber?",
+      "a": "Often, yes. Many legume pastas list more fiber per serving than whole wheat pasta. Labels vary, so compare grams per 2 oz dry."
+    }
+  ],
+  "related": [
+    "fiber-in-quinoa",
+    "fiber-in-barley",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Pasta, whole-wheat, cooked (FDC 168910)",
+      "url": "https://fdc.nal.usda.gov/food-details/168910/nutrients",
+      "note": "3.9 g fiber and 149 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Pasta, whole-wheat, dry (FDC 169738)",
+      "url": "https://fdc.nal.usda.gov/food-details/169738/nutrients",
+      "note": "9.2 g fiber and 352 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

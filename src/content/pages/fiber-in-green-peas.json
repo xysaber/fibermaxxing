@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-green-peas",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "legumes",
+  "title": "How Much Fiber in Green Peas? 8.8g per Cup",
+  "description": "Green Peas: about 8.8 g of fiber per 1 cup, cooked (31% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in green peas?",
+  "answer": {
+    "value": "~8.8",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (160 g)",
+    "note": "USDA FoodData Central, Peas, green, cooked, boiled, drained, without salt"
+  },
+  "intro": [
+    "Green peas rank #8 of 10 beans and legumes on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked",
+      "value": "8.8 g",
+      "note": "134 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "5.5 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "6.5 g",
+      "note": "#17 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "31%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in green peas by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked",
+        "160 g",
+        "8.8 g",
+        "134",
+        "31%"
+      ],
+      [
+        "1/2 cup, cooked",
+        "80 g",
+        "4.4 g",
+        "67",
+        "16%"
+      ],
+      [
+        "1 cup, raw",
+        "145 g",
+        "8.3 g",
+        "117",
+        "30%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in green peas?",
+      "paragraphs": [
+        "USDA FoodData Central lists peas, green, cooked, boiled, drained, without salt at 5.5 g of fiber per 100 g. One serving (1 cup, cooked; 160 g) therefore has about 8.8 g of fiber and 134 calories. That is 31% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 35% of a 25 g day and 23% of a 38 g day.",
+        "Green peas are often filed with vegetables, but botanically they are a legume, and their fiber reflects it: a cup of cooked peas has more fiber than a cup of cooked broccoli. Frozen peas are a cheap, no-prep way to add fiber to almost any savory dish."
+      ]
+    },
+    {
+      "heading": "Frozen, fresh, or canned peas",
+      "paragraphs": [
+        "Frozen peas are blanched and frozen soon after picking, and their fiber is in the same range as fresh peas. Canned peas are softer and often salted; drain them and use the label if you rely on them often.",
+        "Snow peas and sugar snap peas, where you eat the pod, are lower in fiber per cup than shelled green peas because the pod is mostly water."
+      ]
+    },
+    {
+      "heading": "How green peas compare with other beans and legumes",
+      "paragraphs": [
+        "Of the 10 beans and legumes on this site, green peas rank #8 for fiber per typical serving and #5 for fiber per calorie. That works out to 6.5 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [edamame](/fiber-in-edamame) at 8.1 g (1 cup, shelled, cooked); [kidney beans](/fiber-in-kidney-beans) at 11.3 g (1 cup, cooked); [chickpeas](/fiber-in-chickpeas) at 12.5 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), green peas are #17 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding green peas to your day",
+      "paragraphs": [
+        "Stir a half cup of frozen peas into pasta, fried rice, curry, or soup in the last few minutes of cooking. It adds about 4 g with almost no extra work.",
+        "Example: 1 cup green peas, 1 cup brown rice, 1 egg. Using the same USDA values as the calculator, that comes to about 12 g of fiber, with 8.8 g from the green peas. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup green peas, 1 cup brown rice, 1 egg",
+  "examples": [
+    "1 cup green peas, 1 cup brown rice, 1 egg"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your green peas meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of green peas?",
+      "a": "5.5 g, according to USDA FoodData Central (Peas, green, cooked, boiled, drained, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in green peas (1/2 cup, cooked)?",
+      "a": "About 4.4 g, for 80 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are peas a vegetable or a legume?",
+      "a": "Both, depending on who is counting. The U.S. Dietary Guidelines count green peas in the starchy vegetable group, while botanically they are legumes. For fiber, they behave more like beans than like leafy greens."
+    },
+    {
+      "q": "Do frozen peas have less fiber than fresh?",
+      "a": "No meaningful difference for tracking. Freezing does not remove fiber."
+    }
+  ],
+  "related": [
+    "fiber-in-edamame",
+    "fiber-in-kidney-beans",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Peas, green, cooked, boiled, drained, without salt (FDC 170420)",
+      "url": "https://fdc.nal.usda.gov/food-details/170420/nutrients",
+      "note": "5.5 g fiber and 84 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Peas, green, raw (FDC 170419)",
+      "url": "https://fdc.nal.usda.gov/food-details/170419/nutrients",
+      "note": "5.7 g fiber and 81 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

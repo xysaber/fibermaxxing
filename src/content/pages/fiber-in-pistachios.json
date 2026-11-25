@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-pistachios",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "nuts",
+  "title": "How Much Fiber in Pistachios? 2.9g per Ounce",
+  "description": "Pistachios: about 2.9 g of fiber per 1 oz (10% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in pistachios?",
+  "answer": {
+    "value": "~2.9",
+    "unit": "g",
+    "detail": "fiber in 1 oz (about 49 kernels), 28.4 g",
+    "note": "USDA FoodData Central, Nuts, pistachio nuts, dry roasted, without salt added"
+  },
+  "intro": [
+    "Pistachios rank #3 of 7 nuts, seeds, and treats on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 oz (about 49 kernels)",
+      "value": "2.9 g",
+      "note": "162 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "10.3 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "1.8 g",
+      "note": "#46 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "10%",
+      "note": "of 28 g, per 1 oz (about 49 kernels)"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in pistachios by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 oz (about 49 kernels)",
+        "28.4 g",
+        "2.9 g",
+        "162",
+        "10%"
+      ],
+      [
+        "1/4 cup kernels",
+        "30.8 g",
+        "3.2 g",
+        "176",
+        "11%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in pistachios?",
+      "paragraphs": [
+        "USDA FoodData Central lists nuts, pistachio nuts, dry roasted, without salt added at 10.3 g of fiber per 100 g. One serving (1 oz (about 49 kernels); 28.4 g) therefore has about 2.9 g of fiber and 162 calories. That is 10% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 12% of a 25 g day and 8% of a 38 g day.",
+        "Pistachios are one of the higher-fiber nuts per ounce, second only to almonds among the nuts on this site. You get about 49 kernels in an ounce, more than most nuts, which makes the portion feel bigger."
+      ]
+    },
+    {
+      "heading": "In-shell pistachios",
+      "paragraphs": [
+        "Weights here are for shelled kernels. In-shell pistachios weigh roughly twice as much per ounce of kernels, so weigh after shelling or count kernels.",
+        "Shelling them one by one slows you down, which some people find helps with portion control."
+      ]
+    },
+    {
+      "heading": "How pistachios compare with other nuts, seeds, and treats",
+      "paragraphs": [
+        "Of the 7 nuts, seeds, and treats on this site, pistachios rank #3 for fiber per typical serving and #4 for fiber per calorie. That works out to 1.8 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [flaxseed](/fiber-in-flaxseed) at 2.8 g (1 tbsp, whole); [dark chocolate](/fiber-in-dark-chocolate) at 3.1 g (1 oz (70–85% cacao)); [almonds](/fiber-in-almonds) at 3.5 g (1 oz (about 23 almonds)). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), pistachios are #46 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding pistachios to your day",
+      "paragraphs": [
+        "Pair an ounce of pistachios with a piece of fruit, or chop them over yogurt or a grain salad.",
+        "Example: 1 oz pistachios, 1 orange. Using the same USDA values as the calculator, that comes to about 6 g of fiber, with 2.9 g from the pistachios. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 oz pistachios, 1 orange",
+  "examples": [
+    "1 oz pistachios, 1 orange"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your pistachios meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of pistachios?",
+      "a": "10.3 g, according to USDA FoodData Central (Nuts, pistachio nuts, dry roasted, without salt added). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in pistachios (1/4 cup kernels)?",
+      "a": "About 3.2 g, for 30.8 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Pistachios vs almonds?",
+      "a": "Almonds are slightly higher per ounce: about 3.5 g (1 oz (about 23 almonds)) versus about 2.9 g (1 oz (about 49 kernels))."
+    },
+    {
+      "q": "How many pistachios are in a serving?",
+      "a": "About 49 kernels make up 1 oz."
+    }
+  ],
+  "related": [
+    "fiber-in-flaxseed",
+    "fiber-in-dark-chocolate",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Nuts, pistachio nuts, dry roasted, without salt added (FDC 170185)",
+      "url": "https://fdc.nal.usda.gov/food-details/170185/nutrients",
+      "note": "10.3 g fiber and 572 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-peanut-butter",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "nuts",
+  "title": "How Much Fiber in Peanut Butter? 1.6g per 2 Tbsp",
+  "description": "Peanut Butter: about 1.6 g of fiber per 2 tbsp (6% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in peanut butter?",
+  "answer": {
+    "value": "~1.6",
+    "unit": "g",
+    "detail": "fiber in 2 tbsp (32 g)",
+    "note": "USDA FoodData Central, Peanut butter, smooth style, without salt"
+  },
+  "intro": [
+    "Peanut butter ranks #7 of 7 nuts, seeds, and treats on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "2 tbsp",
+      "value": "1.6 g",
+      "note": "191 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "5 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "0.8 g",
+      "note": "#50 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "6%",
+      "note": "of 28 g, per 2 tbsp"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in peanut butter by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "2 tbsp",
+        "32 g",
+        "1.6 g",
+        "191",
+        "6%"
+      ],
+      [
+        "1 tbsp",
+        "16 g",
+        "0.8 g",
+        "96",
+        "3%"
+      ],
+      [
+        "1 oz peanuts, raw",
+        "28.4 g",
+        "2.4 g",
+        "161",
+        "9%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in peanut butter?",
+      "paragraphs": [
+        "USDA FoodData Central lists peanut butter, smooth style, without salt at 5 g of fiber per 100 g. One serving (2 tbsp; 32 g) therefore has about 1.6 g of fiber and 191 calories. That is 6% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 6% of a 25 g day and 4% of a 38 g day.",
+        "Peanut butter gives a modest amount of fiber per spoonful, and peanuts themselves are legumes. The fiber matters less than what you put it on: whole-grain bread, apples, and oats."
+      ]
+    },
+    {
+      "heading": "Natural vs regular peanut butter",
+      "paragraphs": [
+        "Natural peanut butter (just peanuts and salt) and regular peanut butter with added oil and sugar have similar fiber per tablespoon, because the peanuts are most of both.",
+        "Powdered peanut butter removes much of the fat. Check the label: fiber per serving is usually similar or slightly lower because the serving is smaller."
+      ]
+    },
+    {
+      "heading": "How peanut butter compares with other nuts, seeds, and treats",
+      "paragraphs": [
+        "Of the 7 nuts, seeds, and treats on this site, peanut butter ranks #7 for fiber per typical serving and #7 for fiber per calorie. That works out to 0.8 g of fiber per 100 calories. Peanut butter is calorie-dense, so the portion matters more than the fiber per gram.",
+        "Close neighbors by serving: [pumpkin seeds](/fiber-in-pumpkin-seeds) at 1.7 g (1 oz hulled kernels (pepitas)); [walnuts](/fiber-in-walnuts) at 1.9 g (1 oz (about 14 halves)); [flaxseed](/fiber-in-flaxseed) at 2.8 g (1 tbsp, whole). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), peanut butter is #50 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding peanut butter to your day",
+      "paragraphs": [
+        "Spread on whole-grain toast with banana slices, or dip apple slices in it.",
+        "Example: 2 tbsp peanut butter, 2 slices whole wheat bread, 1 banana. Using the same USDA values as the calculator, that comes to about 8.5 g of fiber, with 1.6 g from the peanut butter. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "2 tbsp peanut butter, 2 slices whole wheat bread, 1 banana",
+  "examples": [
+    "2 tbsp peanut butter, 2 slices whole wheat bread, 1 banana"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your peanut butter meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of peanut butter?",
+      "a": "5 g, according to USDA FoodData Central (Peanut butter, smooth style, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in peanut butter (1 tbsp)?",
+      "a": "About 0.8 g, for 16 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Does peanut butter have fiber?",
+      "a": "A little: about 1.6 g per 2 tablespoons in USDA data."
+    },
+    {
+      "q": "Peanut butter vs almond butter?",
+      "a": "Almond butter is usually somewhat higher in fiber per tablespoon. Compare labels."
+    }
+  ],
+  "related": [
+    "fiber-in-pumpkin-seeds",
+    "fiber-in-walnuts",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Peanut butter, smooth style, without salt (FDC 172470)",
+      "url": "https://fdc.nal.usda.gov/food-details/172470/nutrients",
+      "note": "5 g fiber and 598 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Peanuts, all types, raw (FDC 172430)",
+      "url": "https://fdc.nal.usda.gov/food-details/172430/nutrients",
+      "note": "8.5 g fiber and 567 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

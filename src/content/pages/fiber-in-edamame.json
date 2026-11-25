@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-edamame",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "legumes",
+  "title": "How Much Fiber in Edamame? 8.1g per Cup",
+  "description": "Edamame: about 8.1 g of fiber per 1 cup, shelled, cooked (29% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in edamame?",
+  "answer": {
+    "value": "~8.1",
+    "unit": "g",
+    "detail": "fiber in 1 cup, shelled, cooked (155 g)",
+    "note": "USDA FoodData Central, Edamame, frozen, prepared"
+  },
+  "intro": [
+    "Edamame ranks #9 of 10 beans and legumes on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, shelled, cooked",
+      "value": "8.1 g",
+      "note": "188 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "5.2 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "4.3 g",
+      "note": "#28 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "29%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in edamame by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, shelled, cooked",
+        "155 g",
+        "8.1 g",
+        "188",
+        "29%"
+      ],
+      [
+        "1/2 cup, shelled, cooked",
+        "77.5 g",
+        "4 g",
+        "94",
+        "14%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in edamame?",
+      "paragraphs": [
+        "USDA FoodData Central lists edamame, frozen, prepared at 5.2 g of fiber per 100 g. One serving (1 cup, shelled, cooked; 155 g) therefore has about 8.1 g of fiber and 188 calories. That is 29% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 32% of a 25 g day and 21% of a 38 g day.",
+        "Edamame are young green soybeans. They pair a solid amount of fiber with more protein per cup than most beans, which makes them a popular snack for people trying to feel full on fewer calories."
+      ]
+    },
+    {
+      "heading": "In the pod vs shelled",
+      "paragraphs": [
+        "The figures here are for shelled beans. Edamame served in the pod look like a bigger portion than they are, because you do not eat the pods. A cup of pods yields roughly half a cup of beans.",
+        "Frozen shelled edamame (often sold as mukimame) is the easiest form for bowls and salads. Boil or microwave per the package and log the cooked shelled weight."
+      ]
+    },
+    {
+      "heading": "How edamame compares with other beans and legumes",
+      "paragraphs": [
+        "Of the 10 beans and legumes on this site, edamame ranks #9 for fiber per typical serving and #9 for fiber per calorie. That works out to 4.3 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [green peas](/fiber-in-green-peas) at 8.8 g (1 cup, cooked); [kidney beans](/fiber-in-kidney-beans) at 11.3 g (1 cup, cooked); [chickpeas](/fiber-in-chickpeas) at 12.5 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), edamame is #28 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding edamame to your day",
+      "paragraphs": [
+        "Add a half cup of shelled edamame to a rice bowl, stir-fry, or salad, or keep a bag of frozen pods for a quick salted snack.",
+        "Example: 1 cup edamame, 1 cup brown rice, 1 cup broccoli. Using the same USDA values as the calculator, that comes to about 16.4 g of fiber, with 8.1 g from the edamame. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup edamame, 1 cup brown rice, 1 cup broccoli",
+  "examples": [
+    "1 cup edamame, 1 cup brown rice, 1 cup broccoli"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your edamame meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of edamame?",
+      "a": "5.2 g, according to USDA FoodData Central (Edamame, frozen, prepared). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in edamame (1/2 cup, shelled, cooked)?",
+      "a": "About 4 g, for 77.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is edamame high in protein too?",
+      "a": "Yes. USDA lists cooked shelled edamame at roughly 11–12 g of protein per 100 g, which is more than most cooked beans."
+    },
+    {
+      "q": "How much fiber is in a bowl of edamame pods?",
+      "a": "Count the beans, not the pods. A restaurant appetizer bowl often holds about half a cup to one cup of beans once shelled. Use the shelled rows above."
+    }
+  ],
+  "related": [
+    "fiber-in-green-peas",
+    "fiber-in-kidney-beans",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Edamame, frozen, prepared (FDC 168411)",
+      "url": "https://fdc.nal.usda.gov/food-details/168411/nutrients",
+      "note": "5.2 g fiber and 121 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

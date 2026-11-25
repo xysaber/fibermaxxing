@@ -23,6 +23,13 @@ export const HOME_GUIDES = [
     group: 'foods',
   },
   {
+    to: '/fiber-in-foods',
+    title: 'Fiber in 50 foods',
+    blurb: 'Every food ranked per serving, per 100 g, and per calorie.',
+    stat: '50',
+    group: 'foods',
+  },
+  {
     to: '/oatmeal',
     title: 'Oatmeal fiber',
     blurb: '~4g per cooked cup — plus a calculator for your full bowl.',

@@ -1,0 +1,153 @@
+{
+  "slug": "fiber-in-pumpkin-seeds",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "nuts",
+  "title": "How Much Fiber in Pumpkin Seeds? 1.7g per Oz",
+  "description": "Pumpkin Seeds: about 1.7 g of fiber per 1 oz hulled kernels (6% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in pumpkin seeds?",
+  "answer": {
+    "value": "~1.7",
+    "unit": "g",
+    "detail": "fiber in 1 oz hulled kernels (pepitas), 28.4 g",
+    "note": "USDA FoodData Central, Seeds, pumpkin and squash seed kernels, dried"
+  },
+  "intro": [
+    "Pumpkin seeds rank #6 of 7 nuts, seeds, and treats on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 oz hulled kernels (pepitas)",
+      "value": "1.7 g",
+      "note": "158 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "6 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "1.1 g",
+      "note": "#48 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "6%",
+      "note": "of 28 g, per 1 oz hulled kernels (pepitas)"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in pumpkin seeds by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 oz hulled kernels (pepitas)",
+        "28.4 g",
+        "1.7 g",
+        "158",
+        "6%"
+      ],
+      [
+        "1 oz whole seeds in shell, roasted",
+        "28.4 g",
+        "5.2 g",
+        "126",
+        "19%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in pumpkin seeds?",
+      "paragraphs": [
+        "USDA FoodData Central lists seeds, pumpkin and squash seed kernels, dried at 6 g of fiber per 100 g. One serving (1 oz hulled kernels (pepitas); 28.4 g) therefore has about 1.7 g of fiber and 158 calories. That is 6% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 7% of a 25 g day and 4% of a 38 g day.",
+        "Pumpkin seeds are a good example of how much the shell matters. Hulled green pepitas are modest in fiber, while whole roasted seeds with the white shell have roughly three times as much per ounce."
+      ]
+    },
+    {
+      "heading": "Pepitas vs whole roasted seeds",
+      "paragraphs": [
+        "Store-bought pepitas are usually hulled and sold for salads and trail mix. Seeds you scoop from a carving pumpkin and roast at home keep the fibrous shell.",
+        "Both forms are calorie-dense, roughly 125–165 calories per ounce."
+      ]
+    },
+    {
+      "heading": "How pumpkin seeds compare with other nuts, seeds, and treats",
+      "paragraphs": [
+        "Of the 7 nuts, seeds, and treats on this site, pumpkin seeds rank #6 for fiber per typical serving and #5 for fiber per calorie. That works out to 1.1 g of fiber per 100 calories. Pumpkin seeds are calorie-dense, so the portion matters more than the fiber per gram.",
+        "Close neighbors by serving: [peanut butter](/fiber-in-peanut-butter) at 1.6 g (2 tbsp); [walnuts](/fiber-in-walnuts) at 1.9 g (1 oz (about 14 halves)); [flaxseed](/fiber-in-flaxseed) at 2.8 g (1 tbsp, whole). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), pumpkin seeds are #48 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding pumpkin seeds to your day",
+      "paragraphs": [
+        "Roast seeds from a fall pumpkin with a little salt, or sprinkle pepitas over soups and salads for crunch.",
+        "Example: 1 oz pumpkin seeds, 1 cup butternut squash. Using the same USDA values as the calculator, that comes to about 8.3 g of fiber, with 1.7 g from the pumpkin seeds. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 oz pumpkin seeds, 1 cup butternut squash",
+  "examples": [
+    "1 oz pumpkin seeds, 1 cup butternut squash"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your pumpkin seeds meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of pumpkin seeds?",
+      "a": "6 g, according to USDA FoodData Central (Seeds, pumpkin and squash seed kernels, dried). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in pumpkin seeds (1 oz whole seeds in shell, roasted)?",
+      "a": "About 5.2 g (Seeds, pumpkin and squash seeds, whole, roasted, without salt), for 28.4 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are pumpkin seeds high in fiber?",
+      "a": "Whole roasted seeds with the shell are. Hulled pepitas are a moderate source."
+    },
+    {
+      "q": "Can you eat pumpkin seed shells?",
+      "a": "Yes, roasted shells are edible and are where most of the fiber is. Chew them well."
+    }
+  ],
+  "related": [
+    "fiber-in-peanut-butter",
+    "fiber-in-walnuts",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Seeds, pumpkin and squash seed kernels, dried (FDC 170556)",
+      "url": "https://fdc.nal.usda.gov/food-details/170556/nutrients",
+      "note": "6 g fiber and 559 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Seeds, pumpkin and squash seeds, whole, roasted, without salt (FDC 170188)",
+      "url": "https://fdc.nal.usda.gov/food-details/170188/nutrients",
+      "note": "18.4 g fiber and 446 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "slug": "fiber-in-pear",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in a Pear? 5.5g per Medium",
+  "description": "Pear: about 5.5 g of fiber per 1 medium (20% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in a pear?",
+  "answer": {
+    "value": "~5.5",
+    "unit": "g",
+    "detail": "fiber in 1 medium (178 g)",
+    "note": "USDA FoodData Central, Pears, raw"
+  },
+  "intro": [
+    "Pear ranks #4 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 medium",
+      "value": "5.5 g",
+      "note": "101 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "3.1 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "5.4 g",
+      "note": "#20 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "20%",
+      "note": "of 28 g, per 1 medium"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in pear by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 medium",
+        "178 g",
+        "5.5 g",
+        "101",
+        "20%"
+      ],
+      [
+        "1 cup slices",
+        "140 g",
+        "4.3 g",
+        "80",
+        "16%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in a pear?",
+      "paragraphs": [
+        "USDA FoodData Central lists pears, raw at 3.1 g of fiber per 100 g. One serving (1 medium; 178 g) therefore has about 5.5 g of fiber and 101 calories. That is 20% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 22% of a 25 g day and 15% of a 38 g day.",
+        "Pears are one of the highest-fiber everyday fruits per piece, ahead of an apple of similar size. Like apples, much of their fiber is in the skin, and their gritty “stone cells” are part of the fiber too."
+      ]
+    },
+    {
+      "heading": "Pears and sensitive stomachs",
+      "paragraphs": [
+        "Pears are high in fructose and sorbitol, which is one reason they are effective for some people with constipation. The same sugars are high-FODMAP and can trigger bloating in people with IBS. See the [IBS page](/fiber-for-ibs) if that applies to you.",
+        "Canned pears in juice or syrup are peeled and softer. Their fiber is lower per piece than a fresh pear with skin."
+      ]
+    },
+    {
+      "heading": "How pear compares with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, pear ranks #4 for fiber per typical serving and #5 for fiber per calorie. That works out to 5.4 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [apple](/fiber-in-apple) at 4.4 g (1 medium (3\" diameter), with skin); [dried figs](/fiber-in-dried-figs) at 3.6 g (1/4 cup); [blueberries](/fiber-in-blueberries) at 3.6 g (1 cup). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), pear is #20 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding pear to your day",
+      "paragraphs": [
+        "Eat pears with the skin, sliced into salads, baked with oats, or paired with a handful of almonds.",
+        "Example: 1 pear, 1 oz almonds. Using the same USDA values as the calculator, that comes to about 9 g of fiber, with 5.5 g from the pear. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 pear, 1 oz almonds",
+  "examples": [
+    "1 pear, 1 oz almonds"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your pear meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of pear?",
+      "a": "3.1 g, according to USDA FoodData Central (Pears, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in pear (1 cup slices)?",
+      "a": "About 4.3 g, for 140 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Pear vs apple: which has more fiber?",
+      "a": "A medium pear is about 5.5 g (1 medium); a medium apple is about 4.4 g (1 medium (3\" diameter), with skin)."
+    },
+    {
+      "q": "Do pears help with constipation?",
+      "a": "For some people. Their fiber plus naturally occurring sorbitol and fructose draws water into the bowel. If constipation is persistent or new, talk with a clinician."
+    }
+  ],
+  "related": [
+    "fiber-in-apple",
+    "fiber-in-dried-figs",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Pears, raw (FDC 169118)",
+      "url": "https://fdc.nal.usda.gov/food-details/169118/nutrients",
+      "note": "3.1 g fiber and 57 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Monash University, About FODMAPs and IBS",
+      "url": "https://www.monashfodmap.com/about-fodmap-and-ibs/",
+      "note": "fructose and sorbitol as FODMAPs"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

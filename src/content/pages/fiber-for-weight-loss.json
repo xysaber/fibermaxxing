@@ -1,0 +1,135 @@
+{
+  "slug": "fiber-for-weight-loss",
+  "title": "Fiber for Weight Loss: What the Evidence Shows",
+  "description": "How fiber helps with fat loss, what a year-long 30 g/day trial found, and the highest-fiber foods per calorie from USDA data.",
+  "h1": "Fiber for weight loss: what it can and cannot do",
+  "answer": {
+    "value": "30",
+    "unit": "g",
+    "detail": "a day was the single goal in a year-long trial where people lost about as much weight as on a more complex diet."
+  },
+  "intro": [
+    "Fiber is not a fat burner. It helps with weight loss mostly by making meals more filling for fewer calories, and by crowding out lower-fiber foods. That makes it one of the simplest habits to build a calorie deficit around."
+  ],
+  "callout": {
+    "title": "General information",
+    "text": "This page is for education and self-tracking, not medical advice. If you have diabetes, a digestive condition, an eating disorder history, or take prescription medicines, talk with your clinician or a registered dietitian about how to lose weight safely."
+  },
+  "facts": [
+    {
+      "label": "Trial goal",
+      "value": "30 g/day",
+      "note": "Ann Intern Med, 2015"
+    },
+    {
+      "label": "Women 19–50",
+      "value": "25 g/day",
+      "note": "U.S. Adequate Intake"
+    },
+    {
+      "label": "Men 19–50",
+      "value": "38 g/day",
+      "note": "U.S. Adequate Intake"
+    },
+    {
+      "label": "By calories",
+      "value": "14 g",
+      "note": "per 1,000 kcal"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How fiber helps with fat loss",
+      "paragraphs": [
+        "High-fiber foods tend to be bulky and slow to eat. Beans, vegetables, whole fruit, and whole grains fill your stomach and take more chewing than refined foods with the same calories. Soluble fiber also slows digestion, which can help you stay full longer after a meal.",
+        "The bigger effect is often indirect: a plate built around beans and vegetables has less room for calorie-dense foods. That is why fiber is a useful anchor for a diet, not a magic ingredient."
+      ]
+    },
+    {
+      "heading": "What the research shows",
+      "paragraphs": [
+        "In a 2015 randomized trial published in the Annals of Internal Medicine, adults with metabolic syndrome were told either to follow the multi-part American Heart Association diet or simply to eat at least 30 g of fiber a day. After a year, both groups had lost a modest amount of weight, around 2 to 3 kg on average, and the difference between them was not statistically significant.",
+        "The takeaway is not that fiber alone causes large weight loss. It is that one simple, positive goal (“eat more fiber”) can work about as well as a longer list of rules, and it is easier to stick with."
+      ]
+    },
+    {
+      "heading": "Highest-fiber foods per calorie",
+      "paragraphs": [
+        "For a calorie deficit, fiber per 100 calories is a useful lens. Among the 50 foods on this site, the top ten by that measure are: [wheat bran](/fiber-in-wheat-bran) (19.8 g), [raspberries](/fiber-in-raspberries) (12.5 g), [blackberries](/fiber-in-blackberries) (12.3 g), [artichoke](/fiber-in-artichoke) (11.5 g), [kale](/fiber-in-kale) (11.1 g), [spinach](/fiber-in-spinach) (10.4 g), [broccoli](/fiber-in-broccoli) (9.4 g), [green beans](/fiber-in-green-beans) (9.1 g), [butternut squash](/fiber-in-butternut-squash) (8 g), [guava](/fiber-in-guava) (7.9 g).",
+        "Calorie-dense high-fiber foods still have a place. Nuts, seeds, avocado, and dried fruit have real fiber, but portions matter: [almonds](/fiber-in-almonds) (3.5 g, 1 oz (about 23 almonds)) comes with about 160 calories per ounce."
+      ]
+    },
+    {
+      "heading": "Building a high-fiber, lower-calorie day",
+      "paragraphs": [
+        "Breakfast: oatmeal with berries and a spoon of chia or ground flax. Lunch: a big bowl of vegetables with half a cup of beans or lentils. Dinner: a palm of protein, two cups of cooked vegetables, and a modest serving of a whole grain. Snacks: fruit, raw vegetables with hummus, or air-popped popcorn.",
+        "Increase fiber gradually over two or three weeks and drink water with it. Jumping from 12 g to 40 g in a day is a reliable way to end up bloated."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup lentil soup, 2 cups broccoli, 1 apple",
+  "examples": [
+    "1 cup lentil soup, 2 cups broccoli, 1 apple",
+    "1 cup oatmeal, 1 cup raspberries, 1 tbsp chia seeds",
+    "3 cups popcorn, 1 pear"
+  ],
+  "faqs": [
+    {
+      "q": "Does fiber burn fat?",
+      "a": "No. Fiber helps you feel full on fewer calories. Weight loss still comes from eating less energy than you use over time."
+    },
+    {
+      "q": "How much fiber should I eat to lose weight?",
+      "a": "The year-long trial above used 30 g a day as the goal. Many people start far below that, so build up gradually toward the U.S. Adequate Intake for your age and sex."
+    },
+    {
+      "q": "Do fiber supplements help with weight loss?",
+      "a": "Evidence for supplements alone is mixed and the effects are small. Whole foods bring bulk, water, and nutrients that a powder does not."
+    },
+    {
+      "q": "Is a high-fiber diet safe for everyone?",
+      "a": "For most people, yes, if increased gradually with fluids. People with certain digestive conditions, recent bowel surgery, or on some medicines should follow their clinician’s advice."
+    }
+  ],
+  "related": [
+    "fiber-on-glp-1",
+    "fiber-in-foods",
+    "what-is-fibermaxxing"
+  ],
+  "sources": [
+    {
+      "label": "Ma Y, et al. Single-component versus multicomponent dietary goals for the metabolic syndrome. Ann Intern Med. 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25686165/",
+      "note": "30 g/day fiber goal vs AHA diet, 12-month randomized trial"
+    },
+    {
+      "label": "Harvard T.H. Chan School of Public Health, The Nutrition Source: Fiber",
+      "url": "https://nutritionsource.hsph.harvard.edu/carbohydrates/fiber/",
+      "note": "fiber, fullness, and food sources"
+    },
+    {
+      "label": "Dietary Guidelines for Americans, 2020–2025 (USDA/HHS)",
+      "url": "https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf",
+      "note": "fiber targets by age, sex, pregnancy and lactation (Appendix 1)"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    },
+    {
+      "label": "USDA FoodData Central (SR Legacy)",
+      "url": "https://fdc.nal.usda.gov/",
+      "note": "fiber per 100 g behind every food figure on this page"
+    }
+  ],
+  "updated": "2026-11-25",
+  "kind": "audience",
+  "publish": true,
+  "layout": "bands",
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate a meal in the calculator"
+}

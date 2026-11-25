@@ -114,6 +114,10 @@ const CASES = [
   // — Nuts & seeds —
   ['1 oz almonds', 3.5],
   ['a handful of almonds', 3.5],
+  // Long-tail page inputs (2026-11-25): tbsp of bran/walnuts used to fall back to a full cup
+  ['2 tbsp wheat bran', 3.1],
+  ['2 tbsp walnuts', 1.0],
+  ['1 oz dark chocolate', 3.1],
   ['1 oz walnuts', 1.9],
   ['chia', 4.1],
   ['2 tbsp chia seeds', 8.3],

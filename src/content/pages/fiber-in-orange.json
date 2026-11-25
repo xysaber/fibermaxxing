@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-orange",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in an Orange? 3.1g per Medium",
+  "description": "Orange: about 3.1 g of fiber per 1 medium (11% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in an orange?",
+  "answer": {
+    "value": "~3.1",
+    "unit": "g",
+    "detail": "fiber in 1 medium (131 g)",
+    "note": "USDA FoodData Central, Oranges, raw, all commercial varieties"
+  },
+  "intro": [
+    "Orange ranks #9 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 medium",
+      "value": "3.1 g",
+      "note": "62 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2.4 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "5.1 g",
+      "note": "#23 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "11%",
+      "note": "of 28 g, per 1 medium"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in orange by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 medium",
+        "131 g",
+        "3.1 g",
+        "62",
+        "11%"
+      ],
+      [
+        "1 cup sections",
+        "180 g",
+        "4.3 g",
+        "85",
+        "15%"
+      ],
+      [
+        "1 cup orange juice",
+        "248 g",
+        "0.5 g",
+        "112",
+        "2%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in an orange?",
+      "paragraphs": [
+        "USDA FoodData Central lists oranges, raw, all commercial varieties at 2.4 g of fiber per 100 g. One serving (1 medium; 131 g) therefore has about 3.1 g of fiber and 62 calories. That is 11% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 13% of a 25 g day and 8% of a 38 g day.",
+        "A whole orange gives a few grams of fiber, mostly from the membranes and pith. Juicing leaves almost all of that behind, which is why the juice row in the table is close to zero."
+      ]
+    },
+    {
+      "heading": "Whole orange vs orange juice",
+      "paragraphs": [
+        "A cup of orange juice takes two to three oranges to make but keeps very little of their fiber. Even “pulp” juice adds only a small amount. Eating the orange is the version that counts for fiber.",
+        "Mandarins and clementines are smaller, so expect less fiber per piece than a navel orange."
+      ]
+    },
+    {
+      "heading": "How orange compares with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, orange ranks #9 for fiber per typical serving and #6 for fiber per calorie. That works out to 5.1 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [banana](/fiber-in-banana) at 3.1 g (1 medium (7–8\")); [guava](/fiber-in-guava) at 3 g (1 fruit); [prunes](/fiber-in-prunes) at 3.4 g (5 prunes). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), orange is #23 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding orange to your day",
+      "paragraphs": [
+        "Keep whole oranges or clementines as a grab-and-go snack, or add segments to a salad with beans and greens.",
+        "Example: 1 orange, 1 oz almonds. Using the same USDA values as the calculator, that comes to about 6.6 g of fiber, with 3.1 g from the orange. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 orange, 1 oz almonds",
+  "examples": [
+    "1 orange, 1 oz almonds"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your orange meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of orange?",
+      "a": "2.4 g, according to USDA FoodData Central (Oranges, raw, all commercial varieties). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in orange (1 cup sections)?",
+      "a": "About 4.3 g, for 180 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Does orange juice have fiber?",
+      "a": "Very little. USDA lists about 0.5 g in a cup of fresh juice, compared with about 3 g in one medium orange."
+    },
+    {
+      "q": "Should I eat the white pith?",
+      "a": "If you like it, yes. The pith and membranes are where much of an orange’s fiber sits."
+    }
+  ],
+  "related": [
+    "fiber-in-banana",
+    "fiber-in-guava",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Oranges, raw, all commercial varieties (FDC 169097)",
+      "url": "https://fdc.nal.usda.gov/food-details/169097/nutrients",
+      "note": "2.4 g fiber and 47 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Orange juice, raw (FDC 169098)",
+      "url": "https://fdc.nal.usda.gov/food-details/169098/nutrients",
+      "note": "0.2 g fiber and 45 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

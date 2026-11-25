@@ -63,6 +63,8 @@ const CONCEPTS: Concept[] = [
   { names: ['oat', 'rolled oat', 'dry oat', 'old fashioned oat', 'quaker oat'], id: 'curated:oats', cup: 80 },
   { names: ['instant oatmeal', 'instant oatmeal packet', 'quaker instant oatmeal', 'oatmeal packet'], id: '171661', count: 28, countLabel: '1 packet' },
   { names: ['oat bran', 'raw oat bran'], id: '168872', cup: 94, tbsp: 5.9, dflt: { g: 15, label: '2 1/2 tbsp' } },
+  // USDA 169722: 1 cup 58 g → 1 tbsp ≈ 3.6 g. Without this, "2 tbsp wheat bran" fell back to the 1-cup serving.
+  { names: ['wheat bran', 'unprocessed wheat bran', 'unprocessed bran', 'miller bran'], id: '169722', cup: 58, tbsp: 3.6, tsp: 1.2, dflt: { g: 7.25, label: '2 tbsp' } },
   { names: ['psyllium', 'psyllium husk'], id: 'curated:psyllium', tbsp: 9, tsp: 3 },
   { names: ['inulin', 'inulin powder'], id: 'curated:inulin', tsp: 5 },
   { names: ['sourdough', 'sourdough bread', 'sourdough toast'], id: 'curated:sourdough' },
@@ -121,7 +123,8 @@ const CONCEPTS: Concept[] = [
   { names: ['popcorn', 'air popped popcorn'], id: '170246', cup: 8, dflt: { g: 24, label: '3 cups popped' } },
   { names: ['corn', 'sweet corn', 'cooked corn', 'corn kernel'], id: '168539', cup: 164, count: 103, countLabel: '1 medium ear' },
   { names: ['almond'], id: '170567', count: 1.2, cup: 143, handful: 28.35, dflt: OZ },
-  { names: ['walnut'], id: '170187', cup: 117, handful: 28.35, dflt: OZ },
+  // tbsp = chopped (USDA 1 cup chopped 117 g)
+  { names: ['walnut'], id: '170187', cup: 117, tbsp: 7.3, handful: 28.35, dflt: OZ },
   { names: ['pecan'], id: '170182', cup: 99, handful: 28.35, dflt: OZ },
   { names: ['pistachio'], id: '170185', count: 0.7, cup: 123, handful: 28.35, dflt: OZ },
   { names: ['cashew'], id: '170571', cup: 137, handful: 28.35, dflt: OZ },
@@ -133,6 +136,7 @@ const CONCEPTS: Concept[] = [
   { names: ['ground flaxseed', 'ground flax', 'flax meal', 'flaxseed meal', 'milled flaxseed'], id: '169414', tbsp: 7, tsp: 2.3, dflt: { g: 7, label: '1 tbsp' } },
   { names: ['chia', 'chia seed'], id: '170554', tbsp: 12, tsp: 4, dflt: { g: 12, label: '1 tbsp' } },
   { names: ['peanut butter', 'smooth peanut butter'], id: '172470', tbsp: 16, tsp: 5.3, cup: 258, dflt: { g: 32, label: '2 tbsp' } },
+  { names: ['dark chocolate', '70% dark chocolate', '85% dark chocolate', 'dark chocolate bar'], id: '170273', handful: 28.35, dflt: OZ },
   { names: ['almond butter'], id: '168588', tbsp: 16, tsp: 5.3, cup: 250, dflt: { g: 32, label: '2 tbsp' } },
   { names: ['spinach', 'raw spinach', 'baby spinach'], id: '168462', cup: 30 },
   { names: ['cooked spinach', 'sauteed spinach', 'steamed spinach', 'boiled spinach'], id: '168463', cup: 180 },

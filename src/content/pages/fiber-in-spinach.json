@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-spinach",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "vegetables",
+  "title": "How Much Fiber in Spinach? 4.3g per Cup",
+  "description": "Spinach: about 4.3 g of fiber per 1 cup, cooked (15% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in spinach?",
+  "answer": {
+    "value": "~4.3",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (180 g)",
+    "note": "USDA FoodData Central, Spinach, cooked, boiled, drained, without salt"
+  },
+  "intro": [
+    "Spinach ranks #5 of 10 vegetables on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked",
+      "value": "4.3 g",
+      "note": "41 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2.4 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "10.4 g",
+      "note": "#6 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "15%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in spinach by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked",
+        "180 g",
+        "4.3 g",
+        "41",
+        "15%"
+      ],
+      [
+        "1 cup, raw",
+        "30 g",
+        "0.7 g",
+        "7",
+        "2%"
+      ],
+      [
+        "3 cups, raw",
+        "90 g",
+        "2 g",
+        "21",
+        "7%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in spinach?",
+      "paragraphs": [
+        "USDA FoodData Central lists spinach, cooked, boiled, drained, without salt at 2.4 g of fiber per 100 g. One serving (1 cup, cooked; 180 g) therefore has about 4.3 g of fiber and 41 calories. That is 15% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 17% of a 25 g day and 11% of a 38 g day.",
+        "Spinach shows how much cooking changes a portion. A cup of raw leaves weighs only 30 g, while a cup of cooked spinach is about six times that, so the cooked cup has many times the fiber."
+      ]
+    },
+    {
+      "heading": "Raw salad vs cooked spinach",
+      "paragraphs": [
+        "A big raw spinach salad looks like a lot of food but adds only a gram or two of fiber. Wilting the same spinach into a pasta or curry concentrates it.",
+        "Frozen chopped spinach is already cooked down, so a cup of thawed frozen spinach is closer to the cooked row."
+      ]
+    },
+    {
+      "heading": "How spinach compares with other vegetables",
+      "paragraphs": [
+        "Of the 10 vegetables on this site, spinach ranks #5 for fiber per typical serving and #3 for fiber per calorie. That works out to 10.4 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [Brussels sprouts](/fiber-in-brussels-sprouts) at 4.1 g (1 cup, cooked); [green beans](/fiber-in-green-beans) at 4 g (1 cup, cooked); [kale](/fiber-in-kale) at 4.7 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), spinach is #6 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding spinach to your day",
+      "paragraphs": [
+        "Wilt a few handfuls of spinach into eggs, soups, lentils, or pasta sauce. A cup of cooked spinach adds about 4 g.",
+        "Example: 1 cup cooked spinach, 1 cup lentils, 1/2 cup brown rice. Using the same USDA values as the calculator, that comes to about 21.5 g of fiber, with 4.3 g from the spinach. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup cooked spinach, 1 cup lentils, 1/2 cup brown rice",
+  "examples": [
+    "1 cup cooked spinach, 1 cup lentils, 1/2 cup brown rice"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your spinach meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of spinach?",
+      "a": "2.4 g, according to USDA FoodData Central (Spinach, cooked, boiled, drained, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in spinach (1 cup, raw)?",
+      "a": "About 0.7 g (Spinach, raw), for 30 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is spinach high in fiber?",
+      "a": "Cooked, it is a good source. Raw, a single cup is small. It depends on whether you count raw volume or cooked."
+    },
+    {
+      "q": "Spinach vs kale?",
+      "a": "Cooked, they are close. Cooked spinach is about 4.3 g (1 cup, cooked) and cooked kale about 4.7 g per cup."
+    }
+  ],
+  "related": [
+    "fiber-in-brussels-sprouts",
+    "fiber-in-green-beans",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Spinach, cooked, boiled, drained, without salt (FDC 168463)",
+      "url": "https://fdc.nal.usda.gov/food-details/168463/nutrients",
+      "note": "2.4 g fiber and 23 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Spinach, raw (FDC 168462)",
+      "url": "https://fdc.nal.usda.gov/food-details/168462/nutrients",
+      "note": "2.2 g fiber and 23 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
  * copy for published pages only. Also writes 404.html, _redirects, and sitemap.
  */
 import { createServer } from 'vite'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -11,11 +11,19 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
 const siteUrl = 'https://www.getfibermaxxing.com'
 const allPages = JSON.parse(readFileSync(join(root, 'src/content/seo-pages.json'), 'utf8'))
-const pages = allPages.filter((p) => p.publish)
+// Long-tail pages (per-food, hub, audience) live one JSON per page; see scripts/food-pages/build.mjs.
+const longTailDir = join(root, 'src/content/pages')
+const longTail = readdirSync(longTailDir)
+  .filter((f) => f.endsWith('.json'))
+  .sort()
+  .map((f) => JSON.parse(readFileSync(join(longTailDir, f), 'utf8')))
+const pages = [...allPages, ...longTail].filter((p) => p.publish)
 
 const ssrServer = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
 const { renderPage } = await ssrServer.ssrLoadModule('/scripts/render-pages.tsx')
 const { pageJsonLd, PAGE_JSON_LD_ID } = await ssrServer.ssrLoadModule('/src/lib/pageJsonLd.ts')
+const { loadAllSeoPages } = await ssrServer.ssrLoadModule('/src/content/seoPages.ts')
+await loadAllSeoPages()
 await ssrServer.close()
 
 const shell = readFileSync(join(dist, 'index.html'), 'utf8')

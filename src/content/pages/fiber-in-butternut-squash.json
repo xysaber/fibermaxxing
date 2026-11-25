@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-butternut-squash",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "vegetables",
+  "title": "How Much Fiber in Butternut Squash? 6.6g per Cup",
+  "description": "Butternut Squash: about 6.6 g of fiber per 1 cup cubes, baked (23% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in butternut squash?",
+  "answer": {
+    "value": "~6.6",
+    "unit": "g",
+    "detail": "fiber in 1 cup cubes, baked (205 g)",
+    "note": "USDA FoodData Central, Squash, winter, butternut, cooked, baked, without salt"
+  },
+  "intro": [
+    "Butternut squash ranks #2 of 10 vegetables on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup cubes, baked",
+      "value": "6.6 g",
+      "note": "82 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "3.2 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "8 g",
+      "note": "#9 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "23%",
+      "note": "of 28 g, per 1 cup cubes"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in butternut squash by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup cubes, baked",
+        "205 g",
+        "6.6 g",
+        "82",
+        "23%"
+      ],
+      [
+        "1/2 cup cubes, baked",
+        "102.5 g",
+        "3.3 g",
+        "41",
+        "12%"
+      ],
+      [
+        "1 cup cubes, raw",
+        "140 g",
+        "2.8 g",
+        "63",
+        "10%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in butternut squash?",
+      "paragraphs": [
+        "USDA FoodData Central lists squash, winter, butternut, cooked, baked, without salt at 3.2 g of fiber per 100 g. One serving (1 cup cubes, baked; 205 g) therefore has about 6.6 g of fiber and 82 calories. That is 23% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 26% of a 25 g day and 17% of a 38 g day.",
+        "Baked butternut squash is one of the better fiber sources among sweet, starchy vegetables, with more fiber per cooked cup than sweet potato flesh. It is a fall and winter staple for soups and roasting."
+      ]
+    },
+    {
+      "heading": "Roasted cubes vs squash soup",
+      "paragraphs": [
+        "Roasting concentrates squash, so a cup of roasted cubes is denser than a cup of raw cubes.",
+        "Butternut soup is often thinned with stock and cream. A cup of soup can have well under half the squash of a cup of roasted cubes."
+      ]
+    },
+    {
+      "heading": "How butternut squash compares with other vegetables",
+      "paragraphs": [
+        "Of the 10 vegetables on this site, butternut squash ranks #2 for fiber per typical serving and #6 for fiber per calorie. That works out to 8 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [artichoke](/fiber-in-artichoke) at 6.9 g (1 medium globe artichoke, raw (edible part)); [broccoli](/fiber-in-broccoli) at 5.1 g (1 cup chopped, cooked); [kale](/fiber-in-kale) at 4.7 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), butternut squash is #9 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding butternut squash to your day",
+      "paragraphs": [
+        "Roast cubes and add to grain bowls with chickpeas, or blend into a thick soup with white beans to raise the fiber.",
+        "Example: 1 cup butternut squash, 1/2 cup chickpeas, 1 cup quinoa. Using the same USDA values as the calculator, that comes to about 18 g of fiber, with 6.6 g from the butternut squash. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup butternut squash, 1/2 cup chickpeas, 1 cup quinoa",
+  "examples": [
+    "1 cup butternut squash, 1/2 cup chickpeas, 1 cup quinoa"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your butternut squash meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of butternut squash?",
+      "a": "3.2 g, according to USDA FoodData Central (Squash, winter, butternut, cooked, baked, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in butternut squash (1/2 cup cubes, baked)?",
+      "a": "About 3.3 g, for 102.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is butternut squash high in fiber?",
+      "a": "Baked, a cup is about a quarter of the Daily Value, which is high for a vegetable."
+    },
+    {
+      "q": "What about canned pumpkin?",
+      "a": "Plain canned pumpkin is also a good source, about 7 g per cup in USDA data. Pumpkin pie filling has added sugar."
+    }
+  ],
+  "related": [
+    "fiber-in-artichoke",
+    "fiber-in-broccoli",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Squash, winter, butternut, cooked, baked, without salt (FDC 169296)",
+      "url": "https://fdc.nal.usda.gov/food-details/169296/nutrients",
+      "note": "3.2 g fiber and 40 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Squash, winter, butternut, raw (FDC 169295)",
+      "url": "https://fdc.nal.usda.gov/food-details/169295/nutrients",
+      "note": "2 g fiber and 45 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

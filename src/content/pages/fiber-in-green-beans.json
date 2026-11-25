@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-green-beans",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "vegetables",
+  "title": "How Much Fiber in Green Beans? 4g per Cup",
+  "description": "Green Beans: about 4 g of fiber per 1 cup, cooked (14% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in green beans?",
+  "answer": {
+    "value": "~4",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (125 g)",
+    "note": "USDA FoodData Central, Beans, snap, green, cooked, boiled, drained, without salt"
+  },
+  "intro": [
+    "Green beans rank #7 of 10 vegetables on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked",
+      "value": "4 g",
+      "note": "44 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "3.2 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "9.1 g",
+      "note": "#8 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "14%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in green beans by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked",
+        "125 g",
+        "4 g",
+        "44",
+        "14%"
+      ],
+      [
+        "1/2 cup, cooked",
+        "62.5 g",
+        "2 g",
+        "22",
+        "7%"
+      ],
+      [
+        "1 cup, raw",
+        "100 g",
+        "2.7 g",
+        "31",
+        "10%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in green beans?",
+      "paragraphs": [
+        "USDA FoodData Central lists beans, snap, green, cooked, boiled, drained, without salt at 3.2 g of fiber per 100 g. One serving (1 cup, cooked; 125 g) therefore has about 4 g of fiber and 44 calories. That is 14% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 16% of a 25 g day and 11% of a 38 g day.",
+        "Green beans are immature bean pods, so they are much lower in fiber than dried beans, but they are a solid everyday vegetable side with about 4 g per cooked cup."
+      ]
+    },
+    {
+      "heading": "Fresh, frozen, or canned",
+      "paragraphs": [
+        "Frozen green beans are close to fresh for fiber. Canned green beans are softer and salted; rinse them and the fiber per cup is in a similar range.",
+        "Green bean casserole is mostly soup and fried onions, so the green beans themselves are a smaller share of each scoop."
+      ]
+    },
+    {
+      "heading": "How green beans compare with other vegetables",
+      "paragraphs": [
+        "Of the 10 vegetables on this site, green beans rank #7 for fiber per typical serving and #5 for fiber per calorie. That works out to 9.1 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [Brussels sprouts](/fiber-in-brussels-sprouts) at 4.1 g (1 cup, cooked); [baked potato](/fiber-in-potato) at 3.8 g (1 medium, baked, flesh and skin); [sweet potato](/fiber-in-sweet-potato) at 3.8 g (1 medium, baked (flesh)). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), green beans are #8 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding green beans to your day",
+      "paragraphs": [
+        "Steam or roast a cup as a side, or toss into a stir-fry with brown rice.",
+        "Example: 1 cup green beans, 1 baked potato, 1 cup broccoli. Using the same USDA values as the calculator, that comes to about 12.9 g of fiber, with 4 g from the green beans. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup green beans, 1 baked potato, 1 cup broccoli",
+  "examples": [
+    "1 cup green beans, 1 baked potato, 1 cup broccoli"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your green beans meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of green beans?",
+      "a": "3.2 g, according to USDA FoodData Central (Beans, snap, green, cooked, boiled, drained, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in green beans (1/2 cup, cooked)?",
+      "a": "About 2 g, for 62.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are green beans a legume?",
+      "a": "Botanically yes, but nutritionally they are treated as a vegetable because you eat the immature pod."
+    },
+    {
+      "q": "Green beans vs kidney beans?",
+      "a": "Kidney beans are dried mature seeds and far higher: about 11.3 g (1 cup, cooked)."
+    }
+  ],
+  "related": [
+    "fiber-in-brussels-sprouts",
+    "fiber-in-potato",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Beans, snap, green, cooked, boiled, drained, without salt (FDC 169141)",
+      "url": "https://fdc.nal.usda.gov/food-details/169141/nutrients",
+      "note": "3.2 g fiber and 35 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Beans, snap, green, raw (FDC 169961)",
+      "url": "https://fdc.nal.usda.gov/food-details/169961/nutrients",
+      "note": "2.7 g fiber and 31 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

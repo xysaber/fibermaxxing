@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-blackberries",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Blackberries? 7.6g per Cup",
+  "description": "Blackberries: about 7.6 g of fiber per 1 cup (27% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in blackberries?",
+  "answer": {
+    "value": "~7.6",
+    "unit": "g",
+    "detail": "fiber in 1 cup (144 g)",
+    "note": "USDA FoodData Central, Blackberries, raw"
+  },
+  "intro": [
+    "Blackberries rank #3 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup",
+      "value": "7.6 g",
+      "note": "62 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "5.3 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "12.3 g",
+      "note": "#3 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "27%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in blackberries by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup",
+        "144 g",
+        "7.6 g",
+        "62",
+        "27%"
+      ],
+      [
+        "1/2 cup",
+        "72 g",
+        "3.8 g",
+        "31",
+        "14%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in blackberries?",
+      "paragraphs": [
+        "USDA FoodData Central lists blackberries, raw at 5.3 g of fiber per 100 g. One serving (1 cup; 144 g) therefore has about 7.6 g of fiber and 62 calories. That is 27% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 31% of a 25 g day and 20% of a 38 g day.",
+        "Blackberries are a close second to raspberries for fiber per cup among common berries. They are larger and juicier, so a cup holds fewer berries but weighs more."
+      ]
+    },
+    {
+      "heading": "Getting the most from blackberries",
+      "paragraphs": [
+        "Like raspberries, blackberries are fragile and expensive out of season. Frozen blackberries are a good substitute for cooking and blending, and the fiber holds up.",
+        "Blackberry seeds are noticeable. If the texture bothers you in a smoothie, blend longer or mix with softer fruit like banana."
+      ]
+    },
+    {
+      "heading": "How blackberries compare with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, blackberries rank #3 for fiber per typical serving and #2 for fiber per calorie. That works out to 12.3 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [raspberries](/fiber-in-raspberries) at 8 g (1 cup); [pear](/fiber-in-pear) at 5.5 g (1 medium); [avocado](/fiber-in-avocado) at 10.1 g (1 medium avocado (flesh)). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), blackberries are #3 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding blackberries to your day",
+      "paragraphs": [
+        "Mix blackberries with raspberries for a high-fiber berry bowl, or bake them into a crumble topped with oats.",
+        "Example: 1 cup blackberries, 1 cup oatmeal, 1 tbsp ground flaxseed. Using the same USDA values as the calculator, that comes to about 13.5 g of fiber, with 7.6 g from the blackberries. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup blackberries, 1 cup oatmeal, 1 tbsp ground flaxseed",
+  "examples": [
+    "1 cup blackberries, 1 cup oatmeal, 1 tbsp ground flaxseed"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your blackberries meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of blackberries?",
+      "a": "5.3 g, according to USDA FoodData Central (Blackberries, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in blackberries (1/2 cup)?",
+      "a": "About 3.8 g, for 72 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are blackberries high in fiber?",
+      "a": "Yes. One cup gives a little over a quarter of the 28 g Daily Value, which is unusually high for fruit."
+    },
+    {
+      "q": "Blackberries vs raspberries?",
+      "a": "Raspberries edge ahead per cup: about 8 g (1 cup) versus about 7.6 g (1 cup). Either is a strong choice."
+    }
+  ],
+  "related": [
+    "fiber-in-raspberries",
+    "fiber-in-pear",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Blackberries, raw (FDC 173946)",
+      "url": "https://fdc.nal.usda.gov/food-details/173946/nutrients",
+      "note": "5.3 g fiber and 43 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-blueberries",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Blueberries? 3.6g per Cup",
+  "description": "Blueberries: about 3.6 g of fiber per 1 cup (13% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in blueberries?",
+  "answer": {
+    "value": "~3.6",
+    "unit": "g",
+    "detail": "fiber in 1 cup (148 g)",
+    "note": "USDA FoodData Central, Blueberries, raw"
+  },
+  "intro": [
+    "Blueberries rank #7 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup",
+      "value": "3.6 g",
+      "note": "84 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2.4 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "4.2 g",
+      "note": "#29 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "13%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in blueberries by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup",
+        "148 g",
+        "3.6 g",
+        "84",
+        "13%"
+      ],
+      [
+        "1/2 cup",
+        "74 g",
+        "1.8 g",
+        "42",
+        "6%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in blueberries?",
+      "paragraphs": [
+        "USDA FoodData Central lists blueberries, raw at 2.4 g of fiber per 100 g. One serving (1 cup; 148 g) therefore has about 3.6 g of fiber and 84 calories. That is 13% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 14% of a 25 g day and 9% of a 38 g day.",
+        "Blueberries are popular for their color and convenience, but on fiber they sit in the middle of the berry range: more than strawberries, well below raspberries and blackberries."
+      ]
+    },
+    {
+      "heading": "Wild vs cultivated blueberries",
+      "paragraphs": [
+        "Wild (lowbush) blueberries are smaller and are mostly sold frozen. Because more berries fit in a cup, labels for wild blueberries often list somewhat more fiber per cup than USDA’s cultivated blueberry entry. Use the label if you buy wild.",
+        "Dried blueberries and blueberry muffins are much less helpful: dried berries are usually sweetened, and muffins contain only a handful of berries."
+      ]
+    },
+    {
+      "heading": "How blueberries compare with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, blueberries rank #7 for fiber per typical serving and #9 for fiber per calorie. That works out to 4.2 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [dried figs](/fiber-in-dried-figs) at 3.6 g (1/4 cup); [prunes](/fiber-in-prunes) at 3.4 g (5 prunes); [orange](/fiber-in-orange) at 3.1 g (1 medium). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), blueberries are #29 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding blueberries to your day",
+      "paragraphs": [
+        "Mix blueberries with a higher-fiber berry or add them to a base that already has fiber, such as oatmeal or a bran cereal.",
+        "Example: 1 cup blueberries, 1 cup oatmeal, 2 tbsp walnuts. Using the same USDA values as the calculator, that comes to about 8.6 g of fiber, with 3.6 g from the blueberries. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup blueberries, 1 cup oatmeal, 2 tbsp walnuts",
+  "examples": [
+    "1 cup blueberries, 1 cup oatmeal, 2 tbsp walnuts"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your blueberries meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of blueberries?",
+      "a": "2.4 g, according to USDA FoodData Central (Blueberries, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in blueberries (1/2 cup)?",
+      "a": "About 1.8 g, for 74 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are blueberries high in fiber?",
+      "a": "Moderately. One cup is about 3.6 g (1 cup), about 13% of the Daily Value."
+    },
+    {
+      "q": "Blueberries vs raspberries for fiber?",
+      "a": "Raspberries have a little over twice as much per cup: about 8 g (1 cup)."
+    }
+  ],
+  "related": [
+    "fiber-in-dried-figs",
+    "fiber-in-prunes",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Blueberries, raw (FDC 171711)",
+      "url": "https://fdc.nal.usda.gov/food-details/171711/nutrients",
+      "note": "2.4 g fiber and 57 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-dark-chocolate",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "nuts",
+  "title": "How Much Fiber in Dark Chocolate? 3.1g per Ounce",
+  "description": "Dark Chocolate: about 3.1 g of fiber per 1 oz (11% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in dark chocolate?",
+  "answer": {
+    "value": "~3.1",
+    "unit": "g",
+    "detail": "fiber in 1 oz (70–85% cacao), 28.4 g",
+    "note": "USDA FoodData Central, Chocolate, dark, 70-85% cacao solids"
+  },
+  "intro": [
+    "Dark chocolate ranks #2 of 7 nuts, seeds, and treats on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 oz (70–85% cacao)",
+      "value": "3.1 g",
+      "note": "170 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "10.9 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "1.8 g",
+      "note": "#45 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "11%",
+      "note": "of 28 g, per 1 oz (70–85% cacao)"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in dark chocolate by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 oz (70–85% cacao)",
+        "28.4 g",
+        "3.1 g",
+        "170",
+        "11%"
+      ],
+      [
+        "1 square (about 10 g)",
+        "10 g",
+        "1.1 g",
+        "60",
+        "4%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in dark chocolate?",
+      "paragraphs": [
+        "USDA FoodData Central lists chocolate, dark, 70-85% cacao solids at 10.9 g of fiber per 100 g. One serving (1 oz (70–85% cacao); 28.4 g) therefore has about 3.1 g of fiber and 170 calories. That is 11% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 12% of a 25 g day and 8% of a 38 g day.",
+        "High-cacao dark chocolate carries real fiber from the cocoa solids, about 3 g per ounce. It is still a calorie-dense treat, but it is one of the few sweets that contributes to a fiber total."
+      ]
+    },
+    {
+      "heading": "Cacao percentage matters",
+      "paragraphs": [
+        "The figures here are for 70–85% cacao. Milk chocolate and lower-percentage bars have less cocoa solid and more sugar, so their fiber is much lower.",
+        "Unsweetened cocoa powder is even more concentrated: USDA lists about 2 g of fiber per tablespoon."
+      ]
+    },
+    {
+      "heading": "How dark chocolate compares with other nuts, seeds, and treats",
+      "paragraphs": [
+        "Of the 7 nuts, seeds, and treats on this site, dark chocolate ranks #2 for fiber per typical serving and #3 for fiber per calorie. That works out to 1.8 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [pistachios](/fiber-in-pistachios) at 2.9 g (1 oz (about 49 kernels)); [flaxseed](/fiber-in-flaxseed) at 2.8 g (1 tbsp, whole); [almonds](/fiber-in-almonds) at 3.5 g (1 oz (about 23 almonds)). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), dark chocolate is #45 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding dark chocolate to your day",
+      "paragraphs": [
+        "A square or two of dark chocolate with berries or almonds makes a fiber-friendly dessert.",
+        "Example: 1 oz dark chocolate, 1/2 cup raspberries. Using the same USDA values as the calculator, that comes to about 7.1 g of fiber, with 3.1 g from the dark chocolate. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 oz dark chocolate, 1/2 cup raspberries",
+  "examples": [
+    "1 oz dark chocolate, 1/2 cup raspberries"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your dark chocolate meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of dark chocolate?",
+      "a": "10.9 g, according to USDA FoodData Central (Chocolate, dark, 70-85% cacao solids). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in dark chocolate (1 square (about 10 g))?",
+      "a": "About 1.1 g, for 10 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is dark chocolate a good source of fiber?",
+      "a": "An ounce of 70–85% dark chocolate has about 3 g, roughly 11% of the Daily Value, with around 170 calories."
+    },
+    {
+      "q": "Does milk chocolate have fiber?",
+      "a": "Much less. Most milk chocolate has a gram or less per ounce."
+    }
+  ],
+  "related": [
+    "fiber-in-pistachios",
+    "fiber-in-flaxseed",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Chocolate, dark, 70-85% cacao solids (FDC 170273)",
+      "url": "https://fdc.nal.usda.gov/food-details/170273/nutrients",
+      "note": "10.9 g fiber and 598 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}
