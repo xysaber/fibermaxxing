@@ -16,4 +16,20 @@ export const HOME_FAQS = [
     q: 'Is this fibermaxxing calculator medical advice?',
     a: 'No. Fiber totals are approximate estimates for education and self-tracking only. If you have a digestive condition or take medication, check with a qualified clinician before making large diet changes.',
   },
+  {
+    q: 'How do I add fiber without bloating?',
+    a: 'Go slowly. Add one high-fiber food at a time and give your gut a few days to adjust before adding the next. Spread fiber across breakfast, lunch, dinner, and snacks instead of one large meal, and drink enough fluids, because fiber holds water. The NIDDK advises adding fiber gradually to limit gas and bloating. If symptoms persist, talk to a clinician.',
+  },
+  {
+    q: 'Which foods have the most fiber per serving?',
+    a: 'Legumes lead. From USDA FoodData Central: a cup of cooked lentils has about 15.6 g and a cup of cooked black beans about 15 g. A medium avocado has about 10 g, a cup of raspberries about 8 g, and one tablespoon of chia seeds about 4 g. The Fiber in 50 foods page ranks everyday foods per serving, per 100 g, and per calorie.',
+  },
+  {
+    q: 'What is the difference between the 7-day starter plan and the 30-day plan?',
+    a: 'The 7-day starter plan is free: one short email each morning for a week, each with one easy change. The 30-day Fibermaxxing plan is coming soon at a $9 launch price, one-time. It ramps you week by week from what you eat now to your daily target, with meal plans, shopping lists, and versions for GLP-1 users and sensitive stomachs.',
+  },
+  {
+    q: 'Do I need an account?',
+    a: 'No. The calculator works without signing up. The free 7-day plan only needs an email address, and every email has an unsubscribe link. The privacy policy explains what the calculator stores.',
+  },
 ]
