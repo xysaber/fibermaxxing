@@ -40,7 +40,9 @@ export function EmailSignup({ source, targetG, gapG, variant = 'section', kicker
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; already?: boolean; error?: string }
       if (res.ok && data.ok) {
         setStatus(data.already ? 'already' : 'done')
-        track('email_signup_success', { source })
+        track('email_signup_success', { source, already: Boolean(data.already) })
+        // Key event: a new subscriber only. Never send the email address.
+        if (!data.already) track('generate_lead', { source })
       } else {
         setStatus(data.error === 'invalid_email' ? 'invalid' : 'error')
       }

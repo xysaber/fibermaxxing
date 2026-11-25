@@ -19,7 +19,7 @@ const META: Record<
     description:
       'How GetFibermaxxing collects and uses information for the free fibermaxxing calculator, including meal logs and analytics.',
     heading: 'Privacy Policy',
-    updated: 'November 24, 2026',
+    updated: 'November 25, 2026',
   },
   terms: {
     path: '/terms',
