@@ -21,7 +21,7 @@ const homeSchema = JSON.parse(readFileSync('src/content/schema/home.json', 'utf8
 const oatmealSchema = JSON.parse(readFileSync('src/content/schema/oatmeal.json', 'utf8'))
 for (const path of ['index', ...pages.map(p => p.slug)]) {
   const html = readFileSync(`dist/${path}.html`, 'utf8')
-  assert.match(html, /<div id="root"><div class="app">/)
+  assert.match(html, /<div id="root"><div class="app( home-v3)?">/)
   assert.doesNotMatch(html, /<noscript/)
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1)
   assert.match(html, new RegExp(`<link rel="canonical" href="https://www.getfibermaxxing.com/${path === 'index' ? '' : path}"`))

@@ -5,6 +5,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
   type FormEvent,
   type ReactNode,
 } from 'react'
@@ -59,6 +60,34 @@ const DEFAULT_EXAMPLES = [
   'Psyllium husk in water, salad, hummus, and a pear',
 ]
 
+
+/** Count from the last shown value to `value` over 700 ms (ease-out). Instant with reduced motion. */
+function useCountUp(value: number, duration = 700): number {
+  const [shown, setShown] = useState(0)
+  const fromRef = useRef(0)
+  const reduce =
+    typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  useEffect(() => {
+    const from = fromRef.current
+    if (reduce || from === value) {
+      fromRef.current = value
+      return
+    }
+    let raf = 0
+    const start = performance.now()
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration)
+      const eased = 1 - Math.pow(1 - t, 3)
+      const v = from + (value - from) * eased
+      fromRef.current = v
+      setShown(v)
+      if (t < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [value, duration, reduce])
+  return reduce ? value : shown
+}
 
 function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'light' }) {
   const r = 46
@@ -264,6 +293,8 @@ export type FiberCalculatorProps = {
 /** Hero CTA can adopt the current typewriter Quick start (full meal, not partial text). */
 export type FiberCalculatorHandle = {
   adoptCurrentDemo: () => void
+  /** Put a meal in the box, scroll to the calculator, and calculate it. */
+  loadMeal: (text: string, source: string) => void
 }
 
 export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculatorProps>(
@@ -335,6 +366,8 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   const hasMatches = !!result && result.matches.length > 0
   const pct = hasMatches ? Math.min(150, (result.totalFiberG / target) * 100) : 0
   const gap = hasMatches ? Math.max(0, Math.round((target - result.totalFiberG) * 10) / 10) : 0
+  const shownTotal = useCountUp(hasMatches ? result.totalFiberG : 0)
+  const shownPct = hasMatches && result.totalFiberG > 0 ? (shownTotal / result.totalFiberG) * pct : 0
   const calcReady = Boolean(meal.trim()) && !hasMatches
 
   const suggestions = useMemo(() => {
@@ -461,6 +494,11 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         const starter = starterList[demoIndex] ?? starterList[0]
         pickStarter(starter.id, starter.meal)
         track('try_calculator_cta', { starter_id: starter.id })
+      },
+      loadMeal(text: string, source: string) {
+        document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        pickExample(text)
+        track('try_calculator_cta', { source })
       },
     }),
     [demoIndex, meal, result],
@@ -793,11 +831,12 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         <section className="results" aria-live="polite" ref={resultsRef}>
           <div className="score-card">
             <div className="score-hero">
-              <ProgressRing pct={pct} />
+              <ProgressRing pct={shownPct} />
               <div className="score-hero-copy">
                 <p className="score-of-label">Fiber so far today</p>
                 <p className="score-total">
-                  {result.totalFiberG}
+                  <span aria-hidden="true">{shownTotal.toFixed(1)}</span>
+                  <span className="sr-only">{result.totalFiberG}</span>
                   <small> g</small>
                 </p>
                 <p className="score-of">
@@ -878,7 +917,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
             <ul className="food-list food-list-editable">
               {result.matches.map((m, idx) => {
                 return (
-                  <li key={`${m.food.id}-${m.matchedAlias}-${idx}`}>
+                  <li key={`${m.food.id}-${m.matchedAlias}-${idx}`} style={{ '--i': idx } as CSSProperties}>
                     <div className="food-row-head">
                       <span className="food-name">
                         {m.food.name}

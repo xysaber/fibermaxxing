@@ -6,16 +6,18 @@ type Props = {
   source: string
   targetG?: number
   gapG?: number
-  variant?: 'result' | 'section' | 'card' | 'aside'
+  variant?: 'result' | 'section' | 'card' | 'aside' | 'mail'
   kicker?: string
   title?: string
   copy?: string
   button?: string
+  /** Show the copy under the form (small print) instead of above it. */
+  copyAfter?: boolean
 }
 
 type Status = 'idle' | 'sending' | 'done' | 'already' | 'error' | 'invalid'
 
-export function EmailSignup({ source, targetG, gapG, variant = 'section', kicker, title, copy, button }: Props) {
+export function EmailSignup({ source, targetG, gapG, variant = 'section', kicker, title, copy, button, copyAfter = false }: Props) {
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [status, setStatus] = useState<Status>('idle')
@@ -51,16 +53,22 @@ export function EmailSignup({ source, targetG, gapG, variant = 'section', kicker
     }
   }
 
+  const copyBlock = (
+    <p className="email-signup-copy">
+      {copy ??
+        'One short email a day with one easy change, sized so you add fiber without the bloating. Unsubscribe anytime.'}
+    </p>
+  )
+
   return (
     <div className={`email-signup email-signup--${variant}`}>
       {kicker !== '' ? <p className="email-signup-kicker">{kicker ?? 'Free · by email'}</p> : null}
-      <h3 className="email-signup-title">
-        {title ?? (gapText ? `Get a 7-day plan to close your ${gapText} gap` : 'Free 7-day starter plan')}
-      </h3>
-      <p className="email-signup-copy">
-        {copy ??
-          'One short email a day with one easy change, sized so you add fiber without the bloating. Unsubscribe anytime.'}
-      </p>
+      {title !== '' ? (
+        <h3 className="email-signup-title">
+          {title ?? (gapText ? `Get a 7-day plan to close your ${gapText} gap` : 'Free 7-day starter plan')}
+        </h3>
+      ) : null}
+      {copyAfter ? null : copyBlock}
       {status === 'done' || status === 'already' ? (
         <p className="email-signup-done" role="status">
           {status === 'done'
@@ -110,6 +118,7 @@ export function EmailSignup({ source, targetG, gapG, variant = 'section', kicker
           Sign-up isn’t working right now. Please try again later.
         </p>
       ) : null}
+      {copyAfter ? copyBlock : null}
     </div>
   )
 }
