@@ -5316,6 +5316,25 @@ body {
   color: #a9b5ae;
 }
 
+.plan-card-dark .plan-card-cta {
+  margin-top: auto;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.plan-card-dark .plan-card-cta:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
 @media (max-width: 960px) {
   .app > .plan-band {
     grid-template-columns: minmax(0, 1fr);

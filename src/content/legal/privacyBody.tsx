@@ -66,6 +66,11 @@ export function PrivacyPolicyBody() {
             Your email address, if you sign up for the free 7-day plan, plus the daily target and gap shown when you
             signed up
           </li>
+          <li>
+            If you buy the 30-day plan: the email address and payment status Stripe shares with us after checkout, and
+            the plan settings you enter (daily target, starting amount, version, days marked done), saved with your
+            private plan link
+          </li>
         </ul>
         <p>
           We do <strong>not</strong> require name, email, or payment information to run a calculation. Email is only
@@ -104,6 +109,7 @@ export function PrivacyPolicyBody() {
         <ul>
           <li>A random client identifier used to group anonymous sessions</li>
           <li>Optional QA / self-test flags you trigger via URL parameters</li>
+          <li>Your last calculator target and your 30-day plan link, so the plan opens on this device</li>
         </ul>
 
         <h3>Tracking Technologies and Analytics</h3>
@@ -151,7 +157,8 @@ export function PrivacyPolicyBody() {
         <ul>
           <li>
             <strong>Service Providers</strong> that host or operate the Service (e.g., Cloudflare for hosting/edge
-            compute and object storage; Resend for sending email; Google Analytics for measurement)
+            compute and object storage; Resend for sending email; Stripe for payments; Google Analytics for
+            measurement). We never see or store your card details; Stripe handles payment.
           </li>
           <li>
             <strong>Legal / safety</strong> recipients when required by law or to protect rights and security

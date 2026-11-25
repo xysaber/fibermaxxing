@@ -7,7 +7,9 @@ import {
   handlePlanCheckout,
   handlePlanClaim,
   handlePlanContent,
+  handlePlanRecover,
   handlePlanResend,
+  handlePlanState,
   handlePlanWebhook,
   type PlanEnv,
 } from './plan/sales'
@@ -303,6 +305,8 @@ export default {
       if (route === 'POST /api/plan/resend') return handlePlanResend(request, env)
       if (route === 'POST /api/plan/webhook') return handlePlanWebhook(request, env)
       if (route === 'GET /api/plan/content') return handlePlanContent(request, env)
+      if (route === 'GET /api/plan/state' || route === 'PUT /api/plan/state') return handlePlanState(request, env)
+      if (route === 'POST /api/plan/recover') return handlePlanRecover(request, env)
       return Response.json({ ok: false, error: 'not_found' }, { status: 404 })
     }
     return env.ASSETS.fetch(request)

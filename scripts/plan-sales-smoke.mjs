@@ -42,7 +42,7 @@ globalThis.fetch = async (url, init = {}) => {
       assert.equal(form.get('line_items[0][price]'), 'price_123')
       assert.equal(form.get('allow_promotion_codes'), 'true')
       assert.equal(form.get('metadata[sku]'), 'fiber30')
-      assert.match(form.get('success_url'), /\/30-day-plan\/thanks\?session_id=\{CHECKOUT_SESSION_ID\}$/)
+      assert.match(form.get('success_url'), /\/30-day-plan-thanks\?session_id=\{CHECKOUT_SESSION_ID\}$/)
       return Response.json({ id: SID, url: 'https://checkout.stripe.com/c/pay/' + SID })
     }
     if (path === `checkout/sessions/${SID}`) {
@@ -112,6 +112,24 @@ const c = await r.json()
 assert.equal(c.menus.std['24'].length, 4)
 assert.equal(c.menus.std['24'][0].length, 7)
 assert.ok(c.guide.weeks.length === 4 && c.guide.disclaimer.includes('Mira Xin'))
+
+// State: saved under the key, cleaned
+assert.equal((await call('GET', '/api/plan/state?k=' + 'b'.repeat(48))).status, 404)
+assert.deepEqual((await (await call('GET', '/api/plan/state?k=' + claim.key)).json()).state, {})
+assert.equal((await call('PUT', '/api/plan/state?k=' + claim.key, { target: 25, start: 14, track: 'gentle', done: [3, 1, 1, 99, 2], evil: 'x' })).status, 200)
+let st = (await (await call('GET', '/api/plan/state?k=' + claim.key)).json()).state
+assert.deepEqual([st.target, st.start, st.track, st.done, st.evil], [25, 14, 'gentle', [1, 2, 3], undefined])
+assert.equal((await call('PUT', '/api/plan/state?k=' + claim.key, '[1]')).status, 400)
+
+// Recover by email: same answer for buyers and strangers; only the buyer gets mail
+let before = sent.length
+assert.equal((await call('POST', '/api/plan/recover', { email: 'stranger@example.com' })).status, 200)
+assert.equal(sent.length, before)
+assert.equal((await call('POST', '/api/plan/recover', { email: ' BUYER@example.com ' })).status, 200)
+assert.equal(sent.length, before + 1)
+assert.ok(sent.at(-1).html.includes(claim.key))
+assert.equal((await call('POST', '/api/plan/recover', { email: 'nope' })).status, 400)
+sent.splice(before, 1) // keep later counts simple
 
 // Resend: works, then capped at 3
 for (let i = 0; i < 3; i++) assert.equal((await call('POST', '/api/plan/resend', { session_id: SID })).status, 200)

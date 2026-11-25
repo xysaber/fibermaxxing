@@ -25,6 +25,7 @@ export function SiteFooter() {
             <h2>Tools</h2>
             <Link to="/">Fiber calculator</Link>
             <Link to="/fiber-in-foods">Fiber in 50 foods</Link>
+            <Link to="/30-day-plan">30-day plan</Link>
           </div>
           <div>
             <h2>By goal</h2>

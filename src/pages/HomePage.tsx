@@ -80,16 +80,18 @@ export function HomePage() {
           button="Get the plan"
         />
         <div className="plan-card-dark">
-          <p className="plan-card-kicker">Coming soon</p>
+          <p className="plan-card-kicker">Launch price</p>
           <h3>30-day Fibermaxxing plan</h3>
           <p>
-            A week-by-week ramp to your target, with meal plans, shopping lists, and versions for
+            A week-by-week ramp to your target, with daily menus, shopping lists, and versions for
             GLP-1 users and sensitive stomachs.
           </p>
           <p className="plan-card-price">
-            <strong>$9</strong> <s>$14.99</s> <span>launch price, one-time</span>
+            <strong>$9</strong> <s>$14.99</s> <span>one-time, 7-day refund</span>
           </p>
-          <p className="plan-card-note">Starter-plan subscribers hear about it first.</p>
+          <Link className="plan-card-cta" to="/30-day-plan">
+            See what’s inside
+          </Link>
         </div>
       </section>
       <MethodStrip />

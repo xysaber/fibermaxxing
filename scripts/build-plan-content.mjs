@@ -133,16 +133,36 @@ const content = {
   version: 1,
   tiers: TIERS,
   meals: Object.fromEntries(
-    Object.values(meals).map((m) => [m.id, { slot: m.slot, name: m.name, items: m.items.map(({ t, g, shop, cat }) => ({ t, g, shop, cat })), with: m.with, prep: m.prep, g: m.g }]),
+    Object.values(meals).map((m) => [m.id, { slot: m.slot, name: m.name, tracks: m.tracks, legume: m.legume || undefined, items: m.items.map(({ t, g, shop, cat }) => ({ t, g, shop, cat })), with: m.with, prep: m.prep, g: m.g }]),
   ),
   menus,
 }
 const json = JSON.stringify(content)
+
+// Public sample for the sales page: Week 2, Day 9 of each version at the default
+// settings (eats ~15 g now, target 25 g). Real menus from the plan, not a mock-up.
+const SAMPLE_OUT = new URL('../src/content/plan-sample.json', import.meta.url)
+const sampleTier = { std: 24, glp1: 21, gentle: 21 }
+const sample = Object.fromEntries(
+  Object.entries(sampleTier).map(([track, tier]) => {
+    const day = menus[track][tier][1][1]
+    return [track, {
+      goal: track === 'std' ? 25 : 21,
+      total: day.g,
+      meals: day.m.map((id) => {
+        const m = content.meals[id]
+        return { slot: m.slot, name: m.name, items: m.items.map((i) => i.t).join(', ') + (m.with ? `, ${m.with}` : ''), g: m.g }
+      }),
+    }]
+  }),
+)
+const sampleJson = JSON.stringify(sample, null, 2) + '\n'
 if (process.argv.includes('--check')) {
   const cur = readFileSync(OUT, 'utf8')
-  if (cur.trim() !== json) { console.error('worker/plan/content.json is stale. Run: node --import tsx scripts/build-plan-content.mjs'); process.exit(1) }
+  if (cur.trim() !== json || readFileSync(SAMPLE_OUT, 'utf8') !== sampleJson) { console.error('worker/plan/content.json is stale. Run: node --import tsx scripts/build-plan-content.mjs'); process.exit(1) }
   console.log('plan content up to date')
 } else {
   writeFileSync(OUT, json + '\n')
+  writeFileSync(SAMPLE_OUT, sampleJson)
   console.log(`wrote ${OUT.pathname} (${(json.length / 1024).toFixed(1)} KB, ${Object.keys(meals).length} meals)`)
 }

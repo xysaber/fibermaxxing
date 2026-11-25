@@ -38,8 +38,9 @@ export function AboutPage() {
         <div className="legal-prose">
           <p>
             GetFibermaxxing is a small, independent project: a free calculator that estimates how much
-            dietary fiber is in the meals you type, plus short guides on common high-fiber foods. There
-            is no account, no paywall, and no sponsored food ranking.
+            dietary fiber is in the meals you type, plus short guides on common high-fiber foods. The
+            calculator and guides are free, with no account and no sponsored food ranking. An optional
+            paid <Link to="/30-day-plan">30-day plan</Link> supports the site.
           </p>
 
           <h2 id="editor">Who runs it</h2>

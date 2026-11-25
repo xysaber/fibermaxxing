@@ -7,11 +7,15 @@
  *   POST /api/plan/webhook    → checkout.session.completed (fulfil even if the tab was closed),
  *                               charge.refunded (turn the link off)
  *   GET  /api/plan/content    → plan content for a valid access key
+ *   GET/PUT /api/plan/state   → the buyer's settings and tracker, saved under the access key
+ *   POST /api/plan/recover    → "email me my link" by purchase email (always answers ok)
  *
  * Storage (R2, same bucket as meal logs and subscribers):
  *   plan-purchases/<checkout session id>.json   one per payment
  *   plan-access/<access key>.json               → session id
  *   plan-refunds/<payment intent id>.json       → session id (to revoke on refund)
+ *   plan-emails/<sha256(email)>.json            → session ids bought with that email
+ *   plan-state/<access key>.json                → target, starting point, version, days done
  *
  * Secrets (Cloudflare dashboard → Settings → Variables and Secrets, type Secret):
  *   STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET; vars STRIPE_PRICE_ID, PLAN_PRICE_CENTS.
@@ -99,7 +103,7 @@ export async function handlePlanCheckout(_request: Request, env: PlanEnv): Promi
     'line_items[0][price]': env.STRIPE_PRICE_ID,
     'line_items[0][quantity]': '1',
     allow_promotion_codes: 'true',
-    success_url: `${SITE}/30-day-plan/thanks?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${SITE}/30-day-plan-thanks?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE}/30-day-plan?checkout=cancelled`,
     'metadata[sku]': SKU,
     'payment_intent_data[metadata][sku]': SKU,
@@ -157,6 +161,12 @@ async function fulfil(env: PlanEnv, session: Record<string, unknown>): Promise<P
     }
     await put(env, recKey, p)
     await put(env, `plan-access/${p.key}.json`, { session_id: sessionId })
+    if (email) {
+      const idxKey = `plan-emails/${await sha256Hex(email)}.json`
+      const idx = (await readJson<{ sessions: string[] }>(env, idxKey)) || { sessions: [] }
+      if (!idx.sessions.includes(sessionId)) idx.sessions.push(sessionId)
+      await put(env, idxKey, idx)
+    }
     if (p.payment_intent) await put(env, `plan-refunds/${p.payment_intent}.json`, { session_id: sessionId })
   }
   if (!p.emailed_at && p.email) {
@@ -260,6 +270,95 @@ export async function handlePlanWebhook(request: Request, env: PlanEnv): Promise
     }
   }
   return new Response('ok')
+}
+
+async function sha256Hex(s: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s))
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('')
+}
+
+const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]{1,64}@[A-Za-z0-9.-]{1,253}\.[A-Za-z]{2,24}$/
+const recoverHits = new Map<string, { n: number; reset: number }>()
+
+function recoverAllowed(bucket: string): boolean {
+  const now = Date.now()
+  const row = recoverHits.get(bucket)
+  if (!row || now > row.reset) {
+    recoverHits.set(bucket, { n: 1, reset: now + 60 * 60 * 1000 })
+    return true
+  }
+  if (row.n >= 5) return false
+  row.n += 1
+  return true
+}
+
+/** "Email me my link". Same answer whether or not the email bought, so it can't be used to look people up. */
+export async function handlePlanRecover(request: Request, env: PlanEnv): Promise<Response> {
+  if (!env.MEAL_LOGS || !env.RESEND_API_KEY) return json({ ok: false, error: 'unavailable' }, 503)
+  let body: Record<string, unknown>
+  try {
+    body = (await request.json()) as Record<string, unknown>
+  } catch {
+    return json({ ok: false, error: 'bad_json' }, 400)
+  }
+  const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : ''
+  if (!EMAIL_RE.test(email)) return json({ ok: false, error: 'invalid_email' }, 400)
+  const ip = request.headers.get('cf-connecting-ip') || 'unknown'
+  if (!recoverAllowed(`ip:${ip}`) || !recoverAllowed(`em:${email}`)) return json({ ok: false, error: 'rate_limited' }, 429)
+  const idx = await readJson<{ sessions: string[] }>(env, `plan-emails/${await sha256Hex(email)}.json`)
+  for (const sid of [...(idx?.sessions || [])].reverse()) {
+    const p = await readJson<Purchase>(env, `plan-purchases/${sid}.json`)
+    if (p && !p.revoked_at) {
+      await sendPlanLinkEmail(env, p.email, p.key)
+      break
+    }
+  }
+  return json({ ok: true })
+}
+
+type PlanState = { target?: number; start?: number; track?: string; done?: number[]; updated_at?: string }
+
+function cleanState(raw: unknown): PlanState | null {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null
+  const b = raw as Record<string, unknown>
+  const num = (v: unknown, lo: number, hi: number) =>
+    typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi ? Math.round(v) : undefined
+  const out: PlanState = {
+    target: num(b.target, 10, 70),
+    start: num(b.start, 0, 70),
+    track: typeof b.track === 'string' && ['std', 'glp1', 'gentle'].includes(b.track) ? b.track : undefined,
+    done: Array.isArray(b.done)
+      ? [...new Set(b.done.filter((d): d is number => Number.isInteger(d) && d >= 1 && d <= 30))].sort((a, z) => a - z)
+      : undefined,
+    updated_at: new Date().toISOString(),
+  }
+  return out
+}
+
+async function validKey(env: PlanEnv, key: string): Promise<boolean> {
+  if (!KEY_RE.test(key)) return false
+  return (await env.MEAL_LOGS!.get(`plan-access/${key}.json`)) !== null
+}
+
+export async function handlePlanState(request: Request, env: PlanEnv): Promise<Response> {
+  if (!env.MEAL_LOGS) return json({ ok: false, error: 'unavailable' }, 503)
+  const key = new URL(request.url).searchParams.get('k') || ''
+  if (!(await validKey(env, key))) return json({ ok: false, error: 'not_found' }, 404)
+  const stKey = `plan-state/${key}.json`
+  if (request.method === 'GET') {
+    return json({ ok: true, state: (await readJson<PlanState>(env, stKey)) || {} })
+  }
+  if (Number(request.headers.get('content-length') || '0') > 2048) return json({ ok: false, error: 'too_large' }, 413)
+  let raw: unknown
+  try {
+    raw = await request.json()
+  } catch {
+    return json({ ok: false, error: 'bad_json' }, 400)
+  }
+  const st = cleanState(raw)
+  if (!st) return json({ ok: false, error: 'bad_state' }, 400)
+  await put(env, stKey, st)
+  return json({ ok: true })
 }
 
 export async function handlePlanContent(request: Request, env: PlanEnv): Promise<Response> {

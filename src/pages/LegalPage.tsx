@@ -27,7 +27,7 @@ const META: Record<
     description:
       'Terms of Service for the GetFibermaxxing fiber intake estimator and fibermaxxing calculator.',
     heading: 'Terms of Service',
-    updated: 'October 27, 2026',
+    updated: 'November 25, 2026',
   },
 }
 
