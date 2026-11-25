@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-barley",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Barley? 6g per Cup",
+  "description": "Barley: about 6 g of fiber per 1 cup, cooked (21% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in barley?",
+  "answer": {
+    "value": "~6",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (pearled), 157 g",
+    "note": "USDA FoodData Central, Barley, pearled, cooked"
+  },
+  "intro": [
+    "Barley ranks #2 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked (pearled)",
+      "value": "6 g",
+      "note": "193 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "3.8 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "3.1 g",
+      "note": "#34 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "21%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in barley by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked (pearled)",
+        "157 g",
+        "6 g",
+        "193",
+        "21%"
+      ],
+      [
+        "1/2 cup, cooked (pearled)",
+        "78.5 g",
+        "3 g",
+        "97",
+        "11%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in barley?",
+      "paragraphs": [
+        "USDA FoodData Central lists barley, pearled, cooked at 3.8 g of fiber per 100 g. One serving (1 cup, cooked (pearled); 157 g) therefore has about 6 g of fiber and 193 calories. That is 21% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 24% of a 25 g day and 16% of a 38 g day.",
+        "Barley is one of the few grains, along with oats, that is naturally rich in beta-glucan, a soluble fiber. The FDA allows a heart-health claim for foods with enough beta-glucan from barley or oats, as part of a diet low in saturated fat and cholesterol. Even pearled barley, which has had some bran polished off, is one of the higher-fiber grains per cooked cup."
+      ]
+    },
+    {
+      "heading": "Pearled vs hulled barley",
+      "paragraphs": [
+        "Pearled barley, the kind most grocery stores sell, has the outer hull and some bran removed so it cooks faster. Hulled barley keeps more of the bran and is higher in fiber, but takes longer to cook. The figures on this page are for pearled barley.",
+        "Barley absorbs a lot of water as it cooks, so use the cooked weight or cup when logging from the pot."
+      ]
+    },
+    {
+      "heading": "How barley compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, barley ranks #2 for fiber per typical serving and #4 for fiber per calorie. That works out to 3.1 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [whole wheat pasta](/fiber-in-whole-wheat-pasta) at 5.5 g (1 cup spaghetti, cooked); [quinoa](/fiber-in-quinoa) at 5.2 g (1 cup, cooked); [bulgur](/fiber-in-bulgur) at 8.2 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), barley is #34 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding barley to your day",
+      "paragraphs": [
+        "Use barley in soups, as a chewy base for salads, or cooked half-and-half with rice. It reheats well, so it is a good batch-cook grain.",
+        "Example: 1 cup barley, 1 cup carrots, 1/2 cup chickpeas. Using the same USDA values as the calculator, that comes to about 15.8 g of fiber, with 6 g from the barley. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup barley, 1 cup carrots, 1/2 cup chickpeas",
+  "examples": [
+    "1 cup barley, 1 cup carrots, 1/2 cup chickpeas"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your barley meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of barley?",
+      "a": "3.8 g, according to USDA FoodData Central (Barley, pearled, cooked). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in barley (1/2 cup, cooked (pearled))?",
+      "a": "About 3 g, for 78.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Barley vs oatmeal for fiber?",
+      "a": "Cooked pearled barley is about 6 g (1 cup, cooked (pearled)). A cup of cooked oatmeal is about 4 g on the [oatmeal](/oatmeal) guide. Both supply beta-glucan."
+    },
+    {
+      "q": "Does barley contain gluten?",
+      "a": "Yes. Barley contains gluten and is not suitable for people with celiac disease."
+    }
+  ],
+  "related": [
+    "fiber-in-whole-wheat-pasta",
+    "fiber-in-quinoa",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Barley, pearled, cooked (FDC 170285)",
+      "url": "https://fdc.nal.usda.gov/food-details/170285/nutrients",
+      "note": "3.8 g fiber and 123 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

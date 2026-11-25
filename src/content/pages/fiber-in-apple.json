@@ -1,0 +1,167 @@
+{
+  "slug": "fiber-in-apple",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in an Apple? 4.4g per Medium",
+  "description": "Apple: about 4.4 g of fiber per 1 medium, with skin (16% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in an apple?",
+  "answer": {
+    "value": "~4.4",
+    "unit": "g",
+    "detail": "fiber in 1 medium (3\" diameter), with skin, 182 g",
+    "note": "USDA FoodData Central, Apples, raw, with skin"
+  },
+  "intro": [
+    "Apple ranks #5 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 medium (3\" diameter), with skin",
+      "value": "4.4 g",
+      "note": "95 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2.4 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "4.6 g",
+      "note": "#27 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "16%",
+      "note": "of 28 g, per 1 medium (3\" diameter)"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in apple by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 medium (3\" diameter), with skin",
+        "182 g",
+        "4.4 g",
+        "95",
+        "16%"
+      ],
+      [
+        "1 small, with skin",
+        "149 g",
+        "3.6 g",
+        "77",
+        "13%"
+      ],
+      [
+        "1 cup slices, with skin",
+        "109 g",
+        "2.6 g",
+        "57",
+        "9%"
+      ],
+      [
+        "1 cup slices, peeled",
+        "110 g",
+        "1.4 g",
+        "53",
+        "5%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in an apple?",
+      "paragraphs": [
+        "USDA FoodData Central lists apples, raw, with skin at 2.4 g of fiber per 100 g. One serving (1 medium (3\" diameter), with skin; 182 g) therefore has about 4.4 g of fiber and 95 calories. That is 16% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 17% of a 25 g day and 11% of a 38 g day.",
+        "A medium apple with the skin on is one of the easiest portable fiber sources. Much of that fiber is in or just under the peel, which is why the peeled row in the table is so much lower."
+      ]
+    },
+    {
+      "heading": "Skin on vs peeled, whole vs juice",
+      "paragraphs": [
+        "USDA’s peeled apple entry has about half the fiber per 100 g of an apple with skin. Washing and eating the peel is the simplest way to keep it.",
+        "Apple juice has almost no fiber, and even unsweetened applesauce has less fiber per serving than the whole fruit with skin. Whole fruit is the version that counts."
+      ]
+    },
+    {
+      "heading": "How apple compares with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, apple ranks #5 for fiber per typical serving and #8 for fiber per calorie. That works out to 4.6 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [dried figs](/fiber-in-dried-figs) at 3.6 g (1/4 cup); [blueberries](/fiber-in-blueberries) at 3.6 g (1 cup); [prunes](/fiber-in-prunes) at 3.4 g (5 prunes). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), apple is #27 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding apple to your day",
+      "paragraphs": [
+        "Slice an apple with 2 tablespoons of peanut butter for a snack, or chop one into oatmeal with cinnamon. Apple size varies a lot: a large apple can weigh 220 g or more.",
+        "Example: 1 apple, 2 tbsp peanut butter. Using the same USDA values as the calculator, that comes to about 6 g of fiber, with 4.4 g from the apple. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 apple, 2 tbsp peanut butter",
+  "examples": [
+    "1 apple, 2 tbsp peanut butter"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your apple meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of apple?",
+      "a": "2.4 g, according to USDA FoodData Central (Apples, raw, with skin). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in apple (1 small, with skin)?",
+      "a": "About 3.6 g, for 149 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Does peeling an apple remove the fiber?",
+      "a": "It removes a large share. Per 100 g, USDA lists 2.4 g with skin versus 1.3 g peeled."
+    },
+    {
+      "q": "Is applesauce as good as an apple for fiber?",
+      "a": "No. Applesauce is usually made from peeled apples and is a softer, smaller serving. A whole apple with skin gives more."
+    }
+  ],
+  "related": [
+    "fiber-in-dried-figs",
+    "fiber-in-blueberries",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Apples, raw, with skin (FDC 171688)",
+      "url": "https://fdc.nal.usda.gov/food-details/171688/nutrients",
+      "note": "2.4 g fiber and 52 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Apples, raw, without skin (FDC 171689)",
+      "url": "https://fdc.nal.usda.gov/food-details/171689/nutrients",
+      "note": "1.3 g fiber and 48 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

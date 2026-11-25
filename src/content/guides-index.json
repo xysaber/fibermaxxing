@@ -1,0 +1,437 @@
+[
+  {
+    "slug": "fiber-in-black-beans",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Black beans fiber",
+    "blurb": "15 g per 1 cup, cooked, from USDA data.",
+    "stat": "15 g"
+  },
+  {
+    "slug": "fiber-in-chickpeas",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Chickpeas fiber",
+    "blurb": "12.5 g per 1 cup, cooked, from USDA data.",
+    "stat": "12.5 g"
+  },
+  {
+    "slug": "fiber-in-lentils",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Lentils fiber",
+    "blurb": "15.6 g per 1 cup, cooked, from USDA data.",
+    "stat": "15.6 g"
+  },
+  {
+    "slug": "fiber-in-kidney-beans",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Kidney beans fiber",
+    "blurb": "11.3 g per 1 cup, cooked, from USDA data.",
+    "stat": "11.3 g"
+  },
+  {
+    "slug": "fiber-in-pinto-beans",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Pinto beans fiber",
+    "blurb": "15.4 g per 1 cup, cooked, from USDA data.",
+    "stat": "15.4 g"
+  },
+  {
+    "slug": "fiber-in-navy-beans",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Navy beans fiber",
+    "blurb": "19.1 g per 1 cup, cooked, from USDA data.",
+    "stat": "19.1 g"
+  },
+  {
+    "slug": "fiber-in-split-peas",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Split peas fiber",
+    "blurb": "16.3 g per 1 cup, cooked, from USDA data.",
+    "stat": "16.3 g"
+  },
+  {
+    "slug": "fiber-in-green-peas",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Green peas fiber",
+    "blurb": "8.8 g per 1 cup, cooked, from USDA data.",
+    "stat": "8.8 g"
+  },
+  {
+    "slug": "fiber-in-edamame",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Edamame fiber",
+    "blurb": "8.1 g per 1 cup, shelled, cooked, from USDA data.",
+    "stat": "8.1 g"
+  },
+  {
+    "slug": "fiber-in-hummus",
+    "kind": "food",
+    "category": "legumes",
+    "title": "Hummus fiber",
+    "blurb": "1.7 g per 2 tbsp, from USDA data.",
+    "stat": "1.7 g"
+  },
+  {
+    "slug": "fiber-in-quinoa",
+    "kind": "food",
+    "category": "grains",
+    "title": "Quinoa fiber",
+    "blurb": "5.2 g per 1 cup, cooked, from USDA data.",
+    "stat": "5.2 g"
+  },
+  {
+    "slug": "fiber-in-brown-rice",
+    "kind": "food",
+    "category": "grains",
+    "title": "Brown rice fiber",
+    "blurb": "3.2 g per 1 cup, cooked, from USDA data.",
+    "stat": "3.2 g"
+  },
+  {
+    "slug": "fiber-in-barley",
+    "kind": "food",
+    "category": "grains",
+    "title": "Barley fiber",
+    "blurb": "6 g per 1 cup, cooked (pearled), from USDA data.",
+    "stat": "6 g"
+  },
+  {
+    "slug": "fiber-in-whole-wheat-bread",
+    "kind": "food",
+    "category": "grains",
+    "title": "Whole wheat bread fiber",
+    "blurb": "1.9 g per 1 slice, from USDA data.",
+    "stat": "1.9 g"
+  },
+  {
+    "slug": "fiber-in-popcorn",
+    "kind": "food",
+    "category": "grains",
+    "title": "Popcorn fiber",
+    "blurb": "3.6 g per 3 cups, air-popped, from USDA data.",
+    "stat": "3.6 g"
+  },
+  {
+    "slug": "fiber-in-whole-wheat-pasta",
+    "kind": "food",
+    "category": "grains",
+    "title": "Whole wheat pasta fiber",
+    "blurb": "5.5 g per 1 cup spaghetti, cooked, from USDA data.",
+    "stat": "5.5 g"
+  },
+  {
+    "slug": "fiber-in-bulgur",
+    "kind": "food",
+    "category": "grains",
+    "title": "Bulgur fiber",
+    "blurb": "8.2 g per 1 cup, cooked, from USDA data.",
+    "stat": "8.2 g"
+  },
+  {
+    "slug": "fiber-in-wheat-bran",
+    "kind": "food",
+    "category": "grains",
+    "title": "Wheat bran fiber",
+    "blurb": "3.1 g per 2 tbsp, from USDA data.",
+    "stat": "3.1 g"
+  },
+  {
+    "slug": "fiber-in-raspberries",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Raspberries fiber",
+    "blurb": "8 g per 1 cup, from USDA data.",
+    "stat": "8 g"
+  },
+  {
+    "slug": "fiber-in-blackberries",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Blackberries fiber",
+    "blurb": "7.6 g per 1 cup, from USDA data.",
+    "stat": "7.6 g"
+  },
+  {
+    "slug": "fiber-in-strawberries",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Strawberries fiber",
+    "blurb": "2.9 g per 1 cup, whole, from USDA data.",
+    "stat": "2.9 g"
+  },
+  {
+    "slug": "fiber-in-blueberries",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Blueberries fiber",
+    "blurb": "3.6 g per 1 cup, from USDA data.",
+    "stat": "3.6 g"
+  },
+  {
+    "slug": "fiber-in-apple",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Apple fiber",
+    "blurb": "4.4 g per 1 medium (3\" diameter), with skin, from USDA data.",
+    "stat": "4.4 g"
+  },
+  {
+    "slug": "fiber-in-pear",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Pear fiber",
+    "blurb": "5.5 g per 1 medium, from USDA data.",
+    "stat": "5.5 g"
+  },
+  {
+    "slug": "fiber-in-banana",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Banana fiber",
+    "blurb": "3.1 g per 1 medium (7–8\"), from USDA data.",
+    "stat": "3.1 g"
+  },
+  {
+    "slug": "fiber-in-orange",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Orange fiber",
+    "blurb": "3.1 g per 1 medium, from USDA data.",
+    "stat": "3.1 g"
+  },
+  {
+    "slug": "fiber-in-avocado",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Avocado fiber",
+    "blurb": "10.1 g per 1 medium avocado (flesh), from USDA data.",
+    "stat": "10.1 g"
+  },
+  {
+    "slug": "fiber-in-kiwi",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Kiwi fiber",
+    "blurb": "2.1 g per 1 kiwifruit, from USDA data.",
+    "stat": "2.1 g"
+  },
+  {
+    "slug": "fiber-in-mango",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Mango fiber",
+    "blurb": "2.6 g per 1 cup pieces, from USDA data.",
+    "stat": "2.6 g"
+  },
+  {
+    "slug": "fiber-in-prunes",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Prunes fiber",
+    "blurb": "3.4 g per 5 prunes, from USDA data.",
+    "stat": "3.4 g"
+  },
+  {
+    "slug": "fiber-in-dates",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Dates fiber",
+    "blurb": "1.6 g per 1 Medjool date, from USDA data.",
+    "stat": "1.6 g"
+  },
+  {
+    "slug": "fiber-in-dried-figs",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Dried figs fiber",
+    "blurb": "3.6 g per 1/4 cup, from USDA data.",
+    "stat": "3.6 g"
+  },
+  {
+    "slug": "fiber-in-guava",
+    "kind": "food",
+    "category": "fruit",
+    "title": "Guava fiber",
+    "blurb": "3 g per 1 fruit, from USDA data.",
+    "stat": "3 g"
+  },
+  {
+    "slug": "fiber-in-broccoli",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Broccoli fiber",
+    "blurb": "5.1 g per 1 cup chopped, cooked, from USDA data.",
+    "stat": "5.1 g"
+  },
+  {
+    "slug": "fiber-in-brussels-sprouts",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Brussels sprouts fiber",
+    "blurb": "4.1 g per 1 cup, cooked, from USDA data.",
+    "stat": "4.1 g"
+  },
+  {
+    "slug": "fiber-in-carrots",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Carrots fiber",
+    "blurb": "1.7 g per 1 medium carrot, raw, from USDA data.",
+    "stat": "1.7 g"
+  },
+  {
+    "slug": "fiber-in-sweet-potato",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Sweet potato fiber",
+    "blurb": "3.8 g per 1 medium, baked (flesh), from USDA data.",
+    "stat": "3.8 g"
+  },
+  {
+    "slug": "fiber-in-potato",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Baked potato fiber",
+    "blurb": "3.8 g per 1 medium, baked, flesh and skin, from USDA data.",
+    "stat": "3.8 g"
+  },
+  {
+    "slug": "fiber-in-spinach",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Spinach fiber",
+    "blurb": "4.3 g per 1 cup, cooked, from USDA data.",
+    "stat": "4.3 g"
+  },
+  {
+    "slug": "fiber-in-kale",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Kale fiber",
+    "blurb": "4.7 g per 1 cup, cooked, from USDA data.",
+    "stat": "4.7 g"
+  },
+  {
+    "slug": "fiber-in-artichoke",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Artichoke fiber",
+    "blurb": "6.9 g per 1 medium globe artichoke, raw (edible part), from USDA data.",
+    "stat": "6.9 g"
+  },
+  {
+    "slug": "fiber-in-green-beans",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Green beans fiber",
+    "blurb": "4 g per 1 cup, cooked, from USDA data.",
+    "stat": "4 g"
+  },
+  {
+    "slug": "fiber-in-butternut-squash",
+    "kind": "food",
+    "category": "vegetables",
+    "title": "Butternut squash fiber",
+    "blurb": "6.6 g per 1 cup cubes, baked, from USDA data.",
+    "stat": "6.6 g"
+  },
+  {
+    "slug": "fiber-in-almonds",
+    "kind": "food",
+    "category": "nuts",
+    "title": "Almonds fiber",
+    "blurb": "3.5 g per 1 oz (about 23 almonds), from USDA data.",
+    "stat": "3.5 g"
+  },
+  {
+    "slug": "fiber-in-flaxseed",
+    "kind": "food",
+    "category": "nuts",
+    "title": "Flaxseed fiber",
+    "blurb": "2.8 g per 1 tbsp, whole, from USDA data.",
+    "stat": "2.8 g"
+  },
+  {
+    "slug": "fiber-in-pumpkin-seeds",
+    "kind": "food",
+    "category": "nuts",
+    "title": "Pumpkin seeds fiber",
+    "blurb": "1.7 g per 1 oz hulled kernels (pepitas), from USDA data.",
+    "stat": "1.7 g"
+  },
+  {
+    "slug": "fiber-in-pistachios",
+    "kind": "food",
+    "category": "nuts",
+    "title": "Pistachios fiber",
+    "blurb": "2.9 g per 1 oz (about 49 kernels), from USDA data.",
+    "stat": "2.9 g"
+  },
+  {
+    "slug": "fiber-in-walnuts",
+    "kind": "food",
+    "category": "nuts",
+    "title": "Walnuts fiber",
+    "blurb": "1.9 g per 1 oz (about 14 halves), from USDA data.",
+    "stat": "1.9 g"
+  },
+  {
+    "slug": "fiber-in-peanut-butter",
+    "kind": "food",
+    "category": "nuts",
+    "title": "Peanut butter fiber",
+    "blurb": "1.6 g per 2 tbsp, from USDA data.",
+    "stat": "1.6 g"
+  },
+  {
+    "slug": "fiber-in-dark-chocolate",
+    "kind": "food",
+    "category": "nuts",
+    "title": "Dark chocolate fiber",
+    "blurb": "3.1 g per 1 oz (70–85% cacao), from USDA data.",
+    "stat": "3.1 g"
+  },
+  {
+    "slug": "fiber-in-foods",
+    "kind": "hub",
+    "title": "Fiber in 50 foods",
+    "blurb": "Every food ranked per serving, per 100 g, and per calorie.",
+    "stat": "50"
+  },
+  {
+    "slug": "fiber-on-glp-1",
+    "kind": "audience",
+    "title": "Fiber on GLP-1 meds",
+    "blurb": "Targets, small-appetite foods, and constipation tips.",
+    "stat": "25–38 g"
+  },
+  {
+    "slug": "fiber-for-weight-loss",
+    "kind": "audience",
+    "title": "Fiber for weight loss",
+    "blurb": "What a 30 g/day trial found, and the best foods per calorie.",
+    "stat": "30 g"
+  },
+  {
+    "slug": "fiber-for-ibs",
+    "kind": "audience",
+    "title": "Fiber for IBS",
+    "blurb": "Soluble vs insoluble, and lower-FODMAP fiber sources.",
+    "stat": "Soluble"
+  },
+  {
+    "slug": "fiber-during-pregnancy",
+    "kind": "audience",
+    "title": "Fiber in pregnancy",
+    "blurb": "28 g a day, constipation, and easy high-fiber foods.",
+    "stat": "28 g"
+  }
+]

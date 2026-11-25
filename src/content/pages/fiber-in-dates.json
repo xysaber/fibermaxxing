@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-dates",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Dates? 1.6g per Date",
+  "description": "Dates: about 1.6 g of fiber per 1 Medjool date (6% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in dates?",
+  "answer": {
+    "value": "~1.6",
+    "unit": "g",
+    "detail": "fiber in 1 Medjool date (24 g)",
+    "note": "USDA FoodData Central, Dates, medjool"
+  },
+  "intro": [
+    "Dates rank #15 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 Medjool date",
+      "value": "1.6 g",
+      "note": "66 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "6.7 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.4 g",
+      "note": "#39 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "6%",
+      "note": "of 28 g, per 1 Medjool date"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in dates by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 Medjool date",
+        "24 g",
+        "1.6 g",
+        "66",
+        "6%"
+      ],
+      [
+        "3 Medjool dates",
+        "72 g",
+        "4.8 g",
+        "199",
+        "17%"
+      ],
+      [
+        "5 Deglet Noor dates",
+        "35.5 g",
+        "2.8 g",
+        "100",
+        "10%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in dates?",
+      "paragraphs": [
+        "USDA FoodData Central lists dates, medjool at 6.7 g of fiber per 100 g. One serving (1 Medjool date; 24 g) therefore has about 1.6 g of fiber and 66 calories. That is 6% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 6% of a 25 g day and 4% of a 38 g day.",
+        "Dates are naturally sweet and often used in place of sugar in bars and smoothies. They do carry fiber, about 1.6 g per Medjool date, but also concentrated sugar, so they are best treated as a fiber-containing sweetener rather than a main fiber source."
+      ]
+    },
+    {
+      "heading": "Medjool vs Deglet Noor",
+      "paragraphs": [
+        "Medjool dates are large and soft; Deglet Noor dates are smaller and firmer. Per 100 g, USDA lists Deglet Noor slightly higher in fiber, but because each date is smaller, you need several to match one Medjool.",
+        "Date-sweetened bars and energy balls vary widely. Use the label, since nuts, oats, and seeds in the recipe also change the total."
+      ]
+    },
+    {
+      "heading": "How dates compare with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, dates rank #15 for fiber per typical serving and #15 for fiber per calorie. That works out to 2.4 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [kiwi](/fiber-in-kiwi) at 2.1 g (1 kiwifruit); [mango](/fiber-in-mango) at 2.6 g (1 cup pieces); [strawberries](/fiber-in-strawberries) at 2.9 g (1 cup, whole). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), dates are #39 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding dates to your day",
+      "paragraphs": [
+        "Stuff a Medjool date with almond or peanut butter, or blend one into a smoothie in place of honey.",
+        "Example: 2 dates, 1 oz almonds. Using the same USDA values as the calculator, that comes to about 6.7 g of fiber, with 3.2 g from the dates. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "2 dates, 1 oz almonds",
+  "examples": [
+    "2 dates, 1 oz almonds"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your dates meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of dates?",
+      "a": "6.7 g, according to USDA FoodData Central (Dates, medjool). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in dates (3 Medjool dates)?",
+      "a": "About 4.8 g, for 72 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Are dates good for fiber?",
+      "a": "They contribute, but calories add up quickly. Three Medjool dates give about 5 g of fiber and roughly 200 calories."
+    },
+    {
+      "q": "Dates vs prunes?",
+      "a": "By weight they are similar in fiber. Prunes also contain sorbitol, which is why they have the stronger reputation for constipation."
+    }
+  ],
+  "related": [
+    "fiber-in-kiwi",
+    "fiber-in-mango",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Dates, medjool (FDC 168191)",
+      "url": "https://fdc.nal.usda.gov/food-details/168191/nutrients",
+      "note": "6.7 g fiber and 277 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Dates, deglet noor (FDC 171726)",
+      "url": "https://fdc.nal.usda.gov/food-details/171726/nutrients",
+      "note": "8 g fiber and 282 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

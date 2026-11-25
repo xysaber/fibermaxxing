@@ -1,0 +1,155 @@
+{
+  "slug": "fiber-in-raspberries",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Raspberries? 8g per Cup",
+  "description": "Raspberries: about 8 g of fiber per 1 cup (29% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in raspberries?",
+  "answer": {
+    "value": "~8",
+    "unit": "g",
+    "detail": "fiber in 1 cup (123 g)",
+    "note": "USDA FoodData Central, Raspberries, raw"
+  },
+  "intro": [
+    "Raspberries rank #2 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup",
+      "value": "8 g",
+      "note": "64 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "6.5 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "12.5 g",
+      "note": "#2 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "29%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in raspberries by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup",
+        "123 g",
+        "8 g",
+        "64",
+        "29%"
+      ],
+      [
+        "1/2 cup",
+        "61.5 g",
+        "4 g",
+        "32",
+        "14%"
+      ],
+      [
+        "10 berries",
+        "19 g",
+        "1.2 g",
+        "10",
+        "4%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in raspberries?",
+      "paragraphs": [
+        "USDA FoodData Central lists raspberries, raw at 6.5 g of fiber per 100 g. One serving (1 cup; 123 g) therefore has about 8 g of fiber and 64 calories. That is 29% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 32% of a 25 g day and 21% of a 38 g day.",
+        "Raspberries are the highest-fiber common fruit per cup in USDA data, ahead of blackberries and far ahead of strawberries or blueberries. The many tiny seeds in each berry are part of the reason."
+      ]
+    },
+    {
+      "heading": "Fresh vs frozen raspberries",
+      "paragraphs": [
+        "Frozen unsweetened raspberries are typically close to fresh for fiber and cost less outside summer. They collapse when thawed, which makes them better for smoothies, oatmeal, and chia pudding than for eating out of hand.",
+        "Raspberries in syrup or jam are a different story: added sugar dilutes the fruit, so per spoonful the fiber is much lower. Use the label for those."
+      ]
+    },
+    {
+      "heading": "How raspberries compare with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, raspberries rank #2 for fiber per typical serving and #1 for fiber per calorie. That works out to 12.5 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [blackberries](/fiber-in-blackberries) at 7.6 g (1 cup); [avocado](/fiber-in-avocado) at 10.1 g (1 medium avocado (flesh)); [pear](/fiber-in-pear) at 5.5 g (1 medium). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), raspberries are #2 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding raspberries to your day",
+      "paragraphs": [
+        "Half a cup on yogurt or oatmeal adds about 4 g. Raspberries and [chia seeds](/chia-seeds) together make one of the highest-fiber breakfasts on this site.",
+        "Example: 1 cup raspberries, 170g greek yogurt, 1 tbsp chia seeds. Using the same USDA values as the calculator, that comes to about 12.1 g of fiber, with 8 g from the raspberries. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup raspberries, 170g greek yogurt, 1 tbsp chia seeds",
+  "examples": [
+    "1 cup raspberries, 170g greek yogurt, 1 tbsp chia seeds"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your raspberries meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of raspberries?",
+      "a": "6.5 g, according to USDA FoodData Central (Raspberries, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in raspberries (1/2 cup)?",
+      "a": "About 4 g, for 61.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Which berry has the most fiber?",
+      "a": "Raspberries, at about 8 g (1 cup). Blackberries are close at about 7.6 g (1 cup); blueberries are about 3.6 g (1 cup) and strawberries about 2.9 g (1 cup, whole)."
+    },
+    {
+      "q": "Do frozen raspberries have less fiber?",
+      "a": "Not meaningfully. Freezing does not remove fiber. Check that the bag is plain fruit without added sugar."
+    }
+  ],
+  "related": [
+    "fiber-in-blackberries",
+    "fiber-in-avocado",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Raspberries, raw (FDC 167755)",
+      "url": "https://fdc.nal.usda.gov/food-details/167755/nutrients",
+      "note": "6.5 g fiber and 52 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

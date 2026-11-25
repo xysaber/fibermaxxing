@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-quinoa",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Quinoa? 5.2g per Cup",
+  "description": "Quinoa: about 5.2 g of fiber per 1 cup, cooked (19% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in quinoa?",
+  "answer": {
+    "value": "~5.2",
+    "unit": "g",
+    "detail": "fiber in 1 cup, cooked (185 g)",
+    "note": "USDA FoodData Central, Quinoa, cooked"
+  },
+  "intro": [
+    "Quinoa ranks #4 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup, cooked",
+      "value": "5.2 g",
+      "note": "222 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "2.8 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.3 g",
+      "note": "#42 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "19%",
+      "note": "of 28 g, per 1 cup"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in quinoa by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup, cooked",
+        "185 g",
+        "5.2 g",
+        "222",
+        "19%"
+      ],
+      [
+        "1/2 cup, cooked",
+        "92.5 g",
+        "2.6 g",
+        "111",
+        "9%"
+      ],
+      [
+        "1/4 cup, dry (uncooked)",
+        "42.5 g",
+        "3 g",
+        "156",
+        "11%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in quinoa?",
+      "paragraphs": [
+        "USDA FoodData Central lists quinoa, cooked at 2.8 g of fiber per 100 g. One serving (1 cup, cooked; 185 g) therefore has about 5.2 g of fiber and 222 calories. That is 19% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 21% of a 25 g day and 14% of a 38 g day.",
+        "Quinoa is a seed cooked like a grain. It has more fiber per cooked cup than white or brown rice, and it cooks in about 15 minutes, which is why it often replaces rice in bowls and salads."
+      ]
+    },
+    {
+      "heading": "Dry vs cooked quinoa",
+      "paragraphs": [
+        "Quinoa roughly triples in volume as it cooks, so a quarter cup of dry quinoa makes about three-quarters of a cup cooked. Log the dry amount if you measure before cooking, or cooked if you scoop from the pot, but not both.",
+        "Rinsing removes the bitter saponin coating. It does not affect fiber."
+      ]
+    },
+    {
+      "heading": "How quinoa compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, quinoa ranks #4 for fiber per typical serving and #7 for fiber per calorie. That works out to 2.3 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [whole wheat pasta](/fiber-in-whole-wheat-pasta) at 5.5 g (1 cup spaghetti, cooked); [barley](/fiber-in-barley) at 6 g (1 cup, cooked (pearled)); [popcorn](/fiber-in-popcorn) at 3.6 g (3 cups, air-popped). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), quinoa is #42 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding quinoa to your day",
+      "paragraphs": [
+        "Swap rice for quinoa in a bowl and add beans or vegetables on top. Quinoa alone is a moderate fiber source; combined with half a cup of beans it becomes a high-fiber meal.",
+        "Example: 1 cup quinoa, 1/2 cup black beans, 1 cup broccoli. Using the same USDA values as the calculator, that comes to about 17.8 g of fiber, with 5.2 g from the quinoa. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup quinoa, 1/2 cup black beans, 1 cup broccoli",
+  "examples": [
+    "1 cup quinoa, 1/2 cup black beans, 1 cup broccoli"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your quinoa meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of quinoa?",
+      "a": "2.8 g, according to USDA FoodData Central (Quinoa, cooked). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in quinoa (1/2 cup, cooked)?",
+      "a": "About 2.6 g, for 92.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Quinoa vs brown rice: which has more fiber?",
+      "a": "Quinoa. Cooked quinoa is about 5.2 g (1 cup, cooked); cooked brown rice is about 3.2 g (1 cup, cooked)."
+    },
+    {
+      "q": "Is quinoa gluten-free?",
+      "a": "Quinoa itself does not contain gluten. If you need to avoid gluten strictly, look for products labeled gluten-free, since cross-contact can happen during processing."
+    }
+  ],
+  "related": [
+    "fiber-in-whole-wheat-pasta",
+    "fiber-in-barley",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Quinoa, cooked (FDC 168917)",
+      "url": "https://fdc.nal.usda.gov/food-details/168917/nutrients",
+      "note": "2.8 g fiber and 120 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Quinoa, uncooked (FDC 168874)",
+      "url": "https://fdc.nal.usda.gov/food-details/168874/nutrients",
+      "note": "7 g fiber and 368 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

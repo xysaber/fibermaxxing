@@ -1,0 +1,155 @@
+{
+  "slug": "fiber-in-popcorn",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Popcorn? 3.6g per 3 Cups",
+  "description": "Popcorn: about 3.6 g of fiber per 3 cups, air-popped (13% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in popcorn?",
+  "answer": {
+    "value": "~3.6",
+    "unit": "g",
+    "detail": "fiber in 3 cups, air-popped (24 g)",
+    "note": "USDA FoodData Central, Snacks, popcorn, air-popped (Unsalted)"
+  },
+  "intro": [
+    "Popcorn ranks #5 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "3 cups, air-popped",
+      "value": "3.6 g",
+      "note": "92 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "15.1 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "4 g",
+      "note": "#31 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "13%",
+      "note": "of 28 g, per 3 cups"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in popcorn by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "3 cups, air-popped",
+        "24 g",
+        "3.6 g",
+        "92",
+        "13%"
+      ],
+      [
+        "1 cup, air-popped",
+        "8 g",
+        "1.2 g",
+        "31",
+        "4%"
+      ],
+      [
+        "1 oz, air-popped",
+        "28.4 g",
+        "4.3 g",
+        "108",
+        "15%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in popcorn?",
+      "paragraphs": [
+        "USDA FoodData Central lists snacks, popcorn, air-popped (unsalted) at 15.1 g of fiber per 100 g. One serving (3 cups, air-popped; 24 g) therefore has about 3.6 g of fiber and 92 calories. That is 13% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 14% of a 25 g day and 10% of a 38 g day.",
+        "Popcorn is a whole grain, and because air-popped popcorn is mostly air, a big bowl is low in calories for the fiber it provides. Three cups is a common snack portion and lands in the same range as a slice or two of whole wheat bread."
+      ]
+    },
+    {
+      "heading": "Air-popped vs microwave vs movie popcorn",
+      "paragraphs": [
+        "The figures here are for plain air-popped popcorn. Oil and butter add calories but not fiber, so microwave and theater popcorn have similar fiber per cup with far more calories.",
+        "Popcorn volume is hard to measure consistently. If you have a kitchen scale, weigh it: about 8 g per cup is USDA’s reference."
+      ]
+    },
+    {
+      "heading": "How popcorn compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, popcorn ranks #5 for fiber per typical serving and #3 for fiber per calorie. That works out to 4 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [brown rice](/fiber-in-brown-rice) at 3.2 g (1 cup, cooked); [wheat bran](/fiber-in-wheat-bran) at 3.1 g (2 tbsp); [quinoa](/fiber-in-quinoa) at 5.2 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), popcorn is #31 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding popcorn to your day",
+      "paragraphs": [
+        "Pop a quarter cup of kernels (which makes several cups popped) and season with a little salt, chili, or nutritional yeast. Pair with a piece of fruit for a 6–8 g snack.",
+        "Example: 3 cups popcorn, 1 apple. Using the same USDA values as the calculator, that comes to about 8 g of fiber, with 3.6 g from the popcorn. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "3 cups popcorn, 1 apple",
+  "examples": [
+    "3 cups popcorn, 1 apple"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your popcorn meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of popcorn?",
+      "a": "15.1 g, according to USDA FoodData Central (Snacks, popcorn, air-popped (Unsalted)). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in popcorn (1 cup, air-popped)?",
+      "a": "About 1.2 g, for 8 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is popcorn a whole grain?",
+      "a": "Yes. Popcorn is a whole-grain corn kernel. The Whole Grains Council and U.S. Dietary Guidelines both count it as a whole grain."
+    },
+    {
+      "q": "Is popcorn high in fiber per calorie?",
+      "a": "Plain air-popped popcorn is one of the higher-fiber snacks per calorie, about 4 g per 100 kcal. Oil and butter lower that ratio quickly."
+    }
+  ],
+  "related": [
+    "fiber-in-brown-rice",
+    "fiber-in-wheat-bran",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Snacks, popcorn, air-popped (Unsalted) (FDC 170246)",
+      "url": "https://fdc.nal.usda.gov/food-details/170246/nutrients",
+      "note": "15.1 g fiber and 382 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

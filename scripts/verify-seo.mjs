@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 
 function parseJsonLd(html) {
   return [...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/g)].map((m) =>
@@ -7,7 +7,15 @@ function parseJsonLd(html) {
   )
 }
 
-const pages = JSON.parse(readFileSync('src/content/seo-pages.json', 'utf8')).filter(p => p.publish)
+const longTail = readdirSync('src/content/pages').filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`src/content/pages/${f}`, 'utf8')))
+const pages = [...JSON.parse(readFileSync('src/content/seo-pages.json', 'utf8')), ...longTail].filter(p => p.publish)
+assert.equal(longTail.filter((p) => p.kind === 'food').length, 50, '50 per-food pages')
+for (const p of longTail) {
+  assert.ok(p.title.length <= 62, `${p.slug}: title too long`)
+  assert.ok(p.description.length <= 160, `${p.slug}: description too long`)
+  assert.ok(p.sources?.length >= 3, `${p.slug}: needs sources`)
+  if (p.kind === 'audience') assert.ok(p.callout?.text?.includes('not medical advice'), `${p.slug}: medical callout`)
+}
 const legalSlugs = ['privacy', 'terms']
 const homeSchema = JSON.parse(readFileSync('src/content/schema/home.json', 'utf8'))
 const oatmealSchema = JSON.parse(readFileSync('src/content/schema/oatmeal.json', 'utf8'))

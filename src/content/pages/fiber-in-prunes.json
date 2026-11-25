@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-prunes",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Prunes? 3.4g per 5 Prunes",
+  "description": "Prunes: about 3.4 g of fiber per 5 prunes (12% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in prunes?",
+  "answer": {
+    "value": "~3.4",
+    "unit": "g",
+    "detail": "fiber in 5 prunes (47.5 g)",
+    "note": "USDA FoodData Central, Plums, dried (prunes), uncooked"
+  },
+  "intro": [
+    "Prunes rank #8 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "5 prunes",
+      "value": "3.4 g",
+      "note": "114 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "7.1 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "3 g",
+      "note": "#35 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "12%",
+      "note": "of 28 g, per 5 prunes"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in prunes by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "5 prunes",
+        "47.5 g",
+        "3.4 g",
+        "114",
+        "12%"
+      ],
+      [
+        "1 prune",
+        "9.5 g",
+        "0.7 g",
+        "23",
+        "2%"
+      ],
+      [
+        "1/4 cup, pitted",
+        "43.5 g",
+        "3.1 g",
+        "104",
+        "11%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in prunes?",
+      "paragraphs": [
+        "USDA FoodData Central lists plums, dried (prunes), uncooked at 7.1 g of fiber per 100 g. One serving (5 prunes; 47.5 g) therefore has about 3.4 g of fiber and 114 calories. That is 12% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 13% of a 25 g day and 9% of a 38 g day.",
+        "Prunes (dried plums) are the classic food remedy for constipation, and the evidence supports it: in a randomized trial, 50 g of prunes twice a day worked at least as well as psyllium for mild to moderate constipation. They combine fiber with sorbitol, a sugar alcohol that draws water into the bowel."
+      ]
+    },
+    {
+      "heading": "Prunes vs prune juice",
+      "paragraphs": [
+        "Prune juice keeps the sorbitol but loses most of the fiber, so it can still have a laxative effect with little fiber. Whole prunes give both.",
+        "Because of the sorbitol, a large serving of prunes can cause gas or loose stools. Start with three to five and see how you respond."
+      ]
+    },
+    {
+      "heading": "How prunes compare with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, prunes rank #8 for fiber per typical serving and #12 for fiber per calorie. That works out to 3 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [blueberries](/fiber-in-blueberries) at 3.6 g (1 cup); [orange](/fiber-in-orange) at 3.1 g (1 medium); [dried figs](/fiber-in-dried-figs) at 3.6 g (1/4 cup). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), prunes are #35 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding prunes to your day",
+      "paragraphs": [
+        "Chop prunes into oatmeal, eat a few with a handful of walnuts, or simmer them into a stew with lentils.",
+        "Example: 5 prunes, 1 oz walnuts. Using the same USDA values as the calculator, that comes to about 5.3 g of fiber, with 3.4 g from the prunes. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "5 prunes, 1 oz walnuts",
+  "examples": [
+    "5 prunes, 1 oz walnuts"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your prunes meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of prunes?",
+      "a": "7.1 g, according to USDA FoodData Central (Plums, dried (prunes), uncooked). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in prunes (1 prune)?",
+      "a": "About 0.7 g, for 9.5 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "How many prunes a day for constipation?",
+      "a": "One well-known trial used 50 g twice a day, roughly five or six prunes each time. Many people do well with less. Start lower, drink water, and talk to a clinician if constipation persists."
+    },
+    {
+      "q": "Are prunes high in sugar?",
+      "a": "Yes, like all dried fruit they are concentrated. Five prunes have roughly 115 calories. They are a useful food, but portions matter."
+    }
+  ],
+  "related": [
+    "fiber-in-blueberries",
+    "fiber-in-orange",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Plums, dried (prunes), uncooked (FDC 168162)",
+      "url": "https://fdc.nal.usda.gov/food-details/168162/nutrients",
+      "note": "7.1 g fiber and 240 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Attaluri A, et al. Randomised clinical trial: dried plums (prunes) vs. psyllium for constipation. Aliment Pharmacol Ther. 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21488922/",
+      "note": "50 g prunes twice daily vs psyllium"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

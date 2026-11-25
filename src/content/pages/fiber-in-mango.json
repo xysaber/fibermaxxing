@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-mango",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "fruit",
+  "title": "How Much Fiber in Mango? 2.6g per Cup",
+  "description": "Mango: about 2.6 g of fiber per 1 cup pieces (9% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in mango?",
+  "answer": {
+    "value": "~2.6",
+    "unit": "g",
+    "detail": "fiber in 1 cup pieces (165 g)",
+    "note": "USDA FoodData Central, Mangos, raw"
+  },
+  "intro": [
+    "Mango ranks #13 of 15 fruits on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 cup pieces",
+      "value": "2.6 g",
+      "note": "99 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "1.6 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.7 g",
+      "note": "#37 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "9%",
+      "note": "of 28 g, per 1 cup pieces"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in mango by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 cup pieces",
+        "165 g",
+        "2.6 g",
+        "99",
+        "9%"
+      ],
+      [
+        "1 whole mango (flesh)",
+        "336 g",
+        "5.4 g",
+        "202",
+        "19%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in mango?",
+      "paragraphs": [
+        "USDA FoodData Central lists mangos, raw at 1.6 g of fiber per 100 g. One serving (1 cup pieces; 165 g) therefore has about 2.6 g of fiber and 99 calories. That is 9% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 11% of a 25 g day and 7% of a 38 g day.",
+        "Mango is a lower-fiber fruit per cup, but a whole mango is a big serving, so eating one gets you into the same range as an apple or pear. It is mostly a flavor and vitamin food rather than a fiber powerhouse."
+      ]
+    },
+    {
+      "heading": "Fresh, frozen, and dried mango",
+      "paragraphs": [
+        "Frozen mango chunks are a convenient smoothie base with fiber similar to fresh.",
+        "Dried mango is concentrated: a small handful can carry as much sugar as a whole fresh mango. Sweetened dried mango has added sugar on top. Use the label."
+      ]
+    },
+    {
+      "heading": "How mango compares with other fruits",
+      "paragraphs": [
+        "Of the 15 fruits on this site, mango ranks #13 for fiber per typical serving and #14 for fiber per calorie. That works out to 2.7 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [strawberries](/fiber-in-strawberries) at 2.9 g (1 cup, whole); [guava](/fiber-in-guava) at 3 g (1 fruit); [banana](/fiber-in-banana) at 3.1 g (1 medium (7–8\")). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), mango is #37 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding mango to your day",
+      "paragraphs": [
+        "Combine mango with higher-fiber partners: chia pudding, a bean salad with lime, or a smoothie with oats.",
+        "Example: 1 cup mango, 1 tbsp chia seeds, 170g greek yogurt. Using the same USDA values as the calculator, that comes to about 6.7 g of fiber, with 2.6 g from the mango. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup mango, 1 tbsp chia seeds, 170g greek yogurt",
+  "examples": [
+    "1 cup mango, 1 tbsp chia seeds, 170g greek yogurt"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your mango meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of mango?",
+      "a": "1.6 g, according to USDA FoodData Central (Mangos, raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in mango (1 whole mango (flesh))?",
+      "a": "About 5.4 g, for 336 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is mango high in fiber?",
+      "a": "Not especially. A cup is about 9% of the Daily Value. A whole mango roughly doubles that."
+    },
+    {
+      "q": "Which tropical fruit has more fiber?",
+      "a": "Guava and passion fruit are much higher per cup. Guava is about 3 g (1 fruit)."
+    }
+  ],
+  "related": [
+    "fiber-in-strawberries",
+    "fiber-in-guava",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Mangos, raw (FDC 169910)",
+      "url": "https://fdc.nal.usda.gov/food-details/169910/nutrients",
+      "note": "1.6 g fiber and 60 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

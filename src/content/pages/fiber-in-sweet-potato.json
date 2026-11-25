@@ -1,0 +1,148 @@
+{
+  "slug": "fiber-in-sweet-potato",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "vegetables",
+  "title": "How Much Fiber in Sweet Potato? 3.8g per Medium",
+  "description": "Sweet Potato: about 3.8 g of fiber per 1 medium, baked (13% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in sweet potato?",
+  "answer": {
+    "value": "~3.8",
+    "unit": "g",
+    "detail": "fiber in 1 medium, baked (flesh), 114 g",
+    "note": "USDA FoodData Central, Sweet potato, cooked, baked in skin, flesh, without salt"
+  },
+  "intro": [
+    "Sweet potato ranks #9 of 10 vegetables on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 medium, baked (flesh)",
+      "value": "3.8 g",
+      "note": "103 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "3.3 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "3.7 g",
+      "note": "#33 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "13%",
+      "note": "of 28 g, per 1 medium"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in sweet potato by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 medium, baked (flesh)",
+        "114 g",
+        "3.8 g",
+        "103",
+        "13%"
+      ],
+      [
+        "1 cup, baked (flesh)",
+        "200 g",
+        "6.6 g",
+        "180",
+        "24%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in sweet potato?",
+      "paragraphs": [
+        "USDA FoodData Central lists sweet potato, cooked, baked in skin, flesh, without salt at 3.3 g of fiber per 100 g. One serving (1 medium, baked (flesh); 114 g) therefore has about 3.8 g of fiber and 103 calories. That is 13% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 15% of a 25 g day and 10% of a 38 g day.",
+        "A baked sweet potato gives a few grams of fiber along with plenty of vitamin A. Larger sweet potatoes, which are common in U.S. stores, can easily be twice the USDA medium."
+      ]
+    },
+    {
+      "heading": "Skin on and portion size",
+      "paragraphs": [
+        "USDA’s baked sweet potato entry is for the flesh only. The skin is edible and adds some fiber, so eating it gives a bit more than the table shows.",
+        "Sweet potato fries and casseroles change the picture: frying adds fat, and casseroles add sugar and butter. The fiber per cup of sweet potato is similar, but the portion of actual potato is often smaller."
+      ]
+    },
+    {
+      "heading": "How sweet potato compares with other vegetables",
+      "paragraphs": [
+        "Of the 10 vegetables on this site, sweet potato ranks #9 for fiber per typical serving and #9 for fiber per calorie. That works out to 3.7 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [baked potato](/fiber-in-potato) at 3.8 g (1 medium, baked, flesh and skin); [green beans](/fiber-in-green-beans) at 4 g (1 cup, cooked); [Brussels sprouts](/fiber-in-brussels-sprouts) at 4.1 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), sweet potato is #33 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding sweet potato to your day",
+      "paragraphs": [
+        "Top a baked sweet potato with black beans and serve with cooked greens for a meal in the 15 g range.",
+        "Example: 1 sweet potato, 1/2 cup black beans, 1 cup cooked spinach. Using the same USDA values as the calculator, that comes to about 15.6 g of fiber, with 3.8 g from the sweet potato. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 sweet potato, 1/2 cup black beans, 1 cup cooked spinach",
+  "examples": [
+    "1 sweet potato, 1/2 cup black beans, 1 cup cooked spinach"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your sweet potato meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of sweet potato?",
+      "a": "3.3 g, according to USDA FoodData Central (Sweet potato, cooked, baked in skin, flesh, without salt). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in sweet potato (1 cup, baked (flesh))?",
+      "a": "About 6.6 g, for 200 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Sweet potato vs white potato for fiber?",
+      "a": "Similar per medium potato. A baked white potato with skin is about 3.8 g (1 medium, baked, flesh and skin); a medium baked sweet potato is about 3.8 g (1 medium, baked (flesh))."
+    },
+    {
+      "q": "Should I eat sweet potato skin?",
+      "a": "If you enjoy it, yes. Wash it well before baking. The skin adds fiber."
+    }
+  ],
+  "related": [
+    "fiber-in-potato",
+    "fiber-in-green-beans",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Sweet potato, cooked, baked in skin, flesh, without salt (FDC 168483)",
+      "url": "https://fdc.nal.usda.gov/food-details/168483/nutrients",
+      "note": "3.3 g fiber and 90 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

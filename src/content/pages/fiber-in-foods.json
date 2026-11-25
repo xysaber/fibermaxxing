@@ -1,0 +1,547 @@
+{
+  "slug": "fiber-in-foods",
+  "publish": true,
+  "layout": "bands",
+  "kind": "hub",
+  "title": "Fiber in Foods: 50 Common Foods by Grams per Serving",
+  "description": "Fiber per serving, per 100 g, and per 100 calories for 50 common foods, from USDA FoodData Central. Beans, grains, fruit, vegetables, nuts and seeds.",
+  "h1": "Fiber in 50 common foods",
+  "answer": {
+    "value": "50",
+    "detail": "foods with fiber per serving, per 100 g, and per 100 calories, all from USDA FoodData Central."
+  },
+  "intro": [
+    "Pick a food for its own page with portion sizes, cooked vs raw, and comparisons. The table below ranks every food by fiber per typical serving."
+  ],
+  "facts": [
+    {
+      "label": "Most per serving",
+      "value": "19.1 g",
+      "note": "Navy Beans, 1 cup, cooked"
+    },
+    {
+      "label": "Daily Value",
+      "value": "28 g",
+      "note": "U.S. Nutrition Facts label"
+    },
+    {
+      "label": "Women 19–50",
+      "value": "25 g/day",
+      "note": "U.S. Adequate Intake"
+    },
+    {
+      "label": "Men 19–50",
+      "value": "38 g/day",
+      "note": "U.S. Adequate Intake"
+    }
+  ],
+  "guideGroups": [
+    {
+      "title": "Beans & legumes",
+      "items": [
+        "fiber-in-navy-beans",
+        "fiber-in-split-peas",
+        "fiber-in-lentils",
+        "fiber-in-pinto-beans",
+        "fiber-in-black-beans",
+        "fiber-in-chickpeas",
+        "fiber-in-kidney-beans",
+        "fiber-in-green-peas",
+        "fiber-in-edamame",
+        "fiber-in-hummus"
+      ]
+    },
+    {
+      "title": "Grains & bread",
+      "items": [
+        "fiber-in-bulgur",
+        "fiber-in-barley",
+        "fiber-in-whole-wheat-pasta",
+        "fiber-in-quinoa",
+        "fiber-in-popcorn",
+        "fiber-in-brown-rice",
+        "fiber-in-wheat-bran",
+        "fiber-in-whole-wheat-bread"
+      ]
+    },
+    {
+      "title": "Fruit",
+      "items": [
+        "fiber-in-avocado",
+        "fiber-in-raspberries",
+        "fiber-in-blackberries",
+        "fiber-in-pear",
+        "fiber-in-apple",
+        "fiber-in-dried-figs",
+        "fiber-in-blueberries",
+        "fiber-in-prunes",
+        "fiber-in-orange",
+        "fiber-in-banana",
+        "fiber-in-guava",
+        "fiber-in-strawberries",
+        "fiber-in-mango",
+        "fiber-in-kiwi",
+        "fiber-in-dates"
+      ]
+    },
+    {
+      "title": "Vegetables",
+      "items": [
+        "fiber-in-artichoke",
+        "fiber-in-butternut-squash",
+        "fiber-in-broccoli",
+        "fiber-in-kale",
+        "fiber-in-spinach",
+        "fiber-in-brussels-sprouts",
+        "fiber-in-green-beans",
+        "fiber-in-potato",
+        "fiber-in-sweet-potato",
+        "fiber-in-carrots"
+      ]
+    },
+    {
+      "title": "Nuts, seeds & more",
+      "items": [
+        "fiber-in-almonds",
+        "fiber-in-dark-chocolate",
+        "fiber-in-pistachios",
+        "fiber-in-flaxseed",
+        "fiber-in-walnuts",
+        "fiber-in-pumpkin-seeds",
+        "fiber-in-peanut-butter"
+      ]
+    }
+  ],
+  "dataTable": {
+    "caption": "All 50 foods ranked by fiber per serving",
+    "note": "Scaled from USDA FoodData Central per-100 g values. % Daily Value uses 28 g. Each food’s page links its exact USDA record.",
+    "columns": [
+      "Food",
+      "Serving",
+      "Fiber",
+      "Per 100 g",
+      "Per 100 kcal"
+    ],
+    "rows": [
+      [
+        "Navy Beans",
+        "1 cup, cooked",
+        "19.1 g",
+        "10.5 g",
+        "7.5 g"
+      ],
+      [
+        "Split Peas",
+        "1 cup, cooked",
+        "16.3 g",
+        "8.3 g",
+        "7 g"
+      ],
+      [
+        "Lentils",
+        "1 cup, cooked",
+        "15.6 g",
+        "7.9 g",
+        "6.8 g"
+      ],
+      [
+        "Pinto Beans",
+        "1 cup, cooked",
+        "15.4 g",
+        "9 g",
+        "6.3 g"
+      ],
+      [
+        "Black Beans",
+        "1 cup, cooked",
+        "15 g",
+        "8.7 g",
+        "6.6 g"
+      ],
+      [
+        "Chickpeas",
+        "1 cup, cooked",
+        "12.5 g",
+        "7.6 g",
+        "4.6 g"
+      ],
+      [
+        "Kidney Beans",
+        "1 cup, cooked",
+        "11.3 g",
+        "6.4 g",
+        "5 g"
+      ],
+      [
+        "Avocado",
+        "1 medium avocado (flesh)",
+        "10.1 g",
+        "6.7 g",
+        "4.2 g"
+      ],
+      [
+        "Green Peas",
+        "1 cup, cooked",
+        "8.8 g",
+        "5.5 g",
+        "6.5 g"
+      ],
+      [
+        "Bulgur",
+        "1 cup, cooked",
+        "8.2 g",
+        "4.5 g",
+        "5.4 g"
+      ],
+      [
+        "Edamame",
+        "1 cup, shelled, cooked",
+        "8.1 g",
+        "5.2 g",
+        "4.3 g"
+      ],
+      [
+        "Raspberries",
+        "1 cup",
+        "8 g",
+        "6.5 g",
+        "12.5 g"
+      ],
+      [
+        "Blackberries",
+        "1 cup",
+        "7.6 g",
+        "5.3 g",
+        "12.3 g"
+      ],
+      [
+        "Artichoke",
+        "1 medium globe artichoke, raw (edible part)",
+        "6.9 g",
+        "5.4 g",
+        "11.5 g"
+      ],
+      [
+        "Butternut Squash",
+        "1 cup cubes, baked",
+        "6.6 g",
+        "3.2 g",
+        "8 g"
+      ],
+      [
+        "Barley",
+        "1 cup, cooked (pearled)",
+        "6 g",
+        "3.8 g",
+        "3.1 g"
+      ],
+      [
+        "Pear",
+        "1 medium",
+        "5.5 g",
+        "3.1 g",
+        "5.4 g"
+      ],
+      [
+        "Whole Wheat Pasta",
+        "1 cup spaghetti, cooked",
+        "5.5 g",
+        "3.9 g",
+        "2.6 g"
+      ],
+      [
+        "Quinoa",
+        "1 cup, cooked",
+        "5.2 g",
+        "2.8 g",
+        "2.3 g"
+      ],
+      [
+        "Broccoli",
+        "1 cup chopped, cooked",
+        "5.1 g",
+        "3.3 g",
+        "9.4 g"
+      ],
+      [
+        "Kale",
+        "1 cup, cooked",
+        "4.7 g",
+        "4 g",
+        "11.1 g"
+      ],
+      [
+        "Apple",
+        "1 medium (3\" diameter), with skin",
+        "4.4 g",
+        "2.4 g",
+        "4.6 g"
+      ],
+      [
+        "Spinach",
+        "1 cup, cooked",
+        "4.3 g",
+        "2.4 g",
+        "10.4 g"
+      ],
+      [
+        "Brussels Sprouts",
+        "1 cup, cooked",
+        "4.1 g",
+        "2.6 g",
+        "7.2 g"
+      ],
+      [
+        "Green Beans",
+        "1 cup, cooked",
+        "4 g",
+        "3.2 g",
+        "9.1 g"
+      ],
+      [
+        "Baked Potato",
+        "1 medium, baked, flesh and skin",
+        "3.8 g",
+        "2.2 g",
+        "2.4 g"
+      ],
+      [
+        "Sweet Potato",
+        "1 medium, baked (flesh)",
+        "3.8 g",
+        "3.3 g",
+        "3.7 g"
+      ],
+      [
+        "Dried Figs",
+        "1/4 cup",
+        "3.6 g",
+        "9.8 g",
+        "3.9 g"
+      ],
+      [
+        "Popcorn",
+        "3 cups, air-popped",
+        "3.6 g",
+        "15.1 g",
+        "4 g"
+      ],
+      [
+        "Blueberries",
+        "1 cup",
+        "3.6 g",
+        "2.4 g",
+        "4.2 g"
+      ],
+      [
+        "Almonds",
+        "1 oz (about 23 almonds)",
+        "3.5 g",
+        "12.5 g",
+        "2.2 g"
+      ],
+      [
+        "Prunes",
+        "5 prunes",
+        "3.4 g",
+        "7.1 g",
+        "3 g"
+      ],
+      [
+        "Brown Rice",
+        "1 cup, cooked",
+        "3.2 g",
+        "1.6 g",
+        "1.3 g"
+      ],
+      [
+        "Orange",
+        "1 medium",
+        "3.1 g",
+        "2.4 g",
+        "5.1 g"
+      ],
+      [
+        "Wheat Bran",
+        "2 tbsp",
+        "3.1 g",
+        "42.8 g",
+        "19.8 g"
+      ],
+      [
+        "Dark Chocolate",
+        "1 oz (70–85% cacao)",
+        "3.1 g",
+        "10.9 g",
+        "1.8 g"
+      ],
+      [
+        "Banana",
+        "1 medium (7–8\")",
+        "3.1 g",
+        "2.6 g",
+        "2.9 g"
+      ],
+      [
+        "Guava",
+        "1 fruit",
+        "3 g",
+        "5.4 g",
+        "7.9 g"
+      ],
+      [
+        "Pistachios",
+        "1 oz (about 49 kernels)",
+        "2.9 g",
+        "10.3 g",
+        "1.8 g"
+      ],
+      [
+        "Strawberries",
+        "1 cup, whole",
+        "2.9 g",
+        "2 g",
+        "6.3 g"
+      ],
+      [
+        "Flaxseed",
+        "1 tbsp, whole",
+        "2.8 g",
+        "27.3 g",
+        "5.1 g"
+      ],
+      [
+        "Mango",
+        "1 cup pieces",
+        "2.6 g",
+        "1.6 g",
+        "2.7 g"
+      ],
+      [
+        "Kiwi",
+        "1 kiwifruit",
+        "2.1 g",
+        "3 g",
+        "4.9 g"
+      ],
+      [
+        "Whole Wheat Bread",
+        "1 slice",
+        "1.9 g",
+        "6 g",
+        "2.4 g"
+      ],
+      [
+        "Walnuts",
+        "1 oz (about 14 halves)",
+        "1.9 g",
+        "6.7 g",
+        "1 g"
+      ],
+      [
+        "Carrots",
+        "1 medium carrot, raw",
+        "1.7 g",
+        "2.8 g",
+        "6.8 g"
+      ],
+      [
+        "Pumpkin Seeds",
+        "1 oz hulled kernels (pepitas)",
+        "1.7 g",
+        "6 g",
+        "1.1 g"
+      ],
+      [
+        "Hummus",
+        "2 tbsp",
+        "1.7 g",
+        "5.5 g",
+        "2.3 g"
+      ],
+      [
+        "Dates",
+        "1 Medjool date",
+        "1.6 g",
+        "6.7 g",
+        "2.4 g"
+      ],
+      [
+        "Peanut Butter",
+        "2 tbsp",
+        "1.6 g",
+        "5 g",
+        "0.8 g"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How to read this table",
+      "paragraphs": [
+        "Fiber per serving tells you what one realistic portion adds to your day. Fiber per 100 g compares foods by weight, which favors dry foods like bran, seeds, and dried fruit. Fiber per 100 calories shows how much fiber you get for the energy, which favors berries and cooked vegetables.",
+        "No single column is the “right” one. Beans lead per serving, seeds and bran lead per gram, and vegetables and berries lead per calorie. A high-fiber day usually mixes all three."
+      ]
+    },
+    {
+      "heading": "Why serving size changes the ranking",
+      "paragraphs": [
+        "Cooking, drying, and packing all change how much food fits in a cup. A cup of raw spinach weighs about 30 g; a cup of cooked spinach weighs about 180 g. Dried fruit concentrates fiber and sugar by removing water. Each food page shows several portions so you can match what you actually eat.",
+        "Labels on packaged foods use set reference amounts that may differ from the portions here. When you have the package, its label is the best source for that product."
+      ]
+    },
+    {
+      "heading": "Where the numbers come from",
+      "paragraphs": [
+        "Every figure is scaled from USDA FoodData Central (SR Legacy) fiber per 100 g, the same data the calculator uses. Each food page links its exact USDA record. Daily Value percentages use 28 g, the reference on U.S. Nutrition Facts labels. See [about and editorial standards](/about) for how figures are reviewed."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 cup black beans, 1 cup brown rice, 1 cup broccoli",
+  "examples": [
+    "1 cup black beans, 1 cup brown rice, 1 cup broccoli",
+    "1 cup raspberries, 1 cup oatmeal, 1 tbsp chia seeds"
+  ],
+  "calculatorCta": "Estimate a meal",
+  "articleCta": "Estimate your own meal in the calculator",
+  "faqs": [
+    {
+      "q": "Which food has the most fiber per serving?",
+      "a": "Among the 50 foods here, navy beans lead at 19.1 g per 1 cup, cooked. Most beans and lentils are close behind."
+    },
+    {
+      "q": "Which foods have the most fiber per calorie?",
+      "a": "Cooked vegetables and berries. The top three here are wheat bran (19.8 g per 100 kcal), raspberries (12.5 g per 100 kcal), blackberries (12.3 g per 100 kcal)."
+    },
+    {
+      "q": "How much fiber should I eat per day?",
+      "a": "The U.S. Adequate Intake is about 25 g a day for women and 38 g for men aged 19–50, and 28 g during pregnancy. See [how much fiber per day](/how-much-fiber-per-day)."
+    }
+  ],
+  "related": [
+    "fibermaxxing-foods",
+    "how-much-fiber-per-day",
+    "fiber-for-weight-loss"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central (SR Legacy)",
+      "url": "https://fdc.nal.usda.gov/",
+      "note": "fiber and calories per 100 g for every food"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value"
+    },
+    {
+      "label": "Dietary Guidelines for Americans, 2020–2025 (USDA/HHS)",
+      "url": "https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf",
+      "note": "fiber targets by age and sex"
+    }
+  ]
+}

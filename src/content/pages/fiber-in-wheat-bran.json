@@ -1,0 +1,155 @@
+{
+  "slug": "fiber-in-wheat-bran",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Wheat Bran? 3.1g per 2 Tbsp",
+  "description": "Wheat Bran: about 3.1 g of fiber per 2 tbsp (11% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in wheat bran?",
+  "answer": {
+    "value": "~3.1",
+    "unit": "g",
+    "detail": "fiber in 2 tbsp (7.3 g)",
+    "note": "USDA FoodData Central, Wheat bran, crude"
+  },
+  "intro": [
+    "Wheat bran ranks #7 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "2 tbsp",
+      "value": "3.1 g",
+      "note": "16 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "42.8 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "19.8 g",
+      "note": "#1 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "11%",
+      "note": "of 28 g, per 2 tbsp"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in wheat bran by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "2 tbsp",
+        "7.3 g",
+        "3.1 g",
+        "16",
+        "11%"
+      ],
+      [
+        "1 tbsp",
+        "3.6 g",
+        "1.5 g",
+        "8",
+        "6%"
+      ],
+      [
+        "1/4 cup",
+        "14.5 g",
+        "6.2 g",
+        "31",
+        "22%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in wheat bran?",
+      "paragraphs": [
+        "USDA FoodData Central lists wheat bran, crude at 42.8 g of fiber per 100 g. One serving (2 tbsp; 7.3 g) therefore has about 3.1 g of fiber and 16 calories. That is 11% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 12% of a 25 g day and 8% of a 38 g day.",
+        "Wheat bran is the outer layer of the wheat kernel, sold on its own as unprocessed bran or used in bran cereals and muffins. By weight it is one of the most concentrated food sources of fiber, and that fiber is mostly the insoluble kind that adds bulk to stool."
+      ]
+    },
+    {
+      "heading": "How to use bran without overdoing it",
+      "paragraphs": [
+        "Because bran is so concentrated, a small spoonful goes a long way. Start with a tablespoon stirred into oatmeal, yogurt, or batter and increase over a couple of weeks, with plenty of fluids.",
+        "Some people with irritable bowel syndrome find that insoluble fiber such as wheat bran makes bloating or pain worse. Clinical guidelines for IBS favor soluble fiber instead; see the [IBS page](/fiber-for-ibs)."
+      ]
+    },
+    {
+      "heading": "How wheat bran compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, wheat bran ranks #7 for fiber per typical serving and #1 for fiber per calorie. That works out to 19.8 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [brown rice](/fiber-in-brown-rice) at 3.2 g (1 cup, cooked); [popcorn](/fiber-in-popcorn) at 3.6 g (3 cups, air-popped); [whole wheat bread](/fiber-in-whole-wheat-bread) at 1.9 g (1 slice). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), wheat bran is #1 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding wheat bran to your day",
+      "paragraphs": [
+        "A tablespoon or two in a muffin batter or a bowl of cereal is enough for most people. Bran cereals are another route; the calculator includes several by name.",
+        "Example: 2 tbsp wheat bran, 1 cup oatmeal, 1/2 cup blueberries. Using the same USDA values as the calculator, that comes to about 8.9 g of fiber, with 3.1 g from the wheat bran. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "2 tbsp wheat bran, 1 cup oatmeal, 1/2 cup blueberries",
+  "examples": [
+    "2 tbsp wheat bran, 1 cup oatmeal, 1/2 cup blueberries"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your wheat bran meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of wheat bran?",
+      "a": "42.8 g, according to USDA FoodData Central (Wheat bran, crude). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in wheat bran (1 tbsp)?",
+      "a": "About 1.5 g, for 3.6 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Is wheat bran soluble or insoluble fiber?",
+      "a": "Mostly insoluble. It adds bulk and speeds transit for many people, which is why it is a traditional remedy for constipation."
+    },
+    {
+      "q": "Is wheat bran the same as oat bran?",
+      "a": "No. Oat bran is richer in soluble beta-glucan and has a softer texture. Wheat bran is coarser and mostly insoluble."
+    }
+  ],
+  "related": [
+    "fiber-in-brown-rice",
+    "fiber-in-popcorn",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Wheat bran, crude (FDC 169722)",
+      "url": "https://fdc.nal.usda.gov/food-details/169722/nutrients",
+      "note": "42.8 g fiber and 216 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

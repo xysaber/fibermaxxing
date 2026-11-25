@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-whole-wheat-bread",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "grains",
+  "title": "How Much Fiber in Whole Wheat Bread? 1.9g per Slice",
+  "description": "Whole Wheat Bread: about 1.9 g of fiber per 1 slice (7% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in whole wheat bread?",
+  "answer": {
+    "value": "~1.9",
+    "unit": "g",
+    "detail": "fiber in 1 slice (32 g)",
+    "note": "USDA FoodData Central, Bread, whole-wheat, commercially prepared"
+  },
+  "intro": [
+    "Whole wheat bread ranks #8 of 8 grains on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 slice",
+      "value": "1.9 g",
+      "note": "81 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "6 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "2.4 g",
+      "note": "#40 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "7%",
+      "note": "of 28 g, per 1 slice"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in whole wheat bread by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 slice",
+        "32 g",
+        "1.9 g",
+        "81",
+        "7%"
+      ],
+      [
+        "2 slices",
+        "64 g",
+        "3.8 g",
+        "161",
+        "14%"
+      ],
+      [
+        "1 slice white bread",
+        "28 g",
+        "0.8 g",
+        "74",
+        "3%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in whole wheat bread?",
+      "paragraphs": [
+        "USDA FoodData Central lists bread, whole-wheat, commercially prepared at 6 g of fiber per 100 g. One serving (1 slice; 32 g) therefore has about 1.9 g of fiber and 81 calories. That is 7% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 8% of a 25 g day and 5% of a 38 g day.",
+        "Whole wheat bread is an easy daily swap because most people already eat bread. USDA’s generic whole wheat entry gives a couple of grams per slice, about twice white bread. Many packaged breads now go further with added seeds or fiber, and their labels can read 3–5 g per slice."
+      ]
+    },
+    {
+      "heading": "Reading bread labels",
+      "paragraphs": [
+        "Look for “100% whole wheat” or “whole grain” as the first ingredient. “Wheat bread” or “multigrain” alone does not mean whole grain, and those breads can be close to white bread in fiber.",
+        "Slice weight varies widely, from under 30 g for sandwich bread to 45 g or more for dense seeded loaves. Compare grams of fiber per slice on the label rather than assuming every slice is equal."
+      ]
+    },
+    {
+      "heading": "How whole wheat bread compares with other grains",
+      "paragraphs": [
+        "Of the 8 grains on this site, whole wheat bread ranks #8 for fiber per typical serving and #6 for fiber per calorie. That works out to 2.4 g of fiber per 100 calories, in the middle of the range for the foods on this site.",
+        "Close neighbors by serving: [wheat bran](/fiber-in-wheat-bran) at 3.1 g (2 tbsp); [brown rice](/fiber-in-brown-rice) at 3.2 g (1 cup, cooked); [popcorn](/fiber-in-popcorn) at 3.6 g (3 cups, air-popped). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), whole wheat bread is #40 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding whole wheat bread to your day",
+      "paragraphs": [
+        "Two slices of whole wheat toast with peanut butter and a sliced banana make a breakfast in the 8–9 g range. A sandwich on whole-grain bread with hummus and vegetables can pass 10 g.",
+        "Example: 2 slices whole wheat bread, 2 tbsp peanut butter, 1 banana. Using the same USDA values as the calculator, that comes to about 8.5 g of fiber, with 3.8 g from the whole wheat bread. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "2 slices whole wheat bread, 2 tbsp peanut butter, 1 banana",
+  "examples": [
+    "2 slices whole wheat bread, 2 tbsp peanut butter, 1 banana"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your whole wheat bread meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of whole wheat bread?",
+      "a": "6 g, according to USDA FoodData Central (Bread, whole-wheat, commercially prepared). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in whole wheat bread (2 slices)?",
+      "a": "About 3.8 g, for 64 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Which bread has the most fiber?",
+      "a": "Breads with whole grains plus added seeds, bran, or fiber ingredients. Some popular seeded whole-grain loaves list about 5 g per slice. The calculator includes several packaged breads by name, or you can enter the label’s grams."
+    },
+    {
+      "q": "Is toasting bread a way to lose fiber?",
+      "a": "No. Toasting drives off water, so a toasted slice weighs less but keeps essentially the same fiber."
+    }
+  ],
+  "related": [
+    "fiber-in-wheat-bran",
+    "fiber-in-brown-rice",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Bread, whole-wheat, commercially prepared (FDC 172688)",
+      "url": "https://fdc.nal.usda.gov/food-details/172688/nutrients",
+      "note": "6 g fiber and 252 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Bread, white, commercially prepared (FDC 174924)",
+      "url": "https://fdc.nal.usda.gov/food-details/174924/nutrients",
+      "note": "2.7 g fiber and 266 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}

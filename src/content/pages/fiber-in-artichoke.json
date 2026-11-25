@@ -1,0 +1,160 @@
+{
+  "slug": "fiber-in-artichoke",
+  "publish": true,
+  "layout": "bands",
+  "kind": "food",
+  "category": "vegetables",
+  "title": "How Much Fiber in an Artichoke? 6.9g per Artichoke",
+  "description": "Artichoke: about 6.9 g of fiber per 1 medium globe artichoke, raw (25% DV), from USDA FoodData Central. Portion table, comparisons, free calculator.",
+  "h1": "How much fiber is in an artichoke?",
+  "answer": {
+    "value": "~6.9",
+    "unit": "g",
+    "detail": "fiber in 1 medium globe artichoke, raw (edible part), 128 g",
+    "note": "USDA FoodData Central, Artichokes, (globe or french), raw"
+  },
+  "intro": [
+    "Artichoke ranks #1 of 10 vegetables on this site for fiber per serving. Every figure below is scaled from USDA FoodData Central, the same data the calculator uses."
+  ],
+  "facts": [
+    {
+      "label": "1 medium globe artichoke, raw (edible part)",
+      "value": "6.9 g",
+      "note": "60 kcal"
+    },
+    {
+      "label": "Per 100 g",
+      "value": "5.4 g",
+      "note": "USDA FoodData Central"
+    },
+    {
+      "label": "Per 100 kcal",
+      "value": "11.5 g",
+      "note": "#4 of 50 foods here"
+    },
+    {
+      "label": "Daily Value",
+      "value": "25%",
+      "note": "of 28 g, per 1 medium globe artichoke"
+    }
+  ],
+  "dataTable": {
+    "caption": "Fiber in artichoke by portion",
+    "note": "Fiber and calories are scaled from USDA FoodData Central per-100 g values (rows listed under Sources). % Daily Value uses the 28 g reference on U.S. Nutrition Facts labels. Brands, ripeness, and cooking change real values.",
+    "columns": [
+      "Portion",
+      "Weight",
+      "Fiber",
+      "Calories",
+      "% Daily Value"
+    ],
+    "rows": [
+      [
+        "1 medium globe artichoke, raw (edible part)",
+        "128 g",
+        "6.9 g",
+        "60",
+        "25%"
+      ],
+      [
+        "1 medium artichoke, cooked",
+        "120 g",
+        "6.8 g",
+        "64",
+        "24%"
+      ],
+      [
+        "1 cup artichoke hearts, cooked",
+        "168 g",
+        "9.6 g",
+        "89",
+        "34%"
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "heading": "How much fiber is in an artichoke?",
+      "paragraphs": [
+        "USDA FoodData Central lists artichokes, (globe or french), raw at 5.4 g of fiber per 100 g. One serving (1 medium globe artichoke, raw (edible part); 128 g) therefore has about 6.9 g of fiber and 60 calories. That is 25% of the 28 g Daily Value on U.S. Nutrition Facts labels, or 28% of a 25 g day and 18% of a 38 g day.",
+        "A whole globe artichoke is one of the highest-fiber vegetables per serving. Part of its fiber is inulin, a soluble fiber that feeds gut bacteria."
+      ]
+    },
+    {
+      "heading": "Whole artichokes vs canned hearts",
+      "paragraphs": [
+        "Eating a whole steamed artichoke leaf by leaf takes time, and you only eat the tender base of each leaf plus the heart. USDA’s figures are for the edible portion.",
+        "Canned or jarred hearts in oil or brine are convenient for salads and pasta. Marinated hearts carry added oil; the fiber per heart is similar."
+      ]
+    },
+    {
+      "heading": "How artichoke compares with other vegetables",
+      "paragraphs": [
+        "Of the 10 vegetables on this site, artichoke ranks #1 for fiber per typical serving and #1 for fiber per calorie. That works out to 11.5 g of fiber per 100 calories, a high ratio: you get a lot of fiber for the calories.",
+        "Close neighbors by serving: [butternut squash](/fiber-in-butternut-squash) at 6.6 g (1 cup cubes, baked); [broccoli](/fiber-in-broccoli) at 5.1 g (1 cup chopped, cooked); [kale](/fiber-in-kale) at 4.7 g (1 cup, cooked). Across all 50 foods in the [fiber-in-foods table](/fiber-in-foods), artichoke is #4 for fiber per calorie."
+      ]
+    },
+    {
+      "heading": "Adding artichoke to your day",
+      "paragraphs": [
+        "Add a cup of drained artichoke hearts to pasta, pizza, or a white bean salad.",
+        "Example: 1 artichoke, 1/2 cup navy beans, 1 slice whole wheat bread. Using the same USDA values as the calculator, that comes to about 18.4 g of fiber, with 6.9 g from the artichoke. Adjust the amounts in the calculator to match your plate."
+      ]
+    }
+  ],
+  "defaultSex": "female",
+  "defaultAge": "19-50",
+  "defaultMode": "standard",
+  "defaultMeal": "1 artichoke, 1/2 cup navy beans, 1 slice whole wheat bread",
+  "examples": [
+    "1 artichoke, 1/2 cup navy beans, 1 slice whole wheat bread"
+  ],
+  "calculatorCta": "Estimate this meal",
+  "articleCta": "Estimate your artichoke meal in the calculator",
+  "faqs": [
+    {
+      "q": "How much fiber is in 100 g of artichoke?",
+      "a": "5.4 g, according to USDA FoodData Central (Artichokes, (globe or french), raw). That is the figure every portion on this page is scaled from."
+    },
+    {
+      "q": "How much fiber is in artichoke (1 medium artichoke, cooked)?",
+      "a": "About 6.8 g (Artichokes, (globe or french), cooked, boiled, drained, without salt), for 120 g. Weigh your portion or edit grams in the calculator for a closer estimate."
+    },
+    {
+      "q": "Do artichokes cause gas?",
+      "a": "They can. Inulin is fermented by gut bacteria, and artichokes are high-FODMAP. People with IBS often tolerate only small amounts."
+    },
+    {
+      "q": "Are Jerusalem artichokes the same?",
+      "a": "No. Jerusalem artichokes (sunchokes) are tubers from a different plant, also rich in inulin."
+    }
+  ],
+  "related": [
+    "fiber-in-butternut-squash",
+    "fiber-in-broccoli",
+    "fiber-in-foods"
+  ],
+  "updated": "2026-11-25",
+  "sources": [
+    {
+      "label": "USDA FoodData Central: Artichokes, (globe or french), raw (FDC 169205)",
+      "url": "https://fdc.nal.usda.gov/food-details/169205/nutrients",
+      "note": "5.4 g fiber and 47 kcal per 100 g"
+    },
+    {
+      "label": "USDA FoodData Central: Artichokes, (globe or french), cooked, boiled, drained, without salt (FDC 168386)",
+      "url": "https://fdc.nal.usda.gov/food-details/168386/nutrients",
+      "note": "5.7 g fiber and 53 kcal per 100 g"
+    },
+    {
+      "label": "U.S. FDA, Dietary Fiber on the Nutrition Facts Label",
+      "url": "https://www.accessdata.fda.gov/scripts/interactiveNutritionFactsLabel/dietary-fiber.cfm",
+      "note": "28 g Daily Value used for the % figures"
+    },
+    {
+      "label": "Mayo Clinic, Dietary fiber: Essential for a healthy diet",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/fiber/art-20043983",
+      "note": "increase fiber gradually and drink enough water"
+    }
+  ]
+}
