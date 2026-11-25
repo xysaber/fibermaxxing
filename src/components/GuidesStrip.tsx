@@ -65,33 +65,47 @@ const GROUPS = [
   { id: 'meals', title: 'Meals' },
 ] as const
 
+const GROUP_TITLE: Record<string, string> = Object.fromEntries(GROUPS.map((g) => [g.id, g.title]))
+
+/**
+ * Home "Fiber guides" (design boards 14–15): one 4-column grid, 8 cards = 2 full rows.
+ * Group shows as a tag on each card; phones list the cards under group headings.
+ */
 export function GuidesStrip() {
   return (
-    <section className="guide-groups" id="guides" aria-labelledby="guides-heading">
-      <div className="section-head">
+    <section className="guides-v2" id="guides" aria-labelledby="guides-heading">
+      <div className="guides-v2-head">
         <div>
           <h2 id="guides-heading">Fiber guides</h2>
           <p>Short answers first — then the same calculator with a relevant example meal.</p>
         </div>
+        <Link className="guides-v2-all" to="/fiber-in-foods">
+          Browse fiber in 50 foods <span aria-hidden="true">→</span>
+        </Link>
       </div>
-      <div className="guide-groups-grid">
-        {GROUPS.map((g) => (
-          <div key={g.id} className="guide-group">
-            <h3 className="guide-group-title">{g.title}</h3>
-            <ul>
-              {HOME_GUIDES.filter((x) => x.group === g.id).map((x) => (
-                <li key={x.to}>
-                  <Link className="guide-tile" to={x.to}>
-                    <span className="guide-tile-stat">{x.stat}</span>
-                    <strong>{x.title}</strong>
-                    <span>{x.blurb}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <ul className="guides-v2-grid">
+        {HOME_GUIDES.map((x, i) => (
+          <li
+            key={x.to}
+            className="guides-v2-item"
+            data-group={x.group}
+            data-group-start={i === 0 || HOME_GUIDES[i - 1].group !== x.group ? GROUP_TITLE[x.group] : undefined}
+          >
+            <Link className="guides-v2-card" to={x.to}>
+              <span className="guides-v2-tag">{GROUP_TITLE[x.group]}</span>
+              <span className="guides-v2-stat">{x.stat}</span>
+              <strong>{x.title}</strong>
+              <span className="guides-v2-blurb">{x.blurb}</span>
+              <span className="guides-v2-more">
+                Read guide <span aria-hidden="true">→</span>
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
+      <Link className="guides-v2-all guides-v2-all--button" to="/fiber-in-foods">
+        Browse fiber in 50 foods
+      </Link>
     </section>
   )
 }
