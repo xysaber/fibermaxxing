@@ -27,8 +27,6 @@ export function formatReviewDate(iso: string): string {
 export function GuideByline({ updated }: { updated: string }) {
   return (
     <p className="guide-byline">
-      By <Link to="/about#editor">Mira Xin</Link>, Founder &amp; Editor
-      <span aria-hidden="true"> · </span>
       Reviewed <time dateTime={updated}>{formatReviewDate(updated)}</time>
       <span aria-hidden="true"> · </span>
       <a href="#sources">Sources</a>
@@ -54,6 +52,7 @@ export function GuideSources({ sources, updated }: { sources: SeoSource[]; updat
         ))}
       </ul>
       <p className="guide-sources-meta">
+        Written and reviewed by <Link to="/about#editor">Mira Xin</Link>, Founder &amp; Editor.{' '}
         {updated ? (
           <>
             Figures last reviewed <time dateTime={updated}>{formatReviewDate(updated)}</time>.{' '}

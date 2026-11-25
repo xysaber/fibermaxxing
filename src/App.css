@@ -147,7 +147,8 @@
 
 /* Reference data table below the key-figures band */
 .seo-data-table-wrap {
-  margin: 0 0 var(--space-section);
+  /* Breathing room below the beige hero band so the table heading does not sit on its edge */
+  margin: var(--space-7) 0 var(--space-section);
   max-width: 46rem;
 }
 
