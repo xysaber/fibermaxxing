@@ -37,50 +37,182 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- M1: hero ring (home calculator header) ---------- */
-.hero-ring {
+/* ---------- M1: hero calculator card (canvas boards "M1+M2 v2") ---------- */
+.home-v3 > .hero {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: 24px 56px;
+}
+
+.home-v3 > .hero > .panel-calc {
+  gap: 18px;
+  padding: 26px 28px 20px;
+}
+
+/* Profile: target + three dropdowns, always visible. */
+.hc-profile {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-bottom: 18px;
+  gap: 6px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
 }
 
-.hero-ring-top {
-  display: grid;
-  grid-template-columns: 132px minmax(0, 1fr);
-  gap: 22px;
+.hc-profile-row {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hc-target {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+}
+
+.hc-target > span {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.hc-target b {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hc-target small {
+  font-size: 0.6em;
+  color: var(--ink-faint);
+}
+
+.hc-selects {
+  display: grid;
+  /* Native selects size to their longest option, so the columns are set here. */
+  grid-template-columns: 112px 132px 134px;
+  gap: 8px;
+  min-width: 0;
+}
+
+.hc-select {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.hc-select::after {
+  content: '';
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 1.8px solid var(--leaf);
+  border-bottom: 1.8px solid var(--leaf);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.panel-calc .hc-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  margin: 0;
+  padding: 0 30px 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  font: 500 14px var(--font-body, Inter, system-ui, sans-serif);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.panel-calc .hc-select select:hover {
+  border-color: var(--acid);
+  background: var(--leaf-tint);
+}
+
+.hc-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  min-height: 20px;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.hc-kcal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-calc .hc-kcal input {
+  width: 96px;
+  height: 34px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+/* Ring + top foods. */
+.hero-ring {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+}
+
+.hero-ring-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .hero-ring-dial {
   position: relative;
-  width: 132px;
-  height: 132px;
+  width: 200px;
+  height: 200px;
 }
 
 .hero-ring-svg {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  overflow: visible;
 }
 
 .hero-ring-track {
   fill: none;
   stroke: var(--leaf-tint);
-  stroke-width: 12;
+  stroke-width: 16;
 }
 
 .hero-ring-arc {
   fill: none;
   stroke: var(--leaf);
-  stroke-width: 12;
+  stroke-width: 16;
   stroke-linecap: round;
-  transition: stroke-dasharray 500ms var(--hv-ease);
+  transition: stroke-dasharray 700ms cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
 .hero-ring--demo .hero-ring-arc {
   transition: none;
+}
+
+/* A round cap draws a dot at 0 g: hide the arc while the ring is empty. */
+.hero-ring--typing .hero-ring-arc {
+  opacity: 0;
 }
 
 .hero-ring-tick {
@@ -93,11 +225,14 @@
   stroke: var(--leaf);
 }
 
-.hero-ring-dial .seed-sprout {
+.hero-ring-center {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
 }
 
 .hero-ring:not(.is-hit) .seed-sprout-leaves {
@@ -107,78 +242,50 @@
 .hero-ring-bubble {
   position: absolute;
   left: 50%;
-  top: 18px;
-  font: 600 13px var(--font-display);
-  font-variant-numeric: tabular-nums;
+  top: 17%;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
   color: var(--acid);
-  white-space: nowrap;
   opacity: 0;
+  transform: translate(-50%, 0);
   pointer-events: none;
 }
 
-.hero-ring-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  min-width: 0;
-}
-
-.hero-ring-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-
 .hero-ring-total {
-  margin-top: 4px;
   font-family: var(--font-display);
   font-size: 48px;
   font-weight: 600;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
   color: var(--ink);
 }
 
 .hero-ring-total small {
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0;
+  font-size: 0.4em;
   color: var(--ink-faint);
 }
 
 .hero-ring-of {
-  margin-top: 6px;
-  font-size: 14px;
-  color: var(--ink-soft);
-}
-
-.hero-ring-note {
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 13px;
   color: var(--ink-faint);
 }
 
 .hero-ring-hit {
   display: inline-flex;
   align-items: center;
-  height: 28px;
-  margin-top: 10px;
-  padding: 0 12px;
+  height: 30px;
+  padding: 0 13px;
   border-radius: 999px;
   background: var(--leaf);
   color: #fff;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
   opacity: 0;
   transform: scale(0.85);
-  transform-origin: left center;
-  transition:
-    opacity 260ms ease,
-    transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 260ms ease, transform 520ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .hero-ring.is-hit .hero-ring-hit {
@@ -186,56 +293,149 @@
   transform: none;
 }
 
-/* Fixed height so typing (chips → empty line) never moves the form. */
+/* Fixed height so typing (list → empty state) never moves the form. */
 .hero-ring-foodbox {
-  min-height: 62px;
+  height: 226px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-ring-label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--ink-faint);
 }
 
 .hero-ring-foods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .hero-ring-foods li {
-  display: inline-flex;
+  height: 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
   align-items: center;
-  gap: 5px;
-  max-width: 100%;
-  height: 28px;
-  padding: 0 10px;
-  border-radius: 999px;
-  background: var(--leaf-tint);
-  font-size: 13px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
   color: var(--ink);
 }
 
-.hero-ring-foods li span {
-  max-width: 170px;
+.hero-ring-foods li > span {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
+.hero-ring-portion {
+  color: var(--ink-faint);
+}
+
 .hero-ring-foods li b {
   font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--leaf);
 }
 
 .hero-ring-empty {
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   font-size: 13px;
-  line-height: 28px;
   color: var(--ink-faint);
 }
 
+.hero-ring-empty b {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+/* Meal box: two lines on the home card. */
+.home-v3 > .hero .panel-calc .meal-box {
+  min-height: 76px;
+  height: 76px;
+}
+
+/* Try chips + Calculate on one row. */
+.hc-act {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hc-try {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.hc-chip {
+  height: 36px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font: 500 13px var(--font-body, Inter, system-ui, sans-serif);
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hc-chip:hover,
+.hc-chip.is-active {
+  border-color: var(--acid);
+  background: var(--leaf-tint);
+}
+
+.panel-calc .hc-act .hc-calc {
+  flex: none;
+  width: auto;
+  height: 52px;
+  margin: 0;
+  padding: 0 18px;
+}
+
+.hc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.hc-foot .calc-footnote {
+  margin: 0;
+  font-size: 12px;
+}
+
+.hc-foot .examples-toggle {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* The demo rewrites text in these boxes every frame: keep each reflow inside its box. */
+.hero-ring-dial,
+.hero-ring-foodbox,
+.home-v3 .meal-box-demo {
+  contain: layout paint;
+}
+
 /* Before the script runs, the demo waits empty instead of flashing its end state. */
-.js .hero-ring--demo:not(.is-live) :is(.hero-ring-arc, .hero-ring-total, .hero-ring-foods li, .seed-sprout-leaves, .hero-ring-hit) {
+.js .hero-ring--demo:not(.is-live) :is(.hero-ring-arc, .hero-ring-total, .hero-ring-of, .hero-ring-foods li, .seed-sprout-leaves, .hero-ring-hit) {
   opacity: 0;
 }
 
@@ -560,31 +760,105 @@
 
 /* ---------- Phones and narrow tablets ---------- */
 @media (max-width: 960px) {
-  .hero-ring-top {
-    grid-template-columns: 104px minmax(0, 1fr);
-    gap: 16px;
+  /* Home calculator card on phones. */
+  .home-v3 > .hero > .panel-calc {
+    gap: 14px;
+    padding: 18px 16px 16px;
+  }
+
+  .hc-profile-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .hc-target {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .hc-selects {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.15fr) minmax(0, 1.1fr);
+    gap: 6px;
+  }
+
+  .panel-calc .hc-select select {
+    width: 100%;
+    padding: 0 22px 0 10px;
+    font-size: 13px;
+  }
+
+  .hc-select::after {
+    right: 9px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .hero-ring {
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 14px;
   }
 
   .hero-ring-dial {
-    width: 104px;
-    height: 104px;
+    width: 124px;
+    height: 124px;
   }
 
-  .hero-ring-dial .seed-sprout {
-    width: 36px;
-    height: 36px;
+  .hero-ring-center .seed-sprout {
+    width: 28px;
+    height: 28px;
   }
 
   .hero-ring-total {
-    font-size: 40px;
+    font-size: 30px;
+  }
+
+  .hero-ring-of {
+    display: none;
   }
 
   .hero-ring-hit {
-    margin-top: 6px;
+    height: 26px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .hero-ring-foodbox {
+    height: 168px;
   }
 
   .hero-ring-foods li {
-    height: 26px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .hero-ring-foods li b {
+    font-size: 13px;
+  }
+
+  .hero-ring-portion {
+    display: none;
+  }
+
+  .hc-act {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .panel-calc .hc-act .hc-calc {
+    width: 100%;
+  }
+
+  .hc-try {
+    flex-wrap: nowrap;
+    gap: 5px;
+  }
+
+  .hc-chip {
+    height: 34px;
+    padding: 0 8px;
     font-size: 12px;
   }
 
@@ -721,6 +995,30 @@
 
   .home-v3 .is-top .hv-food-g {
     font-size: 28px;
+  }
+}
+
+/* Small phones (≤ 360 px): drop the "Try:" label, tighter dropdowns. */
+@media (max-width: 360px) {
+  .hc-try > span {
+    display: none;
+  }
+
+  .hc-try {
+    flex-wrap: wrap;
+  }
+
+  .hc-selects {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1.05fr);
+  }
+
+  .panel-calc .hc-select select {
+    padding: 0 18px 0 8px;
+    font-size: 12px;
+  }
+
+  .hc-select::after {
+    right: 7px;
   }
 }
 
