@@ -48,6 +48,12 @@
   padding: 26px 28px 20px;
 }
 
+/* The card sizes its own layout (container queries below), so narrow laptop
+   windows get the stacked profile row instead of overflowing dropdowns. */
+.home-v3 > .hero > .panel-calc {
+  container: hc / inline-size;
+}
+
 /* Profile: target + three dropdowns, always visible. */
 .hc-profile {
   display: flex;
@@ -995,6 +1001,62 @@
 
   .home-v3 .is-top .hv-food-g {
     font-size: 28px;
+  }
+}
+
+/* Narrow card (laptop windows ~1000–1300 px wide, tablets). */
+@container hc (max-width: 500px) {
+  .hc-profile-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .hc-target {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .hc-selects {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.15fr) minmax(0, 1.1fr);
+  }
+
+  .hc-act {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hc-try {
+    flex-wrap: nowrap;
+  }
+
+  .panel-calc .hc-act .hc-calc {
+    width: 100%;
+  }
+}
+
+@container hc (max-width: 420px) {
+  .hero-ring {
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .hero-ring-dial {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero-ring-total {
+    font-size: 38px;
+  }
+
+  .hero-ring-of {
+    display: none;
+  }
+
+  .hero-ring-portion {
+    display: none;
   }
 }
 
