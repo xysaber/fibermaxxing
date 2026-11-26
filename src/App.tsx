@@ -12,6 +12,7 @@ import { PlanThanksPage } from './pages/PlanThanksPage'
 import './App.css'
 import './layout-v2.css'
 import './home-v3.css'
+import './home-motion.css'
 
 export default function App() {
   return (

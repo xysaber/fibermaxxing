@@ -63,7 +63,7 @@ export function HomePage() {
           </div>
         </div>
 
-        <FiberCalculator ref={calcRef} />
+        <FiberCalculator ref={calcRef} heroRing />
       </section>
 
       <SameDay onTry={(meal) => calcRef.current?.loadMeal(meal, 'home_same_day')} />

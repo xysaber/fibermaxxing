@@ -34,6 +34,9 @@ import {
   type MealLogInputOrigin,
 } from '../lib/mealLog'
 import { buildShareText, downloadReportPng } from '../lib/shareReport'
+import { HeroRing } from './home/HeroRing'
+import { SeedSprout } from './SeedSprout'
+import { easeBack } from '../lib/motion'
 
 const STARTERS = [
   {
@@ -62,7 +65,10 @@ const DEFAULT_EXAMPLES = [
 ]
 
 
-/** Count from the last shown value to `value` over 700 ms (ease-out). Instant with reduced motion. */
+/**
+ * Count from the last shown value to `value` over 700 ms. Going up it settles like
+ * a scale: a slight overshoot, then back (M2). Instant with reduced motion.
+ */
 function useCountUp(value: number, duration = 700): number {
   const [shown, setShown] = useState(0)
   const fromRef = useRef(0)
@@ -78,7 +84,7 @@ function useCountUp(value: number, duration = 700): number {
     const start = performance.now()
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / duration)
-      const eased = 1 - Math.pow(1 - t, 3)
+      const eased = value > from ? easeBack(t, 1.1) : 1 - Math.pow(1 - t, 3)
       const v = from + (value - from) * eased
       fromRef.current = v
       setShown(v)
@@ -90,7 +96,7 @@ function useCountUp(value: number, duration = 700): number {
   return reduce ? value : shown
 }
 
-function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'light' }) {
+function ProgressRing({ pct, tone = 'dark', hit = false }: { pct: number; tone?: 'dark' | 'light'; hit?: boolean }) {
   const r = 46
   const c = 2 * Math.PI * r
   const clamped = Math.min(100, Math.max(0, pct))
@@ -115,6 +121,7 @@ function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'li
         />
       </svg>
       <div className="ring-label">
+        {hit ? <SeedSprout size={30} onDark /> : null}
         <div className="pct">{Math.round(clamped)}%</div>
         <div className="sub">of goal</div>
       </div>
@@ -289,6 +296,8 @@ export type FiberCalculatorProps = {
    * Other pages keep the id on the form.
    */
   anchorOnInput?: boolean
+  /** Home only: the M1 progress ring replaces the target header. */
+  heroRing?: boolean
 }
 
 /** Hero CTA can adopt the current typewriter Quick start (full meal, not partial text). */
@@ -309,6 +318,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       starters,
       panelLabel,
       anchorOnInput = false,
+      heroRing = false,
     },
     ref,
   ) {
@@ -364,6 +374,15 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     age === '51+' ? '51+' : age === '14-18' ? '14–18' : '19–50'
   }`
 
+  const targetNote =
+    mode === 'standard'
+      ? `U.S. Adequate Intake${stageLabel}, ${profileLabel}`
+      : mode === 'calories'
+        ? calorieTarget != null
+          ? `14 g per 1,000 kcal · ${Math.round(kcalNumber).toLocaleString('en-US')} kcal/day`
+          : `Enter 800–6,000 kcal · showing ${standardAi} g`
+        : `Stretch goal · ${standardAi} g × 1.5, max 50 g`
+
   const hasMatches = !!result && result.matches.length > 0
   const pct = hasMatches ? Math.min(150, (result.totalFiberG / target) * 100) : 0
   const gap = hasMatches ? Math.max(0, Math.round((target - result.totalFiberG) * 10) / 10) : 0
@@ -386,6 +405,17 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     suggestions && suggestions.combos.length > 0
       ? suggestions.combos[suggestionComboIndex % suggestions.combos.length]
       : suggestions?.items ?? []
+
+  const heroFoods = useMemo(
+    () =>
+      hasMatches && result
+        ? [...result.matches]
+            .sort((a, b) => b.fiberG - a.fiberG)
+            .slice(0, 5)
+            .map((m) => ({ name: m.food.name, g: m.fiberG }))
+        : [],
+    [hasMatches, result],
+  )
 
   const shareFoods = useMemo(() => {
     if (!hasMatches || !result) return []
@@ -586,24 +616,26 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       >
         {panelLabel ? <p className="panel-label">{panelLabel}</p> : null}
 
-        <div className="target-head" aria-live="polite">
-          <div className="target-head-copy">
-            <span className="target-head-label">Your daily target</span>
-            <span className="target-head-note">
-              {mode === 'standard'
-                ? `U.S. Adequate Intake${stageLabel}, ${profileLabel}`
-                : mode === 'calories'
-                  ? calorieTarget != null
-                    ? `14 g per 1,000 kcal · ${Math.round(kcalNumber).toLocaleString('en-US')} kcal/day`
-                    : `Enter 800–6,000 kcal · showing ${standardAi} g`
-                  : `Stretch goal · ${standardAi} g × 1.5, max 50 g`}
+        {heroRing ? (
+          <HeroRing
+            target={target}
+            note={targetNote}
+            mode={hasMatches ? 'result' : meal.trim() ? 'typing' : 'demo'}
+            resultTotal={hasMatches && result ? result.totalFiberG : 0}
+            resultFoods={heroFoods}
+          />
+        ) : (
+          <div className="target-head" aria-live="polite">
+            <div className="target-head-copy">
+              <span className="target-head-label">Your daily target</span>
+              <span className="target-head-note">{targetNote}</span>
+            </div>
+            <span className="target-head-value">
+              {target}
+              <small> g</small>
             </span>
           </div>
-          <span className="target-head-value">
-            {target}
-            <small> g</small>
-          </span>
-        </div>
+        )}
 
         {simpleProfile ? (
           <div className="seg-row" role="group" aria-label="Your profile">
@@ -833,9 +865,12 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         <section className="results" aria-live="polite" ref={resultsRef}>
           <div className="score-card">
             <div className="score-hero">
-              <ProgressRing pct={shownPct} />
+              <ProgressRing pct={shownPct} hit={pct >= 100 && shownPct >= 100} />
               <div className="score-hero-copy">
-                <p className="score-of-label">Fiber so far today</p>
+                <p className="score-of-label">
+                  Fiber so far today
+                  {pct >= 100 && shownPct >= 100 ? <span className="score-hit">Target hit</span> : null}
+                </p>
                 <p className="score-total">
                   <span aria-hidden="true">{shownTotal.toFixed(1)}</span>
                   <span className="sr-only">{result.totalFiberG}</span>
