@@ -67,6 +67,14 @@ export function TermsOfServiceBody() {
           Core calculator features do not require creating an account. Certain optional features (such as product
           telemetry or future enhancements) may store limited data as described in our Privacy Policy.
         </p>
+        <h3>Paid 30-day plan</h3>
+        <p>
+          The optional 30-day plan is a one-time digital purchase processed by Stripe. After payment you get a private
+          link to the plan; anyone with the link can open it, so keep it to yourself. Your settings and tracker are
+          saved with that link. If the plan isn’t for you, email us or reply to the plan email within 7 days of purchase
+          for a full refund; refunded links stop working. The plan is general guidance for healthy adults and is not
+          medical advice.
+        </p>
       </section>
 
       <section>

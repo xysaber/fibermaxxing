@@ -35,6 +35,9 @@ function PrimaryNav({ guidesActive }: { guidesActive: boolean }) {
       <HomeAnchor hash="guides" className={guidesActive ? 'is-active' : undefined}>
         Guides
       </HomeAnchor>
+      <NavLink to="/30-day-plan" className={({ isActive }) => (isActive ? 'is-active' : undefined)}>
+        30-day plan
+      </NavLink>
     </>
   )
 }

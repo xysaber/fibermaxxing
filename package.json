@@ -15,7 +15,9 @@
     "test:seo": "node scripts/verify-seo.mjs",
     "test:analytics": "node scripts/analytics-regression.mjs",
     "test:meal-log": "node scripts/meal-log-smoke.mjs && node --import tsx scripts/meal-log-dedupe-smoke.mjs",
-    "test:accuracy": "node --import tsx scripts/fiber-accuracy-regression.mjs"
+    "test:accuracy": "node --import tsx scripts/fiber-accuracy-regression.mjs",
+    "plan:build": "node --import tsx scripts/build-plan-content.mjs",
+    "test:plan": "node --import tsx scripts/build-plan-content.mjs --check && node --import tsx scripts/plan-sales-smoke.mjs"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",

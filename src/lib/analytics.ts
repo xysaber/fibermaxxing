@@ -16,6 +16,11 @@ type EventName =
   // Key events (mark in GA4 Admin → Key events)
   | 'fiber_calculated'
   | 'generate_lead'
+  // 30-day plan funnel (GA4 recommended ecommerce names)
+  | 'view_item'
+  | 'begin_checkout'
+  | 'purchase'
+  | 'plan_link_recover'
 
 type GtagFn = (...args: unknown[]) => void
 

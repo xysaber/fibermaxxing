@@ -211,6 +211,32 @@ const aboutPage = {
   console.log('prerender /about')
 }
 
+// 30-day plan: sales page (indexed) + thank-you and reader shells (noindex, client-rendered data)
+const { PLAN_SALES_META, PLAN_FAQS } = await (async () => {
+  const srv = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
+  try {
+    return await srv.ssrLoadModule('/src/pages/PlanSalesPage.tsx')
+  } finally {
+    await srv.close()
+  }
+})()
+const planPages = [
+  { slug: '30-day-plan', title: PLAN_SALES_META.title, description: PLAN_SALES_META.description, faqs: PLAN_FAQS, noindex: false },
+  { slug: '30-day-plan-thanks', title: 'Your plan is ready | GetFibermaxxing', description: 'Payment received. Open your 30-day fiber plan.', faqs: [], noindex: true },
+  { slug: 'my-plan', title: 'Your 30-day plan | GetFibermaxxing', description: 'Your 30-day fiber plan.', faqs: [], noindex: true },
+]
+for (const page of planPages) {
+  const html = injectHead(shell, {
+    title: page.title,
+    description: page.description,
+    path: `/${page.slug}`,
+    faqs: page.faqs,
+    noindex: page.noindex,
+  }).replace('<div id="root"></div>', `<div id="root">${renderPage(`/${page.slug}`)}</div>`)
+  writePageHtml(page.slug, html)
+  console.log('prerender', `/${page.slug}`)
+}
+
 // 404 page for Cloudflare
 {
   const html = injectHead(shell, {
@@ -238,6 +264,7 @@ const urls = [
     (p) =>
       `  <url>\n    <loc>${siteUrl}/${p.slug}</loc>\n${p.updated ? `    <lastmod>${p.updated}</lastmod>\n` : ''}    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`,
   ),
+  `  <url>\n    <loc>${siteUrl}/30-day-plan</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`,
   `  <url>\n    <loc>${siteUrl}/about</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
   ...legalPages.map(
     (p) =>
@@ -247,4 +274,4 @@ const urls = [
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`
 writeFileSync(join(dist, 'sitemap.xml'), sitemap)
 writeFileSync(join(root, 'public/sitemap.xml'), sitemap)
-console.log('wrote sitemap.xml (%d urls)', pages.length + 2 + legalPages.length)
+console.log('wrote sitemap.xml (%d urls)', pages.length + 3 + legalPages.length)

@@ -111,7 +111,7 @@ export const PLAN_EMAILS: PlanEmail[] = [
     move: 'Log today in the calculator and compare the total with your Day 1 number.',
     paragraphs: [
       'Breakfast, half a cup of beans, one fruit snack and a vegetable-heavy dinner can add roughly 20 g to a typical day.',
-      'Keep the two or three changes that felt easiest. Those are your new defaults. A 30-day plan with weekly meal plans and shopping lists is coming soon, and we’ll let you know when it’s ready.',
+      'Keep the two or three changes that felt easiest. Those are your new defaults. Want the next step? The 30-day plan has daily menus and weekly shopping lists sized to your target: getfibermaxxing.com/30-day-plan',
     ],
     tip: 'Bookmark the calculator so checking a day takes ten seconds.',
     cta: 'See today’s total',

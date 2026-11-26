@@ -26,6 +26,13 @@ MEAL_LOG_INGEST = "on"
 # Kill switch: set SUBSCRIBE = "off" and redeploy.
 SUBSCRIBE = "on"
 EMAIL_FROM = "GetFibermaxxing <plan@getfibermaxxing.com>"
+# Paid 30-day plan. Set STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET and STRIPE_PRICE_ID in the
+# dashboard as type Secret (plain dashboard variables are overwritten by Git deploys).
+# Checkout refuses to open if the Stripe price's amount != PLAN_PRICE_CENTS.
+# Kill switch: PLAN_SALES = "off" stops new checkouts (buyers keep access).
+PLAN_SALES = "on"
+PLAN_PRICE_CENTS = "900"
+PLAN_REPLY_TO = "hello@getfibermaxxing.com"
 
 # Daily 15:00 UTC (7 a.m. Pacific): send the next plan email.
 [triggers]

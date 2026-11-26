@@ -51,8 +51,21 @@ for (const slug of legalSlugs) {
 }
 assert.match(readFileSync('dist/404.html','utf8'), /content="noindex, follow"/)
 const sitemap = readFileSync('dist/sitemap.xml', 'utf8')
-assert.equal((sitemap.match(/<loc>/g) || []).length, pages.length + 2 + legalSlugs.length)
+assert.equal((sitemap.match(/<loc>/g) || []).length, pages.length + 3 + legalSlugs.length)
 assert.match(sitemap, /<loc>https:\/\/www.getfibermaxxing.com\/about<\/loc>/)
+assert.match(sitemap, /<loc>https:\/\/www.getfibermaxxing.com\/30-day-plan<\/loc>/)
+assert.doesNotMatch(sitemap, /my-plan|30-day-plan-thanks/)
+{
+  const html = readFileSync('dist/30-day-plan.html', 'utf8')
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1)
+  assert.match(html, /content="index, follow"/)
+  assert.match(html, /"@type":"FAQPage"/)
+  assert.match(html, /Get the plan for \$9/)
+  for (const slug of ['my-plan', '30-day-plan-thanks']) {
+    assert.match(readFileSync(`dist/${slug}.html`, 'utf8'), /content="noindex, follow"/)
+  }
+  console.log('Static HTML verified: 30-day plan pages')
+}
 {
   const html = readFileSync('dist/about.html', 'utf8')
   assert.match(html, /<div id="root"><div class="app">/)

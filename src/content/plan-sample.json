@@ -1,0 +1,80 @@
+{
+  "std": {
+    "goal": 25,
+    "total": 24.6,
+    "meals": [
+      {
+        "slot": "breakfast",
+        "name": "Raspberry banana smoothie",
+        "items": "1 cup frozen raspberries, 1 banana, 1 tbsp chia seeds, 1 cup spinach, milk",
+        "g": 13.9
+      },
+      {
+        "slot": "lunch",
+        "name": "Quinoa carrot bowl",
+        "items": "1/2 cup cooked quinoa, 1/2 cup cooked carrots, chicken",
+        "g": 4.9
+      },
+      {
+        "slot": "dinner",
+        "name": "Turkey meatballs with sweet potato",
+        "items": "1 medium sweet potato, 1/2 cup green beans, turkey meatballs",
+        "g": 5.8
+      }
+    ]
+  },
+  "glp1": {
+    "goal": 21,
+    "total": 21.8,
+    "meals": [
+      {
+        "slot": "breakfast",
+        "name": "Small chia pudding with blueberries",
+        "items": "1 tbsp chia seeds, 1/2 cup blueberries, milk or lactose-free milk",
+        "g": 5.9
+      },
+      {
+        "slot": "lunch",
+        "name": "Lentil and carrot soup",
+        "items": "1/2 cup cooked lentils, 1/2 cup cooked carrots, broth",
+        "g": 10.1
+      },
+      {
+        "slot": "dinner",
+        "name": "Turkey meatballs with sweet potato",
+        "items": "1 medium sweet potato, 1/2 cup green beans, turkey meatballs",
+        "g": 5.8
+      }
+    ]
+  },
+  "gentle": {
+    "goal": 21,
+    "total": 21.4,
+    "meals": [
+      {
+        "slot": "breakfast",
+        "name": "Peanut butter toast with strawberries",
+        "items": "1 slice whole wheat bread, 1 tbsp peanut butter, 1/2 cup strawberries",
+        "g": 4.1
+      },
+      {
+        "slot": "lunch",
+        "name": "Warm quinoa with spinach",
+        "items": "1/2 cup cooked quinoa, 1/2 cup cooked spinach, 1/2 cup cooked carrots, salmon or eggs",
+        "g": 7.1
+      },
+      {
+        "slot": "dinner",
+        "name": "Roast chicken, potato and carrots",
+        "items": "1 baked potato, 1/2 cup cooked carrots, roast chicken",
+        "g": 6.1
+      },
+      {
+        "slot": "snack",
+        "name": "Two kiwis",
+        "items": "2 kiwi",
+        "g": 4.1
+      }
+    ]
+  }
+}
