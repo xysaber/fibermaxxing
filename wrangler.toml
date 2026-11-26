@@ -37,3 +37,18 @@ PLAN_REPLY_TO = "hello@getfibermaxxing.com"
 # Daily 15:00 UTC (7 a.m. Pacific): send the next plan email.
 [triggers]
 crons = ["0 15 * * *"]
+
+# PR preview builds (`wrangler preview`). Every kill switch is off so a preview never
+# writes meal logs, sends email or opens checkout. MEAL_LOGS points at the production
+# bucket only because the binding is required; with ingest off nothing is written.
+[previews.vars]
+MEAL_LOG_INGEST = "off"
+SUBSCRIBE = "off"
+EMAIL_FROM = "GetFibermaxxing <plan@getfibermaxxing.com>"
+PLAN_SALES = "off"
+PLAN_PRICE_CENTS = "900"
+PLAN_REPLY_TO = "hello@getfibermaxxing.com"
+
+[[previews.r2_buckets]]
+binding = "MEAL_LOGS"
+bucket_name = "fibermaxxing-meal-logs"

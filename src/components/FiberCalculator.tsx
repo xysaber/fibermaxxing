@@ -34,6 +34,9 @@ import {
   type MealLogInputOrigin,
 } from '../lib/mealLog'
 import { buildShareText, downloadReportPng } from '../lib/shareReport'
+import { HERO_DEMO_MEAL, HeroRing } from './home/HeroRing'
+import { SeedSprout } from './SeedSprout'
+import { easeBack } from '../lib/motion'
 
 const STARTERS = [
   {
@@ -62,7 +65,10 @@ const DEFAULT_EXAMPLES = [
 ]
 
 
-/** Count from the last shown value to `value` over 700 ms (ease-out). Instant with reduced motion. */
+/**
+ * Count from the last shown value to `value` over 700 ms. Going up it settles like
+ * a scale: a slight overshoot, then back (M2). Instant with reduced motion.
+ */
 function useCountUp(value: number, duration = 700): number {
   const [shown, setShown] = useState(0)
   const fromRef = useRef(0)
@@ -78,7 +84,7 @@ function useCountUp(value: number, duration = 700): number {
     const start = performance.now()
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / duration)
-      const eased = 1 - Math.pow(1 - t, 3)
+      const eased = value > from ? easeBack(t, 1.1) : 1 - Math.pow(1 - t, 3)
       const v = from + (value - from) * eased
       fromRef.current = v
       setShown(v)
@@ -90,7 +96,7 @@ function useCountUp(value: number, duration = 700): number {
   return reduce ? value : shown
 }
 
-function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'light' }) {
+function ProgressRing({ pct, tone = 'dark', hit = false }: { pct: number; tone?: 'dark' | 'light'; hit?: boolean }) {
   const r = 46
   const c = 2 * Math.PI * r
   const clamped = Math.min(100, Math.max(0, pct))
@@ -115,6 +121,7 @@ function ProgressRing({ pct, tone = 'dark' }: { pct: number; tone?: 'dark' | 'li
         />
       </svg>
       <div className="ring-label">
+        {hit ? <SeedSprout size={30} onDark /> : null}
         <div className="pct">{Math.round(clamped)}%</div>
         <div className="sub">of goal</div>
       </div>
@@ -289,6 +296,8 @@ export type FiberCalculatorProps = {
    * Other pages keep the id on the form.
    */
   anchorOnInput?: boolean
+  /** Home only: the M1 progress ring replaces the target header. */
+  heroRing?: boolean
 }
 
 /** Hero CTA can adopt the current typewriter Quick start (full meal, not partial text). */
@@ -309,6 +318,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       starters,
       panelLabel,
       anchorOnInput = false,
+      heroRing = false,
     },
     ref,
   ) {
@@ -343,7 +353,11 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     }),
   )
 
-  const showTypewriter = !meal.trim() && !mealFocused
+  // Home hero: the ring demo types its example day into the box instead of the
+  // starter typewriter, and Calculate on an untouched box runs that day.
+  const heroDemo = heroRing && !meal.trim() && !mealFocused
+  const showTypewriter = !heroRing && !meal.trim() && !mealFocused
+  const heroTypeRef = useRef<HTMLSpanElement>(null)
   const { text: demoText, index: demoIndex } = useStarterTypewriter(showTypewriter, starterDemoMeals)
 
   const standardAi = useMemo(() => standardFiberAi(sex, age, stage), [sex, age, stage])
@@ -363,6 +377,15 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
   const profileLabel = `${sex === 'male' ? 'men' : sex === 'female' ? 'women' : 'adults'} ${
     age === '51+' ? '51+' : age === '14-18' ? '14–18' : '19–50'
   }`
+
+  const targetNote =
+    mode === 'standard'
+      ? `U.S. Adequate Intake${stageLabel}, ${profileLabel}`
+      : mode === 'calories'
+        ? calorieTarget != null
+          ? `14 g per 1,000 kcal · ${Math.round(kcalNumber).toLocaleString('en-US')} kcal/day`
+          : `Enter 800–6,000 kcal · showing ${standardAi} g`
+        : `Stretch goal · ${standardAi} g × 1.5, max 50 g`
 
   const hasMatches = !!result && result.matches.length > 0
   const pct = hasMatches ? Math.min(150, (result.totalFiberG / target) * 100) : 0
@@ -387,6 +410,17 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       ? suggestions.combos[suggestionComboIndex % suggestions.combos.length]
       : suggestions?.items ?? []
 
+  const heroFoods = useMemo(
+    () =>
+      hasMatches && result
+        ? [...result.matches]
+            .sort((a, b) => b.fiberG - a.fiberG)
+            .slice(0, 5)
+            .map((m) => ({ name: m.matchedAlias.charAt(0).toUpperCase() + m.matchedAlias.slice(1), g: m.fiberG }))
+        : [],
+    [hasMatches, result],
+  )
+
   const shareFoods = useMemo(() => {
     if (!hasMatches || !result) return []
     return result.matches.map((m) => ({ name: m.food.name, fiberG: m.fiberG }))
@@ -400,9 +434,9 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
     return 'typed'
   }
 
-  function runCalc(rawText: string) {
+  function runCalc(rawText: string, originOverride?: MealLogInputOrigin) {
     const text = rawText.trim()
-    const inputOrigin = resolveInputOrigin(text)
+    const inputOrigin = originOverride ?? resolveInputOrigin(text)
     const source: 'own' | 'example' = inputOrigin === 'example' ? 'example' : 'own'
     const eventParams = { source, input_origin: inputOrigin }
 
@@ -527,6 +561,13 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
 
   function onSubmit(e: FormEvent) {
     e.preventDefault()
+    if (heroRing && !meal.trim()) {
+      setMeal(HERO_DEMO_MEAL)
+      setActiveStarterId(null)
+      setActiveExample(HERO_DEMO_MEAL)
+      runCalc(HERO_DEMO_MEAL, 'example')
+      return
+    }
     if (!meal.trim()) return
     runCalc(meal)
   }
@@ -586,26 +627,102 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
       >
         {panelLabel ? <p className="panel-label">{panelLabel}</p> : null}
 
-        <div className="target-head" aria-live="polite">
-          <div className="target-head-copy">
-            <span className="target-head-label">Your daily target</span>
-            <span className="target-head-note">
-              {mode === 'standard'
-                ? `U.S. Adequate Intake${stageLabel}, ${profileLabel}`
-                : mode === 'calories'
-                  ? calorieTarget != null
-                    ? `14 g per 1,000 kcal · ${Math.round(kcalNumber).toLocaleString('en-US')} kcal/day`
-                    : `Enter 800–6,000 kcal · showing ${standardAi} g`
-                  : `Stretch goal · ${standardAi} g × 1.5, max 50 g`}
+        {heroRing ? (
+          <>
+            <div className="hc-profile">
+              <div className="hc-profile-row">
+                <p className="hc-target" aria-live="polite">
+                  <span>Your daily target</span>
+                  <b>
+                    {target}
+                    <small> g</small>
+                  </b>
+                </p>
+                <div className="hc-selects" role="group" aria-label="Your profile">
+                  <label className="hc-select">
+                    <span className="sr-only">Sex or life stage</span>
+                    <select
+                      value={stage === 'none' ? sex : `female-${stage}`}
+                      onChange={(e) => {
+                        const v = e.target.value
+                        if (v === 'female-pregnant' || v === 'female-lactating') {
+                          setSex('female')
+                          setStage(v === 'female-pregnant' ? 'pregnant' : 'lactating')
+                          if (age === '51+') setAge('19-50')
+                        } else {
+                          setSex(v as Sex)
+                          setStage('none')
+                        }
+                      }}
+                    >
+                      <option value="female">Women</option>
+                      <option value="male">Men</option>
+                      <option value="female-pregnant">Pregnant</option>
+                      <option value="female-lactating">Breastfeeding</option>
+                      <option value="unspecified">Prefer not to say</option>
+                    </select>
+                  </label>
+                  <label className="hc-select">
+                    <span className="sr-only">Age</span>
+                    <select value={age} onChange={(e) => setAge(e.target.value as AgeGroup)}>
+                      <option value="14-18">Age 14–18</option>
+                      <option value="19-50">Age 19–50</option>
+                      {stage === 'none' && <option value="51+">Age 51+</option>}
+                    </select>
+                  </label>
+                  <label className="hc-select">
+                    <span className="sr-only">Goal</span>
+                    <select value={mode} onChange={(e) => setMode(e.target.value as GoalMode)}>
+                      <option value="standard">Standard</option>
+                      <option value="maxxing">Stretch ×1.5</option>
+                      <option value="calories">By calories</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div className="hc-note">
+                <span>{targetNote}</span>
+                {mode === 'calories' && (
+                  <label className="hc-kcal">
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      min={800}
+                      max={6000}
+                      step={50}
+                      value={kcal}
+                      aria-label="Calories per day"
+                      onChange={(e) => setKcal(e.target.value)}
+                    />
+                    <span>kcal/day</span>
+                  </label>
+                )}
+              </div>
+            </div>
+            <HeroRing
+              target={target}
+              mode={hasMatches ? 'result' : meal.trim() || mealError ? 'typing' : 'demo'}
+              resultTotal={hasMatches && result ? result.totalFiberG : 0}
+              resultFoods={heroFoods}
+              moreCount={hasMatches && result ? Math.max(0, result.matches.length - 5) : 0}
+              typeRef={heroTypeRef}
+              emptyError={!!mealError}
+            />
+          </>
+        ) : (
+          <div className="target-head" aria-live="polite">
+            <div className="target-head-copy">
+              <span className="target-head-label">Your daily target</span>
+              <span className="target-head-note">{targetNote}</span>
+            </div>
+            <span className="target-head-value">
+              {target}
+              <small> g</small>
             </span>
           </div>
-          <span className="target-head-value">
-            {target}
-            <small> g</small>
-          </span>
-        </div>
+        )}
 
-        {simpleProfile ? (
+        {!heroRing && simpleProfile ? (
           <div className="seg-row" role="group" aria-label="Your profile">
             <Segmented
               label="Sex"
@@ -636,6 +753,7 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
             />
           </div>
         ) : null}
+        {heroRing ? null : (
         <button
           type="button"
           className="profile-more"
@@ -654,8 +772,9 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
         >
           {simpleProfile ? 'More options: pregnancy, teens, by calories' : 'Fewer options'}
         </button>
+        )}
 
-        {!simpleProfile ? (
+        {!heroRing && !simpleProfile ? (
         <div className="row row-profile">
           <div className="field">
             <label htmlFor="sex">Sex</label>
@@ -724,13 +843,13 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
               </button>
             ) : null}
           </div>
-          <div className={`meal-box-wrap${showTypewriter ? ' meal-box-wrap--demo' : ''}`}>
+          <div className={`meal-box-wrap${showTypewriter || heroDemo ? ' meal-box-wrap--demo' : ''}`}>
             <textarea
               ref={mealInputRef}
               id="meal"
               className={`meal-box${mealError ? ' meal-box-error' : ''}${
                 meal.trim() ? ' meal-box--active' : ''
-              }${showTypewriter ? ' meal-box--demo-host' : ''}`}
+              }${showTypewriter || heroDemo ? ' meal-box--demo-host' : ''}`}
               value={meal}
               onChange={(e) => {
                 setMeal(e.target.value)
@@ -740,12 +859,17 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
               }}
               onFocus={() => setMealFocused(true)}
               onBlur={() => setMealFocused(false)}
-              placeholder={showTypewriter ? '' : 'e.g. oatmeal, apple, chia seeds'}
-              rows={3}
+              placeholder={showTypewriter || heroDemo ? '' : 'e.g. oatmeal, apple, chia seeds'}
+              rows={heroRing ? 2 : 3}
               enterKeyHint="done"
               aria-invalid={Boolean(mealError)}
               aria-describedby={mealError ? 'meal-error' : undefined}
             />
+            {heroDemo && (
+              <div className="meal-box-demo" aria-hidden="true">
+                <span ref={heroTypeRef} className="meal-box-demo-text">{HERO_DEMO_MEAL}</span>
+              </div>
+            )}
             {showTypewriter && (
               <div className="meal-box-demo" aria-hidden="true">
                 <span className="meal-box-demo-text">{demoText}</span>
@@ -767,75 +891,132 @@ export const FiberCalculator = forwardRef<FiberCalculatorHandle, FiberCalculator
           )}
         </div>
 
-        <div
-          className={`starter-block${starters?.length ? ' starter-block--portions' : ''}`}
-          aria-label="Meal starters"
-        >
-          <p className="starter-label">{starters?.length ? 'Quick portions' : 'Or start from an example'}</p>
-          <div className={`starter-chips${starters?.length ? ' starter-chips--portions' : ''}`}>
-            {starterList.map((s, i) => (
+        {heroRing ? (
+          <>
+            <div className="hc-act">
+              <div className="hc-try" aria-label="Meal starters">
+                <span>Try:</span>
+                {starterList.map((s) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    className={`hc-chip${activeStarterId === s.id ? ' is-active' : ''}`}
+                    onClick={() => pickStarter(s.id, s.meal)}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
               <button
-                key={s.id}
-                type="button"
-                className={`starter-chip${
-                  activeStarterId === s.id || (showTypewriter && demoIndex === i) ? ' is-active' : ''
-                }`}
-                onClick={() => pickStarter(s.id, s.meal)}
+                type="submit"
+                className={`btn btn-primary btn-calc hc-calc${calcReady ? ' btn-calc--ready' : ''}`}
               >
-                {s.label}
+                Calculate fiber <span aria-hidden="true">→</span>
               </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="examples">
-          <button
-            type="button"
-            className="examples-toggle"
-            aria-expanded={showExamples}
-            aria-controls="examples-list"
-            onClick={() => setShowExamples((v) => !v)}
+            </div>
+            {showExamples && (
+              <div className="examples-grid hc-examples" id="examples-list">
+                {examples.map((ex) => (
+                  <button
+                    key={ex}
+                    type="button"
+                    className={activeExample === ex ? 'is-active' : undefined}
+                    onClick={() => pickExample(ex)}
+                  >
+                    {ex}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="hc-foot">
+              <p className="calc-footnote">Free, no signup. Estimates only, not medical advice.</p>
+              <button
+                type="button"
+                className="examples-toggle"
+                aria-expanded={showExamples}
+                aria-controls="examples-list"
+                onClick={() => setShowExamples((v) => !v)}
+              >
+                {showExamples ? 'Hide more examples' : 'More example meals'}
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+          <div
+            className={`starter-block${starters?.length ? ' starter-block--portions' : ''}`}
+            aria-label="Meal starters"
           >
-            {showExamples ? 'Hide more examples' : 'More example meals'}
-          </button>
-          {showExamples && (
-            <div className="examples-grid" id="examples-list">
-              {examples.map((ex) => (
+            <p className="starter-label">{starters?.length ? 'Quick portions' : 'Or start from an example'}</p>
+            <div className={`starter-chips${starters?.length ? ' starter-chips--portions' : ''}`}>
+              {starterList.map((s, i) => (
                 <button
-                  key={ex}
+                  key={s.id}
                   type="button"
-                  className={activeExample === ex ? 'is-active' : undefined}
-                  onClick={() => pickExample(ex)}
+                  className={`starter-chip${
+                    activeStarterId === s.id || (showTypewriter && demoIndex === i) ? ' is-active' : ''
+                  }`}
+                  onClick={() => pickStarter(s.id, s.meal)}
                 >
-                  {ex}
+                  {s.label}
                 </button>
               ))}
             </div>
-          )}
-        </div>
+          </div>
 
-        <div className="actions">
-          <button
-            type="submit"
-            className={`btn btn-primary btn-calc${calcReady ? ' btn-calc--ready' : ''}${
-              meal.trim() ? '' : ' btn-calc--empty'
-            }`}
-            disabled={!meal.trim()}
-            aria-disabled={!meal.trim()}
-          >
-            {meal.trim() ? 'Calculate fiber' : 'Type a meal or pick an example'}
-          </button>
-        </div>
-        <p className="calc-footnote">Free, no signup. Estimates only, not medical advice.</p>
+          <div className="examples">
+            <button
+              type="button"
+              className="examples-toggle"
+              aria-expanded={showExamples}
+              aria-controls="examples-list"
+              onClick={() => setShowExamples((v) => !v)}
+            >
+              {showExamples ? 'Hide more examples' : 'More example meals'}
+            </button>
+            {showExamples && (
+              <div className="examples-grid" id="examples-list">
+                {examples.map((ex) => (
+                  <button
+                    key={ex}
+                    type="button"
+                    className={activeExample === ex ? 'is-active' : undefined}
+                    onClick={() => pickExample(ex)}
+                  >
+                    {ex}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="actions">
+            <button
+              type="submit"
+              className={`btn btn-primary btn-calc${calcReady ? ' btn-calc--ready' : ''}${
+                meal.trim() ? '' : ' btn-calc--empty'
+              }`}
+              disabled={!meal.trim()}
+              aria-disabled={!meal.trim()}
+            >
+              {meal.trim() ? 'Calculate fiber' : 'Type a meal or pick an example'}
+            </button>
+          </div>
+          <p className="calc-footnote">Free, no signup. Estimates only, not medical advice.</p>
+          </>
+        )}
       </form>
 
       {hasMatches && result && (
         <section className="results" aria-live="polite" ref={resultsRef}>
           <div className="score-card">
             <div className="score-hero">
-              <ProgressRing pct={shownPct} />
+              <ProgressRing pct={shownPct} hit={pct >= 100 && shownPct >= 100} />
               <div className="score-hero-copy">
-                <p className="score-of-label">Fiber so far today</p>
+                <p className="score-of-label">
+                  Fiber so far today
+                  {pct >= 100 && shownPct >= 100 ? <span className="score-hit">Target hit</span> : null}
+                </p>
                 <p className="score-total">
                   <span aria-hidden="true">{shownTotal.toFixed(1)}</span>
                   <span className="sr-only">{result.totalFiberG}</span>
