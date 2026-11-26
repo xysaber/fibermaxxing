@@ -4224,7 +4224,9 @@ body {
 }
 
 .app {
-  width: min(1200px, calc(100% - 64px));
+  /* Side margins grow with the window (32 px → 96 px), so a laptop-width window
+     keeps breathing room instead of running the content to 32 px from the edge. */
+  width: min(1200px, calc(100% - 2 * clamp(32px, 6vw, 96px)));
   padding-top: 0;
   padding-bottom: 0;
 }
