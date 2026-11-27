@@ -51,16 +51,16 @@ for (const slug of legalSlugs) {
 }
 assert.match(readFileSync('dist/404.html','utf8'), /content="noindex, follow"/)
 const sitemap = readFileSync('dist/sitemap.xml', 'utf8')
-assert.equal((sitemap.match(/<loc>/g) || []).length, pages.length + 4 + legalSlugs.length)
-assert.match(sitemap, /<loc>https:\/\/www.getfibermaxxing.com\/7-day-plan<\/loc>/)
+assert.equal((sitemap.match(/<loc>/g) || []).length, pages.length + 3 + legalSlugs.length)
 assert.match(sitemap, /<loc>https:\/\/www.getfibermaxxing.com\/about<\/loc>/)
 assert.match(sitemap, /<loc>https:\/\/www.getfibermaxxing.com\/30-day-plan<\/loc>/)
-assert.doesNotMatch(sitemap, /my-plan|30-day-plan-thanks/)
+assert.doesNotMatch(sitemap, /my-plan|30-day-plan-thanks|7-day-plan/)
 {
   const html = readFileSync('dist/7-day-plan.html', 'utf8')
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1)
   assert.match(html, /<link rel="canonical" href="https:\/\/www.getfibermaxxing.com\/7-day-plan"/)
   assert.match(html, /Find your starting number/)
+  assert.match(html, /content="noindex, follow"/)
   console.log('Static HTML verified: 7-day-plan')
 }
 {

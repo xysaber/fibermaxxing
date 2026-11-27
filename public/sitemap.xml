@@ -383,11 +383,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.getfibermaxxing.com/7-day-plan</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://www.getfibermaxxing.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
