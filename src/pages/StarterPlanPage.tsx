@@ -105,7 +105,7 @@ export function StarterPlanPage() {
               <p className="sp-idea">{cur.idea}</p>
 
               {cur.options.length > 0 && (
-                <div className="sp-options">
+                <div className={cur.options.length % 2 ? 'sp-options sp-options-odd' : 'sp-options'}>
                   {cur.options.map((o) => {
                     const p = o.photo ? STARTER_PHOTOS[o.photo] : undefined
                     return (

@@ -1,9 +1,8 @@
 /* Free 7-day plan page (/7-day-plan). Matches the approved design canvas. */
 
 .sp-wrap {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 40px 24px 64px;
+  /* .app already sets the site container and side margins; align with the header. */
+  padding: 40px 0 64px;
 }
 .sp-title {
   margin: 8px 0 10px;
@@ -134,17 +133,27 @@
 }
 .sp-options {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin: 0 0 8px;
 }
 .sp-option {
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   background: var(--surface);
+}
+/* No orphan cards: with an odd count on the 2-column grid, the last card spans the row
+   and lays out horizontally. */
+.sp-options-odd .sp-option:last-child {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+.sp-options-odd .sp-option:last-child .sp-photo {
+  flex: 0 0 calc(50% - 8px);
 }
 .sp-photo {
   position: relative;
@@ -286,7 +295,7 @@
 
 @media (max-width: 760px) {
   .sp-wrap {
-    padding: 24px 16px 40px;
+    padding: 24px 0 40px;
   }
   .sp-title {
     font-size: 32px;
@@ -367,6 +376,9 @@
   .sp-options {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+  .sp-options-odd .sp-option:last-child {
+    flex-direction: column;
   }
   .sp-pager .pl-btn {
     flex: 1 1 0;
