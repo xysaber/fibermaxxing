@@ -2,7 +2,7 @@
  * Cloudflare Worker: static assets + meal I/O log API → R2.
  * Kill switch: MEAL_LOG_INGEST=off rejects new writes (old cached clients included).
  */
-import { handleSubscribe, handleUnsubscribe, runPlanDrip, type SubscribeEnv } from './subscribe'
+import { handleSubscribe, handleUnsubscribe, maybeRunPlanDripFromRequest, runPlanDrip, type SubscribeEnv } from './subscribe'
 import {
   handlePlanCheckout,
   handlePlanClaim,
@@ -262,8 +262,10 @@ const LEGACY_PATH_REDIRECTS: Record<string, string> = {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx?: ExecutionContext): Promise<Response> {
     const url = new URL(request.url)
+    // Backup trigger for the plan emails (see maybeRunPlanDripFromRequest).
+    if (ctx) ctx.waitUntil(maybeRunPlanDripFromRequest(env))
     // Alias first so /how-much and /how-much/ are one 301 (query string kept via url.search).
     // Must run before the trailing-slash strip, which would otherwise 301 /how-much/ → /how-much.
     const barePath = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, '') || '/' : url.pathname
@@ -313,6 +315,6 @@ export default {
   },
 
   async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(runPlanDrip(env))
+    ctx.waitUntil(runPlanDrip(env, 'cron'))
   },
 }

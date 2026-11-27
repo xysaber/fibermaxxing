@@ -75,6 +75,10 @@ async function sendPlanEmail(env: SubscribeEnv, id: string, sub: Subscriber, day
       },
     }),
   })
+  if (!res.ok) {
+    const detail = (await res.text().catch(() => '')).slice(0, 300)
+    console.error(`plan email day ${day} failed: resend ${res.status} ${detail}`)
+  }
   return res.ok
 }
 
@@ -168,10 +172,39 @@ export async function handleUnsubscribe(request: Request, env: SubscribeEnv): Pr
   return page('You are unsubscribed. No more plan emails will be sent.')
 }
 
-/** Daily cron: send the next plan email to anyone whose last one was ~a day ago. */
-export async function runPlanDrip(env: SubscribeEnv): Promise<void> {
+const SEND_HOUR_UTC = 15 // 7 a.m. Pacific (8 a.m. during daylight time)
+const MIN_GAP_MS = 12 * 60 * 60 * 1000
+const DRIP_STATE_KEY = 'ops/plan-drip.json'
+const REQUEST_RUN_EVERY_MS = 55 * 60 * 1000
+
+/**
+ * When the next plan email is due: the first 15:00 UTC slot at least 12h after the last one.
+ * A run at or after that time sends it, so a missed or failed run catches up at the next one.
+ */
+export function nextDueAt(lastSentAt: string): number {
+  const earliest = Date.parse(lastSentAt) + MIN_GAP_MS
+  const d = new Date(earliest)
+  let slot = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), SEND_HOUR_UTC)
+  if (slot < earliest) slot += DAY_MS
+  return slot
+}
+
+type DripState = {
+  last_run_at: string
+  trigger: string
+  due: number
+  sent: number
+  failed: number
+  last_error_at?: string
+}
+
+/** Send every plan email that is due. Records a summary (no emails) at ops/plan-drip.json in R2. */
+export async function runPlanDrip(env: SubscribeEnv, trigger = 'cron'): Promise<void> {
   if (!enabled(env) || !env.RESEND_API_KEY || !env.MEAL_LOGS) return
   const now = Date.now()
+  const state: DripState = { last_run_at: new Date(now).toISOString(), trigger, due: 0, sent: 0, failed: 0 }
+  // Mark the run first so request-triggered runs don't start a second one meanwhile.
+  await env.MEAL_LOGS.put(DRIP_STATE_KEY, JSON.stringify(state))
   let cursor: string | undefined
   do {
     const page = await env.MEAL_LOGS.list({ prefix: PREFIX, cursor, limit: 500 })
@@ -180,16 +213,48 @@ export async function runPlanDrip(env: SubscribeEnv): Promise<void> {
       if (!obj) continue
       const sub = (await obj.json()) as Subscriber
       if (sub.unsubscribed_at || sub.sent >= PLAN_EMAILS.length) continue
-      // 20h, not 24h, so a signup at 3 p.m. still gets Day 2 at the next morning's run.
-      if (now - Date.parse(sub.last_sent_at) < DAY_MS - 4 * 60 * 60 * 1000) continue
+      if (now < nextDueAt(sub.last_sent_at)) continue
+      state.due++
       const id = o.key.slice(PREFIX.length, -'.json'.length)
       const day = sub.sent + 1
-      if (await sendPlanEmail(env, id, sub, day)) {
+      let ok = false
+      try {
+        ok = await sendPlanEmail(env, id, sub, day)
+      } catch (err) {
+        console.error(`plan email day ${day} failed: ${String(err).slice(0, 200)}`)
+      }
+      if (ok) {
         sub.sent = day
         sub.last_sent_at = new Date().toISOString()
         await env.MEAL_LOGS.put(o.key, JSON.stringify(sub), { httpMetadata: { contentType: 'application/json' } })
+        state.sent++
+      } else {
+        state.failed++
+        state.last_error_at = new Date().toISOString()
       }
     }
     cursor = page.truncated ? page.cursor : undefined
   } while (cursor)
+  await env.MEAL_LOGS.put(DRIP_STATE_KEY, JSON.stringify(state))
+  console.log(`plan drip (${trigger}): due ${state.due}, sent ${state.sent}, failed ${state.failed}`)
+}
+
+let lastRequestCheck = 0
+/**
+ * Backup for the cron: site traffic also runs the drip, at most about once an hour.
+ * Keeps the plan going even if the cron trigger is missing or a run fails.
+ */
+export async function maybeRunPlanDripFromRequest(env: SubscribeEnv): Promise<void> {
+  if (!enabled(env) || !env.RESEND_API_KEY || !env.MEAL_LOGS) return
+  const now = Date.now()
+  if (now - lastRequestCheck < 10 * 60 * 1000) return // per-isolate throttle: avoid an R2 read per request
+  lastRequestCheck = now
+  try {
+    const obj = await env.MEAL_LOGS.get(DRIP_STATE_KEY)
+    const last = obj ? Date.parse(((await obj.json()) as DripState).last_run_at) : 0
+    if (now - last < REQUEST_RUN_EVERY_MS) return
+    await runPlanDrip(env, 'request')
+  } catch (err) {
+    console.error(`plan drip (request) failed: ${String(err).slice(0, 200)}`)
+  }
 }
