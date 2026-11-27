@@ -196,13 +196,22 @@ type DripState = {
   sent: number
   failed: number
   last_error_at?: string
+  blocked?: string
 }
 
 /** Send every plan email that is due. Records a summary (no emails) at ops/plan-drip.json in R2. */
 export async function runPlanDrip(env: SubscribeEnv, trigger = 'cron'): Promise<void> {
-  if (!enabled(env) || !env.RESEND_API_KEY || !env.MEAL_LOGS) return
+  if (!env.MEAL_LOGS) return
   const now = Date.now()
   const state: DripState = { last_run_at: new Date(now).toISOString(), trigger, due: 0, sent: 0, failed: 0 }
+  // Say why nothing was sent instead of exiting silently (a wiped secret looked like a working drip).
+  const blocked = !enabled(env) ? 'subscribe_off' : !env.RESEND_API_KEY ? 'missing_resend_api_key' : ''
+  if (blocked) {
+    state.blocked = blocked
+    console.error(`plan drip (${trigger}) blocked: ${blocked}`)
+    await env.MEAL_LOGS.put(DRIP_STATE_KEY, JSON.stringify(state))
+    return
+  }
   // Mark the run first so request-triggered runs don't start a second one meanwhile.
   await env.MEAL_LOGS.put(DRIP_STATE_KEY, JSON.stringify(state))
   let cursor: string | undefined
@@ -245,7 +254,7 @@ let lastRequestCheck = 0
  * Keeps the plan going even if the cron trigger is missing or a run fails.
  */
 export async function maybeRunPlanDripFromRequest(env: SubscribeEnv): Promise<void> {
-  if (!enabled(env) || !env.RESEND_API_KEY || !env.MEAL_LOGS) return
+  if (!env.MEAL_LOGS) return
   const now = Date.now()
   if (now - lastRequestCheck < 10 * 60 * 1000) return // per-isolate throttle: avoid an R2 read per request
   lastRequestCheck = now

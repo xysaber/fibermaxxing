@@ -131,4 +131,11 @@ assert.equal(due('2026-11-26T15:00:12.000Z'), '2026-11-27T15:00:00.000Z', 'daily
   assert.ok(!JSON.stringify(JSON.parse(store.get('ops/plan-drip.json'))).includes('@'), 'drip log has no emails')
 }
 
+// Missing API key: the run is recorded as blocked instead of exiting silently.
+{
+  store.clear()
+  let p; await worker.scheduled({}, { ...env, RESEND_API_KEY: '' }, { waitUntil: (x) => (p = x) }); await p
+  assert.equal(JSON.parse(store.get('ops/plan-drip.json')).blocked, 'missing_resend_api_key')
+}
+
 console.log('subscribe smoke: all checks passed (7 emails, dedupe, honeypot, unsubscribe, catch-up, retry, backup trigger)')
