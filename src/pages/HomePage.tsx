@@ -25,6 +25,9 @@ export function HomePage() {
 
   useEffect(() => {
     trackPageView('/')
+    // Links from the 7-day plan (emails and /7-day-plan) prefill the calculator.
+    const meal = new URLSearchParams(window.location.search).get('meal')?.trim()
+    if (meal) calcRef.current?.loadMeal(meal.slice(0, 300), 'plan7')
   }, [])
   useReveal()
 
