@@ -8,6 +8,7 @@ import { NotFoundPage } from '../src/pages/NotFoundPage'
 import { MyPlanPage } from '../src/pages/MyPlanPage'
 import { PlanSalesPage } from '../src/pages/PlanSalesPage'
 import { PlanThanksPage } from '../src/pages/PlanThanksPage'
+import { StarterPlanPage } from '../src/pages/StarterPlanPage'
 
 /** Build the same visible page markup that the client renders. */
 export function renderPage(path: string) {
@@ -20,6 +21,7 @@ export function renderPage(path: string) {
         <Route path="/terms" element={<LegalPage doc="terms" />} />
         <Route path="/30-day-plan" element={<PlanSalesPage />} />
         <Route path="/30-day-plan-thanks" element={<PlanThanksPage />} />
+        <Route path="/7-day-plan" element={<StarterPlanPage />} />
         <Route path="/my-plan" element={<MyPlanPage />} />
         <Route path="/:slug" element={<SeoLandingPage />} />
         <Route path="*" element={<NotFoundPage />} />

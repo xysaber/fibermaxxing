@@ -33,8 +33,6 @@ export type StarterDay = {
   options: StarterOption[]
   paragraphs: string[]
   tip: string
-  /** One-line teaser for tomorrow (omit on the last day). */
-  next?: string
   cta: string
 }
 
@@ -51,12 +49,11 @@ export const STARTER_DAYS: StarterDay[] = [
       'Over the next six days we’ll suggest one small addition a day, about 3–8 g each. Going gradually gives your gut time to adjust, which is how most people avoid bloating.',
     ],
     tip: 'Write it the way you’d say it, like “oatmeal, apple, turkey sandwich, pasta with tomato sauce”. You can adjust any portion afterwards.',
-    next: 'Tomorrow: a few breakfasts that get you about 8–10 g.',
     cta: 'Check today’s total',
   },
   {
     day: 2,
-    subject: 'Day 2: a few breakfasts worth about 8–10 g',
+    subject: 'Day 2: a few breakfasts worth about 8–12 g',
     preheader: 'Pick whichever fits your morning.',
     heading: 'Breakfast ideas',
     idea: 'Breakfast is an easy place to start because most of us eat it on repeat. Here are a few options. Pick whichever sounds good, or mix and match.',
@@ -71,12 +68,11 @@ export const STARTER_DAYS: StarterDay[] = [
       'Any one of these covers roughly a third of a typical daily target before lunch.',
     ],
     tip: 'If you go with oatmeal, measure it after cooking. A cup of dry oats is a very different number from a cup of cooked oatmeal.',
-    next: 'Tomorrow: the single biggest fiber lever, and easy ways to use it.',
     cta: 'See all breakfast ideas',
   },
   {
     day: 3,
-    subject: 'Day 3: the biggest lever is a can of beans',
+    subject: 'Day 3: lunch ideas with beans',
     preheader: 'Half a cup adds about 6–8 g. Here are a few lunches that use it.',
     heading: 'Lunch ideas with beans or lentils',
     idea: 'Beans and lentils are among the highest-fiber foods you can buy. Adding some to lunch is one of the easiest wins. A few ideas:',
@@ -91,7 +87,6 @@ export const STARTER_DAYS: StarterDay[] = [
       'If beans don’t usually agree with you, a few spoonfuls is a fine start. You can build up over the week.',
     ],
     tip: 'Canned beans count. Rinsing them cuts the sodium.',
-    next: 'Tomorrow: snack swaps that add 4–8 g without much effort.',
     cta: 'See all lunch ideas',
   },
   {
@@ -112,7 +107,6 @@ export const STARTER_DAYS: StarterDay[] = [
       'Keeping the skin on apples and pears helps: that’s where much of the fiber is.',
     ],
     tip: 'Putting the fruit where you’ll see it mid-afternoon makes it the easy choice.',
-    next: 'Tomorrow: a simple way to think about dinner.',
     cta: 'See all snack ideas',
   },
   {
@@ -132,7 +126,6 @@ export const STARTER_DAYS: StarterDay[] = [
       'For comparison, a cup of white rice has about 0.6 g, and brown rice about 3.2 g. Small swaps like that add up.',
     ],
     tip: 'Frozen vegetables count just as much and take a couple of minutes.',
-    next: 'Tomorrow: how to keep going comfortably.',
     cta: 'See all dinner ideas',
   },
   {
@@ -147,7 +140,6 @@ export const STARTER_DAYS: StarterDay[] = [
       'If something feels off, it’s fine to stay at your current level for a few days before adding more. If you have a digestive condition, are pregnant, or take GLP-1 or other medication, your clinician’s advice comes first.',
     ],
     tip: 'Notice which of this week’s foods felt best. Those are good ones to keep.',
-    next: 'Tomorrow: compare with Day 1.',
     cta: 'Review the week',
   },
   {

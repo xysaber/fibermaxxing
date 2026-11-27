@@ -1,0 +1,377 @@
+/* Free 7-day plan page (/7-day-plan). Matches the approved design canvas. */
+
+.sp-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+.sp-title {
+  margin: 8px 0 10px;
+  font-family: var(--font-display);
+  font-size: 44px;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+.sp-lede {
+  margin: 0 0 32px;
+  max-width: 640px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.sp-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+.sp-days {
+  flex: 1 1 240px;
+  max-width: 280px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 8px;
+  position: sticky;
+  top: 88px;
+}
+.sp-day-btn {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  min-height: 52px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.sp-day-btn:hover {
+  background: var(--paper);
+}
+.sp-day-btn[aria-current] {
+  background: var(--leaf-tint);
+}
+.sp-day-n {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--paper);
+  color: var(--leaf);
+}
+.sp-day-word {
+  display: none;
+}
+.sp-day-btn[data-past] .sp-day-n {
+  background: var(--leaf-tint);
+}
+.sp-day-btn[aria-current] .sp-day-n {
+  background: var(--leaf);
+  color: #fff;
+}
+.sp-day-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.sp-day-text b {
+  font-size: 15px;
+  font-weight: 600;
+}
+.sp-day-text span {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+.sp-main {
+  flex: 999 1 560px;
+  min-width: 0;
+  scroll-margin-top: 88px;
+}
+.sp-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px;
+}
+.sp-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+.sp-adds {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--leaf);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.sp-card h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 34px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+.sp-idea {
+  margin: 0 0 24px;
+  max-width: 680px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.sp-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 0 0 8px;
+}
+.sp-option {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+.sp-photo {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background: var(--line);
+}
+.sp-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sp-credit {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.88);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.sp-credit a {
+  color: inherit;
+}
+.sp-option-body {
+  padding: 14px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 auto;
+}
+.sp-option-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.sp-option-head h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+.sp-grams {
+  flex: none;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--leaf);
+}
+.sp-option-body p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  flex: 1 1 auto;
+}
+.sp-open {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--leaf);
+}
+.sp-para {
+  margin: 16px 0 0;
+  max-width: 680px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.sp-tip {
+  margin: 24px 0 0;
+  padding: 16px 18px;
+  background: var(--amber-tint);
+  border-radius: 12px;
+  max-width: 680px;
+}
+.sp-tip p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.sp-tip .sp-tip-label {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9a4507;
+}
+.sp-calc-btn {
+  margin: 24px 0 0;
+}
+.sp-pager {
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+.sp-upsell {
+  margin: 24px 0 20px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: var(--leaf-tint);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+.sp-upsell > div {
+  max-width: 560px;
+}
+.sp-upsell p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.sp-upsell .sp-upsell-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+}
+.sp-upsell .pl-btn-ghost {
+  border-color: var(--leaf);
+  color: var(--leaf);
+  background: transparent;
+}
+
+@media (max-width: 760px) {
+  .sp-wrap {
+    padding: 24px 16px 40px;
+  }
+  .sp-title {
+    font-size: 32px;
+  }
+  .sp-lede {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .sp-layout {
+    gap: 20px;
+  }
+  .sp-days {
+    position: static;
+    flex: 1 1 100%;
+    max-width: none;
+    display: flex;
+    gap: 6px;
+    margin: 0 -16px;
+    padding: 0 16px;
+    overflow-x: auto;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+  .sp-day-btn {
+    flex: 1 1 0;
+    min-width: 40px;
+    max-width: 56px;
+    height: 56px;
+    min-height: 0;
+    padding: 0;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+  }
+  .sp-day-btn[aria-current] {
+    background: var(--leaf);
+    border-color: var(--leaf);
+    color: #fff;
+  }
+  .sp-day-n,
+  .sp-day-btn[data-past] .sp-day-n,
+  .sp-day-btn[aria-current] .sp-day-n {
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    gap: 2px;
+    background: transparent;
+    color: inherit;
+    font-size: 17px;
+  }
+  .sp-day-word {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .sp-day-text {
+    display: none;
+  }
+  .sp-main {
+    flex-basis: 100%;
+  }
+  .sp-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .sp-card h2 {
+    font-size: 26px;
+  }
+  .sp-idea {
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+  .sp-options {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .sp-pager .pl-btn {
+    flex: 1 1 0;
+  }
+  .sp-upsell {
+    padding: 20px 18px;
+  }
+}

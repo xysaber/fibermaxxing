@@ -21,6 +21,8 @@ type EventName =
   | 'begin_checkout'
   | 'purchase'
   | 'plan_link_recover'
+  | 'plan7_day_view'
+  | 'plan7_open_calculator'
 
 type GtagFn = (...args: unknown[]) => void
 

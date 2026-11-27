@@ -212,10 +212,12 @@ const aboutPage = {
 }
 
 // 30-day plan: sales page (indexed) + thank-you and reader shells (noindex, client-rendered data)
-const { PLAN_SALES_META, PLAN_FAQS } = await (async () => {
+const { PLAN_SALES_META, PLAN_FAQS, STARTER_PLAN_META } = await (async () => {
   const srv = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
   try {
-    return await srv.ssrLoadModule('/src/pages/PlanSalesPage.tsx')
+    const sales = await srv.ssrLoadModule('/src/pages/PlanSalesPage.tsx')
+    const starter = await srv.ssrLoadModule('/src/pages/StarterPlanPage.tsx')
+    return { ...sales, STARTER_PLAN_META: starter.STARTER_PLAN_META }
   } finally {
     await srv.close()
   }
@@ -223,6 +225,7 @@ const { PLAN_SALES_META, PLAN_FAQS } = await (async () => {
 const planPages = [
   { slug: '30-day-plan', title: PLAN_SALES_META.title, description: PLAN_SALES_META.description, faqs: PLAN_FAQS, noindex: false },
   { slug: '30-day-plan-thanks', title: 'Your plan is ready | GetFibermaxxing', description: 'Payment received. Open your 30-day fiber plan.', faqs: [], noindex: true },
+  { slug: '7-day-plan', title: STARTER_PLAN_META.title, description: STARTER_PLAN_META.description, faqs: [], noindex: false },
   { slug: 'my-plan', title: 'Your 30-day plan | GetFibermaxxing', description: 'Your 30-day fiber plan.', faqs: [], noindex: true },
 ]
 for (const page of planPages) {
@@ -265,6 +268,7 @@ const urls = [
       `  <url>\n    <loc>${siteUrl}/${p.slug}</loc>\n${p.updated ? `    <lastmod>${p.updated}</lastmod>\n` : ''}    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`,
   ),
   `  <url>\n    <loc>${siteUrl}/30-day-plan</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`,
+  `  <url>\n    <loc>${siteUrl}/7-day-plan</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`,
   `  <url>\n    <loc>${siteUrl}/about</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
   ...legalPages.map(
     (p) =>
