@@ -1081,3 +1081,102 @@
 .app > .hero.seo-hero .seo-answer-detail {
   max-width: none;
 }
+
+/* ---------- Unsplash food photos (2026-11-27) ---------- */
+.quick-answer--photo > .qa-photo {
+  grid-column: 1 / -1;
+}
+
+.qa-photo {
+  position: relative;
+  margin: -28px -28px 4px;
+  overflow: hidden;
+  border-radius: 19px 19px 0 0;
+  background: var(--paper);
+}
+
+.qa-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3.2;
+  object-fit: cover;
+}
+
+.qa-photo figcaption {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(19, 32, 26, 0.62);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.qa-photo figcaption a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.category-list a {
+  grid-template-columns: 44px minmax(0, 1fr) 140px 64px;
+}
+
+.category-thumb {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: var(--paper);
+}
+
+.photo-credits {
+  margin: 16px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+
+.photo-credits a {
+  color: inherit;
+}
+
+@media (max-width: 960px) {
+  .qa-photo {
+    margin: -24px -24px 4px;
+  }
+
+  .qa-photo img {
+    aspect-ratio: 2.4;
+  }
+
+  .category-list a {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    grid-template-areas:
+      'thumb name fiber'
+      'thumb name bar';
+  }
+
+  .category-thumb {
+    grid-area: thumb;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .qa-photo {
+    margin: -18px -18px 2px;
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+.category-thumb--empty {
+  display: grid;
+  place-items: center;
+  color: var(--leaf);
+}

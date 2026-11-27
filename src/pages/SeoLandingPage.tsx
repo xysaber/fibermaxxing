@@ -4,6 +4,7 @@ import { DocumentMeta } from '../components/DocumentMeta'
 import { EmailSignup } from '../components/EmailSignup'
 import { FaqBlock } from '../components/FaqBlock'
 import { FiberCalculator } from '../components/FiberCalculator'
+import { FoodHeroPhoto, FoodThumb, PhotoCredits } from '../components/FoodPhoto'
 import { GuideCards } from '../components/GuideCards'
 import { HOME_GUIDES } from '../components/GuidesStrip'
 import { GuideByline, GuideSources } from '../components/GuideSources'
@@ -19,6 +20,7 @@ import {
   SEO_PAGE_MAP,
   type SeoPortionTable,
 } from '../content/seoPages'
+import { foodPhotoFor, type FoodPhoto } from '../content/foodPhotos'
 import { trackPageView } from '../lib/analytics'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -106,7 +108,7 @@ function PortionComparison({
   )
 }
 
-type HubItem = { to: string; name: string; serving: string; fiber: string }
+type HubItem = { to: string; name: string; serving: string; fiber: string; photo?: FoodPhoto }
 
 /** Hub: one panel per category, foods as a two-column list (design board 16) — no orphan cards. */
 function CategoryPanel({ id, title, items }: { id: string; title: string; items: HubItem[] }) {
@@ -130,6 +132,13 @@ function CategoryPanel({ id, title, items }: { id: string; title: string; items:
         {items.map((it) => (
           <li key={it.to}>
             <Link to={it.to}>
+              {it.photo ? <FoodThumb photo={it.photo} size={44} className="category-thumb" /> : (
+                <span className="category-thumb category-thumb--empty" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20">
+                    <path d="M10 17V9M10 9c0-3 2-5 5-5 0 3-2 5-5 5zM10 12c0-2.5-1.8-4.5-4.5-4.5 0 2.5 1.8 4.5 4.5 4.5z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              )}
               <span className="category-food">
                 <b>{it.name}</b>
                 <span>{it.serving}</span>
@@ -211,6 +220,7 @@ export function SeoLandingPage() {
   const useBands = page.layout !== 'default'
   const facts = page.facts ?? []
   const heroLede = page.intro?.[0]?.trim() || null
+  const heroPhoto = page.kind === 'hub' ? undefined : foodPhotoFor(page.slug)
 
   const wideHero = page.kind === 'hub' || facts.length > 4 || Boolean(page.callout)
   const calculatorJump = (
@@ -226,7 +236,13 @@ export function SeoLandingPage() {
     slugs
       .map((s) => GUIDE_INDEX_MAP[s])
       .filter((g): g is NonNullable<typeof g> => Boolean(g?.name))
-      .map((g) => ({ to: `/${g.slug}`, name: g.name!, serving: g.serving ?? '', fiber: g.stat ?? '' }))
+      .map((g) => ({
+        to: `/${g.slug}`,
+        name: g.name!,
+        serving: g.serving ?? '',
+        fiber: g.stat ?? '',
+        photo: foodPhotoFor(g.slug),
+      }))
 
   // Calculator: same width and style as the home page, in its own band (design boards 21–22).
   // The hub keeps its food list first (board 16), so its calculator follows the table.
@@ -312,8 +328,9 @@ export function SeoLandingPage() {
 
         {page.answer || facts.length > 0 ? (
           <div
-            className={`quick-answer${wideHero && facts.length <= 4 ? ' quick-answer--split' : ''}`}
+            className={`quick-answer${wideHero && facts.length <= 4 ? ' quick-answer--split' : ''}${heroPhoto ? ' quick-answer--photo' : ''}`}
           >
+            {heroPhoto ? <FoodHeroPhoto photo={heroPhoto} /> : null}
             <div className="quick-answer-main">
               <p className="quick-answer-kicker">Quick answer</p>
               {page.answer ? <SeoAnswer answer={page.answer} showNote={false} /> : null}
@@ -351,6 +368,10 @@ export function SeoLandingPage() {
           {page.guideGroups.map((group, i) => (
             <CategoryPanel key={group.title} id={`group-${i}`} title={group.title} items={hubItems(group.items)} />
           ))}
+          <PhotoCredits
+            className="photo-credits hub-photo-credits"
+            photos={page.guideGroups.flatMap((g) => hubItems(g.items).flatMap((it) => (it.photo ? [it.photo] : [])))}
+          />
         </section>
       ) : null}
 
