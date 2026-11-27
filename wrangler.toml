@@ -34,9 +34,14 @@ PLAN_SALES = "on"
 PLAN_PRICE_CENTS = "900"
 PLAN_REPLY_TO = "hello@getfibermaxxing.com"
 
-# Daily 15:00 UTC (7 a.m. Pacific): send the next plan email.
+# Hourly: plan emails go out at the first run from 15:00 UTC (7 a.m. Pacific) once due,
+# so a missed or failed run catches up an hour later. Site traffic is a backup trigger.
 [triggers]
-crons = ["0 15 * * *"]
+crons = ["0 * * * *"]
+
+# Keep Worker logs (plan email send errors, drip summaries) in the dashboard.
+[observability]
+enabled = true
 
 # PR preview builds (`wrangler preview`). Every kill switch is off so a preview never
 # writes meal logs, sends email or opens checkout. MEAL_LOGS points at the production
