@@ -27,25 +27,32 @@ export function FoodThumb({ photo, size, className }: { photo: FoodPhoto; size: 
   )
 }
 
-const HERO_WIDTHS = [400, 640, 900, 1240]
-/** Aspect of the guide hero photo on desktop (width / height); phones crop it to 2.2 in CSS. */
+/** Aspect of the guide hero photo on desktop (width / height); phones crop it to 2.4 in CSS. */
 export const HERO_RATIO = 3.2
+const PHONE_RATIO = 2.4
+/** Phones top out at 800 px wide (≈2× a 390 px screen) so the LCP image stays small on 3× screens. */
+const PHONE_WIDTHS = [400, 600, 800]
+const DESKTOP_WIDTHS = [640, 900, 1240]
 
 /** Wide photo at the top of the Quick answer card, with the Unsplash credit on it. */
 export function FoodHeroPhoto({ photo }: { photo: FoodPhoto }) {
-  const h = (w: number) => Math.round(w / HERO_RATIO)
+  const set = (widths: number[], ratio: number) =>
+    widths.map((w) => `${unsplashUrl(photo, w, Math.round(w / ratio), w > 640 ? 55 : 65)} ${w}w`).join(', ')
   return (
     <figure className="qa-photo">
-      <img
-        src={unsplashUrl(photo, 640, h(640))}
-        srcSet={HERO_WIDTHS.map((w) => `${unsplashUrl(photo, w, h(w), w > 640 ? 55 : 65)} ${w}w`).join(', ')}
-        sizes="(max-width: 960px) calc(100vw - 32px), 620px"
-        width={1240}
-        height={h(1240)}
-        alt={photo.alt}
-        fetchPriority="high"
-        decoding="async"
-      />
+      <picture>
+        <source media="(max-width: 960px)" srcSet={set(PHONE_WIDTHS, PHONE_RATIO)} sizes="calc(100vw - 32px)" />
+        <img
+          src={unsplashUrl(photo, 640, Math.round(640 / HERO_RATIO))}
+          srcSet={set(DESKTOP_WIDTHS, HERO_RATIO)}
+          sizes="620px"
+          width={1240}
+          height={Math.round(1240 / HERO_RATIO)}
+          alt={photo.alt}
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
       <figcaption>
         Photo: <a href={photo.authorUrl} rel="noopener">{photo.author}</a> /{' '}
         <a href={photo.photoUrl} rel="noopener">Unsplash</a>
