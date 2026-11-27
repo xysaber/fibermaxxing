@@ -127,6 +127,10 @@ function injectHead(html, { title, description, path, faqs, noindex = false, art
 }
 
 function writePageHtml(slug, html) {
+  if (html.includes('class="qa-photo"')) {
+    // Guide hero photos are the LCP image on phones: open the image CDN connection early.
+    html = html.replace('</head>', '    <link rel="preconnect" href="https://images.unsplash.com" />\n  </head>')
+  }
   // Flat dist/<slug>.html so Cloudflare Pretty URLs serve /<slug> without
   // 307 → /<slug>/ (which fought canonicals that omit the trailing slash).
   writeFileSync(join(dist, `${slug}.html`), html)
