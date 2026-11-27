@@ -60,7 +60,7 @@ export function StarterPlanPage() {
 
   return (
     <div className="app">
-      <DocumentMeta title={STARTER_PLAN_META.title} description={STARTER_PLAN_META.description} path={STARTER_PLAN_META.path} />
+      <DocumentMeta title={STARTER_PLAN_META.title} description={STARTER_PLAN_META.description} path={STARTER_PLAN_META.path} noindex />
       <SiteHeader />
 
       <section className="sp-wrap">
